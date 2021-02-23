@@ -1,0 +1,124 @@
+﻿@model PagedList.IPagedList<UPTax.Model.ViewModels.VMUserInfo>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "User List";
+
+    if (Request.IsAjaxRequest())
+    {
+        Layout = null;
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    int dataSize = 10;
+
+    if (ViewBag.size != null)
+    {
+        dataSize = ViewBag.dataSize;
+    };
+    int pageNo = 1;
+    if (ViewBag.page != null)
+    {
+        pageNo = ViewBag.pageNo;
+    };
+    int rowNo = dataSize * pageNo;
+    rowNo = rowNo - dataSize;
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">User</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active">Manage user</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        @*<div class="float-right ml-2">
+                            <a class="btn btn-sm btn-info btn-flat margin" href="@Url.Action("Register","User")">Add User</a>
+                        </div>*@
+                        <h5 class="header-title mb-4">All Users</h5>
+
+                        <div class="table-responsive">
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <td>SL.</td>
+                                        <th>Name</th>
+                                        <th>User Name</th>
+                                        <th>Role Name</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    @if (Model != null)
+                                    {
+                                        foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
+                                        {
+                                            rowNo++;
+                                            <tr>
+                                                <td>@rowNo</td>
+                                                <td class="">@item.Data.FullName</td>
+                                                <td class="">@item.Data.UserName</td>
+                                                <td class="">@item.Data.RoleName</td>
+                                                <td class="">@(item.Data.Status ? "Active" : "Inactive")</td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+<!-- /.box -->
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+        });
+
+        $(function () {
+            //$('#example1').DataTable();
+            $('#example1').DataTable({
+                'paging': false,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': false,
+                'info': false,
+                'autoWidth': false
+            });
+        });
+    </script>
+
+
+
+}
+

@@ -1,0 +1,143 @@
+﻿@model PagedList.IPagedList<UPTax.Model.ViewModels.VMUserInfo>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "User List";
+
+    if (Request.IsAjaxRequest())
+    {
+        Layout = null;
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    }
+    int dataSize = 10;
+
+    if (ViewBag.size != null)
+    {
+        dataSize = ViewBag.dataSize;
+    };
+    int pageNo = 1;
+    if (ViewBag.page != null)
+    {
+        pageNo = ViewBag.pageNo;
+    };
+    int rowNo = dataSize * pageNo;
+    rowNo = rowNo - dataSize;
+}
+
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title index-header"> <i class="fa fa-th-list"></i>  User List</h3>
+        <a class="btn btn-sm btn-info btn-flat margin pull-right" href="@Url.Action("Register","User")">Add User</a>
+    </div>
+
+    @*<div class="cover-btn">
+        <a href="#">
+            <p><span class="bg"></span><span class="base"></span><span class="text">Play Valorant</span></p>
+        </a>
+    </div>*@
+
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-12">
+                @using (Ajax.BeginForm("Index", "User", FormMethod.Get, new AjaxOptions
+                {
+                    UpdateTargetId = "mainContainer",
+                    InsertionMode = InsertionMode.Replace
+                }))
+                {
+                    <table class="table">
+                        <tr class="">
+                            <td class="col-sm-1" style="width:5%">
+                                @*<span style="font-weight:bold;">Page Size</span><br />*@
+                                <i class="fa fa-filter" style="margin-right: 5px; color: #aeaeae; font-size: 22px; padding-top: 5px;  "></i>
+                                @Html.TextBox("dataSize", ViewBag.dataSize as string, new { @type = "number", @min = "10", @max = "100", @class = "", @style = "width:60px;height:30px;border: 1px solid #DDE2E8;" })
+                            </td>
+                            <td class="" style="width:5%;">
+                                <center><button type="submit" class="btn btn-sm btn-info"><i class="fa fa-search" style="margin-right:5px; color:#808080;"></i>Serach</button></center>
+                                @*style="background-color: #e6e6e6; "*@
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </div>
+
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>SL.</td>
+                    <th>Name</th>
+                    <th>User Name</th>
+                    <th>Role Name</th>
+                    <th>Active</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (Model != null)
+                {
+                    foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
+                    {
+                        rowNo++;
+                        <tr>
+                            <td>@rowNo</td>
+                            <td class="">@item.Data.FullName</td>
+                            <td class="">@item.Data.UserName</td>
+                            <td class="">@item.Data.RoleName</td>
+                            <td class="">@(item.Data.Status ? "Yes" : "No")</td>
+                            <td></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="float-right">
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+        new
+        {
+            page,
+            dataSize = ViewBag.dataSize
+        }),
+        PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+        {
+            HttpMethod = "GET",
+            UpdateTargetId = "mainContainer"
+        })
+        )
+        </div>
+    </div>
+    <!-- /.box-body -->
+</div>
+<!-- /.box -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+        });
+
+        $(function () {
+            //$('#example1').DataTable();
+            $('#example1').DataTable({
+                'paging': false,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': false,
+                'info': false,
+                'autoWidth': false
+            });
+        });
+    </script>
+
+
+
+}
+

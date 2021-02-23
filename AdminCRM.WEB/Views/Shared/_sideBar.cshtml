@@ -1,0 +1,36 @@
+﻿<div class="vertical-menu">
+
+    <div data-simplebar class="h-100">
+
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li class="menu-title">Menu</li>
+
+                <li>
+                    <a href="@Url.Action("Index","Dashboard")" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div>
+                        <span>ড্যাশবোর্ড</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-key-skeleton-alt"></i></div>
+                        <span>সেটিংস</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="@Url.Action("Index", "User")">ইউজার</a></li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="@Url.Action("Index", "UnionParishad")">ইউনিয়ন পরিষদ</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>

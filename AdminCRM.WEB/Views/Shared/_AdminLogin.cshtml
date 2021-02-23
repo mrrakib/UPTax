@@ -1,0 +1,35 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Login | Xoric - Responsive Bootstrap 4 Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/Content/assets/images/favicon.ico">
+    @Styles.Render("~/Content/adminLoginCss")
+
+</head>
+
+<body class="bg-primary bg-pattern">
+    <div class="home-btn d-none d-sm-block">
+        <a href="@Url.Action("Index","Account")"><i class="mdi mdi-home-variant h2 text-white"></i></a>
+    </div>
+
+    <div class="account-pages my-5 pt-sm-5">
+        <div class="container">
+            @RenderBody()
+            <!-- end row -->
+        </div>
+    </div>
+    <!-- end Account pages -->
+    <!-- JAVASCRIPT -->
+    @Scripts.Render("~/bundles/adminLoginjs")
+    <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
+
+    <script src="~/Content/assets/js/app.js"></script>
+
+</body>
+</html>
