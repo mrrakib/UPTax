@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5D01C379-B0E0-489C-AA3C-D904109588FC}</ProjectGuid>
+    <ProjectGuid>{B956D07C-87C0-46FB-90A1-9E383837D64D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UPTax.Data</RootNamespace>
-    <AssemblyName>UPTax.Data</AssemblyName>
+    <RootNamespace>UPTax.Service</RootNamespace>
+    <AssemblyName>UPTax.Service</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -70,16 +70,9 @@
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
-    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -88,29 +81,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultFormsAuthentication.cs" />
-    <Compile Include="AdminContext.cs" />
-    <Compile Include="IdentityManager.cs" />
-    <Compile Include="Infrastructure\IRepository.cs" />
-    <Compile Include="Infrastructure\Page.cs" />
-    <Compile Include="Infrastructure\Repository.cs" />
-    <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\202102121235497_InitialDBCreate.cs" />
-    <Compile Include="Migrations\202102121235497_InitialDBCreate.Designer.cs">
-      <DependentUpon>202102121235497_InitialDBCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102161436244_add_tbl_UnionParishad.cs" />
-    <Compile Include="Migrations\202102161436244_add_tbl_UnionParishad.Designer.cs">
-      <DependentUpon>202102161436244_add_tbl_UnionParishad.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\Autofac\UserRepository.cs" />
-    <Compile Include="Repository\RoleRepository.cs" />
-    <Compile Include="Repository\UPDetails\UnionParishadRepository.cs" />
+    <Compile Include="Services\Autofac\UserService.cs" />
+    <Compile Include="Services\RoleService.cs" />
+    <Compile Include="Services\UPDetails\UnionParishadService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AdminCRM.Model\UPTax.Model.csproj">
+    <ProjectReference Include="..\UPTax.Data\UPTax.Data.csproj">
+      <Project>{5d01c379-b0e0-489c-aa3c-d904109588fc}</Project>
+      <Name>UPTax.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UPTax.Model\UPTax.Model.csproj">
       <Project>{97549144-7914-46ea-acda-c0ab104d0040}</Project>
       <Name>UPTax.Model</Name>
     </ProjectReference>
@@ -119,17 +100,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Views\Shared\EditorTemplates\Collection.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\PagedList.css" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102121235497_InitialDBCreate.resx">
-      <DependentUpon>202102121235497_InitialDBCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102161436244_add_tbl_UnionParishad.resx">
-      <DependentUpon>202102161436244_add_tbl_UnionParishad.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

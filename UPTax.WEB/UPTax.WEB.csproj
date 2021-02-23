@@ -12678,15 +12678,15 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AdminCRM.Data\UPTax.Data.csproj">
+    <ProjectReference Include="..\UPTax.Data\UPTax.Data.csproj">
       <Project>{5d01c379-b0e0-489c-aa3c-d904109588fc}</Project>
       <Name>UPTax.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AdminCRM.Model\UPTax.Model.csproj">
+    <ProjectReference Include="..\UPTax.Model\UPTax.Model.csproj">
       <Project>{97549144-7914-46ea-acda-c0ab104d0040}</Project>
       <Name>UPTax.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AdminCRM.Service\UPTax.Service.csproj">
+    <ProjectReference Include="..\UPTax.Service\UPTax.Service.csproj">
       <Project>{b956d07c-87c0-46fb-90a1-9e383837d64d}</Project>
       <Name>UPTax.Service</Name>
     </ProjectReference>
