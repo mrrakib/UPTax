@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PagedList;
-using UPTax.Model.ViewModels;
-using UPTax.Data.Repository.Autofac;
-using UPTax.Model.Models.Account;
-using UPTax.Data.Repository;
 using UPTax.Data.Infrastructure;
+using UPTax.Data.Repository;
+using UPTax.Model.Models.Account;
 
 namespace UPTax.Service.Services.Autofac
 {
@@ -23,6 +18,7 @@ namespace UPTax.Service.Services.Autofac
         bool Save();
         bool Delete(string roleId);
     }
+
     public class RoleService : IRoleService
     {
         private readonly IRoleRepository _roleRepository;

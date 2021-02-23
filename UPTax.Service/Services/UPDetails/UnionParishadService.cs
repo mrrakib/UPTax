@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository.UPDetails;
 using UPTax.Model.Models.UnionDetails;
@@ -101,7 +99,7 @@ namespace UPTax.Service.Services.UPDetails
             {
                 return new StaticPagedList<UnionParishad>(new List<UnionParishad> { }, pageNo, pageSize, 0);
             }
-            
+
         }
     }
 }

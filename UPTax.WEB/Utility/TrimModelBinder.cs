@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel;
 using System.Web.Mvc;
 
 namespace UPTax.Utility
@@ -23,8 +19,7 @@ namespace UPTax.Utility
                 value = val;
             }
 
-            base.SetProperty(controllerContext, bindingContext,
-                propertyDescriptor, value);
+            base.SetProperty(controllerContext, bindingContext, propertyDescriptor, value);
         }
     }
 }

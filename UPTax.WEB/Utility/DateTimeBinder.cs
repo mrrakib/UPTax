@@ -1,10 +1,8 @@
-﻿using UPTax.Helper;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using UPTax.Helper;
 
 namespace UPTax.Utility
 {
@@ -22,7 +20,6 @@ namespace UPTax.Utility
                 {
                     val = value.AttemptedValue;
 
-
                     DateTime date;
                     var displayFormat = RapidSession.DateTimeFormat;
                     if (value.AttemptedValue.Contains(","))
@@ -31,7 +28,6 @@ namespace UPTax.Utility
                     }
                     if (val != "")
                     {
-
                         if (val.Count() != 5)
                         {
                             if (DateTime.TryParseExact(val, displayFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
@@ -40,20 +36,17 @@ namespace UPTax.Utility
                             }
                             else
                             {
-
                                 bindingContext.ModelState.AddModelError(bindingContext.ModelName, "Invalid Date Format");
                             }
                         }
                         else
                         {
-
                             if (DateTime.TryParseExact(val, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
                             {
                                 return date;
                             }
                             else
                             {
-
                                 bindingContext.ModelState.AddModelError(bindingContext.ModelName, "Invalid Time Format");
                             }
                         }

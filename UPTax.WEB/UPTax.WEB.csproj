@@ -12661,7 +12661,6 @@
     <Folder Include="Content\assets\libs\spectrum-colorpicker\docs\" />
     <Folder Include="Content\assets\libs\spectrum-colorpicker\example\" />
     <Folder Include="Content\assets\libs\spectrum-colorpicker\test\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Shared\Admin\" />
   </ItemGroup>
   <ItemGroup>
