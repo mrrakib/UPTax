@@ -1,0 +1,29 @@
+/*
+Teamplate Name: Union Porishod
+Version: 1.0
+*/
+/* Type your CSS Here */
+
+div.dataTables_paginate ul.pagination {
+    margin: 2px 0;
+    white-space: nowrap;
+    justify-content: flex-end;
+}
+
+.page-item.active a {
+    z-index: 3;
+    color: #fff;
+    background-color: #3051d3;
+    border-color: #3051d3;
+}
+
+.page-item a {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #7c8a96;
+    background-color: #fff;
+    border: 1px solid #d7dce1;
+}

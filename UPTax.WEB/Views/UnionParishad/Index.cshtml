@@ -13,14 +13,14 @@
     }
     int dataSize = 10;
 
-    if (ViewBag.size != null)
+    if (ViewBag.dataSize != null)
     {
         dataSize = ViewBag.dataSize;
     };
     int pageNo = 1;
     if (ViewBag.page != null)
     {
-        pageNo = ViewBag.pageNo;
+        pageNo = ViewBag.page;
     };
     int rowNo = dataSize * pageNo;
     rowNo = rowNo - dataSize;
@@ -126,7 +126,13 @@
                                         page,
                                         dataSize = ViewBag.dataSize
                                     }),
-                                    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+                                    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions {
+                                        LiElementClasses = new string[] { "paginate_button page-item" },
+                                        UlElementClasses = new string[] { "pagination" },
+                                        ContainerDivClasses = new string[] { "dataTables_paginate paging_simple_numbers" },
+                                        
+                                    },
+                                    new AjaxOptions()
                                     {
                                         HttpMethod = "GET",
                                         UpdateTargetId = "mainContainer"

@@ -116,7 +116,8 @@ namespace UPTax
                     "~/Content/assets/libs/alertifyjs/build/css/themes/default.min.css",
                     "~/Content/assets/css/bootstrap.min.css",
                     "~/Content/assets/css/icons.min.css",
-                    "~/Content/assets/css/app.min.css"
+                    "~/Content/assets/css/app.min.css",
+                    "~/Content/style.css"
                     ));
             #endregion
 

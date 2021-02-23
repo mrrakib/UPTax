@@ -37,7 +37,7 @@ namespace UPTax.Controllers
         public ActionResult Index(string name,int page = 1, int dataSize = 10)
         {
             ViewBag.dataSize = dataSize;
-            ViewBag.pageNo = page;
+            ViewBag.page = page;
             ViewBag.name = name;
 
             var unionList = _unionParishadService.GetPaged(name, page, dataSize);
