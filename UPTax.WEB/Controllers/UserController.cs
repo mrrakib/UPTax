@@ -1,17 +1,15 @@
-﻿using UPTax.Data;
-using UPTax.Helper;
-using UPTax.Model.Models.Account;
-using UPTax.Model.ViewModels;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
+using UPTax.Data;
 using UPTax.Filter;
+using UPTax.Helper;
+using UPTax.Model.Models.Account;
+using UPTax.Model.ViewModels;
 using UPTax.Service.Services.Autofac;
 
 namespace UPTax.Controllers
@@ -39,7 +37,7 @@ namespace UPTax.Controllers
         public ActionResult Index(int pageNo = 1, int dataSize = 10)
         {
             //List<string> rolesList = ((ClaimsIdentity)System.Web.HttpContext.Current.User.Identity).Claims.Where(c => c.Type == ClaimTypes.Role).Select(r => r.Value).ToList();
-            
+
             ViewBag.dataSize = dataSize;
             ViewBag.pageNo = pageNo;
 
@@ -136,7 +134,6 @@ namespace UPTax.Controllers
                         return RedirectToAction("Index");
                     }
                 }
-
                 else
                 {
 
@@ -147,8 +144,6 @@ namespace UPTax.Controllers
                             errorMsg = errorMsg + "<br> " + item;
                         }
                     }
-
-
                 }
             }
             message.custom(this, "Registration not complete due to some problem!" + "<br> " + errorMsg);
@@ -160,7 +155,6 @@ namespace UPTax.Controllers
         #region Get all Role
         private IEnumerable<IdentityRole> _GetRoleList()
         {
-
             var roleStore = new RoleStore<IdentityRole>(db);
             var roleMngr = new RoleManager<IdentityRole>(roleStore);
             var roles = roleMngr.Roles.ToList();
