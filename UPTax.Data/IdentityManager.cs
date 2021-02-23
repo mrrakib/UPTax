@@ -1,19 +1,15 @@
-﻿using UPTax.Model.Models.Account;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UPTax.Model.Models.Account;
 
 namespace UPTax.Data
 {
     public class IdentityManager : UserManager<ApplicationUser>
     {
-        
+
         public IdentityManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
@@ -81,7 +77,7 @@ namespace UPTax.Data
         }
     }
 
-        public class ApplicationRoleManager : RoleManager<ApplicationRole>
+    public class ApplicationRoleManager : RoleManager<ApplicationRole>
     {
         public ApplicationRoleManager(IRoleStore<ApplicationRole, string> roleStore)
             : base(roleStore)

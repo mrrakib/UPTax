@@ -1,11 +1,8 @@
-﻿using System;
+﻿using PagedList;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PagedList;
-using UPTax.Model.ViewModels;
 using UPTax.Data.Repository.Autofac;
+using UPTax.Model.ViewModels;
 
 namespace UPTax.Service.Services.Autofac
 {
@@ -13,6 +10,7 @@ namespace UPTax.Service.Services.Autofac
     {
         IPagedList GetUserPaged(int pageNo, int pageSize);
     }
+
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
