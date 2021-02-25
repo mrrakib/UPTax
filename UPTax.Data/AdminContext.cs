@@ -1,12 +1,8 @@
-﻿using UPTax.Model.Models.Account;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
+using UPTax.Model.Models.Account;
 using UPTax.Model.Models.UnionDetails;
 
 namespace UPTax.Data
@@ -19,6 +15,7 @@ namespace UPTax.Data
         }
 
         public DbSet<UnionParishad> UnionParishads { get; set; }
+        public DbSet<WardInfo> WardInfo { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -50,7 +47,7 @@ namespace UPTax.Data
             {
                 success = this.CreateRole(roleManager, "Admin", "Edit existing records");
             }
-                
+
             if (!success == true) return false;
 
             if (!roleManager.RoleExists("User"))
@@ -58,7 +55,7 @@ namespace UPTax.Data
                 success = this.CreateRole(roleManager, "User", "Restricted to business domain activity");
             }
             if (!success) return false;
-            
+
 
             var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
 
@@ -68,7 +65,7 @@ namespace UPTax.Data
             user.UserName = "Admin";
             user.FullName = "ইউনিওন পরিষদ";
 
-            
+
             if (!context.Users.Any(u => u.UserName == user.UserName))
             {
                 IdentityResult result = userManager.Create(user, "Up@123");
@@ -99,5 +96,5 @@ namespace UPTax.Data
         }
 
     }
-    
+
 }

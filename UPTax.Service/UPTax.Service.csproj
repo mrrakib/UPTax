@@ -86,6 +86,7 @@
     <Compile Include="Services\Autofac\UserService.cs" />
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\UPDetails\UnionParishadService.cs" />
+    <Compile Include="Services\UPDetails\WardInfoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UPTax.Data\UPTax.Data.csproj">
