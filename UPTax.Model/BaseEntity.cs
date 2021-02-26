@@ -9,7 +9,8 @@ namespace UPTax.Model
     {
         public BaseEntity()
         {
-            CreatedDate = DateTime.Now;
+            CreatedBy = "26f73b21-4d0a-43e9-8f1f-0eb6d6279a46";
+            CreatedDate = DateTime.UtcNow;
             IsDeleted = false;
         }
 

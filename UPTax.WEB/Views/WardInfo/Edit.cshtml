@@ -34,6 +34,12 @@
                         @using (Html.BeginForm("Edit", "WardInfo", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
+                            @Html.HiddenFor(a => a.Id)
+                            @Html.HiddenFor(a => a.UnionId)
+                            //@Html.HiddenFor(a => a.CreatedDate.ToString("dd-mm-yyyyy"));
+                            <input type="text" name="CreateDate" value="@Model.CreatedDate.ToString("dd-mm-yyyyy")" hidden />
+                            @Html.HiddenFor(a => a.CreatedBy)
+                            @Html.HiddenFor(a => a.IsDeleted)
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.WardNo)</label>
