@@ -11,6 +11,8 @@ namespace UPTax.Helper
         private const string userId = "UserId";
         private const string roleName = "RoleName";
         private const string con = "Con";
+        private const string unionId = "UnionId";
+
         private const string dateTimeFormat = "DateTimeFormat";
         public static string RoleId
         {
@@ -84,6 +86,26 @@ namespace UPTax.Helper
             set
             {
                 HttpContext.Current.Session[dateTimeFormat] = value;
+            }
+        }
+
+        public static int UnionId
+        {
+            get
+            {
+                try
+                {
+                    return (int)HttpContext.Current.Session[unionId];
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
+            }
+
+            set
+            {
+                HttpContext.Current.Session[unionId] = value;
             }
         }
 

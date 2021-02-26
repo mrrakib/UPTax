@@ -90,6 +90,7 @@ namespace UPTax.Controllers
                 RapidSession.RoleId = userRole.RoleId;
                 RapidSession.RoleName = userRole.Name;
                 RapidSession.UserId = user.Id;
+                RapidSession.UnionId = 1;
                 return RedirectToAction("Index", "Dashboard");
                 //return RedirectToRoute("Home", new { controller = "Home", action = "Index" });
             }
