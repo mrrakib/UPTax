@@ -1,22 +1,25 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository;
 using UPTax.Model.Models.Account;
 
-namespace UPTax.Service.Services.Autofac
+namespace UPTax.Service.Services.Permissions
 {
     public interface IRoleService
     {
         IEnumerable<ApplicationRole> GetAll();
-        IEnumerable<ApplicationRole> GetByRoleName(string roleName);
+        ApplicationRole GetByRoleName(string roleName);
         ApplicationRole GetDetails(string roleId);
         bool Add(ApplicationRole role);
         bool CheckIfExist(string roleName);
         bool Update(ApplicationRole role);
         bool Save();
         bool Delete(string roleId);
+        IPagedList<ApplicationRole> GetPageList(Page page, string name);
+        bool CheckIfExistForUpdate(string roleName, string roleId);
     }
 
     public class RoleService : IRoleService
@@ -44,24 +47,35 @@ namespace UPTax.Service.Services.Autofac
                 return false;
         }
 
+        public bool CheckIfExistForUpdate(string roleName, string roleId)
+        {
+            int countRole = _roleRepository.GetMany(r => r.Name == roleName && !r.Id.Equals(roleId)).Count();
+            if (countRole > 0)
+                return true;
+            else
+                return false;
+        }
+
         public bool Delete(string roleId)
         {
-            throw new NotImplementedException();
+            ApplicationRole role = _roleRepository.Get(r => r.Id.Equals(roleId));
+            _roleRepository.Delete(role);
+            return Save();
         }
 
         public IEnumerable<ApplicationRole> GetAll()
         {
-            throw new NotImplementedException();
+            return _roleRepository.GetAll();
         }
 
-        public IEnumerable<ApplicationRole> GetByRoleName(string roleName)
+        public ApplicationRole GetByRoleName(string roleName)
         {
-            throw new NotImplementedException();
+            return _roleRepository.Get(r => r.Name.Equals(roleName));
         }
 
         public ApplicationRole GetDetails(string roleId)
         {
-            throw new NotImplementedException();
+            return _roleRepository.Get(r => r.Id.Equals(roleId));
         }
 
         public bool Save()
@@ -79,7 +93,17 @@ namespace UPTax.Service.Services.Autofac
 
         public bool Update(ApplicationRole role)
         {
-            throw new NotImplementedException();
+            _roleRepository.Update(role);
+            return Save();
+        }
+
+        public IPagedList<ApplicationRole> GetPageList(Page page, string name)
+        {
+            if (!string.IsNullOrEmpty(name))
+            {
+                return _roleRepository.GetPage(page, x => true && x.Name.StartsWith(name), order => order.Name);
+            }
+            return _roleRepository.GetPage(page, x => true, order => order.Name);
         }
     }
 }

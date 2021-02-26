@@ -119,7 +119,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
-    <Compile Include="Repository\RoleRepository.cs" />
+    <Compile Include="Repository\Permissions\RoleRepository.cs" />
     <Compile Include="Repository\UPDetails\UnionParishadRepository.cs" />
     <Compile Include="Repository\UPDetails\WardInfoRepository.cs" />
   </ItemGroup>

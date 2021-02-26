@@ -1,0 +1,73 @@
+﻿@model UPTax.Model.Models.Account.ApplicationRole
+
+@{
+    ViewBag.Title = "সংরক্ষণ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">ইউজার রোল</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">অপারেট রোল</a></li>
+                    <li class="breadcrumb-item active">রোল যোগ করুন</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right ml-2">
+                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">তালিকায় দেখুন</a>
+                        </div>
+                        <h4 class="header-title">রোল সংরক্ষণ ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Create", "Roles", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Name)</label>
+                                    @Html.TextBoxFor(m => m.Name, new { @id = "validationCustom03", @class = "form-control", @placeholder = "রোল নাম", @maxLength = "250", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        নাম দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Description)</label>
+                                    @Html.TextAreaFor(m => m.Description, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "রোলের বর্ণনা", @maxLength = "350", @cols = "3", @rows = "5" })
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">সংরক্ষণ করুন</button>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+
+
+}
