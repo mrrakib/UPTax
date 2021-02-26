@@ -6,21 +6,16 @@ using UPTax.Service.Services.UPDetails;
 
 namespace UPTax.Controllers
 {
-    public class UnionParishadController : Controller
+    public class WardInfoController : Controller
     {
-        #region Global Variables
-        private Message _message = new Message();
+        private readonly Message _message = new Message();
+        private readonly IWardInfoService _wardInfoService;
 
-        private readonly IUnionParishadService _unionParishadService;
-        #endregion
-
-        #region constructor
-        public UnionParishadController(IUnionParishadService unionParishadService)
+        public WardInfoController(IWardInfoService wardInfoService)
         {
-            _unionParishadService = unionParishadService;
+            _wardInfoService = wardInfoService;
         }
-        #endregion
-
+        // GET: WardInfo
         [RapidAuthorization(All = true)]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
@@ -28,11 +23,10 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name;
 
-            var unionList = _unionParishadService.GetPaged(name, page, dataSize);
+            var unionList = _wardInfoService.GetPagedList(wardNo: name, page, dataSize);
             return View(unionList);
         }
 
-        #region Create
         [HttpGet]
         public ActionResult Create()
         {
@@ -42,11 +36,11 @@ namespace UPTax.Controllers
         [HttpPost]
         [RapidAuthorization]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UnionParishad model)
+        public ActionResult Create(WardInfo model)
         {
             if (ModelState.IsValid)
             {
-                if (_unionParishadService.Add(model))
+                if (_wardInfoService.Add(model))
                 {
                     _message.save(this);
                     return RedirectToAction("Index");
@@ -54,14 +48,13 @@ namespace UPTax.Controllers
             }
             return View(model);
         }
-        #endregion
 
         #region Update
         [RapidAuthorization]
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            UnionParishad model = _unionParishadService.GetDetails(id);
+            WardInfo model = _wardInfoService.GetDetails(id);
             if (model == null)
             {
                 return PartialView("_Error");
@@ -72,11 +65,11 @@ namespace UPTax.Controllers
         [RapidAuthorization]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(UnionParishad model)
+        public ActionResult Edit(WardInfo model)
         {
             if (ModelState.IsValid)
             {
-                _unionParishadService.Update(model);
+                _wardInfoService.Update(model);
                 _message.update(this);
                 return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });
             }
@@ -88,7 +81,7 @@ namespace UPTax.Controllers
         [RapidAuthorization]
         public ActionResult Delete(int id)
         {
-            if (_unionParishadService.Delete(id))
+            if (_wardInfoService.Delete(id))
             {
                 _message.delete(this);
                 return RedirectToAction("Index");

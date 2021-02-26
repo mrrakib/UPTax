@@ -16,7 +16,7 @@ namespace UPTax.Service.Services.UPDetails
         bool Update(WardInfo model);
         bool Save();
         bool Delete(int id);
-        IPagedList GetPagedList(int pageNo, int pageSize);
+        IPagedList GetPagedList(string wardNo, int pageNo, int pageSize);
     }
     public class WardInfoService : IWardInfoService
     {
@@ -44,13 +44,12 @@ namespace UPTax.Service.Services.UPDetails
 
         public IEnumerable<WardInfo> GetAll()
         {
-            return _wardInfoRepository.GetAll();
+            return _wardInfoRepository.GetMany(a => a.IsDeleted == false).ToList();
         }
-
 
         public WardInfo GetDetails(int id)
         {
-            return _wardInfoRepository.Get(u => u.Id == id);
+            return _wardInfoRepository.Get(u => u.Id == id && u.IsDeleted == false);
         }
 
         public bool Save()
@@ -72,18 +71,21 @@ namespace UPTax.Service.Services.UPDetails
             return Save();
         }
 
-        public IPagedList GetPagedList(int pageNo, int pageSize)
+        public IPagedList GetPagedList(string wardNo, int pageNo, int pageSize)
         {
             try
             {
-                string query = string.Format(@"SELECT * FROM UnionParishad {0}
-                ORDER BY Id
-                OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", pageNo, pageSize);
+                string searchPrm = string.Empty;
+                if (!string.IsNullOrEmpty(wardNo))
+                {
+                    searchPrm += string.Format(@" WHERE WardNo LIKE N'%{0}%'", wardNo);
+                }
+                string query = string.Format(@"SELECT * FROM WardInfo {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
-                string countQuery = string.Format(@"SELECT COUNT(*) FROM UnionParishad WHERE Name LIKE N'%{0}%'");
+                string countQuery = string.Format(@"SELECT COUNT(*) FROM WardInfo WHERE WardNo LIKE N'%{0}%'", wardNo);
 
                 int rowCount = _wardInfoRepository.SQLQuery<int>(countQuery);
-                List<WardInfo> unionParishads = _wardInfoRepository.SQLQueryList<WardInfo>(query).ToList();
+                List<WardInfo> unionParishads = _wardInfoRepository.SQLQueryList<WardInfo>(query).Where(a => a.IsDeleted == false).ToList();
                 return new StaticPagedList<WardInfo>(unionParishads, pageNo, pageSize, rowCount);
             }
             catch (Exception ex)

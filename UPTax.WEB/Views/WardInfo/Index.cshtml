@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<UPTax.Model.Models.UnionDetails.UnionParishad>
+﻿@model PagedList.IPagedList<UPTax.Model.Models.UnionDetails.WardInfo>
 @using PagedList.Mvc;
 @{
     ViewBag.Title = "ওয়ার্ড তালিকা";
@@ -54,7 +54,7 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                @using (Ajax.BeginForm("Index", "UnionParishad", FormMethod.Get, new AjaxOptions
+                                @using (Ajax.BeginForm("Index", "WardInfo", FormMethod.Get, new AjaxOptions
                                 {
                                     UpdateTargetId = "mainContainer",
                                     InsertionMode = InsertionMode.Replace
@@ -69,7 +69,7 @@
                                             </td>
                                             <td class="col-sm-1" style="width:2%">
                                                 @*<span style="font-weight:bold;">Page Size</span><br />*@
-                                                @Html.TextBox("name", ViewBag.name as string, new { @class = "form-control col-md-12 col-xs-12", placeholder = "ইউনিয়ন এর নাম" })
+                                                @Html.TextBox("name", ViewBag.name as string, new { @class = "form-control col-md-12 col-xs-12", placeholder = "ওয়ার্ড এর নাম" })
                                             </td>
                                             <td class="" style="width:2%;">
                                                 <center><button type="submit" class="btn btn-sm btn-info"><i class="fa fa-search" style="margin-right: 5px; color: #008BBB"></i>খুঁজুন</button></center>
@@ -86,15 +86,11 @@
                                 <thead>
                                     <tr>
                                         <th>নং</th>
-                                        <th>নাম</th>
-                                        <th>মোবাইল নাম্বার</th>
-                                        <th>ইমেইল</th>
+                                        <th>ওয়ার্ড নং</th>
                                         <th>অপারেশন</th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
-
                                     @if (Model != null)
                                     {
                                         foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
@@ -102,14 +98,12 @@
                                             rowNo++;
                                             <tr>
                                                 <td>@rowNo</td>
-                                                <td class="">@item.Data.Name</td>
-                                                <td class="">@item.Data.PhoneNo</td>
-                                                <td class="">@item.Data.Email</td>
+                                                <td class="">@item.Data.WardNo</td>
                                                 <td>
                                                     <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
                                                         <i class="mdi mdi-pencil"></i>
                                                     </a>
-                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","UnionParishad")/@item.Data.Id">
+                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","WardInfo")/@item.Data.Id">
 
                                                         <i class="mdi mdi-trash-can"></i>
                                                     </a>
@@ -126,12 +120,12 @@
                                         page,
                                         dataSize = ViewBag.dataSize
                                     }),
-                                    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions
-                                         {
+                                    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+                                    new PagedListRenderOptions()
+                                    {
                                         LiElementClasses = new string[] { "paginate_button page-item" },
                                         UlElementClasses = new string[] { "pagination" },
                                         ContainerDivClasses = new string[] { "dataTables_paginate paging_simple_numbers" },
-
                                     },
                                     new AjaxOptions()
                                     {
@@ -155,15 +149,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
         $(function () {
-            //$('#example1').DataTable();
-            $('#example1').DataTable({
-                'paging': false,
-                'lengthChange': false,
-                'searching': false,
-                'ordering': false,
-                'info': false,
-                'autoWidth': false
-            });
+           
         });
     </script>
 }
