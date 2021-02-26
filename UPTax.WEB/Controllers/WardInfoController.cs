@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
 using UPTax.Model.Models.UnionDetails;
@@ -10,20 +11,23 @@ namespace UPTax.Controllers
     {
         private readonly Message _message = new Message();
         private readonly IWardInfoService _wardInfoService;
+        private readonly string _userId = RapidSession.UserId;
+        private readonly int _unionId = RapidSession.UnionId;
 
         public WardInfoController(IWardInfoService wardInfoService)
         {
             _wardInfoService = wardInfoService;
         }
+
         // GET: WardInfo
         [RapidAuthorization(All = true)]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
             ViewBag.dataSize = dataSize;
             ViewBag.page = page;
-            ViewBag.name = name;
+            ViewBag.name = name?.Trim();
 
-            var unionList = _wardInfoService.GetPagedList(wardNo: name, page, dataSize);
+            var unionList = _wardInfoService.GetPagedList(wardNo: name?.Trim(), page, dataSize);
             return View(unionList);
         }
 
@@ -40,11 +44,16 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_wardInfoService.Add(model))
+                model.WardNo = model.WardNo.Trim();
+                var isExistingWard = _wardInfoService.IsExistingWard(model.WardNo, model.UnionId, wardId: null);
+                model.CreatedBy = _userId;
+                if (!isExistingWard && _wardInfoService.Add(model))
                 {
                     _message.save(this);
                     return RedirectToAction("Index");
                 }
+                _message.custom(this, "এই নামে একটি ওয়ার্ড আছে!");
+                return View(model);
             }
             return View(model);
         }
@@ -69,6 +78,14 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
+                var isExistingWard = _wardInfoService.IsExistingWard(model.WardNo, model.UnionId, wardId: model.Id);
+                if (isExistingWard)
+                {
+                    _message.custom(this, "এই নামে একটি ওয়ার্ড আছে!");
+                    return View(model);
+                }
+                model.UpdatedBy = _userId;
+                model.UpdatedDate = DateTime.UtcNow;
                 _wardInfoService.Update(model);
                 _message.update(this);
                 return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });

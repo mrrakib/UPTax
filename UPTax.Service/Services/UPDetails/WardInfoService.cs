@@ -17,6 +17,7 @@ namespace UPTax.Service.Services.UPDetails
         bool Save();
         bool Delete(int id);
         IPagedList GetPagedList(string wardNo, int pageNo, int pageSize);
+        bool IsExistingWard(string wardNo, int unionId, int? wardId);
     }
     public class WardInfoService : IWardInfoService
     {
@@ -92,6 +93,14 @@ namespace UPTax.Service.Services.UPDetails
             {
                 return new StaticPagedList<WardInfo>(new List<WardInfo> { }, pageNo, pageSize, 0);
             }
+        }
+
+        public bool IsExistingWard(string wardNo, int unionId, int? wardId)
+        {
+            if (wardId == null || wardId == 0)
+                return _wardInfoRepository.GetCount(a => a.WardNo.Equals(wardNo) && a.UnionId == unionId && a.IsDeleted == false) > 0 ? true : false;
+
+            return _wardInfoRepository.GetCount(a => a.WardNo.Equals(wardNo) && a.UnionId == unionId && a.IsDeleted == false && a.Id != wardId) > 0 ? true : false;
         }
     }
 }
