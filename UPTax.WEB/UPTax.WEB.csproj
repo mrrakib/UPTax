@@ -6661,6 +6661,7 @@
     <Content Include="Content\assets\images\widget-img.png" />
     <Content Include="Content\assets\js\app.js" />
     <Content Include="Content\assets\js\avro-v1.1.4.min.js" />
+    <Content Include="Content\assets\js\custom.js" />
     <Content Include="Content\assets\js\pages\alertifyjs.init.js" />
     <Content Include="Content\assets\js\pages\apex.init.js" />
     <Content Include="Content\assets\js\pages\calendar.init.js" />

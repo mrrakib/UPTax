@@ -47,9 +47,10 @@ namespace UPTax.Controllers
         #region Register GET
         [HttpGet]
         [RapidAuthorization]
-        public ActionResult Register()
+        public ActionResult Create()
         {
             VMRegister vmRegister = new VMRegister { roles = _GetRoleList() };
+            ViewBag.RoleName = new SelectList(_GetRoleList(), "Id", "Name");
             return View(vmRegister);
         }
         #endregion
@@ -58,7 +59,7 @@ namespace UPTax.Controllers
         [HttpPost]
         [RapidAuthorization]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(VMRegister model)
+        public async Task<ActionResult> Create(VMRegister model)
         {
 
             string errorMsg = "";

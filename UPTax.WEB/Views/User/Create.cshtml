@@ -38,7 +38,7 @@
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.Name)<span class="required">*</span> </label>
-                                    @Html.TextBoxFor(m => m.Name, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "ইউনিয়নের নাম", @maxLength = "250", @required = "required", @placement = "" })
+                                    @Html.TextBoxFor(m => m.Name, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "নাম", @maxLength = "250", @required = "required", @placement = "" })
                                     <div class="invalid-feedback">
                                         নাম দেয়া বাধ্যতামূলক!
                                     </div>
@@ -46,14 +46,52 @@
 
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.UserName)</label>
-                                    @Html.TextBoxFor(m => m.UserName, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "ইউজার নেম", @maxLength = "14", @required = "required" })
+                                    @Html.TextBoxFor(m => m.UserName, new { @id = "validationCustom03", @class = "form-control", @placeholder = "ইউজার নেম", @maxLength = "14", @required = "required" })
                                     <div class="invalid-feedback">
-                                        ইউজার বাধ্যতামূলক!
+                                        ইউজার নেম বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.Email)</label>
-                                    @Html.TextBoxFor(m => m.Email, new { @id = "validationCustom03", @class = "form-control", @placeholder = "মেইল এড্রেস", @maxLength = "150" })
+                                    @Html.TextBoxFor(m => m.Email, new { @id = "validationCustom03", @class = "form-control placement", @placeholder = "মেইল এড্রেস", @maxLength = "150" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Password)<span class="required">*</span> </label>
+
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @maxLength = "100", @minLength = "6", @id = "validationCustom03", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        পাসওয়ার্ড দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.ConfirmPassword)<span class="required">*</span> </label>
+
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @maxLength = "100", @minLength = "6", @id = "validationCustom03", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        কনফার্ম পাসওয়ার্ড দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.RoleName)<span class="required">*</span> </label>
+                                    @Html.DropDownList("RoleName", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlRoleName", @required = "required" })
+                                    
+                                    <div class="invalid-feedback">
+                                        রোল দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.IsActive)<span class="required">*</span> </label>
+
+                                    @Html.CheckBoxFor(m => m.IsActive, new { @class = "custom-control-input", @id = "custominlineCheck1" })
+
                                 </div>
                             </div>
 

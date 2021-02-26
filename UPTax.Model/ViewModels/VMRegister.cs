@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace UPTax.Model.ViewModels
 {
@@ -16,31 +17,31 @@ namespace UPTax.Model.ViewModels
 
         [RegularExpression("[A-Za-z0-9 _.-]*", ErrorMessage = "User name must contain only characters, number, underscore, dot, hyphen")]
         [Required(ErrorMessage = "User name is required field")]
-        [Display(Name = "Login Name")]
+        [DisplayName("ইউজার নেম")]
         [StringLength(100, ErrorMessage = "Maximum length 100 character")]
         public string UserName { get; set; }
 
         [RegularExpression("[A-Za-z .()-]*", ErrorMessage = "Name must contain only characters, dot, (), hyphen.")]
         // [Required(ErrorMessage = "Name is required field")]
         [StringLength(100, ErrorMessage = "Maximum length 100 character")]
-        [Display(Name = "Name")]
+        [DisplayName("নাম")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Password is required field")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [DisplayName("পাসওয়ার্ড")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Confirm Password is required field")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [Display(Name = "Confirm password")]
+        [DisplayName("কনফার্ম পাসওয়ার্ড")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [Display(Name = "User Role")]
+        [DisplayName("ইউজার রোল")]
         public string RoleName { get; set; }
 
         public IEnumerable<IdentityRole> roles { get; set; }
