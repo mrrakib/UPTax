@@ -33,3 +33,7 @@ div.dataTables_paginate ul.pagination {
     background-image: url(assets/images/bg-pattern.png);
     background-size: cover;
 }*/
+
+.required {
+    color: red;
+}
