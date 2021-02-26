@@ -84,7 +84,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Autofac\UserService.cs" />
-    <Compile Include="Services\RoleService.cs" />
+    <Compile Include="Services\Permissions\RoleService.cs" />
     <Compile Include="Services\UPDetails\UnionParishadService.cs" />
     <Compile Include="Services\UPDetails\WardInfoService.cs" />
   </ItemGroup>

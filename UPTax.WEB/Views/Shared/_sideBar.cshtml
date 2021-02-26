@@ -17,11 +17,21 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-anchor"></i></div>
+                        <span>এডমিন</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="@Url.Action("Index", "Roles")">রোল</a></li>
+                        <li><a href="@Url.Action("Index", "User")">ইউজার</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <div class="d-inline-block icons-sm mr-1"><i class="uim uim-key-skeleton-alt"></i></div>
                         <span>সেটিংস</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="@Url.Action("Index", "User")">ইউজার</a></li>
                         <li><a href="@Url.Action("Index", "UnionParishad")">ইউনিয়ন পরিষদ</a></li>
                         <li><a href="@Url.Action("Index", "Ward")">ওয়ার্ড তালিকা</a></li>
                     </ul>

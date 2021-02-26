@@ -179,6 +179,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UnionParishadController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WardController.cs" />
     <Compile Include="Filter\RapidAuthorization.cs" />
@@ -12635,6 +12636,9 @@
     <Content Include="Views\UnionParishad\Create.cshtml" />
     <Content Include="Views\UnionParishad\Edit.cshtml" />
     <Content Include="Views\Ward\Index.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

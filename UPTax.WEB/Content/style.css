@@ -27,3 +27,9 @@ div.dataTables_paginate ul.pagination {
     background-color: #fff;
     border: 1px solid #d7dce1;
 }
+
+/*header#page-topbar {
+    background-color: #3051d3;
+    background-image: url(assets/images/bg-pattern.png);
+    background-size: cover;
+}*/
