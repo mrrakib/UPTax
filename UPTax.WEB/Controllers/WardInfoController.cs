@@ -11,6 +11,8 @@ namespace UPTax.Controllers
     {
         private readonly Message _message = new Message();
         private readonly IWardInfoService _wardInfoService;
+        private readonly string _userId = RapidSession.UserId;
+        private readonly int _unionId = RapidSession.UnionId;
 
         public WardInfoController(IWardInfoService wardInfoService)
         {
@@ -23,9 +25,9 @@ namespace UPTax.Controllers
         {
             ViewBag.dataSize = dataSize;
             ViewBag.page = page;
-            ViewBag.name = name;
+            ViewBag.name = name?.Trim();
 
-            var unionList = _wardInfoService.GetPagedList(wardNo: name, page, dataSize);
+            var unionList = _wardInfoService.GetPagedList(wardNo: name?.Trim(), page, dataSize);
             return View(unionList);
         }
 
@@ -44,7 +46,7 @@ namespace UPTax.Controllers
             {
                 model.WardNo = model.WardNo.Trim();
                 var isExistingWard = _wardInfoService.IsExistingWard(model.WardNo, model.UnionId, wardId: null);
-
+                model.CreatedBy = _userId;
                 if (!isExistingWard && _wardInfoService.Add(model))
                 {
                     _message.save(this);
@@ -82,7 +84,7 @@ namespace UPTax.Controllers
                     _message.custom(this, "এই নামে একটি ওয়ার্ড আছে!");
                     return View(model);
                 }
-                model.UpdatedBy = "26f73b21-4d0a-43e9-8f1f-0eb6d6279a46";
+                model.UpdatedBy = _userId;
                 model.UpdatedDate = DateTime.UtcNow;
                 _wardInfoService.Update(model);
                 _message.update(this);
