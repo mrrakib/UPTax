@@ -8,6 +8,7 @@ namespace UPTax.Helper
     public static class RapidSession
     {
         private const string roleId = "RoleId";
+        private const string userId = "UserId";
         private const string roleName = "RoleName";
         private const string con = "Con";
         private const string dateTimeFormat = "DateTimeFormat";
@@ -21,6 +22,18 @@ namespace UPTax.Helper
             set
             {
                 HttpContext.Current.Session[roleId] = value;
+            }
+        }
+        public static string UserId
+        {
+            get
+            {
+                return (string)(HttpContext.Current.Session[userId] ?? "");
+            }
+
+            set
+            {
+                HttpContext.Current.Session[userId] = value;
             }
         }
         public static string RoleName

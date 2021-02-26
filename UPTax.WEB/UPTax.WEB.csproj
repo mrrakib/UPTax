@@ -12618,7 +12618,7 @@
     <Content Include="Views\Dashboard\Contact.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\_LeftMenu.cshtml" />
@@ -12631,7 +12631,6 @@
     <Content Include="Views\Shared\_sideBar.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Shared\_AdminLogin.cshtml" />
-    <Content Include="Views\User\Index - Copy.cshtml" />
     <Content Include="Views\UnionParishad\Index.cshtml" />
     <Content Include="Views\UnionParishad\Create.cshtml" />
     <Content Include="Views\UnionParishad\Edit.cshtml" />
@@ -12641,6 +12640,7 @@
     <Content Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\User\Register - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
