@@ -12646,6 +12646,7 @@
     <Content Include="Views\EducationInfo\Index.cshtml" />
     <Content Include="Views\EducationInfo\Create.cshtml" />
     <Content Include="Views\EducationInfo\Edit.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
