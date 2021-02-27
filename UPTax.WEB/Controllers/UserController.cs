@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -50,7 +51,7 @@ namespace UPTax.Controllers
         public ActionResult Create()
         {
             VMRegister vmRegister = new VMRegister { roles = _GetRoleList() };
-            ViewBag.RoleName = new SelectList(_GetRoleList(), "Id", "Name");
+            ViewBag.RoleName = new SelectList(_GetRoleList(), "Name", "Name");
             return View(vmRegister);
         }
         #endregion
@@ -63,9 +64,11 @@ namespace UPTax.Controllers
         {
 
             string errorMsg = "";
+            ViewBag.RoleName = new SelectList(_GetRoleList(), "Name", "Name", model.RoleName);
 
             if (ModelState.IsValid)
             {
+                model.IsActive = true;
                 //db = new EasyContext();
                 this.store = new UserStore<ApplicationUser>(db);
                 this.UserManager = new UserManager<ApplicationUser>(this.store);
@@ -81,15 +84,12 @@ namespace UPTax.Controllers
                 if (re.Count() > 0)
                 {
                     // already exist
-                    message.custom(this, "This username already exist. Please choose a new one.");
-
+                    message.custom(this, "এই ব্যবহারকারীর নামটি ইতিমধ্যে বিদ্যমান!");
 
                     model.roles = _GetRoleList();
                     return View(model);
                 }
                 var user = model.GetUser();
-
-
 
                 var result = await UserManager.CreateAsync(user, model.Password);
 
@@ -105,33 +105,42 @@ namespace UPTax.Controllers
                     }
                     catch
                     {
-                        message.custom(this, "Problem occured while creating user role!");
+                        message.custom(this, "ব্যবহারকারীর রোল যোগ করার সময় সমস্যা দেখা দিয়েছে!");
                         RedirectToAction("Login");
                     }
+                    IdentityResult isSuccess = new IdentityResult();
 
-                    var isSuccess = UserManager.AddToRole(user.Id, model.RoleName);
+                    try
+                    {
+                        isSuccess = UserManager.AddToRole(user.Id, "Admin");
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    
                     if (isSuccess.Succeeded)
                     {
 
-                        ApplicationUser userDetails = (from u in db.Users where u.Id == user.Id select u).FirstOrDefault(); //_userService.GetUser(user.Id);
+                        ApplicationUser userDetails = (from u in db.Users where u.Id == user.Id select u).FirstOrDefault(); 
+                        //_userService.GetUser(user.Id);
                         //userDetails.PlainPassword = model.Password;
                         //userDetails.Sha1Password = HashingUtility.GetSha1HashString(model.Password);
                         //userDetails.Md5Password = HashingUtility.GetMD5HashString(model.Password);
                         userDetails.EmployeeId = model.EmployeeId;
+                        userDetails.IsActive = model.IsActive;
+                        userDetails.PhoneNumber = model.ContactNo;
                         //userDetails.IsLocalPermitedUser = model.IsLocalPermitedUser;
                         db.SaveChanges();
                         //_userService.SaveUser();
 
-
-                        message.success(this, "Registered successfully");
-
-
+                        message.success(this, "নিবন্ধন সফল হয়েছে!");
 
                         return RedirectToAction("Index");
                     }
                     else
                     {
-                        message.custom(this, "Problem has occured while creating user role!");
+                        message.custom(this, "ব্যবহারকারীর রোল যোগ করার সময় সমস্যা দেখা দিয়েছে!");
                         return RedirectToAction("Index");
                     }
                 }
@@ -147,7 +156,7 @@ namespace UPTax.Controllers
                     }
                 }
             }
-            message.custom(this, "Registration not complete due to some problem!" + "<br> " + errorMsg);
+            message.custom(this, "কিছু সমস্যার কারণে নিবন্ধন শেষ হচ্ছে না!" + "<br /> " + errorMsg);
             model.roles = _GetRoleList();
             return View(model);
         }
