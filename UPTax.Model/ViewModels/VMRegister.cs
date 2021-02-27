@@ -14,11 +14,11 @@ namespace UPTax.Model.ViewModels
     {
         public string UserId { get; set; }
 
-
         [RegularExpression("[A-Za-z0-9 _.-]*", ErrorMessage = "User name must contain only characters, number, underscore, dot, hyphen")]
         [Required(ErrorMessage = "User name is required field")]
         [DisplayName("ইউজার নেম")]
         [StringLength(100, ErrorMessage = "Maximum length 100 character")]
+
         public string UserName { get; set; }
 
         [RegularExpression("[A-Za-z .()-]*", ErrorMessage = "Name must contain only characters, dot, (), hyphen.")]
@@ -51,7 +51,10 @@ namespace UPTax.Model.ViewModels
         public string Email { get; set; }
 
         public string ContactNo { get; set; }
+        [DisplayName("এক্টিভ?")]
         public bool IsActive { get; set; }
+        [DisplayName("ইউনিয়ন")]
+        public int? UnionId { get; set; }
 
         public ApplicationUser GetUser()
         {

@@ -12,6 +12,7 @@ using UPTax.Helper;
 using UPTax.Model.Models.Account;
 using UPTax.Model.ViewModels;
 using UPTax.Service.Services.Autofac;
+using UPTax.Service.Services.UPDetails;
 
 namespace UPTax.Controllers
 {
@@ -24,12 +25,14 @@ namespace UPTax.Controllers
         private Message message = new Message();
 
         private readonly IUserService _userService;
+        private readonly IUnionParishadService _unionParishadService;
         #endregion
 
         #region constructor
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IUnionParishadService unionParishadService)
         {
             _userService = userService;
+            _unionParishadService = unionParishadService;
         }
         #endregion
         // GET: User Rakib
@@ -52,6 +55,7 @@ namespace UPTax.Controllers
         {
             VMRegister vmRegister = new VMRegister { roles = _GetRoleList() };
             ViewBag.RoleName = new SelectList(_GetRoleList(), "Name", "Name");
+            ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name");
             return View(vmRegister);
         }
         #endregion
@@ -65,6 +69,7 @@ namespace UPTax.Controllers
 
             string errorMsg = "";
             ViewBag.RoleName = new SelectList(_GetRoleList(), "Name", "Name", model.RoleName);
+            ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name", model.UnionId);
 
             if (ModelState.IsValid)
             {
@@ -130,6 +135,7 @@ namespace UPTax.Controllers
                         userDetails.EmployeeId = model.EmployeeId;
                         userDetails.IsActive = model.IsActive;
                         userDetails.PhoneNumber = model.ContactNo;
+                        userDetails.UnionId = model.UnionId;
                         //userDetails.IsLocalPermitedUser = model.IsLocalPermitedUser;
                         db.SaveChanges();
                         //_userService.SaveUser();

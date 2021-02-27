@@ -23,6 +23,8 @@ namespace UPTax.Model.Models.Account
         public string PlainPassword { get; set; }
         [Column(TypeName = "BIT")]
         public bool IsActive { get; set; }
+        [Column(TypeName = "INT")]
+        public int? UnionId { get; set; }
         public virtual ICollection<ApplicationUserRole> UserRoles { get; set; }
 
     }

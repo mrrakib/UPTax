@@ -89,6 +89,7 @@
     <Compile Include="Models\UnionDetails\CompanySocialProfile.cs" />
     <Compile Include="Models\UnionDetails\WardInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\IdNameDropdown.cs" />
     <Compile Include="ViewModels\VMLogin.cs" />
     <Compile Include="ViewModels\VMRegister.cs" />
     <Compile Include="ViewModels\VMUserInfo.cs" />
