@@ -87,6 +87,7 @@ namespace UPTax.Service.Services.Permissions
             }
             catch (Exception e)
             {
+                var errorMessage = e.Message;
                 return false;
             }
         }

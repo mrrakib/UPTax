@@ -62,6 +62,7 @@ namespace UPTax.Service.Services.UPDetails
             }
             catch (Exception ex)
             {
+                var errorMessage = ex.Message;
                 return false;
             }
         }
@@ -91,6 +92,7 @@ namespace UPTax.Service.Services.UPDetails
             }
             catch (Exception ex)
             {
+                var errorMessage = ex.Message;
                 return new StaticPagedList<WardInfo>(new List<WardInfo> { }, pageNo, pageSize, 0);
             }
         }
