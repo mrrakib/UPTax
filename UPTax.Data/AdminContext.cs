@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using System.Linq;
+using UPTax.Model.Models;
 using UPTax.Model.Models.Account;
 using UPTax.Model.Models.UnionDetails;
 
@@ -15,7 +16,10 @@ namespace UPTax.Data
         }
 
         public DbSet<UnionParishad> UnionParishads { get; set; }
-        public DbSet<WardInfo> WardInfo { get; set; }
+        public DbSet<WardInfo> WardInfos { get; set; }
+        public DbSet<EducationInfo> EducationInfos { get; set; }
+
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

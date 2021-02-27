@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Models\Account\ApplicationUser.cs" />
+    <Compile Include="Models\EducationInfo.cs" />
     <Compile Include="Models\UnionDetails\UnionParishad.cs" />
     <Compile Include="Models\UnionDetails\CompanySocialProfile.cs" />
     <Compile Include="Models\UnionDetails\WardInfo.cs" />
