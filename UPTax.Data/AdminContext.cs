@@ -12,20 +12,20 @@ namespace UPTax.Data
     {
         public AdminContext() : base("Admin_Context")
         {
-
+            this.Configuration.LazyLoadingEnabled = true;
         }
 
         public DbSet<UnionParishad> UnionParishads { get; set; }
         public DbSet<WardInfo> WardInfos { get; set; }
         public DbSet<EducationInfo> EducationInfos { get; set; }
-
+        public DbSet<VillageInfo> VillageInfos { get; set; }
+        public DbSet<ProfessionInfo> ProfessionInfos { get; set; }
+        public DbSet<SocialBenefit> SocialBenefits { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
             base.OnModelCreating(modelBuilder);
-
             modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");

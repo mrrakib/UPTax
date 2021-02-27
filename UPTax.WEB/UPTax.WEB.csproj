@@ -179,9 +179,12 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfessionInfoController.cs" />
+    <Compile Include="Controllers\SocialBenefitController.cs" />
     <Compile Include="Controllers\UnionParishadController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\VillageInfoController.cs" />
     <Compile Include="Controllers\WardInfoController.cs" />
     <Compile Include="Filter\RapidAuthorization.cs" />
     <Compile Include="Global.asax.cs">
@@ -12646,7 +12649,15 @@
     <Content Include="Views\EducationInfo\Index.cshtml" />
     <Content Include="Views\EducationInfo\Create.cshtml" />
     <Content Include="Views\EducationInfo\Edit.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\ProfessionInfo\Index.cshtml" />
+    <Content Include="Views\SocialBenefit\Index.cshtml" />
+    <Content Include="Views\VillageInfo\Index.cshtml" />
+    <Content Include="Views\ProfessionInfo\Create.cshtml" />
+    <Content Include="Views\ProfessionInfo\Edit.cshtml" />
+    <Content Include="Views\SocialBenefit\Create.cshtml" />
+    <Content Include="Views\SocialBenefit\Edit.cshtml" />
+    <Content Include="Views\VillageInfo\Create.cshtml" />
+    <Content Include="Views\VillageInfo\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
