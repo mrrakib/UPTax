@@ -11,9 +11,9 @@ namespace UPTax.Service.Services
     public interface IEducationInfoService
     {
         bool Add(EducationInfo model);
-        bool Delete(int id);
         bool Update(EducationInfo model);
-        IPagedList GetPagedList(int pageNo, int pageSize);
+        bool Delete(int id);
+        IPagedList GetPagedList(string degree, int pageNo, int pageSize);
         IEnumerable<EducationInfo> GetAll();
         EducationInfo GetDetails(int id);
         bool IsExistingItem(string degree);
@@ -58,9 +58,28 @@ namespace UPTax.Service.Services
             return _educationInfoRepository.Get(u => u.Id == id && u.IsDeleted == false);
         }
 
-        public IPagedList GetPagedList(int pageNo, int pageSize)
+        public IPagedList GetPagedList(string degree, int pageNo, int pageSize)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string searchPrm = string.Empty;
+                if (!string.IsNullOrWhiteSpace(degree))
+                {
+                    searchPrm += string.Format(@" WHERE Degree LIKE N'%{0}%'", degree.Trim());
+                }
+                string query = string.Format(@"SELECT * FROM EducationInfo {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
+
+                string countQuery = string.Format(@"SELECT COUNT(*) FROM EducationInfo WHERE Degree LIKE N'%{0}%'", degree?.Trim());
+
+                int rowCount = _educationInfoRepository.SQLQuery<int>(countQuery);
+                List<EducationInfo> educations = _educationInfoRepository.SQLQueryList<EducationInfo>(query).Where(a => a.IsDeleted == false).ToList();
+                return new StaticPagedList<EducationInfo>(educations, pageNo, pageSize, rowCount);
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = ex.Message;
+                return new StaticPagedList<EducationInfo>(new List<EducationInfo> { }, pageNo, pageSize, 0);
+            }
         }
 
         public bool IsExistingItem(string degree)
