@@ -16,7 +16,7 @@ namespace UPTax.Service.Services.UPDetails
         bool Update(WardInfo model);
         bool Save();
         bool Delete(int id);
-        IPagedList GetPagedList(string wardNo, int pageNo, int pageSize);
+        IPagedList GetPagedList(string wardNo, int unionId, int pageNo, int pageSize);
         bool IsExistingWard(string wardNo, int unionId, int? wardId);
     }
     public class WardInfoService : IWardInfoService
@@ -62,6 +62,7 @@ namespace UPTax.Service.Services.UPDetails
             }
             catch (Exception ex)
             {
+                var errorMessage = ex.Message;
                 return false;
             }
         }
@@ -72,18 +73,18 @@ namespace UPTax.Service.Services.UPDetails
             return Save();
         }
 
-        public IPagedList GetPagedList(string wardNo, int pageNo, int pageSize)
+        public IPagedList GetPagedList(string wardNo, int unionId, int pageNo, int pageSize)
         {
             try
             {
                 string searchPrm = string.Empty;
                 if (!string.IsNullOrEmpty(wardNo))
                 {
-                    searchPrm += string.Format(@" WHERE WardNo LIKE N'%{0}%'", wardNo);
+                    searchPrm += string.Format(@" WHERE UnionId=" + unionId + " AND WardNo LIKE N'%{0}%'", wardNo);
                 }
                 string query = string.Format(@"SELECT * FROM WardInfo {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
-                string countQuery = string.Format(@"SELECT COUNT(*) FROM WardInfo WHERE WardNo LIKE N'%{0}%'", wardNo);
+                string countQuery = string.Format(@"SELECT COUNT(*) FROM WardInfo WHERE UnionId=" + unionId + " AND WardNo LIKE N'%{0}%'", wardNo);
 
                 int rowCount = _wardInfoRepository.SQLQuery<int>(countQuery);
                 List<WardInfo> unionParishads = _wardInfoRepository.SQLQueryList<WardInfo>(query).Where(a => a.IsDeleted == false).ToList();
@@ -91,6 +92,7 @@ namespace UPTax.Service.Services.UPDetails
             }
             catch (Exception ex)
             {
+                var errorMessage = ex.Message;
                 return new StaticPagedList<WardInfo>(new List<WardInfo> { }, pageNo, pageSize, 0);
             }
         }

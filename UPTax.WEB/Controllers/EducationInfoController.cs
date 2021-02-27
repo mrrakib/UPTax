@@ -2,24 +2,24 @@
 using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
-using UPTax.Model.Models.UnionDetails;
-using UPTax.Service.Services.UPDetails;
+using UPTax.Model.Models;
+using UPTax.Service.Services;
 
 namespace UPTax.Controllers
 {
-    public class WardInfoController : Controller
+    public class EducationInfoController : Controller
     {
         private readonly Message _message = new Message();
-        private readonly IWardInfoService _wardInfoService;
+        private readonly IEducationInfoService _educationInfoService;
         private readonly string _userId = RapidSession.UserId;
         private readonly int _unionId = RapidSession.UnionId;
 
-        public WardInfoController(IWardInfoService wardInfoService)
+        public EducationInfoController(IEducationInfoService educationInfoService)
         {
-            _wardInfoService = wardInfoService;
+            _educationInfoService = educationInfoService;
         }
 
-        // GET: WardInfo
+        // GET: EducationInfo
         [RapidAuthorization(All = true)]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
@@ -27,8 +27,8 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var unionList = _wardInfoService.GetPagedList(wardNo: name?.Trim(), _unionId, page, dataSize);
-            return View(unionList);
+            var listData = _educationInfoService.GetPagedList(degree: name, page, dataSize);
+            return View(listData);
         }
 
         [HttpGet]
@@ -40,19 +40,18 @@ namespace UPTax.Controllers
         [HttpPost]
         [RapidAuthorization]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(WardInfo model)
+        public ActionResult Create(EducationInfo model)
         {
             if (ModelState.IsValid)
             {
-                model.WardNo = model.WardNo.Trim();
-                var isExistingWard = _wardInfoService.IsExistingWard(model.WardNo, model.UnionId, wardId: null);
+                var isExistingItem = _educationInfoService.IsExistingItem(model.Degree);
                 model.CreatedBy = _userId;
-                if (!isExistingWard && _wardInfoService.Add(model))
+                if (!isExistingItem && _educationInfoService.Add(model))
                 {
                     _message.save(this);
                     return RedirectToAction("Index");
                 }
-                _message.custom(this, "এই নামে একটি ওয়ার্ড আছে!");
+                _message.custom(this, "এই নামে একটি শিক্ষাগত যোগ্যতা আছে!");
                 return View(model);
             }
             return View(model);
@@ -63,7 +62,7 @@ namespace UPTax.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            WardInfo model = _wardInfoService.GetDetails(id);
+            EducationInfo model = _educationInfoService.GetDetails(id);
             if (model == null)
             {
                 return PartialView("_Error");
@@ -74,19 +73,19 @@ namespace UPTax.Controllers
         [RapidAuthorization]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(WardInfo model)
+        public ActionResult Edit(EducationInfo model)
         {
             if (ModelState.IsValid)
             {
-                var isExistingWard = _wardInfoService.IsExistingWard(model.WardNo, model.UnionId, wardId: model.Id);
-                if (isExistingWard)
+                var isExistingItem = _educationInfoService.IsExistingItem(model.Degree);
+                if (isExistingItem)
                 {
-                    _message.custom(this, "এই নামে একটি ওয়ার্ড আছে!");
+                    _message.custom(this, "এই নামে একটি শিক্ষাগত যোগ্যতা আছে!");
                     return View(model);
                 }
                 model.UpdatedBy = _userId;
                 model.UpdatedDate = DateTime.UtcNow;
-                _wardInfoService.Update(model);
+                _educationInfoService.Update(model);
                 _message.update(this);
                 return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });
             }
@@ -98,7 +97,7 @@ namespace UPTax.Controllers
         [RapidAuthorization]
         public ActionResult Delete(int id)
         {
-            if (_wardInfoService.Delete(id))
+            if (_educationInfoService.Delete(id))
             {
                 _message.delete(this);
                 return RedirectToAction("Index");
