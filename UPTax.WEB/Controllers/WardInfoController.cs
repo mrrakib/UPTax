@@ -27,7 +27,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var unionList = _wardInfoService.GetPagedList(wardNo: name?.Trim(), page, dataSize);
+            var unionList = _wardInfoService.GetPagedList(wardNo: name?.Trim(), _unionId, page, dataSize);
             return View(unionList);
         }
 
