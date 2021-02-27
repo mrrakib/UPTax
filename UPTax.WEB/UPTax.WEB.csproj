@@ -12658,6 +12658,7 @@
     <Content Include="Views\SocialBenefit\Edit.cshtml" />
     <Content Include="Views\VillageInfo\Create.cshtml" />
     <Content Include="Views\VillageInfo\Edit.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
