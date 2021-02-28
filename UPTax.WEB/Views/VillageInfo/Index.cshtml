@@ -1,7 +1,7 @@
 ﻿@model PagedList.IPagedList<UPTax.Model.Models.VillageInfo>
 @using PagedList.Mvc;
 @{
-    ViewBag.Title = "গ্রাম তালিকা";
+    ViewBag.Title = "গ্রামর তালিকা";
 
     if (Request.IsAjaxRequest())
     {
@@ -30,7 +30,7 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <h4 class="page-title mb-1">গ্রাম তালিকা</h4>
+                <h4 class="page-title mb-1">গ্রামর তালিকা</h4>
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item active">অপারেট করুন</li>
                 </ol>
@@ -50,7 +50,7 @@
                             <a class="btn btn-sm btn-info btn-flat margin" href="@Url.Action("Create")">গ্রাম যোগ করুন</a>
                         </div>
 
-                        <h5 class="header-title mb-4">সমস্ত গ্রাম তালিকা</h5>
+                        <h5 class="header-title mb-4">সমস্ত গ্রামর তালিকা</h5>
 
                         <div class="row">
                             <div class="col-sm-12">

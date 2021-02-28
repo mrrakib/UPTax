@@ -10,7 +10,7 @@
             <div class="col-md-8">
                 <h4 class="page-title mb-1">গ্রাম</h4>
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">অপারেট গ্রাম</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">অপারেট করুন</a></li>
                     <li class="breadcrumb-item active">গ্রাম যোগ করুন</li>
                 </ol>
             </div>
@@ -35,14 +35,14 @@
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.VillageName)</label>
-                                    @Html.TextBoxFor(m => m.VillageName, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "গ্রাম", @maxLength = "250", @required = "required" })
+                                    @Html.TextBoxFor(m => m.VillageName, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "গ্রামের নাম", @maxLength = "250", @required = "required" })
                                     <div class="invalid-feedback">
                                         নাম দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.UnionId)</label>
-                                    @Html.TextBoxFor(m => m.UnionId, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "ইউনিয়ন পরিশদের নাম", @maxLength = "250", @required = "required" })
+                                    @Html.TextBoxFor(m => m.UnionId, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "গ্রামের নাম", @maxLength = "250", @required = "required" })
                                     <div class="invalid-feedback">
                                         নাম দেয়া বাধ্যতামূলক!
                                     </div>

@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <h4 class="page-title mb-1">পেশা যোগ্যতার</h4>
+                <h4 class="page-title mb-1">পেশা</h4>
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="@Url.Action("Index")">অপারেট পেশা</a></li>
                     <li class="breadcrumb-item active">পেশা যোগ করুন</li>
@@ -35,7 +35,7 @@
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.ProfessionTitle)</label>
-                                    @Html.TextBoxFor(m => m.ProfessionTitle, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "শিক্ষাগত যোগ্যতা", @maxLength = "250", @required = "required" })
+                                    @Html.TextBoxFor(m => m.ProfessionTitle, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "পেশা", @maxLength = "250", @required = "required" })
                                     <div class="invalid-feedback">
                                         নাম দেয়া বাধ্যতামূলক!
                                     </div>
