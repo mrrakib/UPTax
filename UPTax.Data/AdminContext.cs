@@ -13,6 +13,7 @@ namespace UPTax.Data
         public AdminContext() : base("Admin_Context")
         {
             this.Configuration.LazyLoadingEnabled = true;
+            this.Configuration.ProxyCreationEnabled = true;
         }
 
         public DbSet<UnionParishad> UnionParishads { get; set; }

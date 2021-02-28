@@ -4,19 +4,22 @@ using UPTax.Filter;
 using UPTax.Helper;
 using UPTax.Model.Models;
 using UPTax.Service.Services;
+using UPTax.Service.Services.UPDetails;
 
 namespace UPTax.Controllers
 {
     public class VillageInfoController : Controller
     {
         private readonly Message _message = new Message();
-        private readonly IVillageInfoService _VillageInfoService;
         private readonly string _userId = RapidSession.UserId;
         private readonly int _unionId = RapidSession.UnionId;
+        private readonly IVillageInfoService _VillageInfoService;
+        private readonly IUnionParishadService _unionParishadService;
 
-        public VillageInfoController(IVillageInfoService VillageInfoService)
+        public VillageInfoController(IVillageInfoService VillageInfoService, IUnionParishadService unionParishadService)
         {
             _VillageInfoService = VillageInfoService;
+            _unionParishadService = unionParishadService;
         }
 
         // GET: VillageInfo

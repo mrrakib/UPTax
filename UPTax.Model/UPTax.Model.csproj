@@ -102,6 +102,7 @@
     <Compile Include="ViewModels\VMLogin.cs" />
     <Compile Include="ViewModels\VMRegister.cs" />
     <Compile Include="ViewModels\VMUserInfo.cs" />
+    <Compile Include="ViewModels\VVillageInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
