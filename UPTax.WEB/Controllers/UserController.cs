@@ -22,7 +22,7 @@ namespace UPTax.Controllers
         private readonly AdminContext db = new AdminContext();
         private UserStore<ApplicationUser> store;
         private UserManager<ApplicationUser> UserManager;
-        private Message message = new Message();
+        private Message _message = new Message();
 
         private readonly IUserService _userService;
         private readonly IUnionParishadService _unionParishadService;
@@ -48,7 +48,8 @@ namespace UPTax.Controllers
             var userList = _userService.GetUserPaged(pageNo, dataSize);
             return View(userList);
         }
-        #region Register GET
+
+        #region Create
         [HttpGet]
         [RapidAuthorization]
         public ActionResult Create()
@@ -58,9 +59,7 @@ namespace UPTax.Controllers
             ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name");
             return View(vmRegister);
         }
-        #endregion
 
-        #region Register Post
         [HttpPost]
         [RapidAuthorization]
         [ValidateAntiForgeryToken]
@@ -82,14 +81,14 @@ namespace UPTax.Controllers
 
                 //check for username that already exist 
 
-                var re = from u in db.Users
+                var foundUser = from u in db.Users
                          where u.UserName == model.UserName
                          select u.Id;
 
-                if (re.Count() > 0)
+                if (foundUser.Count() > 0)
                 {
                     // already exist
-                    message.custom(this, "এই ব্যবহারকারীর নামটি ইতিমধ্যে বিদ্যমান!");
+                    _message.custom(this, "এই ব্যবহারকারীর নামটি ইতিমধ্যে বিদ্যমান!");
 
                     model.roles = _GetRoleList();
                     return View(model);
@@ -110,7 +109,7 @@ namespace UPTax.Controllers
                     }
                     catch
                     {
-                        message.custom(this, "ব্যবহারকারীর রোল যোগ করার সময় সমস্যা দেখা দিয়েছে!");
+                        _message.custom(this, "ব্যবহারকারীর রোল যোগ করার সময় সমস্যা দেখা দিয়েছে!");
                         RedirectToAction("Login");
                     }
                     IdentityResult isSuccess = new IdentityResult();
@@ -126,27 +125,21 @@ namespace UPTax.Controllers
                     
                     if (isSuccess.Succeeded)
                     {
-
                         ApplicationUser userDetails = (from u in db.Users where u.Id == user.Id select u).FirstOrDefault(); 
-                        //_userService.GetUser(user.Id);
-                        //userDetails.PlainPassword = model.Password;
-                        //userDetails.Sha1Password = HashingUtility.GetSha1HashString(model.Password);
-                        //userDetails.Md5Password = HashingUtility.GetMD5HashString(model.Password);
                         userDetails.EmployeeId = model.EmployeeId;
                         userDetails.IsActive = model.IsActive;
                         userDetails.PhoneNumber = model.ContactNo;
                         userDetails.UnionId = model.UnionId;
-                        //userDetails.IsLocalPermitedUser = model.IsLocalPermitedUser;
                         db.SaveChanges();
                         //_userService.SaveUser();
 
-                        message.success(this, "নিবন্ধন সফল হয়েছে!");
+                        _message.success(this, "নিবন্ধন সফল হয়েছে!");
 
                         return RedirectToAction("Index");
                     }
                     else
                     {
-                        message.custom(this, "ব্যবহারকারীর রোল যোগ করার সময় সমস্যা দেখা দিয়েছে!");
+                        _message.custom(this, "ব্যবহারকারীর রোল যোগ করার সময় সমস্যা দেখা দিয়েছে!");
                         return RedirectToAction("Index");
                     }
                 }
@@ -162,7 +155,7 @@ namespace UPTax.Controllers
                     }
                 }
             }
-            message.custom(this, "কিছু সমস্যার কারণে নিবন্ধন শেষ হচ্ছে না!" + "<br /> " + errorMsg);
+            _message.custom(this, "কিছু সমস্যার কারণে নিবন্ধন শেষ হচ্ছে না!" + "<br /> " + errorMsg);
             model.roles = _GetRoleList();
             return View(model);
         }

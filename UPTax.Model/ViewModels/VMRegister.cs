@@ -60,8 +60,8 @@ namespace UPTax.Model.ViewModels
         {
             var user = new ApplicationUser()
             {
-                UserName = this.UserName,
-                FullName = this.Name
+                UserName = this.UserName.Trim(),
+                FullName = this.Name.Trim()
             };
             return user;
         }
