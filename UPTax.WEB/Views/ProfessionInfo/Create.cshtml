@@ -29,7 +29,7 @@
                         </div>
                         <h4 class="header-title">পেশা সংরক্ষণ ফরম</h4>
                         <p class="card-title-desc"></p>
-                        @using (Html.BeginForm("Create", "EducationInfo", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("Create", "ProfessionInfo", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             <div class="row">

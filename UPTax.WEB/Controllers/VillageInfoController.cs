@@ -37,6 +37,7 @@ namespace UPTax.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.Unions = _unionParishadService.GetAllForDropdown();
             return View();
         }
 
@@ -48,14 +49,16 @@ namespace UPTax.Controllers
             if (ModelState.IsValid)
             {
                 var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName);
-                model.CreatedBy = _userId;
-                if (!isExistingItem && _VillageInfoService.Add(model))
+                if (isExistingItem)
                 {
-                    _message.save(this);
-                    return RedirectToAction("Index");
+                    ViewBag.Unions = _unionParishadService.GetAllForDropdown();
+                    _message.custom(this, "এই নামে একটি গ্রাম আছে!");
+                    return View(model);
                 }
-                _message.custom(this, "এই নামে একটি গ্রাম আছে!");
-                return View(model);
+                model.CreatedBy = _userId;
+                _VillageInfoService.Add(model);
+                _message.save(this);
+                return RedirectToAction("Index");
             }
             return View(model);
         }
@@ -70,6 +73,7 @@ namespace UPTax.Controllers
             {
                 return PartialView("_Error");
             }
+            ViewBag.Unions = _unionParishadService.GetAllForDropdown();
             return View(model);
         }
 
@@ -84,6 +88,7 @@ namespace UPTax.Controllers
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি গ্রাম আছে!");
+                    ViewBag.Unions = _unionParishadService.GetAllForDropdown();
                     return View(model);
                 }
                 model.UpdatedBy = _userId;

@@ -10,13 +10,12 @@ namespace UPTax.Model.Models
     {
         public VillageInfo()
         {
-            UnionParishad = new UnionParishad();
         }
         [DisplayName("গ্রামের নাম")]
         [Required(ErrorMessage = "নাম দেয়া বাধ্যতামূলক")]
         public string VillageName { get; set; }
 
-        [DisplayName("ইউনিয়ন পরিশদের নাম")]
+        [DisplayName("ইউনিয়ন পরিষদের নাম")]
         [Required(ErrorMessage = "নাম দেয়া বাধ্যতামূলক")]
         public int UnionId { get; set; }
 

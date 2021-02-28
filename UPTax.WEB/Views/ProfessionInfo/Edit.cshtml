@@ -31,7 +31,7 @@
                         </div>
                         <h4 class="header-title">পেশা হালনাগাদ ফরম</h4>
                         <p class="card-title-desc"></p>
-                        @using (Html.BeginForm("Edit", "EducationInfo", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("Edit", "ProfessionInfo", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             @Html.HiddenFor(a => a.Id)
