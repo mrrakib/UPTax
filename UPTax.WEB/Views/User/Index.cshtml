@@ -87,7 +87,15 @@
                                                         <span style="color:red">ইন্যাক্টিভ</span>
                                                     }
                                                 </td>
-                                                <td></td>
+                                                <td>
+                                                    <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.UserId })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
+                                                        <i class="mdi mdi-pencil"></i>
+                                                    </a>
+                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","Roles")/@item.Data.UserId">
+
+                                                        <i class="mdi mdi-trash-can"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         }
                                     }

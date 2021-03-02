@@ -1,4 +1,4 @@
-﻿@model UPTax.Model.ViewModels.VMRegister
+﻿@model UPTax.Model.ViewModels.VMEditUser
 
 @{
     ViewBag.Title = "হালনাগাদ";
@@ -31,9 +31,10 @@
                         </div>
                         <h4 class="header-title">ইউজার হালনাগাদ ফরম</h4>
                         <p class="card-title-desc"></p>
-                        @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.UserId);
 
                             <div class="row">
                                 <div class="col-md-4 mb-3">
@@ -61,7 +62,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.Password)<span class="required">*</span> </label>
 
-                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @maxLength = "100", @minLength = "6", @id = "validationCustom03", @required = "required" })
+                                    @Html.PasswordFor(m => m.Password, new { @value = Model.Password, @class = "form-control", @maxLength = "100", @minLength = "6", @id = "validationCustom03", @required = "required" })
                                     <div class="invalid-feedback">
                                         পাসওয়ার্ড দেয়া বাধ্যতামূলক!
                                     </div>
@@ -70,7 +71,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.ConfirmPassword)<span class="required">*</span> </label>
 
-                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @maxLength = "100", @minLength = "6", @id = "validationCustom03", @required = "required" })
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @value = Model.ConfirmPassword, @class = "form-control", @maxLength = "100", @minLength = "6", @id = "validationCustom03", @required = "required" })
                                     <div class="invalid-feedback">
                                         কনফার্ম পাসওয়ার্ড দেয়া বাধ্যতামূলক!
                                     </div>
