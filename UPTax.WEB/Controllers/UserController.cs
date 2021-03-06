@@ -23,6 +23,7 @@ namespace UPTax.Controllers
         private UserStore<ApplicationUser> store;
         private UserManager<ApplicationUser> UserManager;
         private Message _message = new Message();
+        string Password = "UnionTax";
 
         private readonly IUserService _userService;
         private readonly IUnionParishadService _unionParishadService;
@@ -82,8 +83,8 @@ namespace UPTax.Controllers
                 //check for username that already exist 
 
                 var foundUser = from u in db.Users
-                         where u.UserName == model.UserName
-                         select u.Id;
+                                where u.UserName == model.UserName
+                                select u.Id;
 
                 if (foundUser.Count() > 0)
                 {
@@ -122,10 +123,10 @@ namespace UPTax.Controllers
                     {
                         throw ex;
                     }
-                    
+
                     if (isSuccess.Succeeded)
                     {
-                        ApplicationUser userDetails = (from u in db.Users where u.Id == user.Id select u).FirstOrDefault(); 
+                        ApplicationUser userDetails = (from u in db.Users where u.Id == user.Id select u).FirstOrDefault();
                         userDetails.EmployeeId = model.EmployeeId;
                         userDetails.IsActive = model.IsActive;
                         userDetails.PhoneNumber = model.ContactNo;
@@ -161,6 +162,190 @@ namespace UPTax.Controllers
         }
         #endregion
 
+        #region Edit
+        [HttpGet]
+        [RapidAuthorization]
+        public async Task<ActionResult> Edit(string id)
+        {
+            try
+            {
+                VMEditUser regViewModel = new VMEditUser { roles = _GetRoleNameByUserId(id) };
+                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+                var user = await manager.FindByIdAsync(id);
+                if (user != null)
+                {
+                    ViewBag.RoleName = new SelectList(_GetRoleList(), "Name", "Name");
+                    ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name", user.UnionId);
+
+                    regViewModel.UserId = user.Id;
+                    regViewModel.UserName = user.UserName;
+                    regViewModel.Email = user.Email;
+                    regViewModel.ContactNo = user.PhoneNumber;
+                    regViewModel.IsActive = user.IsActive;
+                    regViewModel.Name = user.FullName;
+                    regViewModel.UnionId = user.UnionId;
+                    regViewModel.Password = user.PasswordHash;
+                    regViewModel.ConfirmPassword = user.PasswordHash;
+                }
+                else
+                {
+                    _message.custom(this, "কোন ইউজার পাওয়া যায়নি।");
+                    return RedirectToAction("Index");
+                }
+                regViewModel.ConfirmPassword = Password;
+                regViewModel.Password = Password;
+                List<SelectListItem> RoleSelectedList = new List<SelectListItem>();
+                var RoleList = _GetRoleList();
+                if (regViewModel.roles == null)
+                {
+                    RoleSelectedList = RoleList.Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToList();
+                }
+                else
+                {
+                    RoleSelectedList = RoleList.Select(c => new SelectListItem { Text = c.Name, Value = c.Name.ToString(), Selected = regViewModel.roles.Contains(c.Name.ToString()) ? true : false }).ToList();
+                }
+                ViewBag.RoleName = RoleSelectedList;
+                return View(regViewModel);
+            }
+            catch (Exception ex)
+            {
+                _message.custom(this, ex.ToString());
+                return RedirectToAction("Index");
+            }
+        }
+
+
+        [RapidAuthorization]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(VMEditUser regViewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    int error = 0;
+                    var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+                    manager.UserValidator = new UserValidator<ApplicationUser>(manager) { AllowOnlyAlphanumericUserNames = false };
+                    regViewModel.UserName = regViewModel.UserName.Trim();
+                    regViewModel.Password = regViewModel.Password.Trim();
+
+                    var re = from u in db.Users
+                             where u.UserName == regViewModel.UserName && u.Id != regViewModel.UserId
+                             select u.Id;
+                    if (re.Count() > 0)
+                    {
+                        _message.custom(this, "ইউজারনেম ইতিমধ্যে বিদ্যমান. দয়া করে একটি আলাদা ইউজারনেম ব্যবহার করুন।");
+                        error++;
+                    }
+
+                    var user = await manager.FindByIdAsync(regViewModel.UserId);
+                    if (user != null && error == 0)
+                    {
+                        if (user != null)
+                        {
+                            user.UserName = regViewModel.UserName;
+
+                            if (regViewModel.Password != null && regViewModel.ConfirmPassword != null && regViewModel.Password != "" && regViewModel.ConfirmPassword != "")
+                            {
+                                if (regViewModel.Password != Password)
+                                {
+                                    user.PasswordHash = manager.PasswordHasher.HashPassword(regViewModel.Password);
+                                }
+
+                                user.Email = regViewModel.Email;
+                                user.PhoneNumber = regViewModel.ContactNo;
+                                user.IsActive = regViewModel.IsActive;
+                                user.FullName = regViewModel.Name;
+                                user.UnionId = regViewModel.UnionId;
+                                user.PasswordHash = manager.PasswordHasher.HashPassword(regViewModel.Password);
+                            }
+                        }
+                        var rolesForUser = await manager.GetRolesAsync(user.Id);
+                        try
+                        {
+                            using (var transaction = db.Database.BeginTransaction())
+                            {
+                                if (rolesForUser.Count() > 0)
+                                {
+                                    foreach (var item in rolesForUser.ToList())
+                                    {
+                                        // item should be the name of the role
+                                        var RemoveFromRole = await manager.RemoveFromRoleAsync(user.Id, item);
+                                    }
+                                }
+                                bool success = true;
+                                var isSuccess = manager.AddToRole(user.Id, regViewModel.RoleName);
+                                if (!isSuccess.Succeeded)
+                                {
+                                    success = false;
+                                }
+                                if (success)
+                                {
+                                    var resultUpdate = await manager.UpdateAsync(user);
+
+                                    if (resultUpdate.Succeeded)
+                                    {
+                                        db.SaveChanges();
+                                        transaction.Commit();
+                                        _message.update(this);
+                                        return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });
+                                    }
+                                    else
+                                    {
+                                        _message.custom(this, "ইউজার আপডেট করতে সমস্যা হয়েছে!");
+                                    }
+                                }
+                                else
+                                {
+                                    _message.custom(this, "ইউজার আপডেট করতে সমস্যা হয়েছে!");
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            _message.custom(this, "ইউজার আপডেট করতে সমস্যা হয়েছে!");
+                        }
+
+                    }
+                }
+
+                regViewModel.roles = _GetRoleNameByUserId(regViewModel.UserId);
+                List<SelectListItem> RoleSelectedList = new List<SelectListItem>();
+                var RoleList = _GetRoleList();
+                if (regViewModel.roles == null)
+                {
+                    RoleSelectedList = RoleList.Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToList();
+                }
+                else
+                {
+                    RoleSelectedList = RoleList.Select(c => new SelectListItem { Text = c.Name, Value = c.Name.ToString(), Selected = regViewModel.roles.Contains(c.Name.ToString()) ? true : false }).ToList();
+                }
+                ViewBag.RoleIdList = RoleSelectedList;
+                
+                return View(regViewModel);
+            }
+            catch (Exception ex)
+            {
+                _message.custom(this, ex.ToString());
+                regViewModel.roles = _GetRoleNameByUserId(regViewModel.UserId);
+                List<SelectListItem> RoleSelectedList = new List<SelectListItem>();
+                var RoleList = _GetRoleList();
+                if (regViewModel.roles == null)
+                {
+                    RoleSelectedList = RoleList.Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToList();
+                }
+                else
+                {
+                    RoleSelectedList = RoleList.Select(c => new SelectListItem { Text = c.Name, Value = c.Name.ToString(), Selected = regViewModel.roles.Contains(c.Name.ToString()) ? true : false }).ToList();
+                }
+                ViewBag.RoleIdList = RoleSelectedList;
+                
+                return View(regViewModel);
+            }
+        }
+        #endregion
+
         #region Get all Role
         private IEnumerable<IdentityRole> _GetRoleList()
         {
@@ -168,6 +353,16 @@ namespace UPTax.Controllers
             var roleMngr = new RoleManager<IdentityRole>(roleStore);
             var roles = roleMngr.Roles.ToList();
             return roles;
+        }
+        private List<string> _GetRoleNameByUserId(string Id)
+        {
+            List<string> roleList = new List<string>();
+            string query = @"select r.Name from Roles r
+                            inner join UserRoles ur on r.Id = ur.RoleId
+                            inner join Users u on ur.UserId = u.Id where ur.UserId = '" + Id + "'";
+
+            roleList = db.Database.SqlQuery<string>(query).ToList();
+            return roleList;
         }
         #endregion
 
