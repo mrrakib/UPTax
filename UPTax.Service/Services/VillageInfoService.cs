@@ -67,9 +67,9 @@ namespace UPTax.Service.Services
                 {
                     searchPrm += string.Format(@" WHERE VillageName LIKE N'%{0}%'", keyName.Trim());
                 }
-                string query = string.Format(@"SELECT * FROM VillageInfo {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
+                string query = string.Format(@"SELECT v.Id, v.VillageName, v.CreatedDate, v.CreatedBy, v.UpdatedDate, v.UpdatedBy, v.IsDeleted, u.Name as UnionName,v.UnionId FROM VillageInfo v JOIN [dbo].[UnionParishad] u ON v.UnionId=u.Id {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
-                string countQuery = string.Format(@"SELECT COUNT(*) FROM VillageInfo WHERE VillageName LIKE N'%{0}%'", keyName?.Trim());
+                string countQuery = string.Format(@"SELECT COUNT(Id) FROM VillageInfo WHERE VillageName LIKE N'%{0}%'", keyName?.Trim());
 
                 int rowCount = _VillageInfoRepository.SQLQuery<int>(countQuery);
                 List<VillageInfo> educations = _VillageInfoRepository.SQLQueryList<VillageInfo>(query).Where(a => a.IsDeleted == false).ToList();
