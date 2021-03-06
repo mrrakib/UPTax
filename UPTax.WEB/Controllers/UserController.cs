@@ -304,6 +304,7 @@ namespace UPTax.Controllers
                         }
                         catch (Exception ex)
                         {
+                            var message = ex.Message;
                             _message.custom(this, "ইউজার আপডেট করতে সমস্যা হয়েছে!");
                         }
 
@@ -322,7 +323,7 @@ namespace UPTax.Controllers
                     RoleSelectedList = RoleList.Select(c => new SelectListItem { Text = c.Name, Value = c.Name.ToString(), Selected = regViewModel.roles.Contains(c.Name.ToString()) ? true : false }).ToList();
                 }
                 ViewBag.RoleIdList = RoleSelectedList;
-                
+
                 return View(regViewModel);
             }
             catch (Exception ex)
@@ -340,7 +341,7 @@ namespace UPTax.Controllers
                     RoleSelectedList = RoleList.Select(c => new SelectListItem { Text = c.Name, Value = c.Name.ToString(), Selected = regViewModel.roles.Contains(c.Name.ToString()) ? true : false }).ToList();
                 }
                 ViewBag.RoleIdList = RoleSelectedList;
-                
+
                 return View(regViewModel);
             }
         }

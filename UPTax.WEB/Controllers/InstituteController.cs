@@ -7,19 +7,18 @@ using UPTax.Service.Services;
 
 namespace UPTax.Controllers
 {
-    public class ProfessionInfoController : Controller
+    public class InstituteController : Controller
     {
         private readonly Message _message = new Message();
         private readonly string _userId = RapidSession.UserId;
         private readonly int _unionId = RapidSession.UnionId;
-        private readonly IProfessionInfoService _ProfessionInfoService;
+        private readonly IInstituteInfoService _instituteInfoService;
 
-        public ProfessionInfoController(IProfessionInfoService ProfessionInfoService)
+        public InstituteController(IInstituteInfoService instituteInfoService)
         {
-            _ProfessionInfoService = ProfessionInfoService;
+            _instituteInfoService = instituteInfoService;
         }
-
-        // GET: ProfessionInfo
+        // GET: InstituteInfo
         [RapidAuthorization(All = true)]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
@@ -27,7 +26,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var listData = _ProfessionInfoService.GetPagedList(degree: name, page, dataSize);
+            var listData = _instituteInfoService.GetPagedList(degree: name, page, dataSize);
             return View(listData);
         }
 
@@ -40,18 +39,18 @@ namespace UPTax.Controllers
         [HttpPost]
         [RapidAuthorization]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ProfessionInfo model)
+        public ActionResult Create(InstituteInfo model)
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _ProfessionInfoService.IsExistingItem(model.ProfessionTitle);
+                var isExistingItem = _instituteInfoService.IsExistingItem(model.NameOfInstitute);
                 model.CreatedBy = _userId;
-                if (!isExistingItem && _ProfessionInfoService.Add(model))
+                if (!isExistingItem && _instituteInfoService.Add(model))
                 {
                     _message.save(this);
                     return RedirectToAction("Index");
                 }
-                _message.custom(this, "এই নামে একটি পেশা আছে!");
+                _message.custom(this, "এই নামে একটি কলেজ / অফিসের নাম আছে!");
                 return View(model);
             }
             return View(model);
@@ -62,7 +61,7 @@ namespace UPTax.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            ProfessionInfo model = _ProfessionInfoService.GetDetails(id);
+            InstituteInfo model = _instituteInfoService.GetDetails(id);
             if (model == null)
             {
                 return PartialView("_Error");
@@ -73,19 +72,19 @@ namespace UPTax.Controllers
         [RapidAuthorization]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ProfessionInfo model)
+        public ActionResult Edit(InstituteInfo model)
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _ProfessionInfoService.IsExistingItem(model.ProfessionTitle);
+                var isExistingItem = _instituteInfoService.IsExistingItem(model.NameOfInstitute);
                 if (isExistingItem)
                 {
-                    _message.custom(this, "এই নামে একটি পেশা আছে!");
+                    _message.custom(this, "এই নামে একটি কলেজ / অফিসের নাম আছে!");
                     return View(model);
                 }
                 model.UpdatedBy = _userId;
                 model.UpdatedDate = DateTime.UtcNow;
-                _ProfessionInfoService.Update(model);
+                _instituteInfoService.Update(model);
                 _message.update(this);
                 return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });
             }
@@ -97,7 +96,7 @@ namespace UPTax.Controllers
         [RapidAuthorization]
         public ActionResult Delete(int id)
         {
-            if (_ProfessionInfoService.Delete(id))
+            if (_instituteInfoService.Delete(id))
             {
                 _message.delete(this);
                 return RedirectToAction("Index");

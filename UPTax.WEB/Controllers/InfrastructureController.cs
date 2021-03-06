@@ -7,19 +7,18 @@ using UPTax.Service.Services;
 
 namespace UPTax.Controllers
 {
-    public class ProfessionInfoController : Controller
+    public class InfrastructureController : Controller
     {
         private readonly Message _message = new Message();
         private readonly string _userId = RapidSession.UserId;
         private readonly int _unionId = RapidSession.UnionId;
-        private readonly IProfessionInfoService _ProfessionInfoService;
+        private readonly IInfrastructureInfoService _infrastructureInfoService;
 
-        public ProfessionInfoController(IProfessionInfoService ProfessionInfoService)
+        public InfrastructureController(IInfrastructureInfoService infrastructureInfoService)
         {
-            _ProfessionInfoService = ProfessionInfoService;
+            _infrastructureInfoService = infrastructureInfoService;
         }
-
-        // GET: ProfessionInfo
+        // GET: Infrastructure
         [RapidAuthorization(All = true)]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
@@ -27,7 +26,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var listData = _ProfessionInfoService.GetPagedList(degree: name, page, dataSize);
+            var listData = _infrastructureInfoService.GetPagedList(degree: name, page, dataSize);
             return View(listData);
         }
 
@@ -40,13 +39,13 @@ namespace UPTax.Controllers
         [HttpPost]
         [RapidAuthorization]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ProfessionInfo model)
+        public ActionResult Create(InfrastructureInfo model)
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _ProfessionInfoService.IsExistingItem(model.ProfessionTitle);
+                var isExistingItem = _infrastructureInfoService.IsExistingItem(model.HoldingNo);
                 model.CreatedBy = _userId;
-                if (!isExistingItem && _ProfessionInfoService.Add(model))
+                if (!isExistingItem && _infrastructureInfoService.Add(model))
                 {
                     _message.save(this);
                     return RedirectToAction("Index");
@@ -62,7 +61,7 @@ namespace UPTax.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            ProfessionInfo model = _ProfessionInfoService.GetDetails(id);
+            InfrastructureInfo model = _infrastructureInfoService.GetDetails(id);
             if (model == null)
             {
                 return PartialView("_Error");
@@ -73,11 +72,11 @@ namespace UPTax.Controllers
         [RapidAuthorization]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ProfessionInfo model)
+        public ActionResult Edit(InfrastructureInfo model)
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _ProfessionInfoService.IsExistingItem(model.ProfessionTitle);
+                var isExistingItem = _infrastructureInfoService.IsExistingItem(model.HoldingNo);
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি পেশা আছে!");
@@ -85,7 +84,7 @@ namespace UPTax.Controllers
                 }
                 model.UpdatedBy = _userId;
                 model.UpdatedDate = DateTime.UtcNow;
-                _ProfessionInfoService.Update(model);
+                _infrastructureInfoService.Update(model);
                 _message.update(this);
                 return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });
             }
@@ -97,7 +96,7 @@ namespace UPTax.Controllers
         [RapidAuthorization]
         public ActionResult Delete(int id)
         {
-            if (_ProfessionInfoService.Delete(id))
+            if (_infrastructureInfoService.Delete(id))
             {
                 _message.delete(this);
                 return RedirectToAction("Index");

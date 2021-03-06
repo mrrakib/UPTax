@@ -1,0 +1,94 @@
+﻿@model UPTax.Model.Models.InstituteInfo
+
+@{
+    ViewBag.Title = "হালনাগাদ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var title = "কলেজ / অফিসের তথ্য";
+    var nameOfTitle = "কলেজ / অফিসের নাম";
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">@title</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">অপারেট করুন</a></li>
+                    <li class="breadcrumb-item active">@title হালনাগাদ করুন</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right ml-2">
+                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">Back to List</a>
+                        </div>
+                        <h4 class="header-title">@title হালনাগাদ ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Edit", "Institute", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(a => a.Id)
+                            <input type="text" name="CreateDate" value="@Model.CreatedDate.ToString("dd-mm-yyyyy")" hidden />
+                            @Html.HiddenFor(a => a.CreatedBy)
+                            @Html.HiddenFor(a => a.IsDeleted)
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.NameOfInstitute)</label>
+                                    @Html.TextBoxFor(m => m.NameOfInstitute, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = @nameOfTitle, @maxLength = "250", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        নাম দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Code)</label>
+                                    @Html.TextBoxFor(m => m.Code, new { @class = "form-control bangla", @placeholder = "কোড", @maxLength = "250" })
+
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.EiinNumber)</label>
+                                    @Html.TextBoxFor(m => m.EiinNumber, new { @class = "form-control bangla", @placeholder = "EIIN নম্বর", @maxLength = "250" })
+
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.TinNumber)</label>
+                                    @Html.TextBoxFor(m => m.TinNumber, new { @class = "form-control bangla", @placeholder = "টিন নম্বর", @maxLength = "250" })
+
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.BinNumber)</label>
+                                    @Html.TextBoxFor(m => m.BinNumber, new { @class = "form-control bangla", @placeholder = "বিন নম্বর", @maxLength = "250" })
+
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">হালনাগাদ করুন</button>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+
+
+}

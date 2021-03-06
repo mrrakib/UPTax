@@ -22,6 +22,8 @@ namespace UPTax.Data
         public DbSet<VillageInfo> VillageInfos { get; set; }
         public DbSet<ProfessionInfo> ProfessionInfos { get; set; }
         public DbSet<SocialBenefit> SocialBenefits { get; set; }
+        public DbSet<InfrastructureInfo> InfrastructureInfos { get; set; }
+        public DbSet<InstituteInfo> InstituteInfos { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
