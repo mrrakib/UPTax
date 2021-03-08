@@ -42,9 +42,10 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.UnionId)</label>
-                                    @Html.DropDownListFor(n => n.UnionId, new SelectList(ViewBag.Unions, "Id", "Name"), "ইউনিয়ন পরিষদ সিলেক্ট করুন", new { @class = "form-control", @id = "validationCustom03", @required = "required" })
+
+                                    @Html.DropDownList("UnionId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlUnionId", @required = "required" })
                                     <div class="invalid-feedback">
-                                        নাম দেয়া বাধ্যতামূলক!
+                                        ইউনিয়ন দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                             </div>
