@@ -44,7 +44,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _educationInfoService.IsExistingItem(model.Degree);
+                var isExistingItem = _educationInfoService.IsExistingItem(model.Degree, null);
                 model.CreatedBy = _userId;
                 if (!isExistingItem && _educationInfoService.Add(model))
                 {
@@ -77,7 +77,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _educationInfoService.IsExistingItem(model.Degree);
+                var isExistingItem = _educationInfoService.IsExistingItem(model.Degree, model.Id);
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি শিক্ষাগত যোগ্যতা আছে!");
