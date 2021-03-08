@@ -177,10 +177,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\EducationInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfrastructureController.cs" />
+    <Compile Include="Controllers\InstituteController.cs" />
+    <Compile Include="Controllers\ProfessionInfoController.cs" />
+    <Compile Include="Controllers\SocialBenefitController.cs" />
     <Compile Include="Controllers\UnionParishadController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Controllers\WardController.cs" />
+    <Compile Include="Controllers\VillageInfoController.cs" />
+    <Compile Include="Controllers\WardInfoController.cs" />
     <Compile Include="Filter\RapidAuthorization.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -6660,6 +6667,7 @@
     <Content Include="Content\assets\images\widget-img.png" />
     <Content Include="Content\assets\js\app.js" />
     <Content Include="Content\assets\js\avro-v1.1.4.min.js" />
+    <Content Include="Content\assets\js\custom.js" />
     <Content Include="Content\assets\js\pages\alertifyjs.init.js" />
     <Content Include="Content\assets\js\pages\apex.init.js" />
     <Content Include="Content\assets\js\pages\calendar.init.js" />
@@ -12617,7 +12625,7 @@
     <Content Include="Views\Dashboard\Contact.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\_LeftMenu.cshtml" />
@@ -12630,11 +12638,35 @@
     <Content Include="Views\Shared\_sideBar.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Shared\_AdminLogin.cshtml" />
-    <Content Include="Views\User\Index - Copy.cshtml" />
     <Content Include="Views\UnionParishad\Index.cshtml" />
     <Content Include="Views\UnionParishad\Create.cshtml" />
     <Content Include="Views\UnionParishad\Edit.cshtml" />
-    <Content Include="Views\Ward\Index.cshtml" />
+    <Content Include="Views\WardInfo\Index.cshtml" />
+    <Content Include="Views\WardInfo\Create.cshtml" />
+    <Content Include="Views\WardInfo\Edit.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\User\Register - Copy.cshtml" />
+    <Content Include="Views\EducationInfo\Index.cshtml" />
+    <Content Include="Views\EducationInfo\Create.cshtml" />
+    <Content Include="Views\EducationInfo\Edit.cshtml" />
+    <Content Include="Views\ProfessionInfo\Index.cshtml" />
+    <Content Include="Views\SocialBenefit\Index.cshtml" />
+    <Content Include="Views\VillageInfo\Index.cshtml" />
+    <Content Include="Views\ProfessionInfo\Create.cshtml" />
+    <Content Include="Views\ProfessionInfo\Edit.cshtml" />
+    <Content Include="Views\SocialBenefit\Create.cshtml" />
+    <Content Include="Views\SocialBenefit\Edit.cshtml" />
+    <Content Include="Views\VillageInfo\Create.cshtml" />
+    <Content Include="Views\VillageInfo\Edit.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Infrastructure\Create.cshtml" />
+    <Content Include="Views\Infrastructure\Edit.cshtml" />
+    <Content Include="Views\Infrastructure\Index.cshtml" />
+    <Content Include="Views\Institute\Create.cshtml" />
+    <Content Include="Views\Institute\Edit.cshtml" />
+    <Content Include="Views\Institute\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

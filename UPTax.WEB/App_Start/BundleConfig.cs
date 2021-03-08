@@ -117,6 +117,7 @@ namespace UPTax
                     "~/Content/assets/css/bootstrap.min.css",
                     "~/Content/assets/css/icons.min.css",
                     "~/Content/assets/css/app.min.css",
+                    "~/Content/assets/libs/selectize/css/selectize.css", 
                     "~/Content/style.css"
                     ));
             #endregion
@@ -145,6 +146,8 @@ namespace UPTax
                      "~/Content/assets/libs/parsleyjs/parsley.min.js",
                      "~/Content/assets/js/pages/form-validation.init.js",
                      "~/Content/assets/js/avro-v1.1.4.min.js",
+                     "~/Content/assets/libs/selectize/js/standalone/selectize.min.js",
+                     "~/Content/assets/js/custom.js",
                      "~/Content/assets/js/app.js"
                      ));
             #endregion

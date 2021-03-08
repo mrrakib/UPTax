@@ -1,0 +1,134 @@
+﻿@model UPTax.Model.ViewModels.VMRegister
+
+@{
+    ViewBag.Title = "সংরক্ষণ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">ইউজার</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">অপারেট ইউজার</a></li>
+                    <li class="breadcrumb-item active">ইউজার যোগ করুন</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right ml-2">
+                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">তালিকা দেখুন</a>
+                        </div>
+                        <h4 class="header-title">ইউজার সংরক্ষণ ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Name)<span class="required">*</span> </label>
+                                    @Html.TextBoxFor(m => m.Name, new { @id = "validationCustom03", @class = "form-control", @placeholder = "নাম", @maxLength = "250", @required = "required", @placement = "" })
+                                    <div class="invalid-feedback">
+                                        নাম দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.UserName)</label>
+                                    @Html.TextBoxFor(m => m.UserName, new { @id = "validationCustom03", @class = "form-control", @placeholder = "ইউজার নেম", @maxLength = "14", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        ইউজার নেম বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Email)</label>
+                                    @Html.TextBoxFor(m => m.Email, new { @id = "validationCustom03", @class = "form-control placement", @placeholder = "মেইল এড্রেস", @maxLength = "150" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Password)<span class="required">*</span> </label>
+
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @maxLength = "100", @minLength = "6", @id = "validationCustom03", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        পাসওয়ার্ড দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.ConfirmPassword)<span class="required">*</span> </label>
+
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @maxLength = "100", @minLength = "6", @id = "validationCustom03", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        কনফার্ম পাসওয়ার্ড দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.RoleName)<span class="required">*</span> </label>
+                                    @Html.DropDownList("RoleName", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlRoleName", @required = "required" })
+
+                                    <div class="invalid-feedback">
+                                        রোল দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-1 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.IsActive) </label><br />
+
+                                    @Html.CheckBoxFor(m => m.IsActive, new { @class = "form-control", @id = "custominlineCheck1" })
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.ContactNo)<span class="required">*</span> </label>
+                                    @Html.TextBoxFor(m => m.ContactNo, new { @class = "form-control", @placeholder = "মোবাইল নাম্বার", @maxLength = "14", @placement = "" })
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.UnionId)<span class="required">*</span> </label>
+                                    @Html.DropDownList("UnionId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlUnionId", @required = "required" })
+
+                                    <div class="invalid-feedback">
+                                        ইউনিয়ন দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">সংরক্ষণ করুন</button>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+
+
+}

@@ -5,12 +5,14 @@ using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository.UPDetails;
 using UPTax.Model.Models.UnionDetails;
+using UPTax.Model.ViewModels;
 
 namespace UPTax.Service.Services.UPDetails
 {
     public interface IUnionParishadService
     {
         IEnumerable<UnionParishad> GetAll();
+        List<IdNameDropdown> GetAllForDropdown();
         UnionParishad GetByName(string unionName);
         UnionParishad GetDetails(int id);
         bool Add(UnionParishad model);
@@ -65,6 +67,7 @@ namespace UPTax.Service.Services.UPDetails
             }
             catch (Exception ex)
             {
+                var errorMessage = ex.Message;
                 return false;
             }
         }
@@ -97,9 +100,19 @@ namespace UPTax.Service.Services.UPDetails
             }
             catch (Exception ex)
             {
+                var errorMessage = ex.Message;
                 return new StaticPagedList<UnionParishad>(new List<UnionParishad> { }, pageNo, pageSize, 0);
             }
 
+        }
+
+        public List<IdNameDropdown> GetAllForDropdown()
+        {
+            return _unionParishadRepository.GetAll().Select(u => new IdNameDropdown
+            {
+                Id = u.Id,
+                Name = u.Name
+            }).ToList();
         }
     }
 }

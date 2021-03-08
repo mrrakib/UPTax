@@ -104,11 +104,50 @@
     <Compile Include="Migrations\202102161436244_add_tbl_UnionParishad.Designer.cs">
       <DependentUpon>202102161436244_add_tbl_UnionParishad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102251508493_WardInfos.cs" />
+    <Compile Include="Migrations\202102251508493_WardInfos.Designer.cs">
+      <DependentUpon>202102251508493_WardInfos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102251511445_WardInfosForeginKey.cs" />
+    <Compile Include="Migrations\202102251511445_WardInfosForeginKey.Designer.cs">
+      <DependentUpon>202102251511445_WardInfosForeginKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102251519049_WardInfosCreatedUpdatedUserForeginKey.cs" />
+    <Compile Include="Migrations\202102251519049_WardInfosCreatedUpdatedUserForeginKey.Designer.cs">
+      <DependentUpon>202102251519049_WardInfosCreatedUpdatedUserForeginKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102270433065_EducationInfoMigration.cs" />
+    <Compile Include="Migrations\202102270433065_EducationInfoMigration.Designer.cs">
+      <DependentUpon>202102270433065_EducationInfoMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102270731570_Added_unionId_in_user_tbl.cs" />
+    <Compile Include="Migrations\202102270731570_Added_unionId_in_user_tbl.Designer.cs">
+      <DependentUpon>202102270731570_Added_unionId_in_user_tbl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102271502051_ProfessionSocialBeneifitVillage.cs" />
+    <Compile Include="Migrations\202102271502051_ProfessionSocialBeneifitVillage.Designer.cs">
+      <DependentUpon>202102271502051_ProfessionSocialBeneifitVillage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103060642439_InfrastructureInstuates.cs" />
+    <Compile Include="Migrations\202103060642439_InfrastructureInstuates.Designer.cs">
+      <DependentUpon>202103060642439_InfrastructureInstuates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103060742403_InfrastructureInstuates2.cs" />
+    <Compile Include="Migrations\202103060742403_InfrastructureInstuates2.Designer.cs">
+      <DependentUpon>202103060742403_InfrastructureInstuates2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
-    <Compile Include="Repository\RoleRepository.cs" />
+    <Compile Include="Repository\InfrastructureInfoRepository.cs" />
+    <Compile Include="Repository\InstituteInfoRepository.cs" />
+    <Compile Include="Repository\VillageInfoRepository.cs" />
+    <Compile Include="Repository\ProfessionInfoRepository.cs" />
+    <Compile Include="Repository\SocialBenefitRepository.cs" />
+    <Compile Include="Repository\EducationInfoRepository.cs" />
+    <Compile Include="Repository\Permissions\RoleRepository.cs" />
     <Compile Include="Repository\UPDetails\UnionParishadRepository.cs" />
+    <Compile Include="Repository\UPDetails\WardInfoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UPTax.Model\UPTax.Model.csproj">
@@ -130,6 +169,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102161436244_add_tbl_UnionParishad.resx">
       <DependentUpon>202102161436244_add_tbl_UnionParishad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102251508493_WardInfos.resx">
+      <DependentUpon>202102251508493_WardInfos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102251511445_WardInfosForeginKey.resx">
+      <DependentUpon>202102251511445_WardInfosForeginKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102251519049_WardInfosCreatedUpdatedUserForeginKey.resx">
+      <DependentUpon>202102251519049_WardInfosCreatedUpdatedUserForeginKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102270433065_EducationInfoMigration.resx">
+      <DependentUpon>202102270433065_EducationInfoMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102270731570_Added_unionId_in_user_tbl.resx">
+      <DependentUpon>202102270731570_Added_unionId_in_user_tbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102271502051_ProfessionSocialBeneifitVillage.resx">
+      <DependentUpon>202102271502051_ProfessionSocialBeneifitVillage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103060642439_InfrastructureInstuates.resx">
+      <DependentUpon>202103060642439_InfrastructureInstuates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103060742403_InfrastructureInstuates2.resx">
+      <DependentUpon>202103060742403_InfrastructureInstuates2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

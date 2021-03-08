@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/UPTax.WEB/Web.config
+/UPTax.WEB/Web.Debug.config
+/UPTax.WEB/Web.Release.config

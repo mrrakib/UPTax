@@ -1,20 +1,8 @@
-﻿using UPTax.Data;
-using UPTax.Helper;
-using UPTax.Model.Models.Account;
-using UPTax.Model.ViewModels;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using UPTax.Filter;
-using UPTax.Service.Services.Autofac;
-using UPTax.Service.Services.UPDetails;
+using UPTax.Helper;
 using UPTax.Model.Models.UnionDetails;
+using UPTax.Service.Services.UPDetails;
 
 namespace UPTax.Controllers
 {
@@ -34,7 +22,7 @@ namespace UPTax.Controllers
         #endregion
 
         [RapidAuthorization(All = true)]
-        public ActionResult Index(string name,int page = 1, int dataSize = 10)
+        public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
             ViewBag.dataSize = dataSize;
             ViewBag.page = page;
@@ -44,7 +32,7 @@ namespace UPTax.Controllers
             return View(unionList);
         }
 
-        #region Add
+        #region Create
         [HttpGet]
         public ActionResult Create()
         {

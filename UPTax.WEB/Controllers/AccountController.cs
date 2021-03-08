@@ -89,6 +89,8 @@ namespace UPTax.Controllers
                 var userRole = db.Database.SqlQuery<UserRole>("SELECT TOP(1) ur.RoleId,r.Name FROM UserRoles AS ur INNER JOIN Roles AS r on r.Id=ur.RoleId WHERE UserId='" + user.Id + "'").FirstOrDefault();
                 RapidSession.RoleId = userRole.RoleId;
                 RapidSession.RoleName = userRole.Name;
+                RapidSession.UserId = user.Id;
+                RapidSession.UnionId = 1;
                 return RedirectToAction("Index", "Dashboard");
                 //return RedirectToRoute("Home", new { controller = "Home", action = "Index" });
             }

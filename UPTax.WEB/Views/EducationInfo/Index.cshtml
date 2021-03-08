@@ -1,7 +1,7 @@
-﻿@model PagedList.IPagedList<UPTax.Model.Models.UnionDetails.UnionParishad>
+﻿@model PagedList.IPagedList<UPTax.Model.Models.EducationInfo>
 @using PagedList.Mvc;
 @{
-    ViewBag.Title = "ওয়ার্ড তালিকা";
+    ViewBag.Title = "শিক্ষাগত যোগ্যতার তালিকা";
 
     if (Request.IsAjaxRequest())
     {
@@ -30,7 +30,7 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <h4 class="page-title mb-1">ওয়ার্ড তালিকা</h4>
+                <h4 class="page-title mb-1">শিক্ষাগত যোগ্যতার তালিকা</h4>
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item active">অপারেট করুন</li>
                 </ol>
@@ -47,14 +47,14 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="float-right ml-2">
-                            <a class="btn btn-sm btn-info btn-flat margin" href="@Url.Action("Create")">ওয়ার্ড যোগ করুন</a>
+                            <a class="btn btn-sm btn-info btn-flat margin" href="@Url.Action("Create")">শিক্ষাগত যোগ্যতার যোগ করুন</a>
                         </div>
 
-                        <h5 class="header-title mb-4">সমস্ত ওয়ার্ড তালিকা</h5>
+                        <h5 class="header-title mb-4">সমস্ত শিক্ষাগত যোগ্যতার তালিকা</h5>
 
                         <div class="row">
                             <div class="col-sm-12">
-                                @using (Ajax.BeginForm("Index", "UnionParishad", FormMethod.Get, new AjaxOptions
+                                @using (Ajax.BeginForm("Index", "EducationInfo", FormMethod.Get, new AjaxOptions
                                 {
                                     UpdateTargetId = "mainContainer",
                                     InsertionMode = InsertionMode.Replace
@@ -69,7 +69,7 @@
                                             </td>
                                             <td class="col-sm-1" style="width:2%">
                                                 @*<span style="font-weight:bold;">Page Size</span><br />*@
-                                                @Html.TextBox("name", ViewBag.name as string, new { @class = "form-control col-md-12 col-xs-12", placeholder = "ইউনিয়ন এর নাম" })
+                                                @Html.TextBox("name", ViewBag.name as string, new { @class = "form-control col-md-12 col-xs-12", placeholder = "শিক্ষাগত যোগ্যতা" })
                                             </td>
                                             <td class="" style="width:2%;">
                                                 <center><button type="submit" class="btn btn-sm btn-info"><i class="fa fa-search" style="margin-right: 5px; color: #008BBB"></i>খুঁজুন</button></center>
@@ -86,15 +86,11 @@
                                 <thead>
                                     <tr>
                                         <th>নং</th>
-                                        <th>নাম</th>
-                                        <th>মোবাইল নাম্বার</th>
-                                        <th>ইমেইল</th>
+                                        <th>শিক্ষাগত যোগ্যতা</th>
                                         <th>অপারেশন</th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
-
                                     @if (Model != null)
                                     {
                                         foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
@@ -102,14 +98,12 @@
                                             rowNo++;
                                             <tr>
                                                 <td>@rowNo</td>
-                                                <td class="">@item.Data.Name</td>
-                                                <td class="">@item.Data.PhoneNo</td>
-                                                <td class="">@item.Data.Email</td>
+                                                <td class="">@item.Data.Degree</td>
                                                 <td>
                                                     <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
                                                         <i class="mdi mdi-pencil"></i>
                                                     </a>
-                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","UnionParishad")/@item.Data.Id">
+                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","EducationInfo")/@item.Data.Id">
 
                                                         <i class="mdi mdi-trash-can"></i>
                                                     </a>
@@ -126,12 +120,12 @@
                                         page,
                                         dataSize = ViewBag.dataSize
                                     }),
-                                    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions
-                                         {
+                                    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+                                    new PagedListRenderOptions()
+                                    {
                                         LiElementClasses = new string[] { "paginate_button page-item" },
                                         UlElementClasses = new string[] { "pagination" },
                                         ContainerDivClasses = new string[] { "dataTables_paginate paging_simple_numbers" },
-
                                     },
                                     new AjaxOptions()
                                     {
@@ -155,15 +149,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
         $(function () {
-            //$('#example1').DataTable();
-            $('#example1').DataTable({
-                'paging': false,
-                'lengthChange': false,
-                'searching': false,
-                'ordering': false,
-                'info': false,
-                'autoWidth': false
-            });
+           
         });
     </script>
 }

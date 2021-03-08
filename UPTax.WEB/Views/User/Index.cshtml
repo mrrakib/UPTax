@@ -30,9 +30,9 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <h4 class="page-title mb-1">User</h4>
+                <h4 class="page-title mb-1">ইউজার</h4>
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item active">Manage user</li>
+                    <li class="breadcrumb-item active">অপারেট করুন</li>
                 </ol>
             </div>
         </div>
@@ -46,21 +46,21 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        @*<div class="float-right ml-2">
-                            <a class="btn btn-sm btn-info btn-flat margin" href="@Url.Action("Register","User")">Add User</a>
-                        </div>*@
-                        <h5 class="header-title mb-4">All Users</h5>
+                        <div class="float-right ml-2">
+                            <a class="btn btn-sm btn-info btn-flat margin" href="@Url.Action("Create","User")">ইউজার যোগ করুন</a>
+                        </div>
+                        <h5 class="header-title mb-4">ইউজার তালিকা</h5>
 
                         <div class="table-responsive">
                             <table id="datatable" class="table table-bordered dt-responsive nowrap table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <td>SL.</td>
-                                        <th>Name</th>
-                                        <th>User Name</th>
-                                        <th>Role Name</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>#</th>
+                                        <th>নাম</th>
+                                        <th>ইউজারনেম</th>
+                                        <th>রোল নেম</th>
+                                        <th>স্ট্যাটাস</th>
+                                        <th>অপারেশন</th>
                                     </tr>
                                 </thead>
 
@@ -76,8 +76,26 @@
                                                 <td class="">@item.Data.FullName</td>
                                                 <td class="">@item.Data.UserName</td>
                                                 <td class="">@item.Data.RoleName</td>
-                                                <td class="">@(item.Data.Status ? "Active" : "Inactive")</td>
-                                                <td></td>
+                                                <td class="">
+                                                    @*@(item.Data.Status ? "এক্টিভ" : "ইন্যাক্টিভ")*@
+                                                    @if (item.Data.Status)
+                                                    {
+                                                        <span style="color:green">এক্টিভ</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span style="color:red">ইন্যাক্টিভ</span>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.UserId })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
+                                                        <i class="mdi mdi-pencil"></i>
+                                                    </a>
+                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","Roles")/@item.Data.UserId">
+
+                                                        <i class="mdi mdi-trash-can"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         }
                                     }
