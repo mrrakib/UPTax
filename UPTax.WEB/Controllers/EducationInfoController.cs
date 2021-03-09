@@ -10,9 +10,9 @@ namespace UPTax.Controllers
     public class EducationInfoController : Controller
     {
         private readonly Message _message = new Message();
-        private readonly IEducationInfoService _educationInfoService;
         private readonly string _userId = RapidSession.UserId;
         private readonly int _unionId = RapidSession.UnionId;
+        private readonly IEducationInfoService _educationInfoService;
 
         public EducationInfoController(IEducationInfoService educationInfoService)
         {
@@ -44,7 +44,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _educationInfoService.IsExistingItem(model.Degree);
+                var isExistingItem = _educationInfoService.IsExistingItem(model.Degree, null);
                 model.CreatedBy = _userId;
                 if (!isExistingItem && _educationInfoService.Add(model))
                 {
@@ -77,7 +77,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _educationInfoService.IsExistingItem(model.Degree);
+                var isExistingItem = _educationInfoService.IsExistingItem(model.Degree, model.Id);
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি শিক্ষাগত যোগ্যতা আছে!");

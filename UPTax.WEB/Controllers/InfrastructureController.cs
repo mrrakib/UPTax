@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
 using UPTax.Model.Models;
+using UPTax.Model.ViewModels;
 using UPTax.Service.Services;
 
 namespace UPTax.Controllers
@@ -13,10 +15,17 @@ namespace UPTax.Controllers
         private readonly string _userId = RapidSession.UserId;
         private readonly int _unionId = RapidSession.UnionId;
         private readonly IInfrastructureInfoService _infrastructureInfoService;
+        private readonly List<IdNameDropdown> _dropdownList;
 
         public InfrastructureController(IInfrastructureInfoService infrastructureInfoService)
         {
             _infrastructureInfoService = infrastructureInfoService;
+            _dropdownList = new List<IdNameDropdown>()
+            {
+                new IdNameDropdown(){IdStr="পাঁকা ঘর", Name="পাঁকা ঘর"},
+                new IdNameDropdown(){IdStr="আধাপাকা ঘর", Name="আধাপাকা ঘর"},
+                new IdNameDropdown(){IdStr="কাঁচা ঘর", Name="কাঁচা ঘর"}
+            };
         }
         // GET: Infrastructure
         [RapidAuthorization(All = true)]
@@ -33,6 +42,7 @@ namespace UPTax.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.TypeOfInfrastructure = new SelectList(_dropdownList, "IdStr", "Name");
             return View();
         }
 
@@ -43,14 +53,15 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _infrastructureInfoService.IsExistingItem(model.HoldingNo);
+                var isExistingItem = _infrastructureInfoService.IsExistingItem(model.HoldingNo, null);
                 model.CreatedBy = _userId;
                 if (!isExistingItem && _infrastructureInfoService.Add(model))
                 {
                     _message.save(this);
                     return RedirectToAction("Index");
                 }
-                _message.custom(this, "এই নামে একটি পেশা আছে!");
+                _message.custom(this, "এই নামে একটি ঘর আছে!");
+                ViewBag.TypeOfInfrastructure = new SelectList(_dropdownList, "IdStr", "Name", model.TypeOfInfrastructure);
                 return View(model);
             }
             return View(model);
@@ -66,6 +77,7 @@ namespace UPTax.Controllers
             {
                 return PartialView("_Error");
             }
+            ViewBag.TypeOfInfrastructure = new SelectList(_dropdownList, "IdStr", "Name", model.TypeOfInfrastructure);
             return View(model);
         }
 
@@ -76,10 +88,11 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _infrastructureInfoService.IsExistingItem(model.HoldingNo);
+                var isExistingItem = _infrastructureInfoService.IsExistingItem(model.HoldingNo, model.Id);
                 if (isExistingItem)
                 {
-                    _message.custom(this, "এই নামে একটি পেশা আছে!");
+                    _message.custom(this, "এই নামে একটি ঘর আছে!");
+                    ViewBag.TypeOfInfrastructure = new SelectList(_dropdownList, "IdStr", "Name", model.TypeOfInfrastructure);
                     return View(model);
                 }
                 model.UpdatedBy = _userId;

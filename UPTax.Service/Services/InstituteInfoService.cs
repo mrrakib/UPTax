@@ -16,7 +16,7 @@ namespace UPTax.Service.Services
         IPagedList GetPagedList(string degree, int pageNo, int pageSize);
         IEnumerable<InstituteInfo> GetAll();
         InstituteInfo GetDetails(int id);
-        bool IsExistingItem(string keyName);
+        bool IsExistingItem(string keyName, int? id);
         bool Save();
     }
     public class InstituteInfoService : IInstituteInfoService
@@ -82,9 +82,14 @@ namespace UPTax.Service.Services
             }
         }
 
-        public bool IsExistingItem(string keyName)
+        public bool IsExistingItem(string keyName, int? id)
         {
-            return _InstituteInfoRepository.GetCount(a => a.IsDeleted == false && a.NameOfInstitute == keyName.Trim()) > 0 ? true : false;
+            var count = 0;
+            if (id == null)
+                count = _InstituteInfoRepository.GetCount(a => a.IsDeleted == false && a.NameOfInstitute == keyName.Trim());
+            else
+                count = _InstituteInfoRepository.GetCount(a => a.IsDeleted == false && a.NameOfInstitute == keyName.Trim() && a.Id != id);
+            return count > 0 ? true : false;
         }
 
         public bool Save()

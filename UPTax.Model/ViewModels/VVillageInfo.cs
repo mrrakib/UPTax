@@ -4,8 +4,6 @@
     {
         public int Id { get; set; }
         public string VillageName { get; set; }
-        public int UnionId { get; set; }
-        public int UnionName { get; set; }
-        public bool IsDeleted { get; set; }
+        public string UnionName { get; set; }
     }
 }

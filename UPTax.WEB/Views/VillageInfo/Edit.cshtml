@@ -48,9 +48,10 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.UnionId)</label>
-                                    @Html.TextBoxFor(m => m.UnionId, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "গ্রামের নাম", @maxLength = "250", @required = "required" })
+
+                                    @Html.DropDownList("UnionId", null, String.Empty, new { @class = "selectize validationCustom03", @id = "ddlUnionId", @required = "required" })
                                     <div class="invalid-feedback">
-                                        নাম দেয়া বাধ্যতামূলক!
+                                        ইউনিয়ন দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                             </div>

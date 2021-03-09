@@ -37,7 +37,8 @@ namespace UPTax.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Unions = _unionParishadService.GetAllForDropdown();
+            //ViewBag.Unions = _unionParishadService.GetAllForDropdown();
+            ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name");
             return View();
         }
 
@@ -48,10 +49,10 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName);
+                var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName, null);
                 if (isExistingItem)
                 {
-                    ViewBag.Unions = _unionParishadService.GetAllForDropdown();
+                    ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name", model.UnionId);
                     _message.custom(this, "এই নামে একটি গ্রাম আছে!");
                     return View(model);
                 }
@@ -73,7 +74,8 @@ namespace UPTax.Controllers
             {
                 return PartialView("_Error");
             }
-            ViewBag.Unions = _unionParishadService.GetAllForDropdown();
+            //ViewBag.Unions = _unionParishadService.GetAllForDropdown();
+            ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name", model.UnionId);
             return View(model);
         }
 
@@ -84,11 +86,12 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName);
+                var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName, model.Id);
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি গ্রাম আছে!");
-                    ViewBag.Unions = _unionParishadService.GetAllForDropdown();
+                    //ViewBag.Unions = _unionParishadService.GetAllForDropdown();
+                    ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name", model.UnionId);
                     return View(model);
                 }
                 model.UpdatedBy = _userId;

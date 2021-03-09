@@ -5,6 +5,7 @@ using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository;
 using UPTax.Model.Models;
+using UPTax.Model.ViewModels;
 
 namespace UPTax.Service.Services
 {
@@ -16,7 +17,7 @@ namespace UPTax.Service.Services
         IPagedList GetPagedList(string keyName, int pageNo, int pageSize);
         IEnumerable<VillageInfo> GetAll();
         VillageInfo GetDetails(int id);
-        bool IsExistingItem(string keyName);
+        bool IsExistingItem(string keyName, int? id);
         bool Save();
     }
     public class VillageInfoService : IVillageInfoService
@@ -67,24 +68,33 @@ namespace UPTax.Service.Services
                 {
                     searchPrm += string.Format(@" WHERE VillageName LIKE N'%{0}%'", keyName.Trim());
                 }
+                else
+                {
+                    searchPrm += string.Format(@" WHERE IsDeleted = 0");
+                }
                 string query = string.Format(@"SELECT v.Id, v.VillageName, v.CreatedDate, v.CreatedBy, v.UpdatedDate, v.UpdatedBy, v.IsDeleted, u.Name as UnionName,v.UnionId FROM VillageInfo v JOIN [dbo].[UnionParishad] u ON v.UnionId=u.Id {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
                 string countQuery = string.Format(@"SELECT COUNT(Id) FROM VillageInfo WHERE VillageName LIKE N'%{0}%'", keyName?.Trim());
 
                 int rowCount = _VillageInfoRepository.SQLQuery<int>(countQuery);
-                List<VillageInfo> educations = _VillageInfoRepository.SQLQueryList<VillageInfo>(query).Where(a => a.IsDeleted == false).ToList();
-                return new StaticPagedList<VillageInfo>(educations, pageNo, pageSize, rowCount);
+                List<VVillageInfo> villages = _VillageInfoRepository.SQLQueryList<VVillageInfo>(query).ToList();
+                return new StaticPagedList<VVillageInfo>(villages, pageNo, pageSize, rowCount);
             }
             catch (Exception ex)
             {
                 var errorMessage = ex.Message;
-                return new StaticPagedList<VillageInfo>(new List<VillageInfo> { }, pageNo, pageSize, 0);
+                return new StaticPagedList<VVillageInfo>(new List<VVillageInfo> { }, pageNo, pageSize, 0);
             }
         }
 
-        public bool IsExistingItem(string keyName)
+        public bool IsExistingItem(string keyName, int? id)
         {
-            return _VillageInfoRepository.GetCount(a => a.IsDeleted == false && a.VillageName == keyName.Trim()) > 0 ? true : false;
+            var count = 0;
+            if (id == null)
+                count = _VillageInfoRepository.GetCount(a => a.IsDeleted == false && a.VillageName == keyName.Trim());
+            else
+                count = _VillageInfoRepository.GetCount(a => a.IsDeleted == false && a.VillageName == keyName.Trim() && a.Id != id);
+            return count > 0 ? true : false;
         }
 
         public bool Save()

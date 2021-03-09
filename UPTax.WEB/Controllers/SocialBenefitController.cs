@@ -44,7 +44,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _SocialBenefitService.IsExistingItem(model.Title);
+                var isExistingItem = _SocialBenefitService.IsExistingItem(model.Title, null);
                 model.CreatedBy = _userId;
                 if (!isExistingItem && _SocialBenefitService.Add(model))
                 {
@@ -77,7 +77,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _SocialBenefitService.IsExistingItem(model.Title);
+                var isExistingItem = _SocialBenefitService.IsExistingItem(model.Title, model.Id);
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি সামাজিক সুযোগ-সুবিধা আছে!");

@@ -44,7 +44,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _ProfessionInfoService.IsExistingItem(model.ProfessionTitle);
+                var isExistingItem = _ProfessionInfoService.IsExistingItem(model.ProfessionTitle, null);
                 model.CreatedBy = _userId;
                 if (!isExistingItem && _ProfessionInfoService.Add(model))
                 {
@@ -77,7 +77,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _ProfessionInfoService.IsExistingItem(model.ProfessionTitle);
+                var isExistingItem = _ProfessionInfoService.IsExistingItem(model.ProfessionTitle, model.Id);
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি পেশা আছে!");

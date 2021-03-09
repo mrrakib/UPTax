@@ -93,6 +93,9 @@
     <Compile Include="Models\InfrastructureInfo.cs" />
     <Compile Include="Models\EducationInfo.cs" />
     <Compile Include="Models\InstituteInfo.cs" />
+    <Compile Include="Models\MenuCategory.cs" />
+    <Compile Include="Models\MenuConfig.cs" />
+    <Compile Include="Models\MenuPermission.cs" />
     <Compile Include="Models\ProfessionInfo.cs" />
     <Compile Include="Models\SocialBenefit.cs" />
     <Compile Include="Models\UnionDetails\UnionParishad.cs" />

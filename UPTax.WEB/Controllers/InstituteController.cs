@@ -43,7 +43,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _instituteInfoService.IsExistingItem(model.NameOfInstitute);
+                var isExistingItem = _instituteInfoService.IsExistingItem(model.NameOfInstitute, null);
                 model.CreatedBy = _userId;
                 if (!isExistingItem && _instituteInfoService.Add(model))
                 {
@@ -76,7 +76,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _instituteInfoService.IsExistingItem(model.NameOfInstitute);
+                var isExistingItem = _instituteInfoService.IsExistingItem(model.NameOfInstitute, model.Id);
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি কলেজ / অফিসের নাম আছে!");
