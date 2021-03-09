@@ -149,6 +149,9 @@
     <Compile Include="Repository\Autofac\UserRepository.cs" />
     <Compile Include="Repository\InfrastructureInfoRepository.cs" />
     <Compile Include="Repository\InstituteInfoRepository.cs" />
+    <Compile Include="Repository\Permissions\MenuPermissionRepository.cs" />
+    <Compile Include="Repository\Permissions\MenuConfigRepository.cs" />
+    <Compile Include="Repository\Permissions\MenuCategoryRepository.cs" />
     <Compile Include="Repository\VillageInfoRepository.cs" />
     <Compile Include="Repository\ProfessionInfoRepository.cs" />
     <Compile Include="Repository\SocialBenefitRepository.cs" />

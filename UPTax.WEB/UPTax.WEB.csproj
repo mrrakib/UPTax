@@ -181,6 +181,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfrastructureController.cs" />
     <Compile Include="Controllers\InstituteController.cs" />
+    <Compile Include="Controllers\MenuConfigController.cs" />
+    <Compile Include="Controllers\MenuCategoryController.cs" />
     <Compile Include="Controllers\ProfessionInfoController.cs" />
     <Compile Include="Controllers\SocialBenefitController.cs" />
     <Compile Include="Controllers\UnionParishadController.cs" />
@@ -12667,6 +12669,12 @@
     <Content Include="Views\Institute\Create.cshtml" />
     <Content Include="Views\Institute\Edit.cshtml" />
     <Content Include="Views\Institute\Index.cshtml" />
+    <Content Include="Views\MenuCategory\Index.cshtml" />
+    <Content Include="Views\MenuCategory\Create.cshtml" />
+    <Content Include="Views\MenuCategory\Edit.cshtml" />
+    <Content Include="Views\MenuConfig\Create.cshtml" />
+    <Content Include="Views\MenuConfig\Edit.cshtml" />
+    <Content Include="Views\MenuConfig\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
