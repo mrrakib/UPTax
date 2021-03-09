@@ -42,7 +42,7 @@ namespace UPTax.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.Houses = new SelectList(_dropdownList, "IdStr", "Name");
+            ViewBag.TypeOfInfrastructure = new SelectList(_dropdownList, "IdStr", "Name");
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace UPTax.Controllers
                     return RedirectToAction("Index");
                 }
                 _message.custom(this, "এই নামে একটি ঘর আছে!");
-                ViewBag.Houses = new SelectList(_dropdownList, "IdStr", "Name", model.TypeOfInfrastructure);
+                ViewBag.TypeOfInfrastructure = new SelectList(_dropdownList, "IdStr", "Name", model.TypeOfInfrastructure);
                 return View(model);
             }
             return View(model);
@@ -77,7 +77,7 @@ namespace UPTax.Controllers
             {
                 return PartialView("_Error");
             }
-            ViewBag.Houses = new SelectList(_dropdownList, "IdStr", "Name", model.TypeOfInfrastructure);
+            ViewBag.TypeOfInfrastructure = new SelectList(_dropdownList, "IdStr", "Name", model.TypeOfInfrastructure);
             return View(model);
         }
 
@@ -92,7 +92,7 @@ namespace UPTax.Controllers
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি ঘর আছে!");
-                    ViewBag.Houses = new SelectList(_dropdownList, "IdStr", "Name", model.TypeOfInfrastructure);
+                    ViewBag.TypeOfInfrastructure = new SelectList(_dropdownList, "IdStr", "Name", model.TypeOfInfrastructure);
                     return View(model);
                 }
                 model.UpdatedBy = _userId;
