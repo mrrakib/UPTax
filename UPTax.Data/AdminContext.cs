@@ -26,6 +26,7 @@ namespace UPTax.Data
         public DbSet<InstituteInfo> InstituteInfos { get; set; }
         public DbSet<MenuCategory> MenuCategories { get; set; }
         public DbSet<MenuConfig> MenuConfigs { get; set; }
+        public DbSet<MenuPermission> MenuPermissions { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
