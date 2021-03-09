@@ -16,7 +16,7 @@ namespace UPTax.Service.Services
         IPagedList GetPagedList(string keyName, int pageNo, int pageSize);
         IEnumerable<SocialBenefit> GetAll();
         SocialBenefit GetDetails(int id);
-        bool IsExistingItem(string keyName);
+        bool IsExistingItem(string keyName, int? id);
         bool Save();
     }
     public class SocialBenefitService : ISocialBenefitService
@@ -82,9 +82,14 @@ namespace UPTax.Service.Services
             }
         }
 
-        public bool IsExistingItem(string keyName)
+        public bool IsExistingItem(string keyName, int? id)
         {
-            return _SocialBenefitRepository.GetCount(a => a.IsDeleted == false && a.Title == keyName.Trim()) > 0 ? true : false;
+            var count = 0;
+            if (id == null)
+                count = _SocialBenefitRepository.GetCount(a => a.IsDeleted == false && a.Title == keyName.Trim());
+            else
+                count = _SocialBenefitRepository.GetCount(a => a.IsDeleted == false && a.Title == keyName.Trim() && a.Id != id);
+            return count > 0 ? true : false;
         }
 
         public bool Save()

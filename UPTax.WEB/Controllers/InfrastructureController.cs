@@ -43,7 +43,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _infrastructureInfoService.IsExistingItem(model.HoldingNo);
+                var isExistingItem = _infrastructureInfoService.IsExistingItem(model.HoldingNo, null);
                 model.CreatedBy = _userId;
                 if (!isExistingItem && _infrastructureInfoService.Add(model))
                 {
@@ -76,7 +76,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _infrastructureInfoService.IsExistingItem(model.HoldingNo);
+                var isExistingItem = _infrastructureInfoService.IsExistingItem(model.HoldingNo, model.Id);
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি পেশা আছে!");

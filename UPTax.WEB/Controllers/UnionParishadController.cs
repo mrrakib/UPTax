@@ -46,11 +46,14 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_unionParishadService.Add(model))
+                var existingItem = _unionParishadService.IsExistingItem(model);
+                if (!existingItem && _unionParishadService.Add(model))
                 {
                     _message.save(this);
                     return RedirectToAction("Index");
                 }
+                _message.custom(this, "এই নামে একটি ইউনিয়ন পরিষদ আছে!");
+                return View(model);
             }
             return View(model);
         }
@@ -76,6 +79,12 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
+                var existingItem = _unionParishadService.IsExistingItem(model);
+                if (existingItem)
+                {
+                    _message.custom(this, "এই নামে একটি ইউনিয়ন পরিষদ আছে!");
+                    return View(model);
+                }
                 _unionParishadService.Update(model);
                 _message.update(this);
                 return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });

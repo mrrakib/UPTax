@@ -49,7 +49,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName);
+                var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName, null);
                 if (isExistingItem)
                 {
                     ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name", model.UnionId);
@@ -86,7 +86,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName);
+                var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName, model.Id);
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি গ্রাম আছে!");

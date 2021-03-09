@@ -16,7 +16,7 @@ namespace UPTax.Service.Services
         IPagedList GetPagedList(string degree, int pageNo, int pageSize);
         IEnumerable<ProfessionInfo> GetAll();
         ProfessionInfo GetDetails(int id);
-        bool IsExistingItem(string keyName);
+        bool IsExistingItem(string keyName, int? id);
         bool Save();
     }
     public class ProfessionInfoService : IProfessionInfoService
@@ -82,9 +82,14 @@ namespace UPTax.Service.Services
             }
         }
 
-        public bool IsExistingItem(string keyName)
+        public bool IsExistingItem(string keyName, int? id)
         {
-            return _professionInfoRepository.GetCount(a => a.IsDeleted == false && a.ProfessionTitle == keyName.Trim()) > 0 ? true : false;
+            var count = 0;
+            if (id == null)
+                count = _professionInfoRepository.GetCount(a => a.IsDeleted == false && a.ProfessionTitle == keyName.Trim());
+            else
+                count = _professionInfoRepository.GetCount(a => a.IsDeleted == false && a.ProfessionTitle == keyName.Trim() && a.Id != id);
+            return count > 0 ? true : false;
         }
 
         public bool Save()

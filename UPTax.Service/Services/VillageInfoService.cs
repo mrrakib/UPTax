@@ -17,7 +17,7 @@ namespace UPTax.Service.Services
         IPagedList GetPagedList(string keyName, int pageNo, int pageSize);
         IEnumerable<VillageInfo> GetAll();
         VillageInfo GetDetails(int id);
-        bool IsExistingItem(string keyName);
+        bool IsExistingItem(string keyName, int? id);
         bool Save();
     }
     public class VillageInfoService : IVillageInfoService
@@ -87,9 +87,14 @@ namespace UPTax.Service.Services
             }
         }
 
-        public bool IsExistingItem(string keyName)
+        public bool IsExistingItem(string keyName, int? id)
         {
-            return _VillageInfoRepository.GetCount(a => a.IsDeleted == false && a.VillageName == keyName.Trim()) > 0 ? true : false;
+            var count = 0;
+            if (id == null)
+                count = _VillageInfoRepository.GetCount(a => a.IsDeleted == false && a.VillageName == keyName.Trim());
+            else
+                count = _VillageInfoRepository.GetCount(a => a.IsDeleted == false && a.VillageName == keyName.Trim() && a.Id != id);
+            return count > 0 ? true : false;
         }
 
         public bool Save()

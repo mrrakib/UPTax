@@ -16,7 +16,7 @@ namespace UPTax.Service.Services
         IPagedList GetPagedList(string degree, int pageNo, int pageSize);
         IEnumerable<InfrastructureInfo> GetAll();
         InfrastructureInfo GetDetails(int id);
-        bool IsExistingItem(string keyName);
+        bool IsExistingItem(string keyName, int? id);
         bool Save();
     }
     public class InfrastructureInfoService : IInfrastructureInfoService
@@ -82,11 +82,16 @@ namespace UPTax.Service.Services
             }
         }
 
-        public bool IsExistingItem(string keyName)
+        public bool IsExistingItem(string keyName, int? id)
         {
-            return _InfrastructureInfoRepository.GetCount(a => a.IsDeleted == false && a.HoldingNo == keyName.Trim()) > 0 ? true : false;
-        }
+            var count = 0;
+            if (id == null)
+                count = _InfrastructureInfoRepository.GetCount(a => a.IsDeleted == false && a.HoldingNo == keyName.Trim());
+            else
+                count = _InfrastructureInfoRepository.GetCount(a => a.IsDeleted == false && a.HoldingNo == keyName.Trim() && a.Id != id);
 
+            return count > 0 ? true : false;
+        }
         public bool Save()
         {
             try

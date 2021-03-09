@@ -10,9 +10,9 @@ namespace UPTax.Controllers
     public class EducationInfoController : Controller
     {
         private readonly Message _message = new Message();
-        private readonly IEducationInfoService _educationInfoService;
         private readonly string _userId = RapidSession.UserId;
         private readonly int _unionId = RapidSession.UnionId;
+        private readonly IEducationInfoService _educationInfoService;
 
         public EducationInfoController(IEducationInfoService educationInfoService)
         {

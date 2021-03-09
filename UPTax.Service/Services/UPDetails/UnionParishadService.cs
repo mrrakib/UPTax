@@ -20,6 +20,7 @@ namespace UPTax.Service.Services.UPDetails
         bool Save();
         bool Delete(int id);
         IPagedList GetPaged(string name, int pageNo, int pageSize);
+        bool IsExistingItem(UnionParishad model);
     }
     public class UnionParishadService : IUnionParishadService
     {
@@ -113,6 +114,16 @@ namespace UPTax.Service.Services.UPDetails
                 Id = u.Id,
                 Name = u.Name
             }).ToList();
+        }
+
+        public bool IsExistingItem(UnionParishad model)
+        {
+            var count = 0;
+            if (model.Id == 0)
+                count = _unionParishadRepository.GetCount(a => a.Name == model.Name.Trim());
+            else
+                count = _unionParishadRepository.GetCount(a => a.Name == model.Name.Trim() && a.Id != model.Id);
+            return count > 0 ? true : false;
         }
     }
 }
