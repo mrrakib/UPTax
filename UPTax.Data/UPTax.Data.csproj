@@ -136,6 +136,10 @@
     <Compile Include="Migrations\202103060742403_InfrastructureInstuates2.Designer.cs">
       <DependentUpon>202103060742403_InfrastructureInstuates2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103091441542_Menu_permission.cs" />
+    <Compile Include="Migrations\202103091441542_Menu_permission.Designer.cs">
+      <DependentUpon>202103091441542_Menu_permission.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
@@ -193,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103060742403_InfrastructureInstuates2.resx">
       <DependentUpon>202103060742403_InfrastructureInstuates2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103091441542_Menu_permission.resx">
+      <DependentUpon>202103091441542_Menu_permission.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
