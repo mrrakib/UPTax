@@ -16,6 +16,7 @@ namespace UPTax.Service.Services
         bool Delete(int id);
         IPagedList GetPagedList(string keyName, int pageNo, int pageSize);
         IEnumerable<MenuConfig> GetAll();
+        List<MenuConfig> GetAllMenuByCatId(int categoryId);
         MenuConfig GetDetails(int id);
         bool IsExistingItem(string keyName, int? id);
         bool Save();
@@ -111,7 +112,9 @@ namespace UPTax.Service.Services
             }
         }
 
-
-
+        public List<MenuConfig> GetAllMenuByCatId(int categoryId)
+        {
+            return _menuConfigRepository.GetMany(m => m.CategoryId == categoryId && m.IsActive && !m.IsDeleted).ToList();
+        }
     }
 }

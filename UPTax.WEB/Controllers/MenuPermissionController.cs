@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
+using UPTax.Model.ViewModels;
 using UPTax.Service.Services;
 using UPTax.Service.Services.Permissions;
 
@@ -37,6 +38,29 @@ namespace UPTax.Controllers
             ViewBag.RoleId = new SelectList(_roleService.GetAll(), "Id", "Name");
             ViewBag.CategoryId = new SelectList(_menuCategoryService.GetMenuCategoryDDL(), "Id", "Name");
             return View();
+        }
+
+        public ActionResult GetMenuesForPermission(string roleId, int categoryId)
+        {
+            VMMenuPermission menuPermission = new VMMenuPermission();
+            List<VMMenuPermissionDetails> detailMenuList = new List<VMMenuPermissionDetails>();
+            var menuList = _menuConfigService.GetAllMenuByCatId(categoryId);
+            var permissionList = _menuPermissionService.GetAllPermittedMenues(roleId, categoryId);
+            foreach (var menu in menuList)
+            {
+                var view = permissionList.Where(mp => mp.MenuConfigId == menu.Id).FirstOrDefault();
+                detailMenuList.Add(new VMMenuPermissionDetails
+                {
+                    MenuConfigId = menu.Id,
+                    MenuName = menu.MenuName,
+                    IsViewPermit = view == null ? false : view.IsViewPermitted,
+                    IsAddPermit = view == null ? false : view.IsAddPermitted,
+                    IsEditPermit = view == null ? false : view.IsEditPermitted,
+                    IsDeletePermit = view == null ? false : view.IsDeletePermitted
+                });
+            }
+            menuPermission.MenuPermissionDetails = detailMenuList;
+            return PartialView("~/Views/MenuPermission/_partialPermission.cshtml", menuPermission);
         }
     }
 }

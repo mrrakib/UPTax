@@ -17,6 +17,7 @@ namespace UPTax.Service.Services
         IEnumerable<MenuPermission> GetAll();
         MenuPermission GetDetails(int id);
         bool Save();
+        List<MenuPermission> GetAllPermittedMenues(string roleId, int categoryId);
     }
     public class MenuPermissionService : IMenuPermissionService
     {
@@ -72,7 +73,9 @@ namespace UPTax.Service.Services
             }
         }
 
-
-
+        public List<MenuPermission> GetAllPermittedMenues(string roleId, int categoryId)
+        {
+            return _menuPermissionRepository.GetAllPermittedMenues(roleId, categoryId);
+        }
     }
 }
