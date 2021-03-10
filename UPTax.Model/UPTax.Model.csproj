@@ -105,6 +105,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\IdNameDropdown.cs" />
     <Compile Include="ViewModels\VMLogin.cs" />
+    <Compile Include="ViewModels\VMMenuPermission.cs" />
     <Compile Include="ViewModels\VMRegister.cs" />
     <Compile Include="ViewModels\VMUserInfo.cs" />
     <Compile Include="ViewModels\VVillageInfo.cs" />

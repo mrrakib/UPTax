@@ -1,0 +1,179 @@
+﻿@model PagedList.IPagedList<UPTax.Model.Models.MenuConfig>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "মেনু লিস্ট";
+
+    if (Request.IsAjaxRequest())
+    {
+        Layout = null;
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    int dataSize = 10;
+
+    if (ViewBag.dataSize != null)
+    {
+        dataSize = ViewBag.dataSize;
+    };
+    int pageNo = 1;
+    if (ViewBag.page != null)
+    {
+        pageNo = ViewBag.page;
+    };
+    int rowNo = dataSize * pageNo;
+    rowNo = rowNo - dataSize;
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">মেনু</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active">অপারেট করুন</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right ml-2">
+                            <a class="btn btn-sm btn-info btn-flat margin" href="@Url.Action("Create")">মেনু যোগ করুন</a>
+                        </div>
+
+                        <h5 class="header-title mb-4">মেনুর তালিকা</h5>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                @using (Ajax.BeginForm("Index", "MenuConfig", FormMethod.Get, new AjaxOptions
+                                {
+                                    UpdateTargetId = "mainContainer",
+                                    InsertionMode = InsertionMode.Replace
+                                }, new { autocomplete = "off" }))
+                                {
+                                    <table class="table">
+                                        <tr class="">
+                                            <td class="col-sm-1" style="width:1%">
+                                                <i class="fa fa-filter" style="margin-right: 5px; color: #aeaeae; font-size: 22px; padding-top: 5px;  "></i>
+                                                @Html.TextBox("dataSize", ViewBag.dataSize as string, new { @type = "number", @min = "1", @max = "100", @class = "", @style = "width:60px;height:30px;border: 1px solid #DDE2E8;" })
+                                            </td>
+                                            <td class="col-sm-1" style="width:2%">
+                                                @Html.TextBox("name", ViewBag.name as string, new { @class = "form-control col-md-12 col-xs-12", placeholder = "মেনুর নাম" })
+                                            </td>
+                                            <td class="" style="width:2%;">
+                                                <center><button type="submit" class="btn btn-sm btn-info"><i class="fa fa-search" style="margin-right: 5px; color: #008BBB"></i>খুঁজুন</button></center>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>নাম</th>
+                                        <th>কন্ট্রোলার নাম</th>
+                                        <th>স্ট্যাটাস</th>
+                                        <th>অর্ডার</th>
+                                        <th>অপারেশন</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    @if (Model != null)
+                                    {
+                                        foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
+                                        {
+                                            rowNo++;
+                                    <tr>
+                                        <td>@rowNo</td>
+                                        <td class="">@item.Data.MenuName</td>
+                                        <td class="">@item.Data.ControllerName</td>
+                                        <td class="">
+                                            @if (item.Data.IsActive)
+                                            {
+                                                <span style="color:green">এক্টিভ</span>
+                                            }
+                                            else
+                                            {
+                                                <span style="color:red">ইন্যাক্টিভ</span>
+                                            }
+                                        </td>
+                                        <td class="">@item.Data.OrderNo</td>
+                                        <td>
+                                            <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
+                                                <i class="mdi mdi-pencil"></i>
+                                            </a>
+                                            <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","MenuConfig")/@item.Data.Id">
+
+                                                <i class="mdi mdi-trash-can"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                            <div class="float-right">
+                                @Html.PagedListPager(Model, page => Url.Action("Index",
+                                    new
+                                    {
+                                        page,
+                                        dataSize = ViewBag.dataSize
+                                    }),
+                                    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions {
+                                        LiElementClasses = new string[] { "paginate_button page-item" },
+                                        UlElementClasses = new string[] { "pagination" },
+                                        ContainerDivClasses = new string[] { "dataTables_paginate paging_simple_numbers" },
+                                        
+                                    },
+                                    new AjaxOptions()
+                                    {
+                                        HttpMethod = "GET",
+                                        UpdateTargetId = "mainContainer"
+                                    })
+                                )
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+
+</div> <!-- container-fluid -->
+
+<!-- /.box -->
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+        });
+    </script>
+
+
+
+}
+
+
+

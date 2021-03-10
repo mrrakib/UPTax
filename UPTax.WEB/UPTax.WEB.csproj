@@ -181,6 +181,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfrastructureController.cs" />
     <Compile Include="Controllers\InstituteController.cs" />
+    <Compile Include="Controllers\MenuConfigController.cs" />
+    <Compile Include="Controllers\MenuCategoryController.cs" />
+    <Compile Include="Controllers\MenuPermissionController.cs" />
     <Compile Include="Controllers\ProfessionInfoController.cs" />
     <Compile Include="Controllers\SocialBenefitController.cs" />
     <Compile Include="Controllers\UnionParishadController.cs" />
@@ -6667,6 +6670,7 @@
     <Content Include="Content\assets\images\widget-img.png" />
     <Content Include="Content\assets\js\app.js" />
     <Content Include="Content\assets\js\avro-v1.1.4.min.js" />
+    <Content Include="Content\assets\js\bundle.js" />
     <Content Include="Content\assets\js\custom.js" />
     <Content Include="Content\assets\js\pages\alertifyjs.init.js" />
     <Content Include="Content\assets\js\pages\apex.init.js" />
@@ -12667,6 +12671,14 @@
     <Content Include="Views\Institute\Create.cshtml" />
     <Content Include="Views\Institute\Edit.cshtml" />
     <Content Include="Views\Institute\Index.cshtml" />
+    <Content Include="Views\MenuCategory\Index.cshtml" />
+    <Content Include="Views\MenuCategory\Create.cshtml" />
+    <Content Include="Views\MenuCategory\Edit.cshtml" />
+    <Content Include="Views\MenuConfig\Create.cshtml" />
+    <Content Include="Views\MenuConfig\Edit.cshtml" />
+    <Content Include="Views\MenuConfig\Index.cshtml" />
+    <Content Include="Views\MenuPermission\Index.cshtml" />
+    <Content Include="Views\MenuPermission\_partialPermission.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
