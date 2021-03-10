@@ -66,7 +66,7 @@ namespace UPTax.Service.Services
                 string searchPrm = string.Empty;
                 if (!string.IsNullOrWhiteSpace(keyName))
                 {
-                    searchPrm += string.Format(@" WHERE VillageName LIKE N'%{0}%'", keyName.Trim());
+                    searchPrm += string.Format(@" WHERE VillageName LIKE N'%{0}%' AND IsDeleted = 0", keyName.Trim());
                 }
                 else
                 {

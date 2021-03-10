@@ -1,0 +1,85 @@
+﻿@model UPTax.Model.Models.MenuCategory
+
+@{
+    ViewBag.Title = "হালনাগাদ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">ক্যাটাগরি</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">অপারেট ক্যাটাগরি</a></li>
+                    <li class="breadcrumb-item active">ক্যাটাগরি হালনাগাদ করুন</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right ml-2">
+                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">Back to List</a>
+                        </div>
+                        <h4 class="header-title">ক্যাটাগরি হালনাগাদ ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Edit", "MenuCategory", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-5 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Name)</label>
+                                    @Html.TextBoxFor(m => m.Name, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "ক্যাটাগরির নাম", @maxLength = "250", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        নাম দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Icon)</label>
+                                    @Html.TextBoxFor(m => m.Icon, new { @id = "validationCustom03", @class = "form-control", @placeholder = "আইকন", @maxLength = "140", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        আইকন বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.OrderNo)</label>
+                                    @Html.TextBoxFor(m => m.OrderNo, new { @id = "validationCustom03", @class = "form-control", @placeholder = "অর্ডার", @min = "1", @type = "number" })
+                                    <div class="invalid-feedback">
+                                        অর্ডার বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <button class="btn btn-primary" type="submit">হালনাগাদ করুন</button>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+
+
+}

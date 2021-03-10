@@ -1,0 +1,93 @@
+﻿@model UPTax.Model.Models.MenuConfig
+
+@{
+    ViewBag.Title = "সংরক্ষণ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">মেনু</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">অপারেট মেনু</a></li>
+                    <li class="breadcrumb-item active">মেনু যোগ করুন</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right ml-2">
+                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">তালিকা দেখুন</a>
+                        </div>
+                        <h4 class="header-title">মেনু সংরক্ষণ ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Create", "MenuConfig", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-5 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.MenuName)</label>
+                                    @Html.TextBoxFor(m => m.MenuName, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "মেনুর নাম", @maxLength = "250", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        নাম দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.ControllerName)</label>
+                                    @Html.TextBoxFor(m => m.ControllerName, new { @id = "validationCustom03", @class = "form-control", @placeholder = "Controller Name", @maxLength = "250", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        কন্ট্রোলারের বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.OrderNo)</label>
+                                    @Html.TextBoxFor(m => m.OrderNo, new { @id = "validationCustom03", @class = "form-control", @placeholder = "অর্ডার", @min = "1", @type = "number", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        অর্ডার বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.CategoryId)</label>
+
+                                    @Html.DropDownList("CategoryId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlCategoryId", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        ক্যাটাগরি দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button class="btn btn-primary" type="submit">সংরক্ষণ করুন</button>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+
+
+}
