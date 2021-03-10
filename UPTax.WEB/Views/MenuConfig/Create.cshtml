@@ -67,6 +67,11 @@
                                         ক্যাটাগরি দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
+                                <div class="col-md-1 mb-3">
+                                    <label for="custominlineCheck1">@Html.DisplayNameFor(model => model.IsActive)</label><br />
+
+                                    @Html.CheckBoxFor(m => m.IsActive, new { @class = "form-control", @id = "custominlineCheck1", @checked = "checked" })
+                                </div>
 
                             </div>
                             <button class="btn btn-primary" type="submit">সংরক্ষণ করুন</button>

@@ -86,6 +86,7 @@
     <Compile Include="Services\Autofac\UserService.cs" />
     <Compile Include="Services\InfrastructureInfoService.cs" />
     <Compile Include="Services\InstituteInfoService.cs" />
+    <Compile Include="Services\Permissions\MenuPermissionService.cs" />
     <Compile Include="Services\Permissions\MenuConfigService.cs" />
     <Compile Include="Services\Permissions\MenuCategoryService.cs" />
     <Compile Include="Services\ProfessionInfoService.cs" />

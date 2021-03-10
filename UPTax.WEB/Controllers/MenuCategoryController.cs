@@ -49,6 +49,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.CreatedBy = RapidSession.UserId;
                 var existingItem = _menuCategoryService.IsExistingItem(model.Name, null);
                 if (existingItem)
                 {
@@ -92,6 +93,8 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.UpdatedBy = RapidSession.UserId;
+                model.UpdatedDate = DateTime.Now;
                 var existingItem = _menuCategoryService.IsExistingItem(model.Name, model.Id);
                 if (existingItem)
                 {

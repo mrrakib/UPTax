@@ -53,6 +53,7 @@ namespace UPTax.Controllers
             ViewBag.CategoryId = new SelectList(_menuCategoryService.GetMenuCategoryDDL(), "Id", "Name", model.CategoryId);
             if (ModelState.IsValid)
             {
+                model.CreatedBy = RapidSession.UserId;
                 var existingItem = _menuConfigService.IsExistingItem(model.MenuName, null);
                 if (existingItem)
                 {
@@ -98,6 +99,8 @@ namespace UPTax.Controllers
             ViewBag.CategoryId = new SelectList(_menuCategoryService.GetMenuCategoryDDL(), "Id", "Name", model.CategoryId);
             if (ModelState.IsValid)
             {
+                model.UpdatedBy = RapidSession.UserId;
+                model.UpdatedDate = DateTime.Now;
                 var existingItem = _menuConfigService.IsExistingItem(model.MenuName, model.Id);
                 if (existingItem)
                 {

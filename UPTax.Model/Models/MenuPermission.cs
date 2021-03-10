@@ -16,10 +16,10 @@ namespace UPTax.Model.Models
         public string RoleId { get; set; }
         [Required]
         public int MenuConfigId { get; set; }
-        public Boolean IsViewPermitted { get; set; }
-        public Boolean IsAddPermitted { get; set; }
-        public Boolean IsEditPermitted { get; set; }
-        public Boolean IsDeletePermitted { get; set; }
+        public bool IsViewPermitted { get; set; }
+        public bool IsAddPermitted { get; set; }
+        public bool IsEditPermitted { get; set; }
+        public bool IsDeletePermitted { get; set; }
 
         [ForeignKey("RoleId")]
         public virtual ApplicationRole ApplicationRole { get; set; }

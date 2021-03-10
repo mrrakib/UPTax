@@ -130,7 +130,6 @@ namespace UPTax
                       "~/Content/assets/libs/bootstrap/js/bootstrap.bundle.min.js",
                       "~/Content/assets/libs/metismenu/metisMenu.min.js",
                       "~/Content/assets/libs/simplebar/simplebar.min.js"
-
                       ));
             bundles.Add(new ScriptBundle("~/bundles/adminjs2").Include(
                      "~/Scripts/jquery.unobtrusive-ajax.min.js",
