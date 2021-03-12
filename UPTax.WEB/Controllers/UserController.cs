@@ -38,7 +38,7 @@ namespace UPTax.Controllers
         #endregion
         // GET: User Rakib
         //[HttpGet]
-        [RapidAuthorization(All = true)]
+        [RapidAuthorization]
         public ActionResult Index(int pageNo = 1, int dataSize = 10)
         {
             //List<string> rolesList = ((ClaimsIdentity)System.Web.HttpContext.Current.User.Identity).Claims.Where(c => c.Type == ClaimTypes.Role).Select(r => r.Value).ToList();

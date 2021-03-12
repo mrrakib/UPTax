@@ -28,7 +28,7 @@ namespace UPTax.Controllers
             };
         }
         // GET: Infrastructure
-        [RapidAuthorization(All = true)]
+        [RapidAuthorization]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
             ViewBag.dataSize = dataSize;
@@ -39,6 +39,7 @@ namespace UPTax.Controllers
             return View(listData);
         }
 
+        [RapidAuthorization]
         [HttpGet]
         public ActionResult Create()
         {
