@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using UPTax.Filter;
 
 namespace UPTax.Controllers
 {
@@ -91,11 +92,12 @@ namespace UPTax.Controllers
                 RapidSession.RoleName = userRole.Name;
                 RapidSession.UserId = user.Id;
                 RapidSession.UnionId = 1;
+                RapidSession.UserFullName = user.FullName;
                 return RedirectToAction("Index", "Dashboard");
                 //return RedirectToRoute("Home", new { controller = "Home", action = "Index" });
             }
 
-            ModelState.AddModelError("", @"Invalid username or password.");
+            ModelState.AddModelError("", @"ইউজারনেম অথবা পাসওয়ার্ড ভুল হয়েছে!");
             return View(model);
 
         }
@@ -120,6 +122,108 @@ namespace UPTax.Controllers
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
 
         }
+
+        [RapidAuthorization(All = true)]
+        [HttpGet]
+        public ActionResult GetMenuSessionReady()
+        {
+            AdminContext db = new AdminContext();
+            List<Menu> menues = GetMenues(RapidSession.RoleId, db);
+            Session["Menues"] = menues;
+            return PartialView("_sideBarHtml");
+        }
+
+        [RapidAuthorization(All = true)]
+        [HttpPost]
+        public ActionResult GetMenuSessionReady(string menu)
+        {
+            try
+            {
+                Session["htmlMenues"] = menu;
+                return Json(new { success = true, responseText = "ok" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, responseText = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+
+
+        }
+
+
+        #region Get all permitted menues
+        private List<Menu> GetMenues(string roleId, AdminContext db)
+        {
+            var AuthorList1 = (Dictionary<string, string>)Session["APL"];
+            Session.Remove("APL");
+            Session.Remove("Menues");
+
+            var PermittedMenues = (from t in db.MenuPermissions where (t.RoleId == roleId && t.IsViewPermitted == true) select t).ToList();
+
+            var groupedResult = PermittedMenues.OrderBy(s => s.MenuConfig.MenuCategory.OrderNo).ThenBy(s => s.MenuConfig.OrderNo).GroupBy(s => s.MenuConfig.MenuCategory.Name).ToList();
+            Dictionary<string, string> AuthorList = new Dictionary<string, string>();
+            List<Menu> menuList = new List<Menu>();
+            foreach (var item in groupedResult)
+            {
+                List<MenuItem> menuItems = new List<MenuItem>();
+                string icon = "";
+                foreach (var singleMenu in item)
+                {
+                    icon = singleMenu.MenuConfig.MenuCategory.Icon;
+                    menuItems.Add(new MenuItem
+                    {
+                        ControllerName = singleMenu.MenuConfig.ControllerName,
+                        ActionName = "Index",
+                        MenuName = singleMenu.MenuConfig.MenuName
+                    });
+
+                    if (singleMenu.IsViewPermitted)
+                    {
+                        if (!AuthorList.ContainsKey(singleMenu.MenuConfig.ControllerName.ToLower() + "_" + "index"))
+                        {
+                            AuthorList.Add(singleMenu.MenuConfig.ControllerName.ToLower() + "_" + "index", "");
+                        }
+
+                    }
+                    if (singleMenu.IsAddPermitted)
+                    {
+                        if (!AuthorList.ContainsKey(singleMenu.MenuConfig.ControllerName.ToLower() + "_" + "create"))
+                        {
+                            AuthorList.Add(singleMenu.MenuConfig.ControllerName.ToLower() + "_" + "create", "");
+                        }
+
+                    }
+                    if (singleMenu.IsEditPermitted)
+                    {
+                        if (!AuthorList.ContainsKey(singleMenu.MenuConfig.ControllerName.ToLower() + "_" + "edit"))
+                        {
+                            AuthorList.Add(singleMenu.MenuConfig.ControllerName.ToLower() + "_" + "edit", "");
+
+                        }
+
+                    }
+                    if (singleMenu.IsDeletePermitted)
+                    {
+                        if (!AuthorList.ContainsKey(singleMenu.MenuConfig.ControllerName.ToLower() + "_" + "delete"))
+                        {
+                            AuthorList.Add(singleMenu.MenuConfig.ControllerName.ToLower() + "_" + "delete", "");
+                        }
+                    }
+
+                }
+                menuList.Add(new Menu
+                {
+                    CategoryName = item.Key,
+                    Icon = icon,
+                    MenuList = menuItems,
+                });
+            }
+
+            Session["APL"] = AuthorList;
+
+            return menuList.ToList();
+        }
+        #endregion
 
     }
 }

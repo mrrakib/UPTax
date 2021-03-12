@@ -1,52 +1,58 @@
-﻿<div class="vertical-menu">
-    <div data-simplebar class="h-100">
-        <!--- Sidemenu -->
-        <div id="sidebar-menu">
-            <!-- Left Menu Start -->
-            <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">Menu</li>
+﻿@*@model List<Smart.Model.Models.MasterPanel.Menu>*@
+<style type="text/css">
+    .current-page > a {
+        font-size: 13px !important;
+        color: green !important;
+    }
+</style>
+<p id="divManueSeter">
 
-                <li>
-                    <a href="@Url.Action("Index","Dashboard")" class="waves-effect">
-                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div>
-                        <span>ড্যাশবোর্ড</span>
-                    </a>
-                </li>
+    @if (Session["htmlMenues"] != null)
+    {
+        @Html.Raw(Session["htmlMenues"].ToString());
+    }
+</p>
+<script>
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-anchor"></i></div>
-                        <span>এডমিন</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="@Url.Action("Index", "Roles")">রোল</a></li>
-                        <li><a href="@Url.Action("Index", "User")">ইউজার</a></li>
-                        <li><a href="@Url.Action("Index", "MenuCategory")">মেনু ক্যাটাগরি</a></li>
-                        <li><a href="@Url.Action("Index", "MenuConfig")">মেনু এন্ট্রি</a></li>
-                    </ul>
-                </li>
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-key-skeleton-alt"></i></div>
-                        <span>সেটিংস</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="@Url.Action("Index", "UnionParishad")">ইউনিয়ন পরিষদ</a></li>
-                        <li><a href="@Url.Action("Index", "WardInfo")">ওয়ার্ড তালিকা</a></li>
-                        <li><a href="@Url.Action("Index", "EducationInfo")">শিক্ষাগত যোগ্যতার তালিকা</a></li>
-                        <li><a href="@Url.Action("Index", "VillageInfo")">গ্রামের তালিকা</a></li>
-                        <li><a href="@Url.Action("Index", "ProfessionInfo")">পেশার তালিকা</a></li>
-                        <li><a href="@Url.Action("Index", "SocialBenefit")">সামাজিক সুবিধার তালিকা</a></li>
-                        <li><a href="@Url.Action("Index", "Infrastructure")">ঘরের পরিমাণ এন্ট্রি ফর্ম</a></li>
-                        <li><a href="@Url.Action("Index", "Institute")">কলেজ / অফিস তথ্য ফর্ম</a></li>
+    $(document).ready(function () {
+        @*if (document.getElementById("divMenues") == null) {
+            alert('empty');
+            $('#divManueSeter').html('<div style="padding:20px;padding-top:150px; color:#ffffff; font-weight:bold">Menu Loading...</div>');
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetMenuSessionReady", "Account")',
+                dataType: 'html',
+                data: {},
+                success: function (result) {
+                    $('#divManueSeter').html(result);
+                    SETMENUEINTOSESSION(result);
+                },
+                error: function (ex) {
+                    //alert('error');
+                }
+            });
+        }*@
 
-                    </ul>
-                </li>
+        //else { alert('not em');}
+    })
 
-            </ul>
+    
 
-        </div>
-        <!-- Sidebar -->
-    </div>
-</div>
+
+    $(document).ready(function () {
+
+
+    });
+
+    $(function () {
+        
+    });
+
+
+
+</script>
+
+
+
+

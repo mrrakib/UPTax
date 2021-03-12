@@ -12,7 +12,7 @@
     }
 </style>
 
-<div class="form-group">
+<div>
     <table class="table table-bordered" style="border-radius:5px;">
         <thead>
             <tr class="headings">
@@ -45,7 +45,7 @@
             {
                 <tr>
                     <th scope="row">@(i + 1)</th>
-                    <td style="font-weight:bold">@Html.DisplayFor(model => Model.MenuPermissionDetails[i].MenuName)@Html.HiddenFor(model => Model.MenuPermissionDetails[i].MenuName)</td>
+                    <td style="font-weight:bold">@Html.DisplayFor(model => Model.MenuPermissionDetails[i].MenuName)@Html.HiddenFor(model => Model.MenuPermissionDetails[i].MenuName)@Html.HiddenFor(model => Model.MenuPermissionDetails[i].MenuConfigId)</td>
                     <td class="txtAlign">@Html.CheckBoxFor(model => Model.MenuPermissionDetails[i].IsViewPermit, new { @class = "chkViewPermission" })</td>
                     <td class="txtAlign">@Html.CheckBoxFor(model => Model.MenuPermissionDetails[i].IsAddPermit, new { @class = "chkAddPermission" })</td>
                     <td class="txtAlign">@Html.CheckBoxFor(model => Model.MenuPermissionDetails[i].IsEditPermit, new { @class = "chkEditPermission" })</td>

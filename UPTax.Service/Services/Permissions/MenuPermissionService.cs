@@ -18,6 +18,7 @@ namespace UPTax.Service.Services
         MenuPermission GetDetails(int id);
         bool Save();
         List<MenuPermission> GetAllPermittedMenues(string roleId, int categoryId);
+        bool DeleteAllPermittedMenues(string roleId, int categoryId);
     }
     public class MenuPermissionService : IMenuPermissionService
     {
@@ -32,7 +33,7 @@ namespace UPTax.Service.Services
         public bool Add(MenuPermission model)
         {
             _menuPermissionRepository.Add(model);
-            return Save();
+            return true;
         }
 
         public bool Delete(int id)
@@ -76,6 +77,11 @@ namespace UPTax.Service.Services
         public List<MenuPermission> GetAllPermittedMenues(string roleId, int categoryId)
         {
             return _menuPermissionRepository.GetAllPermittedMenues(roleId, categoryId);
+        }
+
+        public bool DeleteAllPermittedMenues(string roleId, int categoryId)
+        {
+            return _menuPermissionRepository.DeleteAllPermittedMenues(roleId, categoryId);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model UPTax.Model.Models.MenuConfig
+﻿@model UPTax.Model.ViewModels.VMMenuPermission
 
 @{
     ViewBag.Title = "সংরক্ষণ";
@@ -27,12 +27,12 @@
                     <div class="card-body">
                         <h4 class="header-title">মেনু পারমিশন ফরম</h4>
                         <p class="card-title-desc"></p>
-                        @using (Html.BeginForm("Create", "MenuConfig", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("Index", "MenuPermission", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             <div class="row">
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.CategoryId)</label>
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.RoleId)</label>
 
                                     @Html.DropDownList("RoleId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlRoleId", @required = "required" })
                                     <div class="invalid-feedback">
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div id="partialPermission">
+                                <div id="partialPermission" class="col-md-12">
                                     <!-- partial permission view load here -->
                                 </div>
                             </div>
@@ -69,7 +69,36 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#ddlCategoryId").change(function () {
 
+                if ($("#ddlRoleId").val().length < 0 || $("#ddlRoleId").val().length == 0) {
+
+                    //var $select = $('#ddlCategoryId');
+                    //var control = $select[0].selectize;
+                    //control.clear();
+                    alert("Please select a role first!");
+                    
+
+                    return false;
+                }
+                if ($("#ddlCategoryId").val().length > 0) {
+                    $.ajax({
+                        type: 'Post',
+                        url: '@Url.Action("GetMenuesForPermission")',
+                        dataType: 'html',
+                        data: { roleId: $("#ddlRoleId").val(), categoryId: $("#ddlCategoryId").val() },
+                        success: function (result) {
+                            $('#partialPermission').empty();
+                            $('#partialPermission').html(result);
+                        },
+                        error: function (ex) {
+                            $('html, body').animate({ scrollTop: 0 }, 'fast');
+                        }
+                    });
+                }
+
+                return false;
+            });
         });
     </script>
 

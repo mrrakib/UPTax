@@ -12679,6 +12679,8 @@
     <Content Include="Views\MenuConfig\Index.cshtml" />
     <Content Include="Views\MenuPermission\Index.cshtml" />
     <Content Include="Views\MenuPermission\_partialPermission.cshtml" />
+    <Content Include="Views\Shared\_sideBarHtml.cshtml" />
+    <Content Include="Views\Shared\_sideBar - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

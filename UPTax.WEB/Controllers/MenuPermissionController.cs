@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
+using UPTax.Model.Models;
 using UPTax.Model.ViewModels;
 using UPTax.Service.Services;
 using UPTax.Service.Services.Permissions;
@@ -39,6 +40,45 @@ namespace UPTax.Controllers
             ViewBag.CategoryId = new SelectList(_menuCategoryService.GetMenuCategoryDDL(), "Id", "Name");
             return View();
         }
+
+        #region Post Index
+
+        [RapidAuthorization]
+        [HttpPost]
+        public ActionResult Index(VMMenuPermission vm)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    foreach (var item in vm.MenuPermissionDetails)
+                    {
+                        MenuPermission permission = new MenuPermission();
+                        permission.RoleId = vm.RoleId;
+                        permission.MenuConfigId = item.MenuConfigId;
+                        permission.IsViewPermitted = item.IsViewPermit;
+                        permission.IsAddPermitted = item.IsAddPermit;
+                        permission.IsEditPermitted = item.IsEditPermit;
+                        permission.IsDeletePermitted = item.IsDeletePermit;
+                        _menuPermissionService.Add(permission);
+                    }
+                    if (_menuPermissionService.DeleteAllPermittedMenues(vm.RoleId, vm.CategoryId))
+                    {
+                        _menuPermissionService.Save();
+                        _message.save(this);
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _message.custom(this, ex.Message.ToString());
+                }
+            }
+            ViewBag.RoleId = new SelectList(_roleService.GetAll(), "Id", "Name", vm.RoleId);
+            ViewBag.CategoryId = new SelectList(_menuCategoryService.GetMenuCategoryDDL(), "Id", "Name", vm.CategoryId);
+            return View(vm);
+        }
+        #endregion
 
         public ActionResult GetMenuesForPermission(string roleId, int categoryId)
         {

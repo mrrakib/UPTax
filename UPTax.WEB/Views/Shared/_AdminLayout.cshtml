@@ -17,11 +17,10 @@
 
     <!-- Begin page -->
     <div id="layout-wrapper">
-
+        @Html.Partial("_sideBar")
         @Html.Partial("_topBar")
 
         <!-- ========== Left Sidebar Start ========== -->
-        @Html.Partial("_sideBar")
         <!-- Left Sidebar End -->
         <!-- ============================================================== -->
         <!-- Start right Content here -->
@@ -70,6 +69,54 @@
                     alertify.error('বাতিল হয়েছে!');
                 }).set('labels', { ok: 'সঠিক', cancel: 'বাতিল' });
             });
+
+
+
+            if (document.getElementById("divmenues") == null) {
+
+                $('#divManueSeter').html('<div style="padding:20px;padding-top:150px; color:#ffffff; font-weight:bold">Menu Loading...</div>');
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetMenuSessionReady", "Account")',
+                    dataType: 'html',
+                    data: {},
+                    success: function (result) {
+                        $('#divManueSeter').html(result);
+                        SETMENUEINTOSESSION(result);
+                    },
+                    error: function (ex) {
+
+                    }
+                });
+            }
+
+
+            function SETMENUEINTOSESSION(resulthtml) {
+
+                var menuList = JSON.stringify({ 'menu': resulthtml });
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetMenuSessionReady", "Account")',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: menuList,
+                    success: function (result) {
+                        debugger;
+                        if (result.success) {
+                            // alert(result.responseText);
+                            location.reload();
+                        } else {
+
+                            //alert(result.responseText);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(" xhr.responseText: " + xhr.responseText + " //status: " + status + " //Error: " + error);
+                        alert(" xhr.responseText: " + xhr.responseText + " //status: " + status + " //Error: " + error);
+                    }
+                });
+            }
+
         });
 
 
@@ -140,6 +187,7 @@
             $('textarea.bangla, input.bangla[type=text]').avro();
 
         });
+
 </script>
 </body>
 </html>
