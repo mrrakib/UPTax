@@ -38,8 +38,6 @@ namespace UPTax.Controllers
         [RapidAuthorization]
         public ActionResult Create()
         {
-            //ViewBag.Unions = _unionParishadService.GetAllForDropdown();
-            ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name");
             return View();
         }
 
@@ -48,12 +46,12 @@ namespace UPTax.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(VillageInfo model)
         {
+            model.UnionId = _unionId;
             if (ModelState.IsValid)
             {
                 var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName, null);
                 if (isExistingItem)
                 {
-                    ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name", model.UnionId);
                     _message.custom(this, "এই নামে একটি গ্রাম আছে!");
                     return View(model);
                 }
@@ -75,8 +73,6 @@ namespace UPTax.Controllers
             {
                 return PartialView("_Error");
             }
-            //ViewBag.Unions = _unionParishadService.GetAllForDropdown();
-            ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name", model.UnionId);
             return View(model);
         }
 
@@ -91,8 +87,6 @@ namespace UPTax.Controllers
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি গ্রাম আছে!");
-                    //ViewBag.Unions = _unionParishadService.GetAllForDropdown();
-                    ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name", model.UnionId);
                     return View(model);
                 }
                 model.UpdatedBy = _userId;
