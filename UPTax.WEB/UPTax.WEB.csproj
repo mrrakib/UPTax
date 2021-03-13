@@ -179,6 +179,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HouseOwnerController.cs" />
     <Compile Include="Controllers\InfrastructureController.cs" />
     <Compile Include="Controllers\InstituteController.cs" />
     <Compile Include="Controllers\MenuConfigController.cs" />
@@ -12709,6 +12710,7 @@
     <Folder Include="Content\assets\libs\spectrum-colorpicker\docs\" />
     <Folder Include="Content\assets\libs\spectrum-colorpicker\example\" />
     <Folder Include="Content\assets\libs\spectrum-colorpicker\test\" />
+    <Folder Include="Views\HouseOwner\" />
     <Folder Include="Views\Shared\Admin\" />
   </ItemGroup>
   <ItemGroup>
