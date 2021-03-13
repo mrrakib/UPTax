@@ -5,6 +5,7 @@ using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository.UPDetails;
 using UPTax.Model.Models.UnionDetails;
+using UPTax.Model.ViewModels;
 
 namespace UPTax.Service.Services.UPDetails
 {
@@ -18,6 +19,7 @@ namespace UPTax.Service.Services.UPDetails
         bool Delete(int id);
         IPagedList GetPagedList(string wardNo, int unionId, int pageNo, int pageSize);
         bool IsExistingWard(string wardNo, int unionId, int? wardId);
+        List<IdNameDropdown> GetDropdownItemList(int unionId);
     }
     public class WardInfoService : IWardInfoService
     {
@@ -104,5 +106,15 @@ namespace UPTax.Service.Services.UPDetails
 
             return _wardInfoRepository.GetCount(a => a.WardNo.Equals(wardNo) && a.UnionId == unionId && a.IsDeleted == false && a.Id != wardId) > 0 ? true : false;
         }
+
+        public List<IdNameDropdown> GetDropdownItemList(int unionId)
+        {
+            return _wardInfoRepository.GetMany(w => w.IsDeleted == false && w.UnionId == unionId).Select(u => new IdNameDropdown
+            {
+                Id = u.Id,
+                Name = u.WardNo
+            }).ToList();
+        }
+
     }
 }
