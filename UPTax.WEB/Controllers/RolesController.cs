@@ -31,6 +31,7 @@ namespace UPTax.Controllers
         }
 
         #region Create
+        [RapidAuthorization]
         [HttpGet]
         public ActionResult Create()
         {

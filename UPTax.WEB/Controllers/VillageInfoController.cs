@@ -23,7 +23,7 @@ namespace UPTax.Controllers
         }
 
         // GET: VillageInfo
-        [RapidAuthorization(All = true)]
+        [RapidAuthorization]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
             ViewBag.dataSize = dataSize;
@@ -35,6 +35,7 @@ namespace UPTax.Controllers
         }
 
         [HttpGet]
+        [RapidAuthorization]
         public ActionResult Create()
         {
             //ViewBag.Unions = _unionParishadService.GetAllForDropdown();

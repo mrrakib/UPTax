@@ -10,6 +10,11 @@ namespace UPTax.Data
 {
     public class AdminContext : IdentityDbContext<ApplicationUser>
     {
+        public AdminContext(string con)
+            : base((con))
+        {
+            this.Database.CommandTimeout = 180;
+        }
         public AdminContext() : base("Admin_Context")
         {
             //this.Configuration.LazyLoadingEnabled = true;

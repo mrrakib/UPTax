@@ -20,7 +20,7 @@ namespace UPTax.Controllers
         }
 
         // GET: WardInfo
-        [RapidAuthorization(All = true)]
+        [RapidAuthorization]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
             ViewBag.dataSize = dataSize;
@@ -32,6 +32,7 @@ namespace UPTax.Controllers
         }
 
         [HttpGet]
+        [RapidAuthorization]
         public ActionResult Create()
         {
             return View();

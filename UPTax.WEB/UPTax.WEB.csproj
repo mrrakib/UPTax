@@ -12682,6 +12682,7 @@
     <Content Include="Views\MenuPermission\_partialPermission.cshtml" />
     <Content Include="Views\Shared\_sideBarHtml.cshtml" />
     <Content Include="Views\Shared\_sideBar - Copy.cshtml" />
+    <Content Include="Views\Account\UnAuthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

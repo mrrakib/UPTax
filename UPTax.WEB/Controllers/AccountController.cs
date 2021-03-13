@@ -78,7 +78,7 @@ namespace UPTax.Controllers
             _userManager = new UserManager<ApplicationUser>(this._store);
             var user = _userManager.Find(model.UserName, model.Password);
 
-            string contextNamedb = "Rapid" + "_Context";
+            string contextNamedb = "Admin" + "_Context";
             RapidSession.Con = contextNamedb;
 
             if (user != null)
@@ -222,6 +222,14 @@ namespace UPTax.Controllers
             Session["APL"] = AuthorList;
 
             return menuList.ToList();
+        }
+        #endregion
+
+        #region Unauthorized request view
+        [AllowAnonymous]
+        public ActionResult UnAuthorized()
+        {
+            return View();
         }
         #endregion
 
