@@ -13,7 +13,7 @@ namespace UPTax.Service.Services
         bool Add(HouseOwner model);
         bool Update(HouseOwner model);
         bool Delete(int id);
-        IPagedList GetPagedList(string degree, int pageNo, int pageSize);
+        IPagedList GetPagedList(string holdingNo, int pageNo, int pageSize);
         IEnumerable<HouseOwner> GetAll();
         HouseOwner GetDetails(int id);
         bool IsExistingItem(string holdingNo, int? id);
@@ -58,18 +58,18 @@ namespace UPTax.Service.Services
             return _HouseOwnerRepository.Get(u => u.Id == id && u.IsDeleted == false);
         }
 
-        public IPagedList GetPagedList(string keyName, int pageNo, int pageSize)
+        public IPagedList GetPagedList(string holdingNo, int pageNo, int pageSize)
         {
             try
             {
                 string searchPrm = string.Empty;
-                if (!string.IsNullOrWhiteSpace(keyName))
+                if (!string.IsNullOrWhiteSpace(holdingNo))
                 {
-                    searchPrm += string.Format(@" WHERE NameOfInstitute LIKE N'%{0}%'", keyName.Trim());
+                    searchPrm += string.Format(@" WHERE HoldingNo LIKE N'%{0}%'", holdingNo.Trim());
                 }
-                string query = string.Format(@"SELECT * FROM HouseOwner {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
+                string query = string.Format(@"SELECT * FROM HouseOwners {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
-                string countQuery = string.Format(@"SELECT COUNT(*) FROM HouseOwner WHERE NameOfInstitute LIKE N'%{0}%'", keyName?.Trim());
+                string countQuery = string.Format(@"SELECT COUNT(*) FROM HouseOwners WHERE HoldingNo LIKE N'%{0}%'", holdingNo?.Trim());
 
                 int rowCount = _HouseOwnerRepository.SQLQuery<int>(countQuery);
                 List<HouseOwner> educations = _HouseOwnerRepository.SQLQueryList<HouseOwner>(query).Where(a => a.IsDeleted == false).ToList();
