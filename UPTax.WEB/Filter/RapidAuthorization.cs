@@ -99,7 +99,7 @@ namespace UPTax.Filter
         private bool IsPermitted(string controllerName, string actionName)
         {
 
-            if (HttpContext.Current.Session["ACL"] == null)
+            if (HttpContext.Current.Session["APL"] == null)
             {
                 AdminContext db = new AdminContext(RapidSession.Con);
                 int tag = 0;
@@ -139,7 +139,7 @@ namespace UPTax.Filter
                 }
 
             }
-            var AuthorList = (Dictionary<string, string>)HttpContext.Current.Session["ACL"];
+            var AuthorList = (Dictionary<string, string>)HttpContext.Current.Session["APL"];
             if (AuthorList.ContainsKey(controllerName.ToLower() + "_" + actionName.ToLower()))
             {
                 return true;

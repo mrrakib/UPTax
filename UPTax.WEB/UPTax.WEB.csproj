@@ -12682,6 +12682,7 @@
     <Content Include="Views\Shared\_sideBarHtml.cshtml" />
     <Content Include="Views\Shared\_sideBar - Copy.cshtml" />
     <Content Include="Views\Account\UnAuthorized.cshtml" />
+    <Content Include="Views\Account\SelectUnion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
