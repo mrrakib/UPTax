@@ -12684,6 +12684,9 @@
     <Content Include="Views\Shared\_sideBar - Copy.cshtml" />
     <Content Include="Views\Account\UnAuthorized.cshtml" />
     <Content Include="Views\Account\SelectUnion.cshtml" />
+    <Content Include="Views\HouseOwner\Create.cshtml" />
+    <Content Include="Views\HouseOwner\Edit.cshtml" />
+    <Content Include="Views\HouseOwner\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -12712,7 +12715,6 @@
     <Folder Include="Content\assets\libs\spectrum-colorpicker\docs\" />
     <Folder Include="Content\assets\libs\spectrum-colorpicker\example\" />
     <Folder Include="Content\assets\libs\spectrum-colorpicker\test\" />
-    <Folder Include="Views\HouseOwner\" />
     <Folder Include="Views\Shared\Admin\" />
   </ItemGroup>
   <ItemGroup>

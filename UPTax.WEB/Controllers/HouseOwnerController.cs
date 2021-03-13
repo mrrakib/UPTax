@@ -85,7 +85,7 @@ namespace UPTax.Controllers
                 ViewBag.SocialBenefitBeforeId = socialBenifits;
                 ViewBag.SocialBenefitEligibleId = socialBenifits;
                 ViewBag.SocialBenefitRunningId = socialBenifits;
-                _message.custom(this, "এই নামে একটি সামাজিক সুযোগ-সুবিধা আছে!");
+                _message.custom(this, "এই হোল্ডিং নাম্বার আছে!");
                 return View(model);
             }
             return View(model);
@@ -134,7 +134,7 @@ namespace UPTax.Controllers
                     ViewBag.SocialBenefitBeforeId = socialBenifits;
                     ViewBag.SocialBenefitEligibleId = socialBenifits;
                     ViewBag.SocialBenefitRunningId = socialBenifits;
-                    _message.custom(this, "এই নামে একটি সামাজিক সুযোগ-সুবিধা আছে!");
+                    _message.custom(this, "এই হোল্ডিং নাম্বার আছে!");
                     return View(model);
                 }
                 model.UpdatedBy = _userId;
@@ -159,5 +159,6 @@ namespace UPTax.Controllers
             return PartialView("_Error");
         }
         #endregion
+
     }
 }
