@@ -16,6 +16,7 @@ namespace UPTax.Model.Models
         public double YearlyIncome { get; set; }
         [DisplayName("ওয়ার্ড নাম্বার")]
         public int WardInfoId { get; set; }
+        [ForeignKey("WardInfoId")]
         public virtual WardInfo WardInfo { get; set; }
         [DisplayName("গ্রাম")]
         public int VillageInfoId { get; set; }

@@ -45,9 +45,11 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.UnionId = _unionId;
                 model.WardNo = model.WardNo.Trim();
-                var isExistingWard = _wardInfoService.IsExistingWard(model.WardNo, model.UnionId, wardId: null);
                 model.CreatedBy = _userId;
+
+                var isExistingWard = _wardInfoService.IsExistingWard(model.WardNo, model.UnionId, wardId: null);
                 if (!isExistingWard && _wardInfoService.Add(model))
                 {
                     _message.save(this);

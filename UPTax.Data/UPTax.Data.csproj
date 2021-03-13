@@ -148,6 +148,14 @@
     <Compile Include="Migrations\202103100604130_MenuActive_status.Designer.cs">
       <DependentUpon>202103100604130_MenuActive_status.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103130645218_InitialHouseOwner.cs" />
+    <Compile Include="Migrations\202103130645218_InitialHouseOwner.Designer.cs">
+      <DependentUpon>202103130645218_InitialHouseOwner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103130648558_InitialHouseOwnerWardInfoId.cs" />
+    <Compile Include="Migrations\202103130648558_InitialHouseOwnerWardInfoId.Designer.cs">
+      <DependentUpon>202103130648558_InitialHouseOwnerWardInfoId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
@@ -220,6 +228,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103100604130_MenuActive_status.resx">
       <DependentUpon>202103100604130_MenuActive_status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103130645218_InitialHouseOwner.resx">
+      <DependentUpon>202103130645218_InitialHouseOwner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103130648558_InitialHouseOwnerWardInfoId.resx">
+      <DependentUpon>202103130648558_InitialHouseOwnerWardInfoId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
