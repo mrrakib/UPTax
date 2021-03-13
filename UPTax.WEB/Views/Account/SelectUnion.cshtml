@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "SelectUnion";
+    Layout = "~/Views/Shared/_AdminLogin.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-xl-5 col-sm-8">
+        <div class="card">
+            <div class="card-body p-4">
+                <div class="p-2">
+                    <h5 class="mb-5 text-center">ইউনিয়ন পরিষদ নির্বাচন করুন</h5>
+                    @using (Html.BeginForm("SelectUnion", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", @autocomplete = "off" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div style="color:red; font-weight:bold">
+                            @Html.Raw(Html.ValidationSummary(false).ToHtmlString())
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-12 mb-3">
+                                    <label for="validationCustom03">ইউনিয়ন<span style="color: red">*</span> </label>
+                                    @Html.DropDownList("UnionId", null, "--নির্বাচন করুন--", new { @class = "form-control ddlErrorMsg validationCustom03", @id = "ddlUnionId", @required = "required" })
+
+                                    <div class="invalid-feedback">
+                                        ইউনিয়ন দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <button class="btn btn-success btn-block waves-effect waves-light" type="submit">প্রবেশ করুন</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

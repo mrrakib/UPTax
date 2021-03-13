@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using UPTax.Filter;
+using UPTax.Service.Services.UPDetails;
 
 namespace UPTax.Controllers
 {
@@ -91,8 +92,18 @@ namespace UPTax.Controllers
                 RapidSession.RoleId = userRole.RoleId;
                 RapidSession.RoleName = userRole.Name;
                 RapidSession.UserId = user.Id;
-                RapidSession.UnionId = 1;
                 RapidSession.UserFullName = user.FullName;
+                if (RapidSession.RoleName.Equals("Super Admin"))
+                {
+                    if (db.UnionParishads.Count() > 0)
+                    {
+                        return RedirectToAction("SelectUnion");
+                    }
+                }
+                else
+                {
+                    RapidSession.UnionId = user.UnionId ?? 0;
+                }
                 return RedirectToAction("Index", "Dashboard");
                 //return RedirectToRoute("Home", new { controller = "Home", action = "Index" });
             }
@@ -229,6 +240,32 @@ namespace UPTax.Controllers
         [AllowAnonymous]
         public ActionResult UnAuthorized()
         {
+            return View();
+        }
+        #endregion
+
+        #region Union selection for super admim
+        [RapidAuthorization(All = true)]
+        public ActionResult SelectUnion()
+        {
+            AdminContext db = new AdminContext();
+            ViewBag.UnionId = new SelectList(db.UnionParishads, "Id", "Name");
+            return View();
+        }
+
+        [HttpPost]
+        [RapidAuthorization(All = true)]
+        public ActionResult SelectUnion(int UnionId)
+        {
+            AdminContext db = new AdminContext();
+            ViewBag.UnionId = new SelectList(db.UnionParishads, "Id", "Name", UnionId);
+
+            if (UnionId > 0)
+            {
+                RapidSession.UnionId = UnionId;
+                return RedirectToAction("Index", "Dashboard");
+            }
+
             return View();
         }
         #endregion
