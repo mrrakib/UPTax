@@ -151,11 +151,14 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
+    <Compile Include="Repository\HouseOwnerRepository.cs" />
     <Compile Include="Repository\InfrastructureInfoRepository.cs" />
     <Compile Include="Repository\InstituteInfoRepository.cs" />
     <Compile Include="Repository\Permissions\MenuPermissionRepository.cs" />
     <Compile Include="Repository\Permissions\MenuConfigRepository.cs" />
     <Compile Include="Repository\Permissions\MenuCategoryRepository.cs" />
+    <Compile Include="Repository\GenderRepository.cs" />
+    <Compile Include="Repository\ReligionRepository.cs" />
     <Compile Include="Repository\VillageInfoRepository.cs" />
     <Compile Include="Repository\ProfessionInfoRepository.cs" />
     <Compile Include="Repository\SocialBenefitRepository.cs" />

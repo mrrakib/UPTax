@@ -90,6 +90,8 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Models\Account\ApplicationUser.cs" />
+    <Compile Include="Models\Gender.cs" />
+    <Compile Include="Models\HouseOwner.cs" />
     <Compile Include="Models\InfrastructureInfo.cs" />
     <Compile Include="Models\EducationInfo.cs" />
     <Compile Include="Models\InstituteInfo.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="Models\MenuConfig.cs" />
     <Compile Include="Models\MenuPermission.cs" />
     <Compile Include="Models\ProfessionInfo.cs" />
+    <Compile Include="Models\Religion.cs" />
     <Compile Include="Models\SocialBenefit.cs" />
     <Compile Include="Models\UnionDetails\UnionParishad.cs" />
     <Compile Include="Models\UnionDetails\CompanySocialProfile.cs" />

@@ -85,6 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Autofac\UserService.cs" />
     <Compile Include="Services\InfrastructureInfoService.cs" />
+    <Compile Include="Services\HouseOwnerService.cs" />
     <Compile Include="Services\InstituteInfoService.cs" />
     <Compile Include="Services\Permissions\MenuPermissionService.cs" />
     <Compile Include="Services\Permissions\MenuConfigService.cs" />

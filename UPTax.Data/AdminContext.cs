@@ -32,6 +32,9 @@ namespace UPTax.Data
         public DbSet<MenuCategory> MenuCategories { get; set; }
         public DbSet<MenuConfig> MenuConfigs { get; set; }
         public DbSet<MenuPermission> MenuPermissions { get; set; }
+        public DbSet<Gender> Genders { get; set; }
+        public DbSet<Religion> Religions { get; set; }
+        public DbSet<HouseOwner> HouseOwners { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
