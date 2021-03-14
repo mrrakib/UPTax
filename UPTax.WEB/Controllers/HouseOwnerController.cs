@@ -31,6 +31,7 @@ namespace UPTax.Controllers
             _socialBenefitService = socialBenefitService;
             _infrastructureInfoService = infrastructureInfoService;
         }
+
         // GET: HouseOwner
         [RapidAuthorization]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
