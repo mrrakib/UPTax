@@ -62,10 +62,8 @@ namespace UPTax.Controllers
         public ActionResult Create()
         {
             ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
-            ViewBag.VillageInfoId = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name");
             ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name");
             ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name");
-
 
             var socialBenifits = new SelectList(_socialBenefitService.GetDropdownItemList(), "Id", "Name");
             ViewBag.SocialBenefitBeforeId = socialBenifits;
@@ -75,8 +73,6 @@ namespace UPTax.Controllers
             ViewBag.Genders = _genderService.GetAll();
             ViewBag.Religions = _religionService.GetAll();
 
-
-
             return View();
         }
 
@@ -85,7 +81,9 @@ namespace UPTax.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(HouseOwner model)
         {
-            if (ModelState.IsValid)
+            model.DateOfBirth = DateTime.SpecifyKind(model.DateOfBirth, DateTimeKind.Utc);
+
+            if (!ModelState.IsValid)
             {
                 var isExistingItem = _houseOwnerService.IsExistingItem(model.HoldingNo, null);
                 model.CreatedBy = _userId;
@@ -95,15 +93,16 @@ namespace UPTax.Controllers
                     return RedirectToAction("Index");
                 }
                 ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
-                ViewBag.VillageInfoId = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name");
                 ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name");
                 ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name");
-
 
                 var socialBenifits = new SelectList(_socialBenefitService.GetDropdownItemList(), "Id", "Name");
                 ViewBag.SocialBenefitBeforeId = socialBenifits;
                 ViewBag.SocialBenefitEligibleId = socialBenifits;
                 ViewBag.SocialBenefitRunningId = socialBenifits;
+
+                ViewBag.Genders = _genderService.GetAll();
+                ViewBag.Religions = _religionService.GetAll();
                 _message.custom(this, "এই হোল্ডিং নাম্বার আছে!");
                 return View(model);
             }
@@ -121,7 +120,7 @@ namespace UPTax.Controllers
                 return PartialView("_Error");
             }
             ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
-            ViewBag.VillageInfoId = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name");
+
             ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name");
             ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name");
 
@@ -144,7 +143,7 @@ namespace UPTax.Controllers
                 if (isExistingItem)
                 {
                     ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
-                    ViewBag.VillageInfoId = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name");
+
                     ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name");
                     ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name");
 

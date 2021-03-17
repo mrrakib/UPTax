@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
@@ -120,7 +121,7 @@ namespace UPTax.Controllers
 
         public ActionResult GetVillage(int wardId = 0)
         {
-            var model = _VillageInfoService.GetByWardId(wardId);
+            var model = _VillageInfoService.GetByWardId(wardId).ToList().Select(a => new { Id = a.Id, Name = a.VillageName });
 
             return Json(model, JsonRequestBehavior.AllowGet);
         }

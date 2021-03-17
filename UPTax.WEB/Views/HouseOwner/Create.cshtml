@@ -47,21 +47,23 @@
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.HoldingNo) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.HoldingNo, new { @id = "validationCustom03", @class = "form-control required", @placeholder = "হোল্ডিং নং", @maxLength = "250", @required = "required" })
+                                    @Html.TextBoxFor(m => m.HoldingNo, new { @id = "validationCustom03", @class = "form-control", @placeholder = "হোল্ডিং নং", @maxLength = "250", @required = "required" })
                                     <div class="invalid-feedback">
                                         হোল্ডিং নং দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.WardInfoId) <span class="required">*</span></label>
-                                    @Html.DropDownList("WardInfoId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @required = "required" })
+                                    @Html.DropDownList("WardInfoId", null, String.Empty, new { @class = "selectize validationCustom03" })
                                     <div class="invalid-feedback">
                                         ওয়ার্ড দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="VillageInfoId">@Html.DisplayNameFor(model => model.VillageInfoId) <span class="required">*</span></label>
-                                    @Html.DropDownListFor(a => a.VillageInfoId, null, "--Select--", new { @class = "selectize ddlErrorMsg validationCustom03", @required = "required" })
+                                    <select name="VillageInfoId" id="VillageInfoId" class="form-control validationCustom03" required>
+                                        <option value="">Select...</option>
+                                    </select>
                                     <div class="invalid-feedback">
                                         গ্রাম দেয়া বাধ্যতামূলক!
                                     </div>
@@ -69,7 +71,7 @@
 
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.OwnerNameInBangla) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.OwnerNameInBangla, new { @id = "validationCustom03", @class = "form-control bangla required", @placeholder = "নাম (বাংলা)", @maxLength = "250", @required = "required" })
+                                    @Html.TextBoxFor(m => m.OwnerNameInBangla, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "নাম (বাংলা)", @maxLength = "250", @required = "required" })
                                     <div class="invalid-feedback">
                                         খানা প্রধানের নাম দেয়া বাধ্যতামূলক!
                                     </div>
@@ -77,7 +79,7 @@
 
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.OwnerNameInEnglish) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.OwnerNameInEnglish, new { @id = "validationCustom03", @class = "form-control required", @placeholder = "নাম (ইংরেজিতে)", @maxLength = "250", @required = "required" })
+                                    @Html.TextBoxFor(m => m.OwnerNameInEnglish, new { @id = "validationCustom03", @class = "form-control", @placeholder = "নাম (ইংরেজিতে)", @maxLength = "250", @required = "required" })
                                     <div class="invalid-feedback">
                                         নাম (ইংরেজিতে) দেয়া বাধ্যতামূলক!
                                     </div>
@@ -86,14 +88,14 @@
 
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.YearlyIncome) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.YearlyIncome, new { @id = "validationCustom03", @class = "form-control bangla required", type = "number", @placeholder = "বাৎসরিক গড় আয়", @required = "required" })
+                                    @Html.TextBoxFor(m => m.YearlyIncome, new { @id = "validationCustom03", @class = "form-control bangla", type = "number", @placeholder = "বাৎসরিক গড় আয়", @required = "required" })
                                     <div class="invalid-feedback">
                                         বাৎসরিক গড় আয় দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.MobileNo) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.MobileNo, new { @id = "validationCustom03", @class = "form-control bangla required", type = "number", @placeholder = "মোবাইল নাম্বার", @required = "required" })
+                                    @Html.TextBoxFor(m => m.MobileNo, new { @id = "validationCustom03", @class = "form-control bangla", type = "number", @placeholder = "মোবাইল নাম্বার", @required = "required" })
                                     <div class="invalid-feedback">
                                         মোবাইল নাম্বার দেয়া বাধ্যতামূলক!
                                     </div>
@@ -133,7 +135,7 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.DateOfBirth) <span class="required">*</span></label>
 
-                                    <input type="text" id="validationCustom03" name="DateOfBirth" class="form-control datepicker-here required" data-range="false" data-multiple-dates-separator=" - " data-language="en" placeholder="জন্ম তারিখ" , required="required" />
+                                    <input type="text" id="validationCustom03" name="DateOfBirth" class="form-control datepicker-here" data-range="false" data-language="en" placeholder="জন্ম তারিখ", required="required" />
                                     <div class="invalid-feedback">
                                         জন্ম তারিখ দেয়া বাধ্যতামূলক!
                                     </div>
@@ -148,7 +150,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.NIDNumber) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.NIDNumber, new { @id = "validationCustom03", @class = "form-control required", type = "number", @placeholder = "এনআইডি নাম্বার", @required = "required" })
+                                    @Html.TextBoxFor(m => m.NIDNumber, new { @id = "validationCustom03", @class = "form-control", type = "number", @placeholder = "এনআইডি নাম্বার", @required = "required" })
                                     <div class="invalid-feedback">
                                         এনআইডি নাম্বার দেয়া বাধ্যতামূলক!
                                     </div>
@@ -344,6 +346,8 @@
 
             function GetVillageDropdown() {
                 var wardId = $("#WardInfoId").val();
+                $("#VillageInfoId").empty();
+                $('#VillageInfoId').append(new Option('Select...', ''));
                 debugger;
 
                   $.ajax({
@@ -352,11 +356,12 @@
                         type: "GET",
                         cache: false,
                         data: { wardId},
-                        success: function (data) {
-                              debugger;
-                              $.each(data, function (i, item) {
-                                  $('#VillageInfoId').append(new Option(item.VillageName, item.Id));
-                              });
+                      success: function (data) {
+
+                            debugger;
+                            data.forEach(function (item) {
+                                $('#VillageInfoId').append(new Option(item.Name, item.Id));
+                            });
                         },
                         error: function (xhr) {
                             alert(xhr.responseText);

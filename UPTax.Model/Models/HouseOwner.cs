@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using UPTax.Model.Models.UnionDetails;
 
@@ -43,6 +44,8 @@ namespace UPTax.Model.Models
         public string MotherName { get; set; }
 
         [DisplayName("জন্ম তারিখ")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:d MMM, yyyy}")]
         public DateTime DateOfBirth { get; set; }
 
         [DisplayName("জন্ম নিবন্ধন নাম্বার")]
