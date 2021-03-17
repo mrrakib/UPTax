@@ -8,6 +8,12 @@ namespace UPTax.Model.Models
     [Table("HouseOwners")]
     public class HouseOwner : BaseEntity<int>
     {
+        public HouseOwner()
+        {
+            TotalBuildingHouse = 0;
+            TotalSemiBuildingHouse = 0;
+            TotalRawHouse = 0;
+        }
         [DisplayName("নাম (ইংরেজিতে)")]
         public string OwnerNameInEnglish { get; set; }
         [DisplayName("খানা প্রধানের নাম")]
