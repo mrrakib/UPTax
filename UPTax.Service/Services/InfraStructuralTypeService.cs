@@ -14,7 +14,7 @@ namespace UPTax.Service.Services
         bool Add(InfraStructuralType model);
         bool Update(InfraStructuralType model);
         bool Delete(int id);
-        IPagedList GetPagedList(string keyName, int unionId, int pageNo, int pageSize);
+        IPagedList GetPagedList(string keyName, int pageNo, int pageSize);
         IEnumerable<InfraStructuralType> GetAll();
         InfraStructuralType GetDetails(int id);
         bool IsExistingItem(string keyName, int? id);
@@ -59,7 +59,7 @@ namespace UPTax.Service.Services
             return _infraStructuralTypeRepository.Get(u => u.Id == id && u.IsDeleted == false);
         }
 
-        public IPagedList GetPagedList(string keyName, int unionId, int pageNo, int pageSize)
+        public IPagedList GetPagedList(string keyName, int pageNo, int pageSize)
         {
             try
             {
@@ -72,18 +72,18 @@ namespace UPTax.Service.Services
                 {
                     searchPrm += string.Format(@" WHERE IsDeleted = 0");
                 }
-                string query = string.Format(@"SELECT * FROM InfraStructuralType WHERE UnionId = 1 {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
+                string query = string.Format(@"SELECT * FROM InfraStructuralType {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
-                string countQuery = string.Format(@"SELECT COUNT(Id) FROM VillageInfo WHERE VillageName LIKE N'%{0}%'", keyName?.Trim());
+                string countQuery = string.Format(@"SELECT COUNT(Id) FROM InfraStructuralType {0}", searchPrm);
 
                 int rowCount = _infraStructuralTypeRepository.SQLQuery<int>(countQuery);
-                List<VVillageInfo> villages = _infraStructuralTypeRepository.SQLQueryList<VVillageInfo>(query).ToList();
-                return new StaticPagedList<VVillageInfo>(villages, pageNo, pageSize, rowCount);
+                List<InfraStructuralType> list = _infraStructuralTypeRepository.SQLQueryList<InfraStructuralType>(query).ToList();
+                return new StaticPagedList<InfraStructuralType>(list, pageNo, pageSize, rowCount);
             }
             catch (Exception ex)
             {
                 var errorMessage = ex.Message;
-                return new StaticPagedList<VVillageInfo>(new List<VVillageInfo> { }, pageNo, pageSize, 0);
+                return new StaticPagedList<InfraStructuralType>(new List<InfraStructuralType> { }, pageNo, pageSize, 0);
             }
         }
 
