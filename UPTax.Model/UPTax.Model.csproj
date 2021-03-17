@@ -92,6 +92,7 @@
     <Compile Include="Models\Account\ApplicationUser.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\HouseOwner.cs" />
+    <Compile Include="Models\InfraStructuralType.cs" />
     <Compile Include="Models\InfrastructureInfo.cs" />
     <Compile Include="Models\EducationInfo.cs" />
     <Compile Include="Models\InstituteInfo.cs" />
