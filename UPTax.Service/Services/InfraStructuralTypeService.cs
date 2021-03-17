@@ -14,7 +14,7 @@ namespace UPTax.Service.Services
         bool Add(InfraStructuralType model);
         bool Update(InfraStructuralType model);
         bool Delete(int id);
-        IPagedList GetPagedList(string keyName, int unionId, int pageNo, int pageSize);
+        IPagedList GetPagedList(string keyName, int pageNo, int pageSize);
         IEnumerable<InfraStructuralType> GetAll();
         InfraStructuralType GetDetails(int id);
         bool IsExistingItem(string keyName, int? id);
@@ -59,18 +59,18 @@ namespace UPTax.Service.Services
             return _infraStructuralTypeRepository.Get(u => u.Id == id && u.IsDeleted == false);
         }
 
-        public IPagedList GetPagedList(string keyName, int unionId, int pageNo, int pageSize)
+        public IPagedList GetPagedList(string keyName, int pageNo, int pageSize)
         {
             try
             {
                 string searchPrm = string.Empty;
                 if (!string.IsNullOrWhiteSpace(keyName))
                 {
-                    searchPrm += string.Format(@" WHERE TypeName LIKE N'%{0}%' AND UnionId = {1} AND IsDeleted = 0", keyName.Trim(), unionId);
+                    searchPrm += string.Format(@" WHERE TypeName LIKE N'%{0}%' AND IsDeleted = 0", keyName.Trim());
                 }
                 else
                 {
-                    searchPrm += string.Format(@" WHERE UnionId = {0} AND IsDeleted = 0", unionId);
+                    searchPrm += string.Format(@" WHERE IsDeleted = 0");
                 }
                 string query = string.Format(@"SELECT * FROM InfraStructuralType {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 

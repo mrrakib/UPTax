@@ -32,7 +32,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name;
 
-            var unionList = _infraStructuralTypeService.GetPagedList(name, _unionId, page, dataSize);
+            var unionList = _infraStructuralTypeService.GetPagedList(name, page, dataSize);
             return View(unionList);
         }
 
@@ -59,7 +59,6 @@ namespace UPTax.Controllers
                     return View(model);
                 }
                 model.TypeName = model.TypeName.Trim();
-                model.UnionId = _unionId;
                 if (_infraStructuralTypeService.Add(model))
                 {
                     _message.save(this);

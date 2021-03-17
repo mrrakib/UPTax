@@ -38,7 +38,6 @@
                             @Html.HiddenFor(m => m.CreatedBy)
                             <input type="text" name="CreateDate" value="@Model.CreatedDate.ToString("dd-mm-yyyyy")" hidden />
                             @Html.HiddenFor(m => m.IsDeleted)
-                            @Html.HiddenFor(m => m.UnionId)
                             <div class="row">
                                 <div class="col-md-5 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.TypeName)</label>
