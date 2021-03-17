@@ -242,7 +242,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="YearlyInterestRate">@Html.DisplayNameFor(model => model.YearlyInterestRate)</label>
-                                    @Html.TextBoxFor(m => m.YearlyInterestRate, new { @id = "YearlyInterestRate", @class = "form-control", type = "number", @placeholder = "ঋনের বার্ষিক সুদ" })
+                                    @Html.TextBoxFor(m => m.YearlyInterestRate, new { @id = "YearlyInterestRate", @class = "form-control", type = "number", min = "0", value = "0", step = ".01", @placeholder = "ঋনের বার্ষিক সুদ" })
 
                                 </div>
                                 <div class="col-md-4 mb-3">

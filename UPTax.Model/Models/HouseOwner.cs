@@ -31,7 +31,7 @@ namespace UPTax.Model.Models
         [DisplayName("হোল্ডিং নাম্বার")]
         public string HoldingNo { get; set; }
         [DisplayName("শিক্ষাগত যোগ্যতা")]
-        public int EducationInfoId { get; set; }
+        public int? EducationInfoId { get; set; }
         public virtual EducationInfo EducationInfo { get; set; }
 
         [DisplayName("মোবাইল নাম্বার")]
@@ -63,7 +63,7 @@ namespace UPTax.Model.Models
         public virtual Religion Religion { get; set; }
 
         [DisplayName("পেশা")]
-        public int ProfessionId { get; set; }
+        public int? ProfessionId { get; set; }
         public virtual ProfessionInfo Profession { get; set; }
 
         [DisplayName("নলকূপ আছে কিনা")]
