@@ -308,7 +308,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#WardInfoId").change(function () {
-                alert("Test");
+                GetVillageDropdown();
             });
 
             $("#TotalBuildingHouse").blur(function () {
@@ -341,6 +341,28 @@
                         }
                  });
             }
+
+            function GetVillageDropdown() {
+                var wardId = $("#WardInfoId").val();
+                debugger;
+
+                  $.ajax({
+                        url: '@Url.Action("GetVillage", "VillageInfo")',
+                        dataType: "json",
+                        type: "GET",
+                        cache: false,
+                        data: { wardId},
+                      success: function (data) {
+                          debugger;
+                            alert("Success");
+
+                        },
+                        error: function (xhr) {
+                            alert(xhr.responseText);
+                        }
+                 });
+            }
+
         });
     </script>
 }

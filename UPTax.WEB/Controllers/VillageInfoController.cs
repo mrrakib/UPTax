@@ -22,7 +22,7 @@ namespace UPTax.Controllers
             _unionParishadService = unionParishadService;
         }
 
-        // GET: VillageInfo
+        // GET: VillageInfo/
         [RapidAuthorization]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
@@ -111,5 +111,12 @@ namespace UPTax.Controllers
             return PartialView("_Error");
         }
         #endregion
+
+        public ActionResult GetVillage(int wardId = 0)
+        {
+            var model = _VillageInfoService.GetByWardId(wardId);
+
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
     }
 }

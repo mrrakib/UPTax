@@ -20,6 +20,7 @@ namespace UPTax.Service.Services
         bool IsExistingItem(string keyName, int? id);
         bool Save();
         List<IdNameDropdown> GetDropdownItemList(int unionId);
+        List<VillageInfo> GetByWardId(int wardId);
     }
     public class VillageInfoService : IVillageInfoService
     {
@@ -119,6 +120,11 @@ namespace UPTax.Service.Services
                 Id = u.Id,
                 Name = u.VillageName
             }).ToList();
+        }
+
+        public List<VillageInfo> GetByWardId(int wardId)
+        {
+            return _VillageInfoRepository.GetMany(a => !a.IsDeleted).ToList();
         }
     }
 }
