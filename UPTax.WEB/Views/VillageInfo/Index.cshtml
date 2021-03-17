@@ -88,6 +88,7 @@
                                         <th>নং</th>
                                         <th>গ্রাম</th>
                                         <th>ইউনিয়ন</th>
+                                        <th>ওয়ার্ড</th>
                                         <th>অপারেশন</th>
                                     </tr>
                                 </thead>
@@ -97,20 +98,21 @@
                                         foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
                                         {
                                             rowNo++;
-                                            <tr>
-                                                <td>@rowNo</td>
-                                                <td class="">@item.Data.VillageName</td>
-                                                <td class="">@item.Data.UnionName</td>
-                                                <td>
-                                                    <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
-                                                        <i class="mdi mdi-pencil"></i>
-                                                    </a>
-                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","VillageInfo")/@item.Data.Id">
+                                    <tr>
+                                        <td>@rowNo</td>
+                                        <td class="">@item.Data.VillageName</td>
+                                        <td class="">@item.Data.UnionName</td>
+                                        <td class="">@item.Data.WardNo</td>
+                                        <td>
+                                            <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
+                                                <i class="mdi mdi-pencil"></i>
+                                            </a>
+                                            <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","VillageInfo")/@item.Data.Id">
 
-                                                        <i class="mdi mdi-trash-can"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                                <i class="mdi mdi-trash-can"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                         }
                                     }
                                 </tbody>

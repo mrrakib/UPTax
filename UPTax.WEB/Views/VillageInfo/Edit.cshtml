@@ -38,6 +38,7 @@
                             <input type="text" name="CreateDate" value="@Model.CreatedDate.ToString("dd-mm-yyyyy")" hidden />
                             @Html.HiddenFor(a => a.CreatedBy)
                             @Html.HiddenFor(a => a.IsDeleted)
+                            @Html.HiddenFor(a => a.UnionId)
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.VillageName)</label>
@@ -46,7 +47,15 @@
                                         নাম দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
-                              
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.WardId)<span class="required">*</span> </label>
+                                    @Html.DropDownList("WardId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlWardId", @required = "required" })
+
+                                    <div class="invalid-feedback">
+                                        ওয়ার্ড দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
                             </div>
 
                             <button class="btn btn-primary" type="submit">হালনাগাদ করুন</button>

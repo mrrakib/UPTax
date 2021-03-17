@@ -13,7 +13,7 @@ namespace UPTax.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202103170847288_Alter_VillageInfo_Add_WardId"; }
+            get { return "202103171141473_Alter_VillageInfo_Add_WardId"; }
         }
         
         string IMigrationMetadata.Source

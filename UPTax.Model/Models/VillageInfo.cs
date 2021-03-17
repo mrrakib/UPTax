@@ -22,7 +22,8 @@ namespace UPTax.Model.Models
         [ForeignKey("UnionId")]
         public virtual UnionParishad UnionParishad { get; set; }
 
-        public int WardId { get; set; }
+        [DisplayName("ওয়ার্ড")]
+        public int? WardId { get; set; }
         [ForeignKey("WardId")]
         public virtual WardInfo WardInfo { get; set; }
 

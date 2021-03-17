@@ -7,9 +7,9 @@ namespace UPTax.Data.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.VillageInfo", "WardId", c => c.Int(nullable: false));
+            AddColumn("dbo.VillageInfo", "WardId", c => c.Int());
             CreateIndex("dbo.VillageInfo", "WardId");
-            AddForeignKey("dbo.VillageInfo", "WardId", "dbo.WardInfo", "Id", cascadeDelete: true);
+            AddForeignKey("dbo.VillageInfo", "WardId", "dbo.WardInfo", "Id");
         }
         
         public override void Down()
