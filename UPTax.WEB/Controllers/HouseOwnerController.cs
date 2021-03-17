@@ -65,7 +65,7 @@ namespace UPTax.Controllers
             ViewBag.VillageInfoId = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name");
             ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name");
             ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name");
-            ViewBag.InfrastructureTypeId = new SelectList(_infrastructureInfoService.GetDropdownItemList(), "Id", "Name");
+
 
             var socialBenifits = new SelectList(_socialBenefitService.GetDropdownItemList(), "Id", "Name");
             ViewBag.SocialBenefitBeforeId = socialBenifits;
@@ -98,7 +98,7 @@ namespace UPTax.Controllers
                 ViewBag.VillageInfoId = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name");
                 ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name");
                 ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name");
-                ViewBag.InfrastructureTypeId = new SelectList(_infrastructureInfoService.GetDropdownItemList(), "Id", "Name");
+
 
                 var socialBenifits = new SelectList(_socialBenefitService.GetDropdownItemList(), "Id", "Name");
                 ViewBag.SocialBenefitBeforeId = socialBenifits;
@@ -124,7 +124,7 @@ namespace UPTax.Controllers
             ViewBag.VillageInfoId = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name");
             ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name");
             ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name");
-            ViewBag.InfrastructureTypeId = new SelectList(_infrastructureInfoService.GetDropdownItemList(), "Id", "Name");
+
 
             var socialBenifits = new SelectList(_socialBenefitService.GetDropdownItemList(), "Id", "Name");
             ViewBag.SocialBenefitBeforeId = socialBenifits;
@@ -147,7 +147,7 @@ namespace UPTax.Controllers
                     ViewBag.VillageInfoId = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name");
                     ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name");
                     ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name");
-                    ViewBag.InfrastructureTypeId = new SelectList(_infrastructureInfoService.GetDropdownItemList(), "Id", "Name");
+
 
                     var socialBenifits = new SelectList(_socialBenefitService.GetDropdownItemList(), "Id", "Name");
                     ViewBag.SocialBenefitBeforeId = socialBenifits;

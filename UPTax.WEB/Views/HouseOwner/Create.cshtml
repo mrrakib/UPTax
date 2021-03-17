@@ -72,7 +72,7 @@
 
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.OwnerNameInEnglish) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.OwnerNameInEnglish, new { @id = "validationCustom03", @class = "form-control bangla required", @placeholder = "নাম (ইংরেজিতে)", @maxLength = "250", @required = "required" })
+                                    @Html.TextBoxFor(m => m.OwnerNameInEnglish, new { @id = "validationCustom03", @class = "form-control required", @placeholder = "নাম (ইংরেজিতে)", @maxLength = "250", @required = "required" })
                                     <div class="invalid-feedback">
                                         নাম (ইংরেজিতে) দেয়া বাধ্যতামূলক!
                                     </div>
@@ -124,13 +124,6 @@
                                         মাতার নাম দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.InfrastructureTypeId) <span class="required">*</span></label>
-                                    @Html.DropDownList("InfrastructureTypeId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @required = "required" })
-                                    <div class="invalid-feedback">
-                                        অবকাঠামো ধরণ দেয়া বাধ্যতামূলক!
-                                    </div>
-                                </div>
 
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.DateOfBirth) <span class="required">*</span></label>
@@ -175,8 +168,8 @@
                                             </div>
                                         }
                                     }
-                                    
-                              
+
+
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.ReligionId) <span class="required">*</span></label><br />
@@ -185,7 +178,7 @@
                                         if (i == 0)
                                         {
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="ReligionId" id="inlineRadioReligionId'@i'"value="@religions[i].Id" checked>
+                                                <input class="form-check-input" type="radio" name="ReligionId" id="inlineRadioReligionId'@i'" value="@religions[i].Id" checked>
                                                 <label class="form-check-label" for="inlineRadioReligionId'@i'">@religions[i].Name</label>
                                             </div>
                                         }
@@ -212,11 +205,11 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.Sanitary) <span class="required">*</span></label><br />
-                                   
+
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioYesBuilding" value="পাকা পায়খানা">
                                         <label class="form-check-label" for="inlineRadioYesBuilding">পাকা পায়খানা</label>
-                                    </div> 
+                                    </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioSanitaryYes" value="কাঁচা পায়খানা" checked>
                                         <label class="form-check-label" for="inlineRadioSanitaryYes">কাঁচা পায়খানা</label>
@@ -228,13 +221,16 @@
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.InfrastructureTypeId) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.InfrastructureType, new { @id = "validationCustom03", @class = "form-control bangla required", @placeholder = "অবকাঠামো ধরণ", @required = "required" })
+                                    <label for="validationCustom03">অবকাঠামো ধরণ <span class="required">*</span></label>
+                                    @Html.TextBoxFor(m => m.TotalBuildingHouse, new { @id = "validationCustom03", @class = "form-control", @placeholder = "মোট পাকা ঘর" })
+                                    @Html.TextBoxFor(m => m.TotalSemiBuildingHouse, new { @id = "validationCustom03", @class = "form-control", @placeholder = "মোট আধা-পাকা ঘর" })
+                                    @Html.TextBoxFor(m => m.TotalRawHouse, new { @id = "validationCustom03", @class = "form-control", @placeholder = "মোট কাঁচা ঘর" })
+                                   
                                     <div class="invalid-feedback">
                                         অবকাঠামো ধরণ দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
-
+                              
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.LivingType) <span class="required">*</span></label><br />
 

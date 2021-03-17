@@ -63,7 +63,6 @@ namespace UPTax.Model.Models
         [DisplayName("স্যানিটারি আছে কিনা")]
         public string Sanitary { get; set; }
 
-
         [DisplayName("কি ধরণের সামাজিক সুরক্ষা সুবিধা অতীতে পেয়েছেন")]
         public int? SocialBenefitBeforeId { get; set; }
         public virtual SocialBenefit SocialBenefitBefore { get; set; }
@@ -73,10 +72,6 @@ namespace UPTax.Model.Models
         [DisplayName("বর্তমানে কি ধরণের সামাজিক সুরক্ষা সুবিধা পাচ্ছেন")]
         public int? SocialBenefitRunningId { get; set; }
         public virtual SocialBenefit SocialBenefitRunning { get; set; }
-
-        [DisplayName("অবকাঠামো ধরণ")]
-        public int InfrastructureTypeId { get; set; }
-        public virtual InfrastructureInfo InfrastructureType { get; set; }
 
         [DisplayName("বাৎসরিক ভাড়া")]
         public double? YearlyRentAmount { get; set; }
@@ -89,5 +84,9 @@ namespace UPTax.Model.Models
 
         [DisplayName("পূর্বের বকেয়া")]
         public double? PreviousDueAmount { get; set; }
+
+        public int TotalBuildingHouse { get; set; }
+        public int TotalSemiBuildingHouse { get; set; }
+        public int TotalRawHouse { get; set; }
     }
 }
