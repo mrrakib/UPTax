@@ -91,6 +91,7 @@
     <Compile Include="Services\Permissions\MenuConfigService.cs" />
     <Compile Include="Services\Permissions\MenuCategoryService.cs" />
     <Compile Include="Services\ProfessionInfoService.cs" />
+    <Compile Include="Services\InfraStructuralTypeService.cs" />
     <Compile Include="Services\VillageInfoService.cs" />
     <Compile Include="Services\SocialBenefitService.cs" />
     <Compile Include="Services\EducationInfoService.cs" />

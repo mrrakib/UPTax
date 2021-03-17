@@ -35,6 +35,7 @@ namespace UPTax.Data
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Religion> Religions { get; set; }
         public DbSet<HouseOwner> HouseOwners { get; set; }
+        public DbSet<InfraStructuralType> InfraStructuralTypes { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
