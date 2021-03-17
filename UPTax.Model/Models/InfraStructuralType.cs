@@ -23,6 +23,7 @@ namespace UPTax.Model.Models
         [Required(ErrorMessage = "মুনাফার পরিমান দেয়া বাধ্যতামূলক")]
         [DisplayName("বাৎসরিক মুনাফার হার")]
         public double InterestRate { get; set; }
+        public int StaticId { get; set; }
 
     }
 }
