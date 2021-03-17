@@ -163,15 +163,15 @@
                                         if (i == 0)
                                         {
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="GenderId" id="inlineRadio" +i value="@genders[i].Id" checked>
-                                                <label class="form-check-label" for="inlineRadio" +i>@genders[i].Name</label>
+                                                <input class="form-check-input" type="radio" name="GenderId" id="inlineRadioGenderId'@i'" value="@genders[i].Id" checked>
+                                                <label class="form-check-label" for="inlineRadioGenderId'@i'">@genders[i].Name</label>
                                             </div>
                                         }
                                         else
                                         {
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="GenderId" id="inlineRadio" +i value="@genders[i].Id">
-                                                <label class="form-check-label" for="inlineRadio" +i>@genders[i].Name</label>
+                                                <input class="form-check-input" type="radio" name="GenderId" id="inlineRadioGenderId'@i'" value="@genders[i].Id">
+                                                <label class="form-check-label" for="inlineRadioGenderId'@i'">@genders[i].Name</label>
                                             </div>
                                         }
                                     }
@@ -185,15 +185,15 @@
                                         if (i == 0)
                                         {
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="ReligionId" id="inlineRadio" +i value="@religions[i].Id" checked>
-                                                <label class="form-check-label" for="inlineRadio" +i>@religions[i].Name</label>
+                                                <input class="form-check-input" type="radio" name="ReligionId" id="inlineRadioReligionId'@i'"value="@religions[i].Id" checked>
+                                                <label class="form-check-label" for="inlineRadioReligionId'@i'">@religions[i].Name</label>
                                             </div>
                                         }
                                         else
                                         {
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="ReligionId" id="inlineRadio" +i value="@religions[i].Id">
-                                                <label class="form-check-label" for="inlineRadio" +i>@religions[i].Name</label>
+                                                <input class="form-check-input" type="radio" name="ReligionId" id="inlineRadioReligionId'@i'" value="@religions[i].Id">
+                                                <label class="form-check-label" for="inlineRadioReligionId'@i'">@religions[i].Name</label>
                                             </div>
                                         }
                                     }
@@ -201,29 +201,29 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.IsTubeWell) <span class="required">*</span></label><br />
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="IsTubeWell" id="inlineRadioYes" value="true" checked>
-                                        <label class="form-check-label" for="inlineRadioYes">হ্যাঁ</label>
+                                        <input class="form-check-input" type="radio" name="IsTubeWell" id="inlineRadioIsTubeWellYes" value="true" checked>
+                                        <label class="form-check-label" for="inlineRadioIsTubeWellYes">হ্যাঁ</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="IsTubeWell" id="inlineRadioNo" value="false">
-                                        <label class="form-check-label" for="inlineRadioNo">না</label>
+                                        <input class="form-check-input" type="radio" name="IsTubeWell" id="inlineRadioIsTubeWellNo" value="false">
+                                        <label class="form-check-label" for="inlineRadioIsTubeWellNo">না</label>
                                     </div>
 
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Sanitary) <span class="required">*</span></label>
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Sanitary) <span class="required">*</span></label><br />
                                    
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioYesBuilding" value="পাকা পায়খানা">
                                         <label class="form-check-label" for="inlineRadioYesBuilding">পাকা পায়খানা</label>
                                     </div> 
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioYes" value="কাঁচা পায়খানা" checked>
-                                        <label class="form-check-label" for="inlineRadioYes">কাঁচা পায়খানা</label>
+                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioSanitaryYes" value="কাঁচা পায়খানা" checked>
+                                        <label class="form-check-label" for="inlineRadioSanitaryYes">কাঁচা পায়খানা</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadio" value="নাই">
-                                        <label class="form-check-label" for="inlineRadioNo">নাই</label>
+                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioSanitaryNo" value="নাই">
+                                        <label class="form-check-label" for="inlineRadioSanitaryNo">নাই</label>
                                     </div>
                                 </div>
 
