@@ -3,9 +3,7 @@ using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
 using UPTax.Model.Models;
-using UPTax.Model.Models.UnionDetails;
 using UPTax.Service.Services;
-using UPTax.Service.Services.UPDetails;
 
 namespace UPTax.Controllers
 {
@@ -132,5 +130,38 @@ namespace UPTax.Controllers
             return PartialView("_Error");
         }
         #endregion
+
+        public ActionResult Rent_Interest(int building = 0, int semiBuilding = 0, int rawHouse = 0)
+        {
+            var rawHouseInfo = _infraStructuralTypeService.GetByStaticId(1);
+            var buildingInfo = _infraStructuralTypeService.GetByStaticId(2);
+            var semiBuildingInfo = _infraStructuralTypeService.GetByStaticId(3);
+
+            double rentAmount = building * buildingInfo.YearlyRent;
+            rentAmount += semiBuilding * semiBuildingInfo.YearlyRent;
+            rentAmount += rawHouse * rawHouseInfo.YearlyRent;
+
+            double rateValue = 0;
+            int executeValue = 0;
+            if (building > 0)
+            {
+                rateValue += buildingInfo.InterestRate;
+                executeValue++;
+            }
+            if (semiBuilding > 0)
+            {
+                rateValue += semiBuildingInfo.InterestRate;
+                executeValue++;
+            }
+            if (rawHouse > 0)
+            {
+                rateValue += rawHouseInfo.InterestRate;
+                executeValue++;
+            }
+
+            rateValue = rateValue > 0 ? rateValue / executeValue : 0;
+
+            return Json(new { rent = rentAmount, rate = rateValue }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

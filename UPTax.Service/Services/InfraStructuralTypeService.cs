@@ -5,7 +5,6 @@ using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository;
 using UPTax.Model.Models;
-using UPTax.Model.ViewModels;
 
 namespace UPTax.Service.Services
 {
@@ -19,6 +18,7 @@ namespace UPTax.Service.Services
         InfraStructuralType GetDetails(int id);
         bool IsExistingItem(string keyName, int? id);
         bool Save();
+        InfraStructuralType GetByStaticId(int staticId);
     }
     public class InfraStructuralTypeService : IInfraStructuralTypeService
     {
@@ -109,6 +109,11 @@ namespace UPTax.Service.Services
                 var errorMessage = ex.Message;
                 return false;
             }
+        }
+
+        public InfraStructuralType GetByStaticId(int staticId)
+        {
+            return _infraStructuralTypeRepository.Get(a => !a.IsDeleted && a.StaticId == staticId);
         }
     }
 }
