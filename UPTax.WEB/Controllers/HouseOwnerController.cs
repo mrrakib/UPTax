@@ -20,8 +20,19 @@ namespace UPTax.Controllers
         private readonly IProfessionInfoService _professionInfoService;
         private readonly ISocialBenefitService _socialBenefitService;
         private readonly IInfrastructureInfoService _infrastructureInfoService;
+        private readonly IGenderService _genderService;
+        private readonly IReligionService _religionService;
 
-        public HouseOwnerController(IHouseOwnerService houseOwnerService, IWardInfoService wardInfoService, IVillageInfoService villageInfoService, IEducationInfoService educationInfoService, IProfessionInfoService professionInfoService, ISocialBenefitService socialBenefitService, IInfrastructureInfoService infrastructureInfoService)
+        public HouseOwnerController(IHouseOwnerService houseOwnerService,
+            IWardInfoService wardInfoService,
+            IVillageInfoService villageInfoService,
+            IEducationInfoService educationInfoService,
+            IProfessionInfoService professionInfoService,
+            ISocialBenefitService socialBenefitService,
+            IInfrastructureInfoService infrastructureInfoService,
+            IGenderService genderService,
+            IReligionService religionService
+            )
         {
             _houseOwnerService = houseOwnerService;
             _wardInfoService = wardInfoService;
@@ -30,6 +41,8 @@ namespace UPTax.Controllers
             _professionInfoService = professionInfoService;
             _socialBenefitService = socialBenefitService;
             _infrastructureInfoService = infrastructureInfoService;
+            _genderService = genderService;
+            _religionService = religionService;
         }
 
         // GET: HouseOwner
@@ -58,6 +71,11 @@ namespace UPTax.Controllers
             ViewBag.SocialBenefitBeforeId = socialBenifits;
             ViewBag.SocialBenefitEligibleId = socialBenifits;
             ViewBag.SocialBenefitRunningId = socialBenifits;
+
+            ViewBag.Genders = _genderService.GetAll();
+            ViewBag.Religions = _religionService.GetAll();
+
+
 
             return View();
         }

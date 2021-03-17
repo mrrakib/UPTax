@@ -1,10 +1,16 @@
 ﻿@model UPTax.Model.Models.HouseOwner
+@using UPTax.Model.Models
+
 @{
     ViewBag.Title = "সংরক্ষণ";
     var title = "খানার প্রধান";
 
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    List<Gender> genders = ViewBag.Genders == null ? new List<Gender>() : ViewBag.Genders;
+    List<Religion> religions = ViewBag.Religions == null ? new List<Religion>() : ViewBag.Religions;
 }
+
 <div class="page-title-box">
     <div class="container-fluid">
         <div class="row align-items-center">
@@ -128,7 +134,8 @@
 
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.DateOfBirth) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.DateOfBirth, new { @id = "validationCustom03", @class = "form-control bangla required", @placeholder = "জন্ম তারিখ", @required = "required" })
+
+                                    <input type="text" id="validationCustom03" name="DateOfBirth" class="form-control datepicker-here required" data-range="true" data-multiple-dates-separator=" - " data-language="en" placeholder="জন্ম তারিখ" , required="required" />
                                     <div class="invalid-feedback">
                                         জন্ম তারিখ দেয়া বাধ্যতামূলক!
                                     </div>
@@ -149,33 +156,77 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.GenderId) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.GenderId, new { @id = "validationCustom03", @class = "form-control bangla required", @placeholder = "খানা প্রধানের লিঙ্গ", @required = "required" })
-                                    <div class="invalid-feedback">
-                                        খানা প্রধানের লিঙ্গ দেয়া বাধ্যতামূলক!
-                                    </div>
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.GenderId) <span class="required">*</span></label><br />
+
+                                    @for (int i = 0; i < genders.Count; i++)
+                                    {
+                                        if (i == 0)
+                                        {
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="GenderId" id="inlineRadio" +i value="@genders[i].Id" checked>
+                                                <label class="form-check-label" for="inlineRadio" +i>@genders[i].Name</label>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="GenderId" id="inlineRadio" +i value="@genders[i].Id">
+                                                <label class="form-check-label" for="inlineRadio" +i>@genders[i].Name</label>
+                                            </div>
+                                        }
+                                    }
+                                    
+                              
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.ReligionId) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.ReligionId, new { @id = "validationCustom03", @class = "form-control bangla required", @placeholder = "খানা প্রধানের ধর্ম", @required = "required" })
-                                    <div class="invalid-feedback">
-                                        খানা প্রধানের ধর্ম দেয়া বাধ্যতামূলক!
-                                    </div>
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.ReligionId) <span class="required">*</span></label><br />
+                                    @for (int i = 0; i < religions.Count; i++)
+                                    {
+                                        if (i == 0)
+                                        {
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="ReligionId" id="inlineRadio" +i value="@religions[i].Id" checked>
+                                                <label class="form-check-label" for="inlineRadio" +i>@religions[i].Name</label>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="ReligionId" id="inlineRadio" +i value="@religions[i].Id">
+                                                <label class="form-check-label" for="inlineRadio" +i>@religions[i].Name</label>
+                                            </div>
+                                        }
+                                    }
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.TubeWell) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.TubeWell, new { @id = "validationCustom03", @class = "form-control bangla required", @placeholder = " নলকূপ আছে কিনা", @required = "required" })
-                                    <div class="invalid-feedback">
-                                        নলকূপ আছে কিনা দেয়া বাধ্যতামূলক!
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.IsTubeWell) <span class="required">*</span></label><br />
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="IsTubeWell" id="inlineRadioYes" value="true" checked>
+                                        <label class="form-check-label" for="inlineRadioYes">হ্যাঁ</label>
                                     </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="IsTubeWell" id="inlineRadioNo" value="false">
+                                        <label class="form-check-label" for="inlineRadioNo">না</label>
+                                    </div>
+
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.Sanitary) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.Sanitary, new { @id = "validationCustom03", @class = "form-control bangla required", @placeholder = "স্যানিটারি আছে কিনা", @required = "required" })
-                                    <div class="invalid-feedback">
-                                        স্যানিটারি আছে কিনা দেয়া বাধ্যতামূলক!
+                                   
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioYesBuilding" value="পাকা পায়খানা">
+                                        <label class="form-check-label" for="inlineRadioYesBuilding">পাকা পায়খানা</label>
+                                    </div> 
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioYes" value="কাঁচা পায়খানা" checked>
+                                        <label class="form-check-label" for="inlineRadioYes">কাঁচা পায়খানা</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadio" value="নাই">
+                                        <label class="form-check-label" for="inlineRadioNo">নাই</label>
                                     </div>
                                 </div>
+
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.InfrastructureTypeId) <span class="required">*</span></label>
                                     @Html.TextBoxFor(m => m.InfrastructureType, new { @id = "validationCustom03", @class = "form-control bangla required", @placeholder = "অবকাঠামো ধরণ", @required = "required" })
@@ -185,11 +236,21 @@
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.LivingType) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.LivingType, new { @id = "validationCustom03", @class = "form-control bangla required", @placeholder = "বসবাসের ধরণ", @required = "required" })
-                                    <div class="invalid-feedback">
-                                        বসবাসের ধরণ দেয়া বাধ্যতামূলক!
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.LivingType) <span class="required">*</span></label><br />
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="LivingType" id="inlineRadioSelfLiving" value="নিজে বসবাস">
+                                        <label class="form-check-label" for="inlineRadioSelfLiving">নিজে বসবাস</label>
                                     </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="LivingType" id="inlineRadioRentLiving" value="ভাড়া দেওয়া" checked>
+                                        <label class="form-check-label" for="inlineRadioRentLiving">ভাড়া দেওয়া</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="LivingType" id="inlineRadioBoth" value="উভয়">
+                                        <label class="form-check-label" for="inlineRadioBoth">উভয়</label>
+                                    </div>
+
                                 </div>
 
                                 <div class="col-md-4 mb-3">

@@ -58,7 +58,7 @@ namespace UPTax.Model.Models
         public virtual ProfessionInfo Profession { get; set; }
 
         [DisplayName("নলকূপ আছে কিনা")]
-        public bool TubeWell { get; set; }
+        public bool IsTubeWell { get; set; }
 
         [DisplayName("স্যানিটারি আছে কিনা")]
         public string Sanitary { get; set; }
