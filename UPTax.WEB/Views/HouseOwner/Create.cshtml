@@ -228,13 +228,10 @@
 
                                 <div class="col-md-4 mb-3 inline">
                                     <label for="validationCustom03" class="col-md-12">অবকাঠামো ধরণ<span class="required"> *</span></label>
-                                    @Html.TextBoxFor(m => m.TotalBuildingHouse, new { @id = "validationCustom03", @class = "totalBuildingHouse form-control col-md-4 mb-1", type = "number", @placeholder = "মোট পাকা ঘর" })
-                                    @Html.TextBoxFor(m => m.TotalSemiBuildingHouse, new { @id = "validationCustom03", @class = "form-control col-md-4 mb-1", type = "number", @placeholder = "মোট আধা-পাকা ঘর" })
-                                    @Html.TextBoxFor(m => m.TotalRawHouse, new { @id = "validationCustom03", @class = "form-control col-md-3 mb-1", type = "number", @placeholder = "মোট কাঁচা ঘর" })
+                                    @Html.TextBoxFor(m => m.TotalBuildingHouse, new { @class = "form-control col-md-4 mb-1", type = "number", @placeholder = "মোট পাকা ঘর" })
+                                    @Html.TextBoxFor(m => m.TotalSemiBuildingHouse, new { @class = "form-control col-md-4 mb-1", type = "number", @placeholder = "মোট আধা-পাকা ঘর" })
+                                    @Html.TextBoxFor(m => m.TotalRawHouse, new { @class = "form-control col-md-3 mb-1", type = "number", @placeholder = "মোট কাঁচা ঘর" })
 
-                                    <div class="invalid-feedback">
-                                        অবকাঠামো ধরণ দেয়া বাধ্যতামূলক!
-                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="YearlyRentAmount">@Html.DisplayNameFor(model => model.YearlyRentAmount)</label>
@@ -314,13 +311,36 @@
                 alert("Test");
             });
 
-            $(".totalBuildingHouse").blur(function () {
-                alert("This input field has lost its focus.");
-
-                $("#YearlyRentAmount").val(2400);
-                $("#YearlyInterestRate").val(2.5);
-
+            $("#TotalBuildingHouse").blur(function () {
+                GetRentInterestRate();
             });
+            $("#TotalSemiBuildingHouse").blur(function () {
+                GetRentInterestRate();
+            });
+            $("#TotalRawHouse").blur(function () {
+                GetRentInterestRate();
+            });
+
+            function GetRentInterestRate() {
+                var building = $("#TotalBuildingHouse").val();
+                var semiBuilding = $("#TotalSemiBuildingHouse").val();
+                var rawHouse = $("#TotalRawHouse").val();
+
+                  $.ajax({
+                        url: '@Url.Action("Rent_Interest", "InfraStructuralType")',
+                        dataType: "json",
+                        type: "GET",
+                        cache: false,
+                        data: { building, semiBuilding, rawHouse},
+                        success: function (data) {
+                             $("#YearlyRentAmount").val(data.rent);
+                             $("#YearlyInterestRate").val(data.rate);
+                        },
+                        error: function (xhr) {
+                            alert(xhr.responseText);
+                        }
+                 });
+            }
         });
     </script>
 }
