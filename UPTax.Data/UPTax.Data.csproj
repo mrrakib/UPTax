@@ -164,6 +164,10 @@
     <Compile Include="Migrations\202103170615513_Alter_tbl_InfratstructuralType_Add_col_UnionId.Designer.cs">
       <DependentUpon>202103170615513_Alter_tbl_InfratstructuralType_Add_col_UnionId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103170637309_RenameFieldsDataType.cs" />
+    <Compile Include="Migrations\202103170637309_RenameFieldsDataType.Designer.cs">
+      <DependentUpon>202103170637309_RenameFieldsDataType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
@@ -249,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103170615513_Alter_tbl_InfratstructuralType_Add_col_UnionId.resx">
       <DependentUpon>202103170615513_Alter_tbl_InfratstructuralType_Add_col_UnionId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170637309_RenameFieldsDataType.resx">
+      <DependentUpon>202103170637309_RenameFieldsDataType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
