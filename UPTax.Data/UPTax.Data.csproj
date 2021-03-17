@@ -184,6 +184,10 @@
     <Compile Include="Migrations\202103170838369_TOtalBuildingHouses.Designer.cs">
       <DependentUpon>202103170838369_TOtalBuildingHouses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103171141473_Alter_VillageInfo_Add_WardId.cs" />
+    <Compile Include="Migrations\202103171141473_Alter_VillageInfo_Add_WardId.Designer.cs">
+      <DependentUpon>202103171141473_Alter_VillageInfo_Add_WardId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
@@ -284,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103170838369_TOtalBuildingHouses.resx">
       <DependentUpon>202103170838369_TOtalBuildingHouses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103171141473_Alter_VillageInfo_Add_WardId.resx">
+      <DependentUpon>202103171141473_Alter_VillageInfo_Add_WardId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

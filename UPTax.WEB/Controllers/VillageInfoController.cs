@@ -15,11 +15,13 @@ namespace UPTax.Controllers
         private readonly int _unionId = RapidSession.UnionId;
         private readonly IVillageInfoService _VillageInfoService;
         private readonly IUnionParishadService _unionParishadService;
+        private readonly IWardInfoService _wardInfoService;
 
-        public VillageInfoController(IVillageInfoService VillageInfoService, IUnionParishadService unionParishadService)
+        public VillageInfoController(IVillageInfoService VillageInfoService, IUnionParishadService unionParishadService, IWardInfoService wardInfoService)
         {
             _VillageInfoService = VillageInfoService;
             _unionParishadService = unionParishadService;
+            _wardInfoService = wardInfoService;
         }
 
         // GET: VillageInfo/
@@ -30,7 +32,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var listData = _VillageInfoService.GetPagedList(keyName: name, page, dataSize);
+            var listData = _VillageInfoService.GetPagedList(keyName: name, _unionId, page, dataSize);
             return View(listData);
         }
 
@@ -38,6 +40,7 @@ namespace UPTax.Controllers
         [RapidAuthorization]
         public ActionResult Create()
         {
+            ViewBag.WardId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
             return View();
         }
 
@@ -46,6 +49,7 @@ namespace UPTax.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(VillageInfo model)
         {
+            ViewBag.WardId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardId);
             model.UnionId = _unionId;
             if (ModelState.IsValid)
             {
@@ -73,6 +77,7 @@ namespace UPTax.Controllers
             {
                 return PartialView("_Error");
             }
+            ViewBag.WardId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardId);
             return View(model);
         }
 
@@ -81,6 +86,7 @@ namespace UPTax.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(VillageInfo model)
         {
+            ViewBag.WardId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardId);
             if (ModelState.IsValid)
             {
                 var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName, model.Id);
