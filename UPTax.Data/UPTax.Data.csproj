@@ -176,6 +176,10 @@
     <Compile Include="Migrations\202103170740470_Alter_tbl_InfraStructuralType_add_col_StaticId.Designer.cs">
       <DependentUpon>202103170740470_Alter_tbl_InfraStructuralType_add_col_StaticId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103170752264_TOtalBuildingHouse.cs" />
+    <Compile Include="Migrations\202103170752264_TOtalBuildingHouse.Designer.cs">
+      <DependentUpon>202103170752264_TOtalBuildingHouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
@@ -270,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103170740470_Alter_tbl_InfraStructuralType_add_col_StaticId.resx">
       <DependentUpon>202103170740470_Alter_tbl_InfraStructuralType_add_col_StaticId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170752264_TOtalBuildingHouse.resx">
+      <DependentUpon>202103170752264_TOtalBuildingHouse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
