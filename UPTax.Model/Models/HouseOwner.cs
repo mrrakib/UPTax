@@ -83,7 +83,7 @@ namespace UPTax.Model.Models
         public double? YearlyRentAmount { get; set; }
 
         [DisplayName("ঋনের বার্ষিক সুদ")]
-        public double? YearlyLoanAmount { get; set; }
+        public double? YearlyInterestRate { get; set; }
 
         [DisplayName("বসবাসের ধরণ")]
         public string LivingType { get; set; }
