@@ -81,6 +81,19 @@ namespace UPTax.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(HouseOwner model)
         {
+            ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);
+            ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name", model.EducationInfoId);
+            ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name", model.ProfessionId);
+
+            var socialBenifits = _socialBenefitService.GetDropdownItemList();
+            ViewBag.SocialBenefitBeforeId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitBeforeId);
+            ViewBag.SocialBenefitEligibleId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitEligibleId); ;
+            ViewBag.SocialBenefitRunningId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitRunningId); ;
+
+            ViewBag.Genders = _genderService.GetAll();
+            ViewBag.Religions = _religionService.GetAll();
+
+
             model.DateOfBirth = DateTime.SpecifyKind(model.DateOfBirth, DateTimeKind.Utc);
 
             if (!ModelState.IsValid)
@@ -92,17 +105,7 @@ namespace UPTax.Controllers
                     _message.save(this);
                     return RedirectToAction("Index");
                 }
-                ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
-                ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name");
-                ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name");
-
-                var socialBenifits = new SelectList(_socialBenefitService.GetDropdownItemList(), "Id", "Name");
-                ViewBag.SocialBenefitBeforeId = socialBenifits;
-                ViewBag.SocialBenefitEligibleId = socialBenifits;
-                ViewBag.SocialBenefitRunningId = socialBenifits;
-
-                ViewBag.Genders = _genderService.GetAll();
-                ViewBag.Religions = _religionService.GetAll();
+                
                 _message.custom(this, "এই হোল্ডিং নাম্বার আছে!");
                 return View(model);
             }
