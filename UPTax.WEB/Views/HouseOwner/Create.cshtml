@@ -60,8 +60,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.VillageInfoId) <span class="required">*</span></label>
-                                    @Html.DropDownList("VillageInfoId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @required = "required" })
+                                    <label for="VillageInfoId">@Html.DisplayNameFor(model => model.VillageInfoId) <span class="required">*</span></label>
+                                    @Html.DropDownListFor(a => a.VillageInfoId, null, "--Select--", new { @class = "selectize ddlErrorMsg validationCustom03", @required = "required" })
                                     <div class="invalid-feedback">
                                         গ্রাম দেয়া বাধ্যতামূলক!
                                     </div>
@@ -352,17 +352,17 @@
                         type: "GET",
                         cache: false,
                         data: { wardId},
-                      success: function (data) {
-                          debugger;
-                            alert("Success");
-
+                        success: function (data) {
+                              debugger;
+                              $.each(data, function (i, item) {
+                                  $('#VillageInfoId').append(new Option(item.VillageName, item.Id));
+                              });
                         },
                         error: function (xhr) {
                             alert(xhr.responseText);
                         }
                  });
             }
-
         });
     </script>
 }
