@@ -187,6 +187,7 @@
     <Compile Include="Controllers\MenuPermissionController.cs" />
     <Compile Include="Controllers\ProfessionInfoController.cs" />
     <Compile Include="Controllers\SocialBenefitController.cs" />
+    <Compile Include="Controllers\InfraStructuralTypeController.cs" />
     <Compile Include="Controllers\UnionParishadController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -12687,6 +12688,9 @@
     <Content Include="Views\HouseOwner\Create.cshtml" />
     <Content Include="Views\HouseOwner\Edit.cshtml" />
     <Content Include="Views\HouseOwner\Index.cshtml" />
+    <Content Include="Views\InfraStructuralType\Create.cshtml" />
+    <Content Include="Views\InfraStructuralType\Edit.cshtml" />
+    <Content Include="Views\InfraStructuralType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
