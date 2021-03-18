@@ -9,6 +9,7 @@
 
     List<Gender> genders = ViewBag.Genders == null ? new List<Gender>() : ViewBag.Genders;
     List<Religion> religions = ViewBag.Religions == null ? new List<Religion>() : ViewBag.Religions;
+    string dateFormat = UPTax.Helper.RapidSession.DateTimeFormat;
 }
 <style>
     div.inline .form-control {
@@ -135,7 +136,17 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.DateOfBirth) <span class="required">*</span></label>
 
-                                    <input type="text" id="validationCustom03" name="DateOfBirth" class="form-control datepicker-here" data-range="false" data-language="en" placeholder="জন্ম তারিখ", required="required" />
+                                    @*<input type="text" id="validationCustom03" name="DateOfBirth" class="form-control datepicker-here" data-range="false" data-language="en" placeholder="জন্ম তারিখ" , required="required" />*@
+
+                                    @if (Model != null)
+                                    {
+                                        @Html.TextBoxFor(model => model.DateOfBirth, Model.DateOfBirth.ToString(dateFormat), new { @class = "datepicker-here form-control", @id = "validationCustom03", @type = "text", @required = "required" })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(model => model.DateOfBirth, "", new { @class = "datepicker-here form-control", @id = "validationCustom03", @type = "text", @required = "required"})
+                                    }
+
                                     <div class="invalid-feedback">
                                         জন্ম তারিখ দেয়া বাধ্যতামূলক!
                                     </div>

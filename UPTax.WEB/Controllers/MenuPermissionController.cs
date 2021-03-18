@@ -60,6 +60,8 @@ namespace UPTax.Controllers
                         permission.IsAddPermitted = item.IsAddPermit;
                         permission.IsEditPermitted = item.IsEditPermit;
                         permission.IsDeletePermitted = item.IsDeletePermit;
+
+                        permission.CreatedBy = RapidSession.UserId;
                         _menuPermissionService.Add(permission);
                     }
                     if (_menuPermissionService.DeleteAllPermittedMenues(vm.RoleId, vm.CategoryId))

@@ -6674,6 +6674,12 @@
     <Content Include="Content\assets\js\avro-v1.1.4.min.js" />
     <Content Include="Content\assets\js\bundle.js" />
     <Content Include="Content\assets\js\custom.js" />
+    <Content Include="Content\assets\js\datepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\assets\js\datepicker\daterangepicker.js" />
+    <Content Include="Content\assets\js\datepicker\jqery_ui_timepicker_addon.js" />
+    <Content Include="Content\assets\js\datepicker\jquery.datetimepicker.min.js" />
+    <Content Include="Content\assets\js\datepicker\jquery_ui_timepicker.js" />
+    <Content Include="Content\assets\js\datepicker\themeDatePicker.js" />
     <Content Include="Content\assets\js\pages\alertifyjs.init.js" />
     <Content Include="Content\assets\js\pages\apex.init.js" />
     <Content Include="Content\assets\js\pages\calendar.init.js" />

@@ -19,7 +19,7 @@ namespace UPTax.Controllers
     public class UserController : Controller
     {
         #region Global Variables
-        private readonly AdminContext db = new AdminContext();
+        private AdminContext db = new AdminContext();
         private UserStore<ApplicationUser> store;
         private UserManager<ApplicationUser> UserManager;
         private Message _message = new Message();
@@ -364,6 +364,55 @@ namespace UPTax.Controllers
 
             roleList = db.Database.SqlQuery<string>(query).ToList();
             return roleList;
+        }
+        #endregion
+
+        #region Delete
+        public async Task<ActionResult> Delete(string id)
+        {
+            db = new AdminContext();
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            manager.UserValidator = new UserValidator<ApplicationUser>(manager) { AllowOnlyAlphanumericUserNames = false };
+
+            var user = await manager.FindByIdAsync(id);
+
+            var logins = user.Logins.ToList();
+            var rolesForUser = await manager.GetRolesAsync(id);
+
+            try
+            {
+                using (var transaction = db.Database.BeginTransaction())
+                {
+
+                    foreach (var login in logins)
+                    {
+                        await manager.RemoveLoginAsync(login.UserId, new UserLoginInfo(login.LoginProvider, login.ProviderKey));
+                    }
+
+                    if (rolesForUser.Count() > 0)
+                    {
+                        foreach (var item in rolesForUser.ToList())
+                        {
+                            // item should be the name of the role
+                            var result = await manager.RemoveFromRoleAsync(user.Id, item);
+                        }
+                    }
+
+                    var delResult = await manager.DeleteAsync(user);
+
+                    db.SaveChanges();
+
+                    transaction.Commit();
+                }
+
+                _message.delete(this);
+            }
+            catch (Exception ex)
+            {
+                _message.custom(this, "ইউজার মুছে ফেলতে সমস্যা হয়েছে!");
+            }
+
+            return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });
         }
         #endregion
 
