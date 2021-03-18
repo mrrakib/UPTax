@@ -8068,6 +8068,7 @@
     <Content Include="Content\assets\libs\%40iconscout\unicons\svg\monochrome\wrap-text.svg" />
     <Content Include="Content\assets\libs\air-datepicker\css\datepicker.min.css" />
     <Content Include="Content\assets\libs\air-datepicker\js\datepicker.min.js" />
+    <Content Include="Content\assets\libs\air-datepicker\js\i18n\datepicker.bn.js" />
     <Content Include="Content\assets\libs\air-datepicker\js\i18n\datepicker.cs.js" />
     <Content Include="Content\assets\libs\air-datepicker\js\i18n\datepicker.da.js" />
     <Content Include="Content\assets\libs\air-datepicker\js\i18n\datepicker.de.js" />
