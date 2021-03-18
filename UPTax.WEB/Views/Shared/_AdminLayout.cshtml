@@ -53,7 +53,7 @@
     @Scripts.Render("~/bundles/dataTablejs")
     @RenderSection("scripts", required: false)
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
         $(document).ready(function () {
             $(".deleteItem").click(function (e) {
@@ -186,8 +186,18 @@
             $('input.bangla, input.bangla[type=text]').avro();
             $('textarea.bangla, input.bangla[type=text]').avro();
 
+            //date format and auto close date after selection
+            $('.datepicker-here').datepicker({
+                language: 'en',
+                dateFormat: '@(UPTax.Helper.RapidSession.DateTimeFormat == null ? "dd-mm-yyyy" : UPTax.Helper.RapidSession.DateTimeFormat)',
+                
+                onSelect: function (fd, d, calendar) {
+                    calendar.hide();
+                }
+            })
+
         });
 
-</script>
+    </script>
 </body>
 </html>

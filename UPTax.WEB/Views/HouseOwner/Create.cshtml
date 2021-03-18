@@ -140,11 +140,12 @@
 
                                     @if (Model != null)
                                     {
-                                        @Html.TextBoxFor(model => model.DateOfBirth, Model.DateOfBirth.ToString(dateFormat), new { @class = "datepicker-here form-control", @id = "validationCustom03", @type = "text", @required = "required" })
+                                        @Html.TextBoxFor(model => model.DateOfBirth, Model.DateOfBirth.ToString(dateFormat), new { @class = "datepicker-here form-control", @id = "validationCustom03", @type = "text", @required = "required", @data_range = "false" })
                                     }
                                     else
                                     {
-                                        @Html.TextBoxFor(model => model.DateOfBirth, "", new { @class = "datepicker-here form-control", @id = "validationCustom03", @type = "text", @required = "required"})
+
+                                        @Html.TextBoxFor(model => model.DateOfBirth, "", new { @class = "datepicker-here form-control", @id = "validationCustom03", @type = "text", @required = "required", @data_range = "false" })
                                     }
 
                                     <div class="invalid-feedback">

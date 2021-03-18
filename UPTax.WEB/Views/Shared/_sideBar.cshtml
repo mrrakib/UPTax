@@ -12,46 +12,6 @@
         @Html.Raw(Session["htmlMenues"].ToString());
     }
 </p>
-<script>
-
-
-    $(document).ready(function () {
-        @*if (document.getElementById("divMenues") == null) {
-            alert('empty');
-            $('#divManueSeter').html('<div style="padding:20px;padding-top:150px; color:#ffffff; font-weight:bold">Menu Loading...</div>');
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Action("GetMenuSessionReady", "Account")',
-                dataType: 'html',
-                data: {},
-                success: function (result) {
-                    $('#divManueSeter').html(result);
-                    SETMENUEINTOSESSION(result);
-                },
-                error: function (ex) {
-                    //alert('error');
-                }
-            });
-        }*@
-
-        //else { alert('not em');}
-    })
-
-    
-
-
-    $(document).ready(function () {
-
-
-    });
-
-    $(function () {
-        
-    });
-
-
-
-</script>
 
 
 
