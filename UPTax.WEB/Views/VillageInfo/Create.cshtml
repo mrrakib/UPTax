@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="float-right ml-2">
-                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">Back to List</a>
+                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">তালিকা দেখুন</a>
                         </div>
                         <h4 class="header-title">গ্রাম সংরক্ষণ ফরম</h4>
                         <p class="card-title-desc"></p>
@@ -41,11 +41,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.UnionId)</label>
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.WardId)<span class="required">*</span> </label>
+                                    @Html.DropDownList("WardId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlWardId", @required = "required" })
 
-                                    @Html.DropDownList("UnionId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlUnionId", @required = "required" })
                                     <div class="invalid-feedback">
-                                        ইউনিয়ন দেয়া বাধ্যতামূলক!
+                                        ওয়ার্ড দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                             </div>
@@ -61,12 +61,9 @@
 </div>
 
 @section Scripts {
-
     <script type="text/javascript">
         $(document).ready(function () {
 
         });
     </script>
-
-
 }

@@ -85,6 +85,7 @@
                                         <th>#</th>
                                         <th>নাম</th>
                                         <th>কন্ট্রোলার নাম</th>
+                                        <th>স্ট্যাটাস</th>
                                         <th>অর্ডার</th>
                                         <th>অপারেশন</th>
                                     </tr>
@@ -101,6 +102,16 @@
                                         <td>@rowNo</td>
                                         <td class="">@item.Data.MenuName</td>
                                         <td class="">@item.Data.ControllerName</td>
+                                        <td class="">
+                                            @if (item.Data.IsActive)
+                                            {
+                                                <span style="color:green">এক্টিভ</span>
+                                            }
+                                            else
+                                            {
+                                                <span style="color:red">ইন্যাক্টিভ</span>
+                                            }
+                                        </td>
                                         <td class="">@item.Data.OrderNo</td>
                                         <td>
                                             <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">

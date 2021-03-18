@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
@@ -15,30 +16,32 @@ namespace UPTax.Controllers
         private readonly int _unionId = RapidSession.UnionId;
         private readonly IVillageInfoService _VillageInfoService;
         private readonly IUnionParishadService _unionParishadService;
+        private readonly IWardInfoService _wardInfoService;
 
-        public VillageInfoController(IVillageInfoService VillageInfoService, IUnionParishadService unionParishadService)
+        public VillageInfoController(IVillageInfoService VillageInfoService, IUnionParishadService unionParishadService, IWardInfoService wardInfoService)
         {
             _VillageInfoService = VillageInfoService;
             _unionParishadService = unionParishadService;
+            _wardInfoService = wardInfoService;
         }
 
-        // GET: VillageInfo
-        [RapidAuthorization(All = true)]
+        // GET: VillageInfo/
+        [RapidAuthorization]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
             ViewBag.dataSize = dataSize;
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var listData = _VillageInfoService.GetPagedList(keyName: name, page, dataSize);
+            var listData = _VillageInfoService.GetPagedList(keyName: name, _unionId, page, dataSize);
             return View(listData);
         }
 
         [HttpGet]
+        [RapidAuthorization]
         public ActionResult Create()
         {
-            //ViewBag.Unions = _unionParishadService.GetAllForDropdown();
-            ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name");
+            ViewBag.WardId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
             return View();
         }
 
@@ -47,12 +50,13 @@ namespace UPTax.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(VillageInfo model)
         {
+            ViewBag.WardId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardId);
+            model.UnionId = _unionId;
             if (ModelState.IsValid)
             {
                 var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName, null);
                 if (isExistingItem)
                 {
-                    ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name", model.UnionId);
                     _message.custom(this, "এই নামে একটি গ্রাম আছে!");
                     return View(model);
                 }
@@ -74,8 +78,7 @@ namespace UPTax.Controllers
             {
                 return PartialView("_Error");
             }
-            //ViewBag.Unions = _unionParishadService.GetAllForDropdown();
-            ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name", model.UnionId);
+            ViewBag.WardId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardId);
             return View(model);
         }
 
@@ -84,14 +87,13 @@ namespace UPTax.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(VillageInfo model)
         {
+            ViewBag.WardId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardId);
             if (ModelState.IsValid)
             {
                 var isExistingItem = _VillageInfoService.IsExistingItem(model.VillageName, model.Id);
                 if (isExistingItem)
                 {
                     _message.custom(this, "এই নামে একটি গ্রাম আছে!");
-                    //ViewBag.Unions = _unionParishadService.GetAllForDropdown();
-                    ViewBag.UnionId = new SelectList(_unionParishadService.GetAllForDropdown(), "Id", "Name", model.UnionId);
                     return View(model);
                 }
                 model.UpdatedBy = _userId;
@@ -116,5 +118,12 @@ namespace UPTax.Controllers
             return PartialView("_Error");
         }
         #endregion
+
+        public ActionResult GetVillage(int wardId = 0)
+        {
+            var model = _VillageInfoService.GetByWardId(wardId).ToList().Select(a => new { Id = a.Id, Name = a.VillageName });
+
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
     }
 }

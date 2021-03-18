@@ -144,14 +144,66 @@
     <Compile Include="Migrations\202103091506293_Menu_permission2.Designer.cs">
       <DependentUpon>202103091506293_Menu_permission2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103100604130_MenuActive_status.cs" />
+    <Compile Include="Migrations\202103100604130_MenuActive_status.Designer.cs">
+      <DependentUpon>202103100604130_MenuActive_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103130645218_InitialHouseOwner.cs" />
+    <Compile Include="Migrations\202103130645218_InitialHouseOwner.Designer.cs">
+      <DependentUpon>202103130645218_InitialHouseOwner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103130648558_InitialHouseOwnerWardInfoId.cs" />
+    <Compile Include="Migrations\202103130648558_InitialHouseOwnerWardInfoId.Designer.cs">
+      <DependentUpon>202103130648558_InitialHouseOwnerWardInfoId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170545568_Add_tbl_InfraStructaralType.cs" />
+    <Compile Include="Migrations\202103170545568_Add_tbl_InfraStructaralType.Designer.cs">
+      <DependentUpon>202103170545568_Add_tbl_InfraStructaralType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170615513_Alter_tbl_InfratstructuralType_Add_col_UnionId.cs" />
+    <Compile Include="Migrations\202103170615513_Alter_tbl_InfratstructuralType_Add_col_UnionId.Designer.cs">
+      <DependentUpon>202103170615513_Alter_tbl_InfratstructuralType_Add_col_UnionId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170637309_RenameFieldsDataType.cs" />
+    <Compile Include="Migrations\202103170637309_RenameFieldsDataType.Designer.cs">
+      <DependentUpon>202103170637309_RenameFieldsDataType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170725492_DropUnionId_from_infrastructuralType.cs" />
+    <Compile Include="Migrations\202103170725492_DropUnionId_from_infrastructuralType.Designer.cs">
+      <DependentUpon>202103170725492_DropUnionId_from_infrastructuralType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170740470_Alter_tbl_InfraStructuralType_add_col_StaticId.cs" />
+    <Compile Include="Migrations\202103170740470_Alter_tbl_InfraStructuralType_add_col_StaticId.Designer.cs">
+      <DependentUpon>202103170740470_Alter_tbl_InfraStructuralType_add_col_StaticId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170752264_TOtalBuildingHouse.cs" />
+    <Compile Include="Migrations\202103170752264_TOtalBuildingHouse.Designer.cs">
+      <DependentUpon>202103170752264_TOtalBuildingHouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103170838369_TOtalBuildingHouses.cs" />
+    <Compile Include="Migrations\202103170838369_TOtalBuildingHouses.Designer.cs">
+      <DependentUpon>202103170838369_TOtalBuildingHouses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103171141473_Alter_VillageInfo_Add_WardId.cs" />
+    <Compile Include="Migrations\202103171141473_Alter_VillageInfo_Add_WardId.Designer.cs">
+      <DependentUpon>202103171141473_Alter_VillageInfo_Add_WardId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103171532034_HouseOwnersUpdateType.cs" />
+    <Compile Include="Migrations\202103171532034_HouseOwnersUpdateType.Designer.cs">
+      <DependentUpon>202103171532034_HouseOwnersUpdateType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
+    <Compile Include="Repository\InfraStructuralTypeRepository.cs" />
+    <Compile Include="Repository\HouseOwnerRepository.cs" />
     <Compile Include="Repository\InfrastructureInfoRepository.cs" />
     <Compile Include="Repository\InstituteInfoRepository.cs" />
     <Compile Include="Repository\Permissions\MenuPermissionRepository.cs" />
     <Compile Include="Repository\Permissions\MenuConfigRepository.cs" />
     <Compile Include="Repository\Permissions\MenuCategoryRepository.cs" />
+    <Compile Include="Repository\GenderRepository.cs" />
+    <Compile Include="Repository\ReligionRepository.cs" />
     <Compile Include="Repository\VillageInfoRepository.cs" />
     <Compile Include="Repository\ProfessionInfoRepository.cs" />
     <Compile Include="Repository\SocialBenefitRepository.cs" />
@@ -210,6 +262,42 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103091506293_Menu_permission2.resx">
       <DependentUpon>202103091506293_Menu_permission2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103100604130_MenuActive_status.resx">
+      <DependentUpon>202103100604130_MenuActive_status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103130645218_InitialHouseOwner.resx">
+      <DependentUpon>202103130645218_InitialHouseOwner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103130648558_InitialHouseOwnerWardInfoId.resx">
+      <DependentUpon>202103130648558_InitialHouseOwnerWardInfoId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170545568_Add_tbl_InfraStructaralType.resx">
+      <DependentUpon>202103170545568_Add_tbl_InfraStructaralType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170615513_Alter_tbl_InfratstructuralType_Add_col_UnionId.resx">
+      <DependentUpon>202103170615513_Alter_tbl_InfratstructuralType_Add_col_UnionId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170637309_RenameFieldsDataType.resx">
+      <DependentUpon>202103170637309_RenameFieldsDataType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170725492_DropUnionId_from_infrastructuralType.resx">
+      <DependentUpon>202103170725492_DropUnionId_from_infrastructuralType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170740470_Alter_tbl_InfraStructuralType_add_col_StaticId.resx">
+      <DependentUpon>202103170740470_Alter_tbl_InfraStructuralType_add_col_StaticId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170752264_TOtalBuildingHouse.resx">
+      <DependentUpon>202103170752264_TOtalBuildingHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103170838369_TOtalBuildingHouses.resx">
+      <DependentUpon>202103170838369_TOtalBuildingHouses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103171141473_Alter_VillageInfo_Add_WardId.resx">
+      <DependentUpon>202103171141473_Alter_VillageInfo_Add_WardId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103171532034_HouseOwnersUpdateType.resx">
+      <DependentUpon>202103171532034_HouseOwnersUpdateType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

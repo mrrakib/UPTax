@@ -14,11 +14,14 @@ namespace UPTax.Service.Services
         bool Add(VillageInfo model);
         bool Update(VillageInfo model);
         bool Delete(int id);
-        IPagedList GetPagedList(string keyName, int pageNo, int pageSize);
+        IPagedList GetPagedList(string keyName, int unionId, int pageNo, int pageSize);
         IEnumerable<VillageInfo> GetAll();
         VillageInfo GetDetails(int id);
         bool IsExistingItem(string keyName, int? id);
         bool Save();
+        List<IdNameDropdown> GetDropdownItemList(int unionId);
+        List<VillageInfo> GetByWardId(int wardId);
+        List<IdNameDropdown> GetDropdownItemListByWard(int wardId);
     }
     public class VillageInfoService : IVillageInfoService
     {
@@ -59,22 +62,22 @@ namespace UPTax.Service.Services
             return _VillageInfoRepository.Get(u => u.Id == id && u.IsDeleted == false);
         }
 
-        public IPagedList GetPagedList(string keyName, int pageNo, int pageSize)
+        public IPagedList GetPagedList(string keyName, int unionId, int pageNo, int pageSize)
         {
             try
             {
                 string searchPrm = string.Empty;
                 if (!string.IsNullOrWhiteSpace(keyName))
                 {
-                    searchPrm += string.Format(@" WHERE VillageName LIKE N'%{0}%' AND IsDeleted = 0", keyName.Trim());
+                    searchPrm += string.Format(@" WHERE v.VillageName LIKE N'%{0}%' AND v.UnionId = {1}  AND v.IsDeleted = 0", keyName.Trim(), unionId);
                 }
                 else
                 {
-                    searchPrm += string.Format(@" WHERE IsDeleted = 0");
+                    searchPrm += string.Format(@" WHERE v.UnionId = {0} AND v.IsDeleted = 0", unionId);
                 }
-                string query = string.Format(@"SELECT v.Id, v.VillageName, v.CreatedDate, v.CreatedBy, v.UpdatedDate, v.UpdatedBy, v.IsDeleted, u.Name as UnionName,v.UnionId FROM VillageInfo v JOIN [dbo].[UnionParishad] u ON v.UnionId=u.Id {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
+                string query = string.Format(@"SELECT v.Id, v.VillageName, u.Name as UnionName, W.WardNo FROM VillageInfo v JOIN [dbo].[UnionParishad] u ON v.UnionId=u.Id JOIN WardInfo W ON v.WardId = W.Id {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
-                string countQuery = string.Format(@"SELECT COUNT(Id) FROM VillageInfo WHERE VillageName LIKE N'%{0}%'", keyName?.Trim());
+                string countQuery = string.Format(@"SELECT COUNT(Id) FROM VillageInfo WHERE UnionId = {0} AND VillageName LIKE N'%{1}%'", unionId, keyName?.Trim());
 
                 int rowCount = _VillageInfoRepository.SQLQuery<int>(countQuery);
                 List<VVillageInfo> villages = _VillageInfoRepository.SQLQueryList<VVillageInfo>(query).ToList();
@@ -111,7 +114,27 @@ namespace UPTax.Service.Services
             }
         }
 
+        public List<IdNameDropdown> GetDropdownItemList(int unionId)
+        {
+            return _VillageInfoRepository.GetMany(w => w.IsDeleted == false && w.UnionId == unionId).Select(u => new IdNameDropdown
+            {
+                Id = u.Id,
+                Name = u.VillageName
+            }).ToList();
+        }
 
+        public List<VillageInfo> GetByWardId(int wardId)
+        {
+            return _VillageInfoRepository.GetMany(a => a.WardId == wardId && !a.IsDeleted).ToList();
+        }
 
+        public List<IdNameDropdown> GetDropdownItemListByWard(int wardId)
+        {
+            return _VillageInfoRepository.GetMany(w => w.IsDeleted == false && w.WardId == wardId).Select(u => new IdNameDropdown
+            {
+                Id = u.Id,
+                Name = u.VillageName
+            }).ToList();
+        }
     }
 }

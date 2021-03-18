@@ -20,7 +20,7 @@ namespace UPTax.Controllers
         }
 
         // GET: WardInfo
-        [RapidAuthorization(All = true)]
+        [RapidAuthorization]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
             ViewBag.dataSize = dataSize;
@@ -32,6 +32,7 @@ namespace UPTax.Controllers
         }
 
         [HttpGet]
+        [RapidAuthorization]
         public ActionResult Create()
         {
             return View();
@@ -44,9 +45,11 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.UnionId = _unionId;
                 model.WardNo = model.WardNo.Trim();
-                var isExistingWard = _wardInfoService.IsExistingWard(model.WardNo, model.UnionId, wardId: null);
                 model.CreatedBy = _userId;
+
+                var isExistingWard = _wardInfoService.IsExistingWard(model.WardNo, model.UnionId, wardId: null);
                 if (!isExistingWard && _wardInfoService.Add(model))
                 {
                     _message.save(this);

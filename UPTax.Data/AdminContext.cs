@@ -10,6 +10,11 @@ namespace UPTax.Data
 {
     public class AdminContext : IdentityDbContext<ApplicationUser>
     {
+        public AdminContext(string con)
+            : base((con))
+        {
+            this.Database.CommandTimeout = 180;
+        }
         public AdminContext() : base("Admin_Context")
         {
             //this.Configuration.LazyLoadingEnabled = true;
@@ -27,6 +32,10 @@ namespace UPTax.Data
         public DbSet<MenuCategory> MenuCategories { get; set; }
         public DbSet<MenuConfig> MenuConfigs { get; set; }
         public DbSet<MenuPermission> MenuPermissions { get; set; }
+        public DbSet<Gender> Genders { get; set; }
+        public DbSet<Religion> Religions { get; set; }
+        public DbSet<HouseOwner> HouseOwners { get; set; }
+        public DbSet<InfraStructuralType> InfraStructuralTypes { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

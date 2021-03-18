@@ -27,7 +27,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="float-right ml-2">
-                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">Back to List</a>
+                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">তালিকা দেখুন</a>
                         </div>
                         <h4 class="header-title">ওয়ার্ড হালনাগাদ ফরম</h4>
                         <p class="card-title-desc"></p>
@@ -43,7 +43,7 @@
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.WardNo)</label>
-                                    @Html.TextBoxFor(m => m.WardNo, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "ওয়ার্ড নাম", @maxLength = "250", @required = "required" })
+                                    @Html.TextBoxFor(m => m.WardNo, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "ওয়ার্ড", @maxLength = "250", @required = "required" })
                                     <div class="invalid-feedback">
                                         নাম দেয়া বাধ্যতামূলক!
                                     </div>

@@ -21,6 +21,7 @@ namespace UPTax.Service.Services.UPDetails
         bool Delete(int id);
         IPagedList GetPaged(string name, int pageNo, int pageSize);
         bool IsExistingItem(UnionParishad model);
+        int CountUnion();
     }
     public class UnionParishadService : IUnionParishadService
     {
@@ -124,6 +125,12 @@ namespace UPTax.Service.Services.UPDetails
             else
                 count = _unionParishadRepository.GetCount(a => a.Name == model.Name.Trim() && a.Id != model.Id);
             return count > 0 ? true : false;
+        }
+
+        public int CountUnion()
+        {
+            var union = _unionParishadRepository.GetAll().ToList();
+            return union != null ? union.Count : 0;
         }
     }
 }

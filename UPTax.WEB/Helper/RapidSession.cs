@@ -10,6 +10,7 @@ namespace UPTax.Helper
         private const string roleId = "RoleId";
         private const string userId = "UserId";
         private const string roleName = "RoleName";
+        private const string userFullName = "UserFullName";
         private const string con = "Con";
         private const string unionId = "UnionId";
 
@@ -48,6 +49,19 @@ namespace UPTax.Helper
             set
             {
                 HttpContext.Current.Session[roleName] = value;
+            }
+        }
+
+        public static string UserFullName
+        {
+            get
+            {
+                return (string)(HttpContext.Current.Session[userFullName] ?? "");
+            }
+
+            set
+            {
+                HttpContext.Current.Session[userFullName] = value;
             }
         }
 

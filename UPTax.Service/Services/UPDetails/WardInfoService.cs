@@ -5,6 +5,7 @@ using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository.UPDetails;
 using UPTax.Model.Models.UnionDetails;
+using UPTax.Model.ViewModels;
 
 namespace UPTax.Service.Services.UPDetails
 {
@@ -18,6 +19,7 @@ namespace UPTax.Service.Services.UPDetails
         bool Delete(int id);
         IPagedList GetPagedList(string wardNo, int unionId, int pageNo, int pageSize);
         bool IsExistingWard(string wardNo, int unionId, int? wardId);
+        List<IdNameDropdown> GetDropdownItemList(int unionId);
     }
     public class WardInfoService : IWardInfoService
     {
@@ -78,13 +80,18 @@ namespace UPTax.Service.Services.UPDetails
             try
             {
                 string searchPrm = string.Empty;
+
                 if (!string.IsNullOrEmpty(wardNo))
                 {
-                    searchPrm += string.Format(@" WHERE UnionId=" + unionId + " AND WardNo LIKE N'%{0}%'", wardNo);
+                    searchPrm += string.Format(@" WHERE UnionId={0} AND WardNo LIKE N'%{1}%' AND IsDeleted = 0", unionId, wardNo);
+                }
+                else
+                {
+                    searchPrm += string.Format(@" WHERE UnionId={0} AND IsDeleted = 0", unionId, unionId);
                 }
                 string query = string.Format(@"SELECT * FROM WardInfo {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
-                string countQuery = string.Format(@"SELECT COUNT(*) FROM WardInfo WHERE UnionId=" + unionId + " AND WardNo LIKE N'%{0}%'", wardNo);
+                string countQuery = string.Format(@"SELECT COUNT(*) FROM WardInfo WHERE UnionId={0} AND WardNo LIKE N'%{1}%'", unionId, wardNo);
 
                 int rowCount = _wardInfoRepository.SQLQuery<int>(countQuery);
                 List<WardInfo> unionParishads = _wardInfoRepository.SQLQueryList<WardInfo>(query).Where(a => a.IsDeleted == false).ToList();
@@ -104,5 +111,15 @@ namespace UPTax.Service.Services.UPDetails
 
             return _wardInfoRepository.GetCount(a => a.WardNo.Equals(wardNo) && a.UnionId == unionId && a.IsDeleted == false && a.Id != wardId) > 0 ? true : false;
         }
+
+        public List<IdNameDropdown> GetDropdownItemList(int unionId)
+        {
+            return _wardInfoRepository.GetMany(w => w.IsDeleted == false && w.UnionId == unionId).Select(u => new IdNameDropdown
+            {
+                Id = u.Id,
+                Name = u.WardNo
+            }).ToList();
+        }
+
     }
 }

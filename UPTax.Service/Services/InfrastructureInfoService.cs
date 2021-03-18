@@ -5,6 +5,7 @@ using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository;
 using UPTax.Model.Models;
+using UPTax.Model.ViewModels;
 
 namespace UPTax.Service.Services
 {
@@ -18,6 +19,7 @@ namespace UPTax.Service.Services
         InfrastructureInfo GetDetails(int id);
         bool IsExistingItem(string keyName, int? id);
         bool Save();
+        List<IdNameDropdown> GetDropdownItemList();
     }
     public class InfrastructureInfoService : IInfrastructureInfoService
     {
@@ -106,7 +108,14 @@ namespace UPTax.Service.Services
             }
         }
 
-
+        public List<IdNameDropdown> GetDropdownItemList()
+        {
+            return _InfrastructureInfoRepository.GetMany(w => w.IsDeleted == false).Select(u => new IdNameDropdown
+            {
+                Id = u.Id,
+                Name = u.TypeOfInfrastructure
+            }).ToList();
+        }
 
     }
 }

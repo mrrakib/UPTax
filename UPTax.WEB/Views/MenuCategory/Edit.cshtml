@@ -34,6 +34,10 @@
                         @using (Html.BeginForm("Edit", "MenuCategory", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
+                            @Html.HiddenFor(m => m.Id)
+                            @Html.HiddenFor(m => m.CreatedBy)
+                            <input type="text" name="CreateDate" value="@Model.CreatedDate.ToString("dd-mm-yyyyy")" hidden />
+                            @Html.HiddenFor(m => m.IsDeleted)
                             <div class="row">
                                 <div class="col-md-5 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.Name)</label>
@@ -59,7 +63,7 @@
                                         অর্ডার বাধ্যতামূলক!
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <button class="btn btn-primary" type="submit">হালনাগাদ করুন</button>
 

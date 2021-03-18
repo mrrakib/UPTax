@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "UnAuthorized";
+    Layout = "~/Views/Shared/_AdminLogin.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-12">
+        <div class="mt-4 text-center">
+            <div class="row justify-content-center">
+                <div class="col-md-4 col-6">
+                    <img src="~/Content/assets/images/error-img.png" alt="" class="img-fluid mx-auto d-block">
+                </div>
+            </div>
+
+            <h1 class="mt-5 text-uppercase text-white font-weight-bold mb-3">দুঃখিত, আপনার এই পেজ দেখার অনুমতি নেই।</h1>
+            <h5 class="text-white-50">এডমিনের সাথে যোগাযোগ করুন!</h5>
+            <div class="mt-5">
+                <a class="btn btn-success waves-effect waves-light" href="@Url.Action("Index","DashBoard")">হোমপেজে ফিরে যান।</a>
+            </div>
+        </div>
+    </div>
+</div>
+

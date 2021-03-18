@@ -26,7 +26,7 @@ namespace UPTax.Controllers
             _menuCategoryService = menuCategoryService;
         }
         #endregion
-        [RapidAuthorization(All = true)]
+        [RapidAuthorization]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
             ViewBag.dataSize = dataSize;
@@ -38,6 +38,7 @@ namespace UPTax.Controllers
         }
 
         #region Create
+        [RapidAuthorization]
         [HttpGet]
         public ActionResult Create()
         {
@@ -53,6 +54,7 @@ namespace UPTax.Controllers
             ViewBag.CategoryId = new SelectList(_menuCategoryService.GetMenuCategoryDDL(), "Id", "Name", model.CategoryId);
             if (ModelState.IsValid)
             {
+                model.CreatedBy = RapidSession.UserId;
                 var existingItem = _menuConfigService.IsExistingItem(model.MenuName, null);
                 if (existingItem)
                 {
@@ -98,6 +100,8 @@ namespace UPTax.Controllers
             ViewBag.CategoryId = new SelectList(_menuCategoryService.GetMenuCategoryDDL(), "Id", "Name", model.CategoryId);
             if (ModelState.IsValid)
             {
+                model.UpdatedBy = RapidSession.UserId;
+                model.UpdatedDate = DateTime.Now;
                 var existingItem = _menuConfigService.IsExistingItem(model.MenuName, model.Id);
                 if (existingItem)
                 {

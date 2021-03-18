@@ -24,7 +24,7 @@ namespace UPTax.Controllers
             _menuCategoryService = menuCategoryService;
         }
         #endregion
-        [RapidAuthorization(All = true)]
+        [RapidAuthorization]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
             ViewBag.dataSize = dataSize;
@@ -36,6 +36,7 @@ namespace UPTax.Controllers
         }
 
         #region Create
+        [RapidAuthorization]
         [HttpGet]
         public ActionResult Create()
         {
@@ -49,6 +50,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.CreatedBy = RapidSession.UserId;
                 var existingItem = _menuCategoryService.IsExistingItem(model.Name, null);
                 if (existingItem)
                 {
@@ -92,6 +94,8 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.UpdatedBy = RapidSession.UserId;
+                model.UpdatedDate = DateTime.Now;
                 var existingItem = _menuCategoryService.IsExistingItem(model.Name, model.Id);
                 if (existingItem)
                 {

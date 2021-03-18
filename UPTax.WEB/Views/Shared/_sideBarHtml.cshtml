@@ -1,0 +1,50 @@
+﻿<div class="vertical-menu">
+    <div data-simplebar class="h-100">
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li class="menu-title">Menu</li>
+
+                <li>
+                    <a href="@Url.Action("Index","Dashboard")" class="waves-effect">
+                        <div class="d-inline-block icons-sm mr-1"><i class="uim uim-airplay"></i></div>
+                        <span>ড্যাশবোর্ড</span>
+                    </a>
+                </li>
+                @{
+
+                    var catgoryList = (List<UPTax.Model.ViewModels.Menu>)Session["Menues"];
+                    if (catgoryList.Count > 0)
+                    {
+                        <div id="divmenues">
+                            @foreach (var category in catgoryList)
+                            {
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <div class="d-inline-block icons-sm mr-1"><i class="uim @category.Icon"></i></div>
+                                        <span>@category.CategoryName</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        @foreach (var menu in category.MenuList)
+                                        {
+                                            <li><a href="@Url.Action(menu.ActionName, menu.ControllerName)">@menu.MenuName</a></li>
+                                        }
+
+                                    </ul>
+                                </li>
+                            }
+                        </div>
+
+                    }
+
+
+                }
+
+
+            </ul>
+
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>

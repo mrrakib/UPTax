@@ -22,6 +22,8 @@ namespace UPTax.Model.Models
         [StringLength(500, ErrorMessage = "Maximum length should be 500")]
         [DisplayName("মেনুর নাম")]
         public string MenuName { get; set; }
+        [DisplayName("এক্টিভ?")]
+        public bool IsActive { get; set; }
 
 
         [ForeignKey("CategoryId")]

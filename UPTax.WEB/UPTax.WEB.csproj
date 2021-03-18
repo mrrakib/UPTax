@@ -179,12 +179,15 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HouseOwnerController.cs" />
     <Compile Include="Controllers\InfrastructureController.cs" />
     <Compile Include="Controllers\InstituteController.cs" />
     <Compile Include="Controllers\MenuConfigController.cs" />
     <Compile Include="Controllers\MenuCategoryController.cs" />
+    <Compile Include="Controllers\MenuPermissionController.cs" />
     <Compile Include="Controllers\ProfessionInfoController.cs" />
     <Compile Include="Controllers\SocialBenefitController.cs" />
+    <Compile Include="Controllers\InfraStructuralTypeController.cs" />
     <Compile Include="Controllers\UnionParishadController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -6669,7 +6672,14 @@
     <Content Include="Content\assets\images\widget-img.png" />
     <Content Include="Content\assets\js\app.js" />
     <Content Include="Content\assets\js\avro-v1.1.4.min.js" />
+    <Content Include="Content\assets\js\bundle.js" />
     <Content Include="Content\assets\js\custom.js" />
+    <Content Include="Content\assets\js\datepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\assets\js\datepicker\daterangepicker.js" />
+    <Content Include="Content\assets\js\datepicker\jqery_ui_timepicker_addon.js" />
+    <Content Include="Content\assets\js\datepicker\jquery.datetimepicker.min.js" />
+    <Content Include="Content\assets\js\datepicker\jquery_ui_timepicker.js" />
+    <Content Include="Content\assets\js\datepicker\themeDatePicker.js" />
     <Content Include="Content\assets\js\pages\alertifyjs.init.js" />
     <Content Include="Content\assets\js\pages\apex.init.js" />
     <Content Include="Content\assets\js\pages\calendar.init.js" />
@@ -12675,6 +12685,18 @@
     <Content Include="Views\MenuConfig\Create.cshtml" />
     <Content Include="Views\MenuConfig\Edit.cshtml" />
     <Content Include="Views\MenuConfig\Index.cshtml" />
+    <Content Include="Views\MenuPermission\Index.cshtml" />
+    <Content Include="Views\MenuPermission\_partialPermission.cshtml" />
+    <Content Include="Views\Shared\_sideBarHtml.cshtml" />
+    <Content Include="Views\Shared\_sideBar - Copy.cshtml" />
+    <Content Include="Views\Account\UnAuthorized.cshtml" />
+    <Content Include="Views\Account\SelectUnion.cshtml" />
+    <Content Include="Views\HouseOwner\Create.cshtml" />
+    <Content Include="Views\HouseOwner\Edit.cshtml" />
+    <Content Include="Views\HouseOwner\Index.cshtml" />
+    <Content Include="Views\InfraStructuralType\Create.cshtml" />
+    <Content Include="Views\InfraStructuralType\Edit.cshtml" />
+    <Content Include="Views\InfraStructuralType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
