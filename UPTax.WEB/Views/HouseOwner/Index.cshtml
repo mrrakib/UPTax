@@ -1,4 +1,4 @@
-﻿ @model PagedList.IPagedList<UPTax.Model.Models.HouseOwner>
+﻿@model PagedList.IPagedList<UPTax.Model.Models.HouseOwner>
 
 @using PagedList.Mvc;
 @{
@@ -85,9 +85,15 @@
                                 <thead>
                                     <tr>
                                         <th>নং</th>
-                                        <th>
-                                            হোল্ডিং নং
-                                        </th>
+                                        <th>হোল্ডিং নং</th>
+                                        <th>খানা প্রধানের নাম</th>
+                                        <th>মোবাইল নাম্বার</th>
+                                        <th>পিতা/স্বামীর নাম</th>
+                                        <th>মাতার নাম</th>
+                                        <th>জন্ম নিবন্ধন</th>
+                                        <th>এনআইডি নাম্বার</th>
+                                        <th>বাৎসরিক ভাড়া</th>
+                                        <th>ঋনের বার্ষিক সুদ</th>
                                         <th>অপারেশন</th>
                                     </tr>
                                 </thead>
@@ -100,6 +106,15 @@
                                             <tr>
                                                 <td>@rowNo</td>
                                                 <td class="">@item.Data.HoldingNo</td>
+                                                <td class="">@item.Data.OwnerNameInBangla</td>
+                                                <td class="">@item.Data.MobileNo</td>
+                                                <td class="">@item.Data.FatherHusbandName</td>
+                                                <td class="">@item.Data.MotherName</td>
+                                                <td class="">@item.Data.BirthRegistrationNumber</td>
+                                                <td class="">@item.Data.NIDNumber</td>
+                                                <td class="">@item.Data.BirthRegistrationNumber</td>
+                                                <td class="">@item.Data.YearlyRentAmount</td>
+                                                <td class="">@item.Data.YearlyInterestRate</td>
                                                 <td>
                                                     <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
                                                         <i class="mdi mdi-pencil"></i>
@@ -150,7 +165,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
         $(function () {
-           
+
         });
     </script>
 }
