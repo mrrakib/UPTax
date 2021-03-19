@@ -5,6 +5,7 @@ using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository;
 using UPTax.Model.Models;
+using UPTax.Model.ViewModels;
 
 namespace UPTax.Service.Services
 {
@@ -66,20 +67,35 @@ namespace UPTax.Service.Services
                 string searchPrm = string.Empty;
                 if (!string.IsNullOrWhiteSpace(holdingNo))
                 {
-                    searchPrm += string.Format(@" WHERE HoldingNo LIKE N'%{0}%'", holdingNo.Trim());
+                    searchPrm += string.Format(@" WHERE h.IsDeleted=0 AND h.HoldingNo LIKE N'%{0}%'", holdingNo.Trim());
                 }
-                string query = string.Format(@"SELECT * FROM HouseOwners {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
+                else
+                {
+                    searchPrm += string.Format(@" WHERE h.IsDeleted=0");
+                }
+                string query = string.Format(@"SELECT h.*, w.WardNo WardName, u.[Name] UnionName, v.VillageName, e.Degree EducationName, g.[Name] GenderName, r.[Name] ReligionName, p.ProfessionTitle ProfessionName, sbr.Title SocialBenefitRunningName, sbe.Title SocialBenefitEligibleName, sbb.Title SocialBenefitBeforeName from HouseOwners h 
+                                                JOIN WardInfo w ON h.WardInfoId=w.Id  
+                                                JOIN UnionParishad u ON w.UnionId=u.Id
+                                                JOIN VillageInfo v ON h.VillageInfoId=v.Id
+                                                JOIN Genders g ON h.GenderId=g.Id
+                                                JOIN Religions r ON h.ReligionId=r.Id
+                                                LEFT JOIN EducationInfo e ON h.EducationInfoId=e.Id
+                                                LEFT JOIN ProfessionInfo p ON h.ProfessionId=p.Id
+                                                LEFT JOIN SocialBenefits sbr ON h.SocialBenefitRunningId=sbr.Id
+                                                LEFT JOIN SocialBenefits sbe ON h.SocialBenefitEligibleId=sbe.Id
+                                                LEFT JOIN SocialBenefits sbb ON h.SocialBenefitBeforeId=sbb.Id
+                                                {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
-                string countQuery = string.Format(@"SELECT COUNT(*) FROM HouseOwners WHERE HoldingNo LIKE N'%{0}%'", holdingNo?.Trim());
+                string countQuery = string.Format(@"SELECT COUNT(*) FROM HouseOwners WHERE IsDeleted=0 AND HoldingNo LIKE N'%{0}%'", holdingNo?.Trim());
 
                 int rowCount = _HouseOwnerRepository.SQLQuery<int>(countQuery);
-                List<HouseOwner> educations = _HouseOwnerRepository.SQLQueryList<HouseOwner>(query).Where(a => a.IsDeleted == false).ToList();
-                return new StaticPagedList<HouseOwner>(educations, pageNo, pageSize, rowCount);
+                List<VHouseOwner> houseOwner = _HouseOwnerRepository.SQLQueryList<VHouseOwner>(query).OrderByDescending(a => a.CreatedDate).ToList();
+                return new StaticPagedList<VHouseOwner>(houseOwner, pageNo, pageSize, rowCount);
             }
             catch (Exception ex)
             {
                 var errorMessage = ex.Message;
-                return new StaticPagedList<HouseOwner>(new List<HouseOwner> { }, pageNo, pageSize, 0);
+                return new StaticPagedList<VHouseOwner>(new List<VHouseOwner> { }, pageNo, pageSize, 0);
             }
         }
 
@@ -118,7 +134,7 @@ namespace UPTax.Service.Services
             {
                 return ownerId;
             }
-            
+
         }
     }
 }

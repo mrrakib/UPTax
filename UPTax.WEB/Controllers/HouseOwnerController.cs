@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
@@ -81,6 +82,18 @@ namespace UPTax.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(HouseOwner model)
         {
+            if (ModelState.IsValid)
+            {
+                var isExistingItem = _houseOwnerService.IsExistingItem(model.HoldingNo, null);
+                model.CreatedBy = _userId;
+                if (!isExistingItem && _houseOwnerService.Add(model))
+                {
+                    _message.save(this);
+                    return RedirectToAction("Index");
+                }
+                _message.custom(this, "এই হোল্ডিং নাম্বার আছে!");
+            }
+
             ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);
             ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name", model.EducationInfoId);
             ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name", model.ProfessionId);
@@ -93,22 +106,6 @@ namespace UPTax.Controllers
             ViewBag.Genders = _genderService.GetAll();
             ViewBag.Religions = _religionService.GetAll();
 
-
-            model.DateOfBirth = DateTime.SpecifyKind(model.DateOfBirth, DateTimeKind.Utc);
-
-            if (!ModelState.IsValid)
-            {
-                var isExistingItem = _houseOwnerService.IsExistingItem(model.HoldingNo, null);
-                model.CreatedBy = _userId;
-                if (!isExistingItem && _houseOwnerService.Add(model))
-                {
-                    _message.save(this);
-                    return RedirectToAction("Index");
-                }
-                
-                _message.custom(this, "এই হোল্ডিং নাম্বার আছে!");
-                return View(model);
-            }
             return View(model);
         }
 
@@ -122,16 +119,21 @@ namespace UPTax.Controllers
             {
                 return PartialView("_Error");
             }
-            ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
+            ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);
+            ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name", model.EducationInfoId);
+            ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name", model.ProfessionId);
 
-            ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name");
-            ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name");
+            var socialBenifits = _socialBenefitService.GetDropdownItemList();
+            ViewBag.SocialBenefitBeforeId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitBeforeId);
+            ViewBag.SocialBenefitEligibleId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitEligibleId); ;
+            ViewBag.SocialBenefitRunningId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitRunningId); ;
 
+            ViewBag.Genders = _genderService.GetAll();
+            ViewBag.Religions = _religionService.GetAll();
 
-            var socialBenifits = new SelectList(_socialBenefitService.GetDropdownItemList(), "Id", "Name");
-            ViewBag.SocialBenefitBeforeId = socialBenifits;
-            ViewBag.SocialBenefitEligibleId = socialBenifits;
-            ViewBag.SocialBenefitRunningId = socialBenifits;
+            var villages = _villageInfoService.GetByWardId(model.WardInfoId).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
+            ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
+
             return View(model);
         }
 
@@ -143,27 +145,28 @@ namespace UPTax.Controllers
             if (ModelState.IsValid)
             {
                 var isExistingItem = _houseOwnerService.IsExistingItem(model.HoldingNo, model.Id);
-                if (isExistingItem)
+                if (!isExistingItem)
                 {
-                    ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
-
-                    ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name");
-                    ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name");
-
-
-                    var socialBenifits = new SelectList(_socialBenefitService.GetDropdownItemList(), "Id", "Name");
-                    ViewBag.SocialBenefitBeforeId = socialBenifits;
-                    ViewBag.SocialBenefitEligibleId = socialBenifits;
-                    ViewBag.SocialBenefitRunningId = socialBenifits;
-                    _message.custom(this, "এই হোল্ডিং নাম্বার আছে!");
-                    return View(model);
+                    model.UpdatedBy = _userId;
+                    model.UpdatedDate = DateTime.UtcNow;
+                    _houseOwnerService.Update(model);
+                    _message.update(this);
+                    return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });
                 }
-                model.UpdatedBy = _userId;
-                model.UpdatedDate = DateTime.UtcNow;
-                _houseOwnerService.Update(model);
-                _message.update(this);
-                return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });
+                _message.custom(this, "এই হোল্ডিং নাম্বার আছে!");
             }
+            ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);
+            ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name", model.EducationInfoId);
+            ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name", model.ProfessionId);
+
+            var socialBenifits = _socialBenefitService.GetDropdownItemList();
+            ViewBag.SocialBenefitBeforeId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitBeforeId);
+            ViewBag.SocialBenefitEligibleId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitEligibleId); ;
+            ViewBag.SocialBenefitRunningId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitRunningId); ;
+
+            ViewBag.Genders = _genderService.GetAll();
+            ViewBag.Religions = _religionService.GetAll();
+
             return View(model);
         }
         #endregion
@@ -180,6 +183,5 @@ namespace UPTax.Controllers
             return PartialView("_Error");
         }
         #endregion
-
     }
 }
