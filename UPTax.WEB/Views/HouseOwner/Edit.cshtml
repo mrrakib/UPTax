@@ -70,7 +70,7 @@
                                     <div class="invalid-feedback">
                                         গ্রাম দেয়া বাধ্যতামূলক!
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.OwnerNameInBangla) <span class="required">*</span></label>
@@ -244,20 +244,23 @@
 
                                 <div class="col-md-4 mb-3 inline">
                                     <label for="validationCustom03" class="col-md-12">অবকাঠামো ধরণ<span class="required"> *</span></label>
-                                    @Html.TextBoxFor(m => m.TotalBuildingHouse, new { @class = "form-control col-md-4 mb-1", type = "number", @placeholder = "মোট পাকা ঘর" })
-                                    @Html.TextBoxFor(m => m.TotalSemiBuildingHouse, new { @class = "form-control col-md-4 mb-1", type = "number", @placeholder = "মোট আধা-পাকা ঘর" })
-                                    @Html.TextBoxFor(m => m.TotalRawHouse, new { @class = "form-control col-md-3 mb-1", type = "number", @placeholder = "মোট কাঁচা ঘর" })
-
+                                    @Html.TextBoxFor(m => m.TotalBuildingHouse, new { @class = "form-control col-md-4 mb-1", type = "number", @placeholder = "পাকা ঘর" })
+                                    @Html.TextBoxFor(m => m.TotalSemiBuildingHouse, new { @class = "form-control col-md-4 mb-1", type = "number", @placeholder = "আধা-পাকা ঘর" })
+                                    @Html.TextBoxFor(m => m.TotalRawHouse, new { @class = "form-control col-md-3 mb-1", type = "number", @placeholder = "কাঁচা ঘর" })
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="YearlyRentAmount">@Html.DisplayNameFor(model => model.YearlyRentAmount) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.YearlyRentAmount, new { @id = "YearlyRentAmount", @class = "form-control", type = "number", @placeholder = "বাৎসরিক ভাড়া", @required = "required" })
-
+                                    @Html.TextBoxFor(m => m.YearlyRentAmount, new { @id = "YearlyRentAmount", @class = "form-control validationCustom03", type = "number", @placeholder = "বাৎসরিক ভাড়া", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        বাৎসরিক ভাড়া দেয়া বাধ্যতামূলক!
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="YearlyInterestRate">@Html.DisplayNameFor(model => model.YearlyInterestRate) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.YearlyInterestRate, new { @id = "YearlyInterestRate", @class = "form-control", type = "number", min = "0", value = "0", step = ".01", @placeholder = "ঋনের বার্ষিক সুদ", @required = "required" })
-
+                                    @Html.TextBoxFor(m => m.YearlyInterestRate, new { @id = "YearlyInterestRate", @class = "form-control validationCustom03", type = "number", min = "0", value = "0", step = ".01", @placeholder = "ঋনের বার্ষিক সুদ", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        ঋনের বার্ষিক সুদ দেয়া বাধ্যতামূলক!
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.PreviousDueAmount)</label>
