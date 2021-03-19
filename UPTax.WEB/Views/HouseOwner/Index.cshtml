@@ -92,6 +92,7 @@
                                         <th>মাতার নাম</th>
                                         <th>জন্ম নিবন্ধন নাম্বার</th>
                                         <th>জন্ম তারিখ</th>
+                                        <th>অপারেশন</th>
                                         <th>এনআইডি নাম্বার</th>
                                         <th>বাৎসরিক ভাড়া</th>
                                         <th>ঋনের বার্ষিক সুদ</th>
@@ -100,7 +101,6 @@
                                         <th>বর্তমানে কি ধরণের সামাজিক সুরক্ষা সুবিধা পাচ্ছেন</th>
                                         <th>ওয়ার্ড নাম্বার</th>
                                         <th>গ্রাম</th>
-                                        <th>অপারেশন</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -109,33 +109,33 @@
                                         foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
                                         {
                                             rowNo++;
-                                            <tr>
-                                                <td>@rowNo</td>
-                                                <td class="">@item.Data.HoldingNo</td>
-                                                <td class="">@item.Data.OwnerNameInBangla</td>
-                                                <td class="">@item.Data.MobileNo</td>
-                                                <td class="">@item.Data.FatherHusbandName</td>
-                                                <td class="">@item.Data.MotherName</td>
-                                                <td class="">@item.Data.BirthRegistrationNumber</td>
-                                                <td class="">@item.Data.DateOfBirth.ToString("dd MMM, yyyy")</td>
-                                                <td class="">@item.Data.NIDNumber</td>
-                                                <td class="">@item.Data.YearlyRentAmount</td>
-                                                <td class="">@item.Data.YearlyInterestRate</td>
-                                                <td class="">@item.Data.SocialBenefitBeforeId</td>
-                                                <td class="">@item.Data.SocialBenefitEligibleId</td>
-                                                <td class="">@item.Data.SocialBenefitRunningId</td>
-                                                <td class="">@item.Data.WardInfoId</td>
-                                                <td class="">@item.Data.VillageInfoId</td>
-                                                <td>
-                                                    <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
-                                                        <i class="mdi mdi-pencil"></i>
-                                                    </a>
-                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","HouseOwner")/@item.Data.Id">
+                                    <tr>
+                                        <td>@rowNo</td>
+                                        <td class="">@item.Data.HoldingNo</td>
+                                        <td class="">@item.Data.OwnerNameInBangla</td>
+                                        <td class="">@item.Data.MobileNo</td>
+                                        <td class="">@item.Data.FatherHusbandName</td>
+                                        <td class="">@item.Data.MotherName</td>
+                                        <td class="">@item.Data.BirthRegistrationNumber</td>
+                                        <td class="">@item.Data.DateOfBirth.ToString("dd MMM, yyyy")</td>
+                                        <td>
+                                            <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
+                                                <i class="mdi mdi-pencil"></i>
+                                            </a>
+                                            <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","HouseOwner")/@item.Data.Id">
+                                                <i class="mdi mdi-trash-can"></i>
+                                            </a>
+                                        </td>
+                                        <td class="">@item.Data.NIDNumber</td>
+                                        <td class="">@item.Data.YearlyRentAmount</td>
+                                        <td class="">@item.Data.YearlyInterestRate</td>
+                                        <td class="">@item.Data.SocialBenefitBeforeId</td>
+                                        <td class="">@item.Data.SocialBenefitEligibleId</td>
+                                        <td class="">@item.Data.SocialBenefitRunningId</td>
+                                        <td class="">@item.Data.WardInfoId</td>
+                                        <td class="">@item.Data.VillageInfoId</td>
 
-                                                        <i class="mdi mdi-trash-can"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                    </tr>
                                         }
                                     }
                                 </tbody>
