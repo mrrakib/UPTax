@@ -9,9 +9,9 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <h4 class="page-title mb-1">মেনু পারমিশন</h4>
+                <h4 class="page-title mb-1">সিঙ্গেল কর জেনারেটর</h4>
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item active">পারমিশন দিন</li>
+                    <li class="breadcrumb-item active">কর জেনারেট করুন</li>
                 </ol>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="header-title">মেনু পারমিশন ফরম</h4>
+                        <h4 class="header-title">সিঙ্গেল কর জেনারেটর ফরম</h4>
                         <p class="card-title-desc"></p>
                         @using (Html.BeginForm("Index", "GenerateTaxInfo", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
                         {
@@ -41,20 +41,27 @@
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.HoldingNo)</label>
-
-                                    @Html.DropDownList("CategoryId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlCategoryId", @required = "required" })
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.HoldingNo) <span class="required">*</span></label>
+                                    @Html.TextBoxFor(m => m.HoldingNo, new { @id = "validationCustom03", @class = "form-control", @placeholder = "হোল্ডিং নং", @maxLength = "250", @required = "required" })
                                     <div class="invalid-feedback">
-                                        ক্যাটাগরি দেয়া বাধ্যতামূলক!
+                                        হোল্ডিং নং দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div id="partialPermission" class="col-md-12">
-                                    <!-- partial permission view load here -->
+                                <div class="col-md-4 mb-3">
+                                    <label for="">@Html.DisplayNameFor(model => model.YearlyTaxRate) <span class="required">*</span></label>
+                                    @Html.TextBoxFor(m => m.YearlyTaxRate, new { @id = "txtYearlyTaxRate", @class = "form-control", @placeholder = "মুনাফার হার", @min = "0.5", @step = "0.1", @type = "number", @disabled = "disabled", @style = "opacity: 0.5" })
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit">সংরক্ষণ করুন</button>
+                            <button class="btn btn-info required-click" type="button">জেনারেট করুন</button>
+
+                            <div class="row">
+                                <div id="partialTax" class="col-md-12">
+                                    <!-- partial tax view load here -->
+                                </div>
+                            </div>
+
                         }
                     </div>
                 </div>
@@ -66,7 +73,7 @@
 </div>
 
 @section Scripts {
-
+    <script src="~/Content/assets/js/pages/form-click-validation.init.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#ddlCategoryId").change(function () {

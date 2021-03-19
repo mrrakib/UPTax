@@ -6694,6 +6694,7 @@
     <Content Include="Content\assets\js\pages\form-advanced.init.js" />
     <Content Include="Content\assets\js\pages\form-editor.init.js" />
     <Content Include="Content\assets\js\pages\form-mask.init.js" />
+    <Content Include="Content\assets\js\pages\form-click-validation.init.js" />
     <Content Include="Content\assets\js\pages\form-validation.init.js" />
     <Content Include="Content\assets\js\pages\gallery.init.js" />
     <Content Include="Content\assets\js\pages\gmaps.init.js" />
