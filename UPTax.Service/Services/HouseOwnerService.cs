@@ -18,6 +18,7 @@ namespace UPTax.Service.Services
         HouseOwner GetDetails(int id);
         bool IsExistingItem(string holdingNo, int? id);
         bool Save();
+        int GetIdByHoldingNum(string holdingNum, int unionId);
     }
     public class HouseOwnerService : IHouseOwnerService
     {
@@ -106,7 +107,18 @@ namespace UPTax.Service.Services
             }
         }
 
-
-
+        public int GetIdByHoldingNum(string holdingNum, int unionId)
+        {
+            int ownerId = 0;
+            try
+            {
+                return ownerId = _HouseOwnerRepository.Get(h => !h.IsDeleted && h.HoldingNo.Equals(holdingNum) && h.VillageInfo.UnionId == unionId).Id;
+            }
+            catch (Exception ex)
+            {
+                return ownerId;
+            }
+            
+        }
     }
 }

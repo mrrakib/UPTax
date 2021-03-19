@@ -202,11 +202,13 @@
     <Compile Include="Repository\InfraStructuralTypeRepository.cs" />
     <Compile Include="Repository\HouseOwnerRepository.cs" />
     <Compile Include="Repository\InfrastructureInfoRepository.cs" />
+    <Compile Include="Repository\FinancialYearRepository.cs" />
     <Compile Include="Repository\InstituteInfoRepository.cs" />
     <Compile Include="Repository\Permissions\MenuPermissionRepository.cs" />
     <Compile Include="Repository\Permissions\MenuConfigRepository.cs" />
     <Compile Include="Repository\Permissions\MenuCategoryRepository.cs" />
     <Compile Include="Repository\GenderRepository.cs" />
+    <Compile Include="Repository\TaxGenerateInfoRepository.cs" />
     <Compile Include="Repository\ReligionRepository.cs" />
     <Compile Include="Repository\VillageInfoRepository.cs" />
     <Compile Include="Repository\ProfessionInfoRepository.cs" />

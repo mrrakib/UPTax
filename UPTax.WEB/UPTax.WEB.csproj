@@ -184,6 +184,7 @@
     <Compile Include="Controllers\InstituteController.cs" />
     <Compile Include="Controllers\MenuConfigController.cs" />
     <Compile Include="Controllers\MenuCategoryController.cs" />
+    <Compile Include="Controllers\GenerateTaxInfoController.cs" />
     <Compile Include="Controllers\MenuPermissionController.cs" />
     <Compile Include="Controllers\ProfessionInfoController.cs" />
     <Compile Include="Controllers\SocialBenefitController.cs" />
@@ -12698,6 +12699,8 @@
     <Content Include="Views\InfraStructuralType\Create.cshtml" />
     <Content Include="Views\InfraStructuralType\Edit.cshtml" />
     <Content Include="Views\InfraStructuralType\Index.cshtml" />
+    <Content Include="Views\GenerateTaxInfo\_partialPermission.cshtml" />
+    <Content Include="Views\GenerateTaxInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

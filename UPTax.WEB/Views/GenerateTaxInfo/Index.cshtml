@@ -1,0 +1,106 @@
+﻿@model UPTax.Model.ViewModels.VMTaxGenerator
+
+@{
+    ViewBag.Title = "সংরক্ষণ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">মেনু পারমিশন</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active">পারমিশন দিন</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">মেনু পারমিশন ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Index", "GenerateTaxInfo", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.FinancialYearId)</label>
+
+                                    @Html.DropDownList("FinancialYearId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlFinancialYearId", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        অর্থবছর দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.HoldingNo)</label>
+
+                                    @Html.DropDownList("CategoryId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlCategoryId", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        ক্যাটাগরি দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div id="partialPermission" class="col-md-12">
+                                    <!-- partial permission view load here -->
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">সংরক্ষণ করুন</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ddlCategoryId").change(function () {
+
+                if ($("#ddlRoleId").val().length < 0 || $("#ddlRoleId").val().length == 0) {
+
+                    //var $select = $('#ddlCategoryId');
+                    //var control = $select[0].selectize;
+                    //control.clear();
+                    alert("Please select a role first!");
+                    
+
+                    return false;
+                }
+                if ($("#ddlCategoryId").val().length > 0) {
+                    $.ajax({
+                        type: 'Post',
+                        url: '@Url.Action("GetMenuesForPermission")',
+                        dataType: 'html',
+                        data: { roleId: $("#ddlRoleId").val(), categoryId: $("#ddlCategoryId").val() },
+                        success: function (result) {
+                            $('#partialPermission').empty();
+                            $('#partialPermission').html(result);
+                        },
+                        error: function (ex) {
+                            $('html, body').animate({ scrollTop: 0 }, 'fast');
+                        }
+                    });
+                }
+
+                return false;
+            });
+        });
+    </script>
+
+
+}
