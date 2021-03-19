@@ -81,9 +81,7 @@ namespace UPTax.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(HouseOwner model)
         {
-            model.DateOfBirth = DateTime.SpecifyKind(model.DateOfBirth, DateTimeKind.Local);
-
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var isExistingItem = _houseOwnerService.IsExistingItem(model.HoldingNo, null);
                 model.CreatedBy = _userId;

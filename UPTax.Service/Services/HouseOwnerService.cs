@@ -73,7 +73,7 @@ namespace UPTax.Service.Services
                 string countQuery = string.Format(@"SELECT COUNT(*) FROM HouseOwners WHERE HoldingNo LIKE N'%{0}%'", holdingNo?.Trim());
 
                 int rowCount = _HouseOwnerRepository.SQLQuery<int>(countQuery);
-                List<HouseOwner> educations = _HouseOwnerRepository.SQLQueryList<HouseOwner>(query).Where(a => a.IsDeleted == false).ToList();
+                List<HouseOwner> educations = _HouseOwnerRepository.SQLQueryList<HouseOwner>(query).Where(a => a.IsDeleted == false).OrderByDescending(a => a.CreatedDate).ToList();
                 return new StaticPagedList<HouseOwner>(educations, pageNo, pageSize, rowCount);
             }
             catch (Exception ex)
@@ -118,7 +118,7 @@ namespace UPTax.Service.Services
             {
                 return ownerId;
             }
-            
+
         }
     }
 }
