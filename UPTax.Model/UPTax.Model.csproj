@@ -99,9 +99,11 @@
     <Compile Include="Models\MenuCategory.cs" />
     <Compile Include="Models\MenuConfig.cs" />
     <Compile Include="Models\MenuPermission.cs" />
+    <Compile Include="Models\FinancialYear.cs" />
     <Compile Include="Models\ProfessionInfo.cs" />
     <Compile Include="Models\Religion.cs" />
     <Compile Include="Models\SocialBenefit.cs" />
+    <Compile Include="Models\TaxGenerateInfo.cs" />
     <Compile Include="Models\UnionDetails\UnionParishad.cs" />
     <Compile Include="Models\UnionDetails\CompanySocialProfile.cs" />
     <Compile Include="Models\UnionDetails\WardInfo.cs" />
