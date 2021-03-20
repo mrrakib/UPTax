@@ -200,6 +200,10 @@
     <Compile Include="Migrations\202103191144380_NullableFields.Designer.cs">
       <DependentUpon>202103191144380_NullableFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103201356184_NewFieldsAddedForTotalMembers.cs" />
+    <Compile Include="Migrations\202103201356184_NewFieldsAddedForTotalMembers.Designer.cs">
+      <DependentUpon>202103201356184_NewFieldsAddedForTotalMembers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
@@ -314,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103191144380_NullableFields.resx">
       <DependentUpon>202103191144380_NullableFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103201356184_NewFieldsAddedForTotalMembers.resx">
+      <DependentUpon>202103201356184_NewFieldsAddedForTotalMembers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

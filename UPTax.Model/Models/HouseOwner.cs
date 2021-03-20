@@ -98,5 +98,12 @@ namespace UPTax.Model.Models
         public int? TotalBuildingHouse { get; set; }
         public int? TotalSemiBuildingHouse { get; set; }
         public int? TotalRawHouse { get; set; }
+
+        [DisplayName("পরিবারের সদস্য সংখ্যা")]
+        public int? TotalMember { get; set; }
+        [DisplayName("পরিবারের সদস্য(ছেলে)")]
+        public int? TotalBoys { get; set; }
+        [DisplayName("পরিবারের সদস্য(মেয়ে)")]
+        public int? TotalGirls { get; set; }
     }
 }
