@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Dashboard | XMAX - Admin Dashboard</title>
+    <title>ড্যাশবোর্ড | UPTax - এডমিন ড্যাশবোর্ড</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="XMAX admin dashboard" name="description" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="~/Content/assets/images/favicon.ico">
     @Styles.Render("~/Content/adminCss")
     @Styles.Render("~/Content/dataTableCss")
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 </head>
 
@@ -52,6 +53,7 @@
     @Scripts.Render("~/bundles/adminjs2")
     @Scripts.Render("~/bundles/dataTablejs")
     @RenderSection("scripts", required: false)
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script type="text/javascript">
 
@@ -187,14 +189,22 @@
             $('textarea.bangla, input.bangla[type=text]').avro();
 
             //date format and auto close date after selection
-            $('.datepicker-here').datepicker({
+            @*$('.datepicker-here').datepicker({
                 language: 'en',
                 dateFormat: '@(UPTax.Helper.RapidSession.DateTimeFormat == null ? "dd-mm-yyyy" : UPTax.Helper.RapidSession.DateTimeFormat)',
-                
+
                 onSelect: function (fd, d, calendar) {
                     calendar.hide();
                 }
-            })
+            })*@
+
+            //jquery UI datepicker init
+            $(".datepickerUI").datepicker({
+                dateFormat: '@(UPTax.Helper.RapidSession.DateTimeFormat == null ? "dd-mm-yy" : UPTax.Helper.RapidSession.DateTimeFormat)',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-90:+2"
+            });
 
         });
 

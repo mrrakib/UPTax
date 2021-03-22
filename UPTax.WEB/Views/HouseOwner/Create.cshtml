@@ -149,12 +149,11 @@
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.DateOfBirth) <span class="required">*</span></label>
                                     @if (Model != null)
                                     {
-                                        @Html.TextBoxFor(model => model.DateOfBirth, Model.DateOfBirth.ToString(dateFormat), new { @class = "datepicker-here form-control", @id = "validationCustom03", @type = "text", @required = "required", @data_range = "false" })
+                                        @Html.TextBoxFor(model => model.DateOfBirth, Model.DateOfBirth.ToString(dateFormat), new { @class = "datepickerUI form-control", @id = "", @type = "text", @required = "required", @data_range = "false" })
                                     }
                                     else
                                     {
-
-                                        @Html.TextBoxFor(model => model.DateOfBirth, "", new { @class = "datepicker-here form-control", @id = "validationCustom03", @type = "text", @required = "required", @data_range = "false" })
+                                        @Html.TextBoxFor(model => model.DateOfBirth, "", new { @class = "datepickerUI form-control", @id = "", @type = "text", @required = "required", @data_range = "false" })
                                     }
                                     <div class="invalid-feedback">
                                         জন্ম তারিখ দেয়া বাধ্যতামূলক!

@@ -133,9 +133,9 @@ namespace UPTax
                       ));
             bundles.Add(new ScriptBundle("~/bundles/adminjs2").Include(
                      "~/Scripts/jquery.unobtrusive-ajax.min.js",
-                     "~/Content/assets/libs/air-datepicker/js/datepicker.min.js",
-                     "~/Content/assets/libs/air-datepicker/js/i18n/datepicker.en.js",
-                     "~/Content/assets/libs/air-datepicker/js/i18n/datepicker.bn.js",
+                     //"~/Content/assets/libs/air-datepicker/js/datepicker.min.js",
+                     //"~/Content/assets/libs/air-datepicker/js/i18n/datepicker.en.js",
+                     //"~/Content/assets/libs/air-datepicker/js/i18n/datepicker.bn.js",
                      "~/Content/assets/libs/jquery-knob/jquery.knob.min.js",
                      "~/Content/assets/libs/jqvmap/jquery.vmap.min.js",
                      "~/Content/assets/libs/jqvmap/maps/jquery.vmap.usa.js",

@@ -93,7 +93,7 @@ namespace UPTax.Controllers
                 RapidSession.RoleName = userRole.Name;
                 RapidSession.UserId = user.Id;
                 RapidSession.UserFullName = user.FullName;
-                RapidSession.DateTimeFormat = "dd-mm-yyyy";
+                RapidSession.DateTimeFormat = "dd-mm-yy";
                 if (RapidSession.RoleName.Equals("Super Admin"))
                 {
                     if (db.UnionParishads.Count() > 0)

@@ -10,6 +10,7 @@
     List<Gender> genders = ViewBag.Genders == null ? new List<Gender>() : ViewBag.Genders;
     List<Religion> religions = ViewBag.Religions == null ? new List<Religion>() : ViewBag.Religions;
     string dateFormat = UPTax.Helper.RapidSession.DateTimeFormat;
+    string dateFormatEdit = UPTax.Helper.RapidSession.DateTimeFormat + "yy";
 }
 <style>
     div.inline .form-control {
@@ -148,12 +149,12 @@
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.DateOfBirth) <span class="required">*</span></label>
                                     @if (Model != null)
                                     {
-                                        @Html.TextBoxFor(model => model.DateOfBirth, Model.DateOfBirth.ToString(dateFormat), new { @class = "datepicker-here form-control", @type = "text", @required = "required", @data_range = "false" })
+                                        @Html.TextBoxFor(model => model.DateOfBirth, Model.DateOfBirth.ToString(dateFormatEdit), new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false" })
                                     }
                                     else
                                     {
 
-                                        @Html.TextBoxFor(model => model.DateOfBirth, "", new { @class = "datepicker-here form-control", @id = "validationCustom03", @type = "text", @required = "required", @data_range = "false" })
+                                        @Html.TextBoxFor(model => model.DateOfBirth, "", new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false" })
                                     }
                                     <div class="invalid-feedback">
                                         জন্ম তারিখ দেয়া বাধ্যতামূলক!
@@ -178,20 +179,26 @@
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.ReligionId) <span class="required">*</span></label><br />
                                     @for (int i = 0; i < religions.Count; i++)
                                     {
-                                        if (i == 0)
-                                        {
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="ReligionId" id="inlineRadioReligionId'@i'" value="@religions[i].Id" checked>
-                                                <label class="form-check-label" for="inlineRadioReligionId'@i'">@religions[i].Name</label>
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="ReligionId" id="inlineRadioReligionId'@i'" value="@religions[i].Id">
-                                                <label class="form-check-label" for="inlineRadioReligionId'@i'">@religions[i].Name</label>
-                                            </div>
-                                        }
+
+                                        <div class="form-check form-check-inline">
+                                            @Html.RadioButtonFor(model => model.ReligionId, religions[i].Id, new { @class = "form-check-input", @id = "inlineRadioReligionId" + i })
+                                            <label class="form-check-label" for="inlineRadioReligionId'@i'">@religions[i].Name</label>
+                                        </div>
+
+                                        @*if (i == 0)
+                                            {
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="ReligionId" id="inlineRadioReligionId'@i'" value="@religions[i].Id" checked>
+                                                    <label class="form-check-label" for="inlineRadioReligionId'@i'">@religions[i].Name</label>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="ReligionId" id="inlineRadioReligionId'@i'" value="@religions[i].Id">
+                                                    <label class="form-check-label" for="inlineRadioReligionId'@i'">@religions[i].Name</label>
+                                                </div>
+                                            }*@
                                     }
                                 </div>
                                 <div class="col-md-4 mb-3">
@@ -199,20 +206,25 @@
 
                                     @for (int i = 0; i < genders.Count; i++)
                                     {
-                                        if (i == 0)
-                                        {
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="GenderId" id="inlineRadioGenderId'@i'" value="@genders[i].Id" checked>
-                                                <label class="form-check-label" for="inlineRadioGenderId'@i'">@genders[i].Name</label>
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="GenderId" id="inlineRadioGenderId'@i'" value="@genders[i].Id">
-                                                <label class="form-check-label" for="inlineRadioGenderId'@i'">@genders[i].Name</label>
-                                            </div>
-                                        }
+                                        <div class="form-check form-check-inline">
+                                            @Html.RadioButtonFor(model => model.GenderId, genders[i].Id, new { @class = "form-check-input", @id = "inlineRadioGenderId" + i })
+                                            <label class="form-check-label" for="inlineRadioGenderId'@i'">@genders[i].Name</label>
+                                        </div>
+
+                                        @*if (i == 0)
+                                            {
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="GenderId" id="inlineRadioGenderId'@i'" value="@genders[i].Id" checked>
+                                                    <label class="form-check-label" for="inlineRadioGenderId'@i'">@genders[i].Name</label>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="GenderId" id="inlineRadioGenderId'@i'" value="@genders[i].Id">
+                                                    <label class="form-check-label" for="inlineRadioGenderId'@i'">@genders[i].Name</label>
+                                                </div>
+                                            }*@
                                     }
                                 </div>
                                 <div class="col-md-4 mb-3">
@@ -226,11 +238,11 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.IsTubeWell) <span class="required">*</span></label><br />
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="IsTubeWell" id="inlineRadioIsTubeWellYes" value="true" checked>
+                                        @Html.RadioButtonFor(model => model.IsTubeWell, true, new { @class = "form-check-input", @id = "inlineRadioIsTubeWellYes" })
                                         <label class="form-check-label" for="inlineRadioIsTubeWellYes">হ্যাঁ</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="IsTubeWell" id="inlineRadioIsTubeWellNo" value="false">
+                                        @Html.RadioButtonFor(model => model.IsTubeWell, false, new { @class = "form-check-input", @id = "inlineRadioIsTubeWellNo" })
                                         <label class="form-check-label" for="inlineRadioIsTubeWellNo">না</label>
                                     </div>
 
@@ -239,15 +251,15 @@
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.Sanitary) <span class="required">*</span></label><br />
 
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioYesBuilding" value="পাকা পায়খানা">
+                                        @Html.RadioButtonFor(model => model.Sanitary, "পাকা পায়খানা", new { @class = "form-check-input", @id = "inlineRadioYesBuilding" })
                                         <label class="form-check-label" for="inlineRadioYesBuilding">পাকা পায়খানা</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioSanitaryYes" value="কাঁচা পায়খানা" checked>
+                                        @Html.RadioButtonFor(model => model.Sanitary, "কাঁচা পায়খানা", new { @class = "form-check-input", @id = "inlineRadioSanitaryYes" })
                                         <label class="form-check-label" for="inlineRadioSanitaryYes">কাঁচা পায়খানা</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioSanitaryNo" value="নাই">
+                                        @Html.RadioButtonFor(model => model.Sanitary, "নাই", new { @class = "form-check-input", @id = "inlineRadioSanitaryNo" })
                                         <label class="form-check-label" for="inlineRadioSanitaryNo">নাই</label>
                                     </div>
                                 </div>
@@ -300,15 +312,15 @@
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.LivingType) <span class="required">*</span></label><br />
 
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="LivingType" id="inlineRadioSelfLiving" value="নিজে বসবাস">
+                                        @Html.RadioButtonFor(model => model.LivingType, "নিজে বসবাস", new { @class = "form-check-input", @id = "inlineRadioSelfLiving" })
                                         <label class="form-check-label" for="inlineRadioSelfLiving">নিজে বসবাস</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="LivingType" id="inlineRadioRentLiving" value="ভাড়া দেওয়া" checked>
+                                        @Html.RadioButtonFor(model => model.LivingType, "ভাড়া দেওয়া", new { @class = "form-check-input", @id = "inlineRadioRentLiving" })
                                         <label class="form-check-label" for="inlineRadioRentLiving">ভাড়া দেওয়া</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="LivingType" id="inlineRadioBoth" value="উভয়">
+                                        @Html.RadioButtonFor(model => model.LivingType, "উভয়", new { @class = "form-check-input", @id = "inlineRadioBoth" })
                                         <label class="form-check-label" for="inlineRadioBoth">উভয়</label>
                                     </div>
                                 </div>
