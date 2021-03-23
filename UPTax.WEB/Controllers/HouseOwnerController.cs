@@ -167,6 +167,9 @@ namespace UPTax.Controllers
             ViewBag.Genders = _genderService.GetAll();
             ViewBag.Religions = _religionService.GetAll();
 
+            var villages = _villageInfoService.GetByWardId(model.WardInfoId).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
+            ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
+
             return View(model);
         }
         #endregion
