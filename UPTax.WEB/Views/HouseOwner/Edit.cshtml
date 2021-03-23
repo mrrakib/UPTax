@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="VillageInfoId">@Html.DisplayNameFor(model => model.VillageInfoId) <span class="required">*</span></label>
-                                    @Html.DropDownList("VillageInfoId", null, "Select...", new { @class = "form-control validationCustom03" })
+                               f     @Html.DropDownList("VillageInfoId", null, "Select...", new { @class = "form-control validationCustom03" })
                                     <div class="invalid-feedback">
                                         গ্রাম দেয়া বাধ্যতামূলক!
                                     </div>
@@ -149,7 +149,7 @@
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.DateOfBirth) <span class="required">*</span></label>
                                     @if (Model != null)
                                     {
-                                        @Html.TextBoxFor(model => model.DateOfBirth, Model.DateOfBirth.ToString(dateFormatEdit), new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false" })
+                                        @Html.TextBoxFor(model => model.DateOfBirth, Model.DateOfBirth.ToString(dateFormat), new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false" })
                                     }
                                     else
                                     {

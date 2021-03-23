@@ -200,7 +200,7 @@
 
             //jquery UI datepicker init
             $(".datepickerUI").datepicker({
-                dateFormat: '@(UPTax.Helper.RapidSession.DateTimeFormat == null ? "dd-mm-yy" : UPTax.Helper.RapidSession.DateTimeFormat)',
+                dateFormat: '@(UPTax.Helper.RapidSession.DateTimeFormat == null ? "dd-mm-yyyy" : UPTax.Helper.RapidSession.DateTimeFormat.Replace("yyyy", "yy").Replace("M", "m"))',
                 changeMonth: true,
                 changeYear: true,
                 yearRange: "-90:+2"
