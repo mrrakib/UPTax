@@ -118,54 +118,54 @@
                                         foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
                                         {
                                             rowNo++;
-                                    <tr>
-                                        <td>@rowNo</td>
-                                        <td class="">@item.Data.HoldingNo</td>
-                                        <td class="">@item.Data.OwnerNameInBangla</td>
-                                        <td class="">@item.Data.MobileNo</td>
-                                        <td class="">@item.Data.FatherHusbandName</td>
-                                        <td class="">@item.Data.MotherName</td>
-                                        <td class="">@item.Data.BirthRegistrationNumber</td>
-                                        <td class="">@item.Data.DateOfBirth.ToString("dd MMM, yyyy")</td>
+                                            <tr>
+                                                <td>@rowNo</td>
+                                                <td class="">@item.Data.HoldingNo</td>
+                                                <td class="">@item.Data.OwnerNameInBangla</td>
+                                                <td class="">@item.Data.MobileNo</td>
+                                                <td class="">@item.Data.FatherHusbandName</td>
+                                                <td class="">@item.Data.MotherName</td>
+                                                <td class="">@item.Data.BirthRegistrationNumber</td>
+                                                <td class="">@item.Data.DateOfBirth.ToString("dd MMM, yyyy")</td>
 
-                                        <td class="">@item.Data.NIDNumber</td>
-                                        <td class="">@item.Data.YearlyRentAmount</td>
-                                        <td class="">@item.Data.YearlyInterestRate</td>
-                                        <td class="">@item.Data.SocialBenefitBeforeName</td>
-                                        <td class="">@item.Data.SocialBenefitEligibleName</td>
-                                        <td class="">@item.Data.SocialBenefitRunningName</td>
-                                        <td class="">@item.Data.GenderName</td>
-                                        <td class="">@item.Data.ReligionName</td>
-                                        <td class="">@item.Data.ProfessionName</td>
-                                        <td class="">
-                                            @if (item.Data.IsTubeWell)
-                                            {
-                                                <span>হ্যাঁ</span>
-                                            }
-                                            else
-                                            {
-                                                <span>না</span>
-                                            }
-                                        </td>
-                                        <td class="">
-                                            @item.Data.Sanitary
-                                        </td>
-                                        <td class="">কাঁচা ঘর-@item.Data.TotalRawHouse, পাকা ঘর-@item.Data.TotalBuildingHouse, আধা-পাকা ঘর-@item.Data.TotalSemiBuildingHouse </td>
-                                        <td class="">@item.Data.PreviousDueAmount</td>
+                                                <td class="">@item.Data.NIDNumber</td>
+                                                <td class="">@item.Data.YearlyRentAmount</td>
+                                                <td class="">@item.Data.YearlyInterestRate</td>
+                                                <td class="">@item.Data.SocialBenefitBeforeName</td>
+                                                <td class="">@item.Data.SocialBenefitEligibleName</td>
+                                                <td class="">@item.Data.SocialBenefitRunningName</td>
+                                                <td class="">@item.Data.GenderName</td>
+                                                <td class="">@item.Data.ReligionName</td>
+                                                <td class="">@item.Data.ProfessionName</td>
+                                                <td class="">
+                                                    @if (item.Data.IsTubeWell)
+                                                    {
+                                                        <span>হ্যাঁ</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>না</span>
+                                                    }
+                                                </td>
+                                                <td class="">
+                                                    @item.Data.Sanitary
+                                                </td>
+                                                <td class="">কাঁচা ঘর-@item.Data.TotalRawHouse, পাকা ঘর-@item.Data.TotalBuildingHouse, আধা-পাকা ঘর-@item.Data.TotalSemiBuildingHouse </td>
+                                                <td class="">@item.Data.PreviousDueAmount</td>
 
-                                        <td class="">@item.Data.LivingType</td>
-                                        <td class="">@item.Data.WardName</td>
-                                        <td class="">@item.Data.VillageName</td>
-                                        <td class="">@item.Data.UnionName</td>
-                                        <td>
-                                            <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
-                                                <i class="mdi mdi-pencil"></i>
-                                            </a>
-                                            <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","HouseOwner")/@item.Data.Id">
-                                                <i class="mdi mdi-trash-can"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                                <td class="">@item.Data.LivingType</td>
+                                                <td class="">@item.Data.WardName</td>
+                                                <td class="">@item.Data.VillageName</td>
+                                                <td class="">@item.Data.UnionName</td>
+                                                <td>
+                                                    <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
+                                                        <i class="mdi mdi-pencil"></i>
+                                                    </a>
+                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="DeleteItem();" deleteTag="@Url.Action("Delete","HouseOwner")/@item.Data.Id">
+                                                        <i class="mdi mdi-trash-can"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         }
                                     }
                                 </tbody>
@@ -192,6 +192,7 @@
                                 )
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -206,7 +207,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
         $(document).ready(function () {
-            
+
             //var table = $('#datatable').DataTable({
             //    scrollY: "300px",
             //    scrollX: true,

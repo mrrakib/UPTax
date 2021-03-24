@@ -208,6 +208,22 @@
 
         });
 
+        function DeleteItem() {
+            $(".deleteItem").click(function (e) {
+            var url = $(this).attr('deleteTag');
+
+            var appUrl = '@System.Configuration.ConfigurationManager.AppSettings["baseurl"]';
+
+            alertify.confirm("সতর্কীকরণ!", "আপনি কি এই আইটেমটি মুছে ফেলার বিষয়ে নিশ্চিত?",
+                function () {
+                    window.location.href = appUrl + url;
+                },
+                function () {
+                    alertify.error('বাতিল হয়েছে!');
+                }).set('labels', { ok: 'সঠিক', cancel: 'বাতিল' });
+            });
+        }
+
     </script>
 </body>
 </html>
