@@ -86,9 +86,9 @@ namespace UPTax.Service.Services
         {
             var count = 0;
             if (id == null)
-                count = _InstituteInfoRepository.GetCount(a => a.IsDeleted == false && a.NameOfInstitute == keyName.Trim());
+                count = _InstituteInfoRepository.GetCount(a => a.IsDeleted == false && a.HoldingNo == keyName.Trim());
             else
-                count = _InstituteInfoRepository.GetCount(a => a.IsDeleted == false && a.NameOfInstitute == keyName.Trim() && a.Id != id);
+                count = _InstituteInfoRepository.GetCount(a => a.IsDeleted == false && a.HoldingNo == keyName.Trim() && a.Id != id);
             return count > 0 ? true : false;
         }
 

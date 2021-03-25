@@ -41,33 +41,7 @@
                             @Html.HiddenFor(a => a.CreatedBy)
                             @Html.HiddenFor(a => a.IsDeleted)
                             <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.NameOfInstitute)</label>
-                                    @Html.TextBoxFor(m => m.NameOfInstitute, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = @nameOfTitle, @maxLength = "250", @required = "required" })
-                                    <div class="invalid-feedback">
-                                        নাম দেয়া বাধ্যতামূলক!
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Code)</label>
-                                    @Html.TextBoxFor(m => m.Code, new { @class = "form-control bangla", @placeholder = "কোড", @maxLength = "250" })
-
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.EiinNumber)</label>
-                                    @Html.TextBoxFor(m => m.EiinNumber, new { @class = "form-control bangla", @placeholder = "EIIN নম্বর", @maxLength = "250" })
-
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.TinNumber)</label>
-                                    @Html.TextBoxFor(m => m.TinNumber, new { @class = "form-control bangla", @placeholder = "টিন নম্বর", @maxLength = "250" })
-
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.BinNumber)</label>
-                                    @Html.TextBoxFor(m => m.BinNumber, new { @class = "form-control bangla", @placeholder = "বিন নম্বর", @maxLength = "250" })
-
-                                </div>
+                                
                             </div>
 
                             <button class="btn btn-primary" type="submit">হালনাগাদ করুন</button>

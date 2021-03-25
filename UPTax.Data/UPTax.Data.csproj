@@ -204,6 +204,10 @@
     <Compile Include="Migrations\202103201356184_NewFieldsAddedForTotalMembers.Designer.cs">
       <DependentUpon>202103201356184_NewFieldsAddedForTotalMembers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103251516268_InstituteOffice.cs" />
+    <Compile Include="Migrations\202103251516268_InstituteOffice.Designer.cs">
+      <DependentUpon>202103251516268_InstituteOffice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
@@ -321,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103201356184_NewFieldsAddedForTotalMembers.resx">
       <DependentUpon>202103201356184_NewFieldsAddedForTotalMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103251516268_InstituteOffice.resx">
+      <DependentUpon>202103251516268_InstituteOffice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

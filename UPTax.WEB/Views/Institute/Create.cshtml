@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var title = "কলেজ / অফিসের তথ্য";
     var nameOfTitle = "কলেজ / অফিসের নাম";
+    string dateFormat = UPTax.Helper.RapidSession.DateTimeFormat;
+
 }
 
 <div class="page-title-box">
@@ -36,31 +38,116 @@
                             @Html.AntiForgeryToken()
                             <div class="row">
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.NameOfInstitute)</label>
-                                    @Html.TextBoxFor(m => m.NameOfInstitute, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = @nameOfTitle, @maxLength = "250", @required = "required" })
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.WardInfoId) <span class="required">*</span></label>
+                                    @Html.DropDownList("WardInfoId", null, String.Empty, new { @class = "selectize validationCustom03" })
                                     <div class="invalid-feedback">
-                                        নাম দেয়া বাধ্যতামূলক!
+                                        ওয়ার্ড দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Code)</label>
-                                    @Html.TextBoxFor(m => m.Code, new { @class = "form-control bangla", @placeholder = "কোড", @maxLength = "250" })
-
+                                    <label for="VillageInfoId">@Html.DisplayNameFor(model => model.VillageInfoId) <span class="required">*</span></label>
+                                    <select name="VillageInfoId" id="VillageInfoId" class="form-control validationCustom03" required>
+                                        <option value="">Select...</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        গ্রাম দেয়া বাধ্যতামূলক!
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.EiinNumber)</label>
-                                    @Html.TextBoxFor(m => m.EiinNumber, new { @class = "form-control bangla", @placeholder = "EIIN নম্বর", @maxLength = "250" })
-
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.HoldingNo) <span class="required">*</span></label>
+                                    @Html.TextBoxFor(m => m.HoldingNo, new { @id = "validationCustom03", @class = "form-control", @placeholder = "হোল্ডিং নং", @maxLength = "250", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        হোল্ডিং নং দেয়া বাধ্যতামূলক!
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.TinNumber)</label>
-                                    @Html.TextBoxFor(m => m.TinNumber, new { @class = "form-control bangla", @placeholder = "টিন নম্বর", @maxLength = "250" })
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.YearlyIncome) <span class="required">*</span></label>
+                                    @Html.TextBoxFor(m => m.YearlyIncome, new { @id = "validationCustom03", @class = "form-control bangla", type = "number", @placeholder = "বাৎসরিক গড় আয়", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        বাৎসরিক গড় আয় দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
 
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.NameOfInstituteBangla) <span class="required">*</span></label>
+                                    @Html.TextBoxFor(m => m.NameOfInstituteBangla, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "নাম (বাংলা)", @maxLength = "250", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        প্রতিষ্ঠানের নাম দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.NameOfInstituteEnglish) <span class="required">*</span></label>
+                                    @Html.TextBoxFor(m => m.NameOfInstituteEnglish, new { @id = "validationCustom03", @class = "form-control", @placeholder = "নাম (ইংরেজিতে)", @maxLength = "250", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        প্রতিষ্ঠানের নাম (ইংরেজিতে) দেয়া বাধ্যতামূলক!
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.BinNumber)</label>
-                                    @Html.TextBoxFor(m => m.BinNumber, new { @class = "form-control bangla", @placeholder = "বিন নম্বর", @maxLength = "250" })
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.MobileNo) <span class="required">*</span></label>
+                                    @Html.TextBoxFor(m => m.MobileNo, new { @id = "validationCustom03", @class = "form-control bangla", type = "number", @placeholder = "মোবাইল নাম্বার", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        মোবাইল নাম্বার দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.DateOfBirth) <span class="required">*</span></label>
+                                    @if (Model != null)
+                                    {
+                                        @Html.TextBoxFor(model => model.DateOfBirth, Model.DateOfBirth.ToString(dateFormat), new { @class = "datepickerUI form-control", @id = "", @type = "text", @required = "required", @data_range = "false" })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(model => model.DateOfBirth, "", new { @class = "datepickerUI form-control", @id = "", @type = "text", @required = "required", @data_range = "false" })
+                                    }
+                                    <div class="invalid-feedback">
+                                        প্রতিষ্ঠানের তারিখ দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.IsTubeWell) <span class="required">*</span></label><br />
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="IsTubeWell" id="inlineRadioIsTubeWellYes" value="true" checked>
+                                        <label class="form-check-label" for="inlineRadioIsTubeWellYes">হ্যাঁ</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="IsTubeWell" id="inlineRadioIsTubeWellNo" value="false">
+                                        <label class="form-check-label" for="inlineRadioIsTubeWellNo">না</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Sanitary) <span class="required">*</span></label><br />
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioYesBuilding" value="পাকা পায়খানা">
+                                        <label class="form-check-label" for="inlineRadioYesBuilding">পাকা পায়খানা</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioSanitaryYes" value="কাঁচা পায়খানা" checked>
+                                        <label class="form-check-label" for="inlineRadioSanitaryYes">কাঁচা পায়খানা</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="Sanitary" id="inlineRadioSanitaryNo" value="নাই">
+                                        <label class="form-check-label" for="inlineRadioSanitaryNo">নাই</label>
+                                    </div>
+                                </div>
 
+                                <div class="col-md-4 mb-3 inline">
+                                    <label for="validationCustom03" class="col-md-12">অবকাঠামো ধরণ<span class="required"> *</span></label>
+                                    @Html.TextBoxFor(m => m.TotalBuildingHouse, new { @class = "form-control col-md-4 mb-1", type = "number", @placeholder = "পাকা ঘর" })
+                                    @Html.TextBoxFor(m => m.TotalSemiBuildingHouse, new { @class = "form-control col-md-4 mb-1", type = "number", @placeholder = "আধা-পাকা ঘর" })
+                                    @Html.TextBoxFor(m => m.TotalRawHouse, new { @class = "form-control col-md-3 mb-1", type = "number", @placeholder = "কাঁচা ঘর" })
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(a => a.InstituteType, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.InstituteType, new { @class = "form-control", @placeholder = "প্রতিষ্ঠানের ধরণ", @maxLength = "250" })
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.PreviousDueAmount)</label>
+                                    @Html.TextBoxFor(m => m.PreviousDueAmount, new { @id = "validationCustom03", @class = "form-control", type = "number", @placeholder = "পূর্বের বকেয়া" })
+                                    <div class="invalid-feedback">
+                                        পূর্বের বকেয়া দেয়া বাধ্যতামূলক!
+                                    </div>
                                 </div>
                             </div>
                             <button class="btn btn-primary" type="submit">সংরক্ষণ করুন</button>

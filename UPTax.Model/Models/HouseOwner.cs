@@ -16,9 +16,9 @@ namespace UPTax.Model.Models
             TotalRawHouse = 0;
         }
 
-        [DisplayName("নাম (ইংরেজিতে)")]
+        [DisplayName("খানা প্রধানের নাম (ইংরেজিতে)")]
         public string OwnerNameInEnglish { get; set; }
-        [DisplayName("খানা প্রধানের নাম")]
+        [DisplayName("খানা প্রধানের নাম (বাংলা)")]
         public string OwnerNameInBangla { get; set; }
         [DisplayName("বাৎসরিক গড় আয়")]
         public double YearlyIncome { get; set; }
