@@ -1,4 +1,4 @@
-﻿ @model PagedList.IPagedList<UPTax.Model.Models.InstituteInfo>
+﻿@model PagedList.IPagedList<UPTax.Model.Models.InstituteInfo>
 
 @using PagedList.Mvc;
 @{
@@ -64,17 +64,14 @@
                                     <table class="table">
                                         <tr class="">
                                             <td class="col-sm-1" style="width:1%">
-                                                @*<span style="font-weight:bold;">Page Size</span><br />*@
                                                 <i class="fa fa-filter" style="margin-right: 5px; color: #aeaeae; font-size: 22px; padding-top: 5px;  "></i>
                                                 @Html.TextBox("dataSize", ViewBag.dataSize as string, new { @type = "number", @min = "1", @max = "100", @class = "", @style = "width:60px;height:30px;border: 1px solid #DDE2E8;" })
                                             </td>
                                             <td class="col-sm-1" style="width:2%">
-                                                @*<span style="font-weight:bold;">Page Size</span><br />*@
-                                                @Html.TextBox("name", ViewBag.name as string, new { @class = "form-control col-md-12 col-xs-12", placeholder = "কলেজ / অফিসের নাম" })
+                                                @Html.TextBox("name", ViewBag.name as string, new { @class = "form-control col-md-12 col-xs-12", placeholder = "হোল্ডিং নাম্বার" })
                                             </td>
                                             <td class="" style="width:2%;">
                                                 <center><button type="submit" class="btn btn-sm btn-info"><i class="fa fa-search" style="margin-right: 5px; color: #008BBB"></i>খুঁজুন</button></center>
-                                                @*style="background-color: #e6e6e6; "*@
                                             </td>
                                         </tr>
                                     </table>
@@ -87,11 +84,19 @@
                                 <thead>
                                     <tr>
                                         <th>নং</th>
-                                        <th>কলেজ / অফিসের নাম</th>
-                                        <th>কোড</th>
-                                        <th>EIIN নম্বর</th>
-                                        <th>টিন নম্বর</th>
-                                        <th>বিন নম্বর</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().NameOfInstituteBangla)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().NameOfInstituteEnglish)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().HoldingNo)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().YearlyIncome)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().MobileNo)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().DateOfEstablishment)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().IsTubeWell)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().Sanitary)</th>
+                                        <th>অবকাঠামো ধরণ</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().PreviousDueAmount)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().WardInfoId)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().VillageInfoId)</th>
+
                                         <th>অপারেশন</th>
                                     </tr>
                                 </thead>
@@ -104,16 +109,31 @@
                                             <tr>
                                                 <td>@rowNo</td>
                                                 <td class="">@item.Data.NameOfInstituteBangla</td>
-                                                <td class="">@item.Data.NameOfInstituteBangla</td>
-                                                <td class="">@item.Data.NameOfInstituteBangla</td>
-                                                <td class="">@item.Data.NameOfInstituteBangla</td>
-                                                <td class="">@item.Data.NameOfInstituteBangla</td>
+                                                <td class="">@item.Data.NameOfInstituteEnglish</td>
+                                                <td class="">@item.Data.HoldingNo</td>
+                                                <td class="">@item.Data.YearlyIncome</td>
+                                                <td class="">@item.Data.MobileNo</td>
+                                                <td class="">@item.Data.DateOfEstablishment.ToString("dd MMM, yyyy")</td>
+                                                <td class="">
+                                                    @if (item.Data.IsTubeWell)
+                                                    {
+                                                        <span>হ্যাঁ</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>না</span>
+                                                    }
+                                                </td>
+                                                <td class="">@item.Data.Sanitary</td>
+                                                <td class="">কাঁচা ঘর-@item.Data.TotalRawHouse, পাকা ঘর-@item.Data.TotalBuildingHouse, আধা-পাকা ঘর-@item.Data.TotalSemiBuildingHouse </td>
+                                                <td class="">@item.Data.PreviousDueAmount</td>
+                                                <td class="">@item.Data.WardInfoId</td>
+                                                <td class="">@item.Data.VillageInfoId</td>
                                                 <td>
                                                     <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
                                                         <i class="mdi mdi-pencil"></i>
                                                     </a>
-                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","Institute")/@item.Data.Id">
-
+                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="DeleteItem()" deleteTag="@Url.Action("Delete","Institute")/@item.Data.Id">
                                                         <i class="mdi mdi-trash-can"></i>
                                                     </a>
                                                 </td>
@@ -158,7 +178,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
         $(function () {
-           
+
         });
     </script>
 }

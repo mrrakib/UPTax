@@ -13,7 +13,7 @@ namespace UPTax.Service.Services
         bool Add(InstituteInfo model);
         bool Update(InstituteInfo model);
         bool Delete(int id);
-        IPagedList GetPagedList(string degree, int pageNo, int pageSize);
+        IPagedList GetPagedList(string keyName, int pageNo, int pageSize);
         IEnumerable<InstituteInfo> GetAll();
         InstituteInfo GetDetails(int id);
         bool IsExistingItem(string keyName, int? id);
@@ -65,11 +65,11 @@ namespace UPTax.Service.Services
                 string searchPrm = string.Empty;
                 if (!string.IsNullOrWhiteSpace(keyName))
                 {
-                    searchPrm += string.Format(@" WHERE NameOfInstitute LIKE N'%{0}%'", keyName.Trim());
+                    searchPrm += string.Format(@" WHERE HoldingNo LIKE N'%{0}%'", keyName.Trim());
                 }
                 string query = string.Format(@"SELECT * FROM InstituteInfo {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
-                string countQuery = string.Format(@"SELECT COUNT(*) FROM InstituteInfo WHERE NameOfInstitute LIKE N'%{0}%'", keyName?.Trim());
+                string countQuery = string.Format(@"SELECT COUNT(Id) FROM InstituteInfo WHERE HoldingNo LIKE N'%{0}%'", keyName?.Trim());
 
                 int rowCount = _InstituteInfoRepository.SQLQuery<int>(countQuery);
                 List<InstituteInfo> educations = _InstituteInfoRepository.SQLQueryList<InstituteInfo>(query).Where(a => a.IsDeleted == false).ToList();

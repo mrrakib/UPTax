@@ -9,6 +9,10 @@ namespace UPTax.Model.Models
     [Table("InstituteInfo")]
     public class InstituteInfo : BaseEntity<int>
     {
+        public InstituteInfo()
+        {
+            DateOfEstablishment = DateTime.Now;
+        }
         [DisplayName("ওয়ার্ড নাম্বার")]
         public int? WardInfoId { get; set; }
         [ForeignKey("WardInfoId")]
@@ -32,7 +36,7 @@ namespace UPTax.Model.Models
         [DisplayName("প্রতিষ্ঠানের তারিখ")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:d MMM, yyyy}")]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime DateOfEstablishment { get; set; }
 
         [DisplayName("নলকূপ আছে কিনা")]
         public bool IsTubeWell { get; set; }
@@ -49,6 +53,7 @@ namespace UPTax.Model.Models
 
         [DisplayName("পূর্বের বকেয়া")]
         public double? PreviousDueAmount { get; set; }
+
 
     }
 }
