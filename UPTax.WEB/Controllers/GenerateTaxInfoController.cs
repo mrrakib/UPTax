@@ -45,36 +45,41 @@ namespace UPTax.Controllers
         [HttpPost]
         public ActionResult Index(VMTaxGenerator vm)
         {
+            ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name", vm.FinancialYearId);
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    //foreach (var item in vm.MenuPermissionDetails)
-                    //{
-                    //    MenuPermission permission = new MenuPermission();
-                    //    permission.RoleId = vm.RoleId;
-                    //    permission.MenuConfigId = item.MenuConfigId;
-                    //    permission.IsViewPermitted = item.IsViewPermit;
-                    //    permission.IsAddPermitted = item.IsAddPermit;
-                    //    permission.IsEditPermitted = item.IsEditPermit;
-                    //    permission.IsDeletePermitted = item.IsDeletePermit;
+                    TaxGenerateInfo model = new TaxGenerateInfo
+                    {
+                        FinancialYearId = vm.FinancialYearId,
+                        HoldingNo = vm.HoldingNo,
+                        HouseOwnerId = vm.VMTaxGeneratorDetails.HouseOwnerId,
+                        UnionId = _unionId,
+                        TaxPercentage = vm.YearlyTaxRate,
+                        TotalTax = vm.VMTaxGeneratorDetails.TotalYearlyTax,
+                        IsDeleted = false,
+                        CreatedBy = RapidSession.UserId,
+                        CreatedDate = DateTime.Now
+                    };
+                    if (_taxGenerateInfoService.Add(model))
+                    {
+                        _message.save(this);
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        _message.custom(this, "সেভ করতে সমস্যা হয়েছে!");
+                    }
 
-                    //    permission.CreatedBy = RapidSession.UserId;
-                    //    _menuPermissionService.Add(permission);
-                    //}
-                    //if (_menuPermissionService.DeleteAllPermittedMenues(vm.RoleId, vm.CategoryId))
-                    //{
-                    //    _menuPermissionService.Save();
-                    //    _message.save(this);
-                    //    return RedirectToAction("Index");
-                    //}
                 }
                 catch (Exception ex)
                 {
                     _message.custom(this, ex.Message.ToString());
                 }
             }
-            ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name", vm.FinancialYearId);
+            
             return View(vm);
         }
         #endregion
@@ -85,13 +90,22 @@ namespace UPTax.Controllers
             int houseOwnerId = _houseOwnerService.GetIdByHoldingNum(holdingNo, _unionId);
             if (_taxGenerateInfoService.IsExistingItem(finYearId, houseOwnerId, null))
             {
+                string error = "exist";
                 _message.custom(this, "দুঃখিত! এই হোল্ডিং নাম্বারের জন্য এই বছরে কর জেনারেট করা হয়ে গেছে!");
-                return RedirectToAction("Index");
+                return Json(error, JsonRequestBehavior.AllowGet);
             }
             VMTaxGenerator tax = _taxGenerateInfoService.GenerateSingleTax(holdingNo);
             tax.FinancialYearId = finYearId;
 
-            return PartialView("~/Views/MenuPermission/_partialPermission.cshtml", tax);
+            return PartialView("~/Views/GenerateTaxInfo/_partialTaxInfo.cshtml", tax);
+        }
+
+        [RapidAuthorization]
+        public ActionResult GetTaxRate(string holdingNo)
+        {
+            double houseOwnerTaxRate = _houseOwnerService.GetTaxRateByHoldingNum(holdingNo, _unionId);
+
+            return Json(houseOwnerTaxRate, JsonRequestBehavior.AllowGet);
         }
     }
 }

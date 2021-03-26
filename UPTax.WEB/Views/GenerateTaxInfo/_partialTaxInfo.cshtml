@@ -1,0 +1,62 @@
+﻿@model UPTax.Model.ViewModels.VMTaxGenerator
+
+@{
+    Layout = null;
+}
+
+
+<div class="col-md-12 mt-6">
+    <table class="table table-bordered">
+        @if (Model.VMTaxGeneratorDetails != null)
+        {
+            <tr>
+                <th>হোল্ডিং নাম্বার</th>
+                <td>@Html.DisplayFor(m => m.HoldingNo)</td>
+                @Html.HiddenFor(m => m.HoldingNo)
+            </tr>
+            <tr>
+                <th>বাৎসরিক মুনাফার হার</th>
+                <td>@Html.DisplayFor(m => m.YearlyTaxRate)</td>
+                @Html.HiddenFor(m => m.YearlyTaxRate)
+            </tr>
+
+            <tr>
+                <th>খানা প্রধান</th>
+                <td>@Html.DisplayFor(m => m.VMTaxGeneratorDetails.HouseOwnerName)</td>
+                @Html.HiddenFor(m => m.VMTaxGeneratorDetails.HouseOwnerName)
+                @Html.HiddenFor(m => m.VMTaxGeneratorDetails.HouseOwnerId)
+            </tr>
+            <tr>
+                <th>মোট বাৎসরিক কর</th>
+                <td>@Html.DisplayFor(m => m.VMTaxGeneratorDetails.TotalYearlyTax)</td>
+                @Html.HiddenFor(m => m.VMTaxGeneratorDetails.TotalYearlyTax)
+            </tr>
+            <tr>
+                <th>মোট বাৎসরিক ভাড়া</th>
+                <td>@Html.DisplayFor(m => m.VMTaxGeneratorDetails.TotalYearlyRent)</td>
+                @Html.HiddenFor(m => m.VMTaxGeneratorDetails.TotalYearlyRent)
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn btn-primary" type="submit">সেভ করুন</button>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <th>কোন তথ্য পাওয়া যায়নি!</th>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+
+</script>

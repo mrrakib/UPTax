@@ -96,6 +96,7 @@ namespace UPTax.Service.Services
                 double yearlyRent = houseOwner.YearlyRentAmount ?? 0;
                 resultDetails = new VMTaxGeneratorDetails
                 {
+                    HouseOwnerId = houseOwner.Id,
                     HouseOwnerName = houseOwner.OwnerNameInBangla,
                     TotalYearlyRent = yearlyRent,
                     TotalYearlyTax = ((yearlyRent * (houseOwner.YearlyInterestRate ?? 0)) / 100)

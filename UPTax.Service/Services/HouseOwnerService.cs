@@ -20,6 +20,7 @@ namespace UPTax.Service.Services
         bool IsExistingItem(string holdingNo, int? id);
         bool Save();
         int GetIdByHoldingNum(string holdingNum, int unionId);
+        double GetTaxRateByHoldingNum(string holdingNum, int unionId);
     }
     public class HouseOwnerService : IHouseOwnerService
     {
@@ -128,11 +129,29 @@ namespace UPTax.Service.Services
             int ownerId = 0;
             try
             {
-                return ownerId = _HouseOwnerRepository.Get(h => !h.IsDeleted && h.HoldingNo.Equals(holdingNum) && h.VillageInfo.UnionId == unionId).Id;
+                var owner = _HouseOwnerRepository.Get(h => !h.IsDeleted && h.HoldingNo.Equals(holdingNum) && h.VillageInfo.UnionId == unionId);
+                ownerId = owner != null ? owner.Id : 0;
+                return ownerId;
             }
             catch (Exception ex)
             {
                 return ownerId;
+            }
+
+        }
+
+        public double GetTaxRateByHoldingNum(string holdingNum, int unionId)
+        {
+            double ownerTaxRate = 0;
+            try
+            {
+                var owner = _HouseOwnerRepository.Get(h => !h.IsDeleted && h.HoldingNo.Equals(holdingNum) && h.VillageInfo.UnionId == unionId);
+                ownerTaxRate = owner != null ? (double)owner.YearlyInterestRate : 0;
+                return ownerTaxRate;
+            }
+            catch (Exception ex)
+            {
+                return ownerTaxRate;
             }
 
         }

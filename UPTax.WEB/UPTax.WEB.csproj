@@ -12700,7 +12700,7 @@
     <Content Include="Views\InfraStructuralType\Create.cshtml" />
     <Content Include="Views\InfraStructuralType\Edit.cshtml" />
     <Content Include="Views\InfraStructuralType\Index.cshtml" />
-    <Content Include="Views\GenerateTaxInfo\_partialPermission.cshtml" />
+    <Content Include="Views\GenerateTaxInfo\_partialTaxInfo.cshtml" />
     <Content Include="Views\GenerateTaxInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
