@@ -182,6 +182,7 @@
     <Compile Include="Controllers\HouseOwnerController.cs" />
     <Compile Include="Controllers\InfrastructureController.cs" />
     <Compile Include="Controllers\InstituteController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\MenuConfigController.cs" />
     <Compile Include="Controllers\MenuCategoryController.cs" />
     <Compile Include="Controllers\GenerateTaxInfoController.cs" />
@@ -12730,6 +12731,7 @@
     <Folder Include="Content\assets\libs\spectrum-colorpicker\docs\" />
     <Folder Include="Content\assets\libs\spectrum-colorpicker\example\" />
     <Folder Include="Content\assets\libs\spectrum-colorpicker\test\" />
+    <Folder Include="Views\Members\" />
     <Folder Include="Views\Shared\Admin\" />
   </ItemGroup>
   <ItemGroup>
