@@ -77,15 +77,10 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _memberService.IsExistingItem(model.HoldingNo, null);
                 model.CreatedBy = _userId;
-                if (!isExistingItem)
-                {
-                    _memberService.Add(model);
-                    _message.save(this);
-                    return RedirectToAction("Index");
-                }
-                _message.custom(this, "এই হোল্ডিং নাম্বার আছে!");
+                _memberService.Add(model);
+                _message.save(this);
+                return RedirectToAction("Index");
             }
 
             ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name", model.EducationInfoId);
