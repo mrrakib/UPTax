@@ -73,12 +73,23 @@ namespace UPTax.Service.Services
                 {
                     searchPrm += string.Format(@" WHERE h.IsDeleted=0");
                 }
-                string query = string.Format(@"SELECT h.*, w.WardNo WardName, u.[Name] UnionName, v.VillageName, e.Degree EducationName, g.[Name] GenderName, r.[Name] ReligionName, p.ProfessionTitle ProfessionName, sbr.Title SocialBenefitRunningName, sbe.Title SocialBenefitEligibleName, sbb.Title SocialBenefitBeforeName from Members h 
-                                                JOIN WardInfo w ON h.WardInfoId=w.Id  
-                                                JOIN UnionParishad u ON w.UnionId=u.Id
-                                                JOIN VillageInfo v ON h.VillageInfoId=v.Id
+                string query = string.Format(@"SELECT h.Id,
+                                                h.HoldingNo,
+                                                h.MemberNameInBangla,
+                                                p.ProfessionTitle Profession,
+                                                h.DateOfBirth,
+                                                h.BirthRegistrationNumber,
+                                                h.NIDNumber,
+                                                g.[Name] GenderName, 
+                                                r.[Name] Relationship,
+                                                e.Degree EducationName, 
+                                                sbr.Title SocialBenefitRunningName,
+                                                sbe.Title SocialBenefitEligibleName, 
+                                                sbb.Title SocialBenefitBeforeName,
+                                                h.CreatedDate
+                                                FROM Members h 
                                                 JOIN Genders g ON h.GenderId=g.Id
-                                                JOIN Religions r ON h.ReligionId=r.Id
+                                                JOIN Relationships r ON h.RelationshipId=r.Id
                                                 LEFT JOIN EducationInfo e ON h.EducationInfoId=e.Id
                                                 LEFT JOIN ProfessionInfo p ON h.ProfessionId=p.Id
                                                 LEFT JOIN SocialBenefits sbr ON h.SocialBenefitRunningId=sbr.Id

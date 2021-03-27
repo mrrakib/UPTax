@@ -34,6 +34,8 @@ div.dataTables_paginate ul.pagination {
     background-size: cover;
 }*/
 
-.required {
-    color: red;
-}
+    .required::after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }

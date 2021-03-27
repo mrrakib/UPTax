@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using UPTax.Model.Models;
 
 namespace UPTax.Model.ViewModels
 {
@@ -9,7 +8,7 @@ namespace UPTax.Model.ViewModels
     {
         public int Id { get; set; }
 
-        [DisplayName("খানা প্রধানের হোল্ডিং নাম্বার")]
+        [DisplayName("হোল্ডিং নাম্বার")]
         public string HoldingNo { get; set; }
 
         [DisplayName("সদস্যের নাম (বাংলায়)")]
@@ -30,8 +29,7 @@ namespace UPTax.Model.ViewModels
         public string NIDNumber { get; set; }
 
         [DisplayName("সদস্যের লিঙ্গ")]
-        public int GenderId { get; set; }
-        public virtual Gender Gender { get; set; }
+        public string GenderName { get; set; }
 
         [DisplayName("স্খানা প্রধানের সাথে সম্পর্ক")]
         public string Relationship { get; set; }
@@ -41,11 +39,11 @@ namespace UPTax.Model.ViewModels
         public string EducationName { get; set; }
 
         [DisplayName("কি ধরণের সামাজিক সুরক্ষা সুবিধা অতীতে পেয়েছেন")]
-        public string SocialBenefitBefore { get; set; }
+        public string SocialBenefitBeforeName { get; set; }
         [DisplayName("অন্যান্য কি ধরণের সামাজিক সুরক্ষা সুবিধা পাওয়ার যোগ্য")]
-        public string SocialBenefitEligible { get; set; }
+        public string SocialBenefitEligibleName { get; set; }
         [DisplayName("বর্তমানে কি ধরণের সামাজিক সুরক্ষা সুবিধা পাচ্ছেন")]
-        public string SocialBenefitRunning { get; set; }
+        public string SocialBenefitRunningName { get; set; }
         public DateTime CreatedDate { get; set; }
     }
 }

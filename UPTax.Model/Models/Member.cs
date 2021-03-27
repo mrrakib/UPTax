@@ -8,6 +8,10 @@ namespace UPTax.Model.Models
     [Table("Members")]
     public class Member : BaseEntity<int>
     {
+        public Member()
+        {
+            DateOfBirth = DateTime.Now;
+        }
         [DisplayName("খানা প্রধানের হোল্ডিং নাম্বার")]
         public string HoldingNo { get; set; }
 
@@ -33,9 +37,8 @@ namespace UPTax.Model.Models
         public int GenderId { get; set; }
         public virtual Gender Gender { get; set; }
 
-        [DisplayName("স্খানা প্রধানের সাথে সম্পর্ক")]
+        [DisplayName("খানা প্রধানের সাথে সম্পর্ক")]
         public int RelationshipId { get; set; }
-        [ForeignKey("RelationshipId")]
         public virtual Relationship Relationship { get; set; }
         [DisplayName("শিক্ষাগত যোগ্যতা")]
         public int? EducationInfoId { get; set; }

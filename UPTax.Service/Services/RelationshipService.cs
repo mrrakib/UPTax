@@ -5,6 +5,7 @@ using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository;
 using UPTax.Model.Models;
+using UPTax.Model.ViewModels;
 
 namespace UPTax.Service.Services
 {
@@ -18,6 +19,7 @@ namespace UPTax.Service.Services
         Relationship GetDetails(int id);
         bool IsExistingItem(string name, int? id);
         bool Save();
+        List<IdNameDropdown> GetDropdownItemList();
     }
     public class RelationshipService : IRelationshipService
     {
@@ -108,6 +110,15 @@ namespace UPTax.Service.Services
                 var errorMessage = ex.Message;
                 return false;
             }
+        }
+
+        public List<IdNameDropdown> GetDropdownItemList()
+        {
+            return _RelationshipRepository.GetMany(w => w.IsDeleted == false).Select(u => new IdNameDropdown
+            {
+                Id = u.Id,
+                Name = u.Name
+            }).ToList();
         }
     }
 }
