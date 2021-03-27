@@ -38,7 +38,8 @@ namespace UPTax.Data
         public DbSet<InfraStructuralType> InfraStructuralTypes { get; set; }
         public DbSet<FinancialYear> FinancialYears { get; set; }
         public DbSet<TaxGenerateInfo> TaxGenerateInfos { get; set; }
-
+        public DbSet<Relationship> Relationships { get; set; }
+        public DbSet<Member> Members { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

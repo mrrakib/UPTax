@@ -1,13 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using UPTax.Model.Models;
 
-namespace UPTax.Model.Models
+namespace UPTax.Model.ViewModels
 {
-    [Table("Members")]
-    public class Member : BaseEntity<int>
+    public class VMember
     {
+        public int Id { get; set; }
+
         [DisplayName("খানা প্রধানের হোল্ডিং নাম্বার")]
         public string HoldingNo { get; set; }
 
@@ -15,8 +16,7 @@ namespace UPTax.Model.Models
         public string MemberNameInBangla { get; set; }
 
         [DisplayName("পেশা")]
-        public int? ProfessionId { get; set; }
-        public virtual ProfessionInfo Profession { get; set; }
+        public string Profession { get; set; }
 
         [DisplayName("জন্ম তারিখ")]
         [DataType(DataType.Date)]
@@ -34,21 +34,18 @@ namespace UPTax.Model.Models
         public virtual Gender Gender { get; set; }
 
         [DisplayName("স্খানা প্রধানের সাথে সম্পর্ক")]
-        public int RelationshipId { get; set; }
-        [ForeignKey("RelationshipId")]
-        public virtual Relationship Relationship { get; set; }
+        public string Relationship { get; set; }
+
+
         [DisplayName("শিক্ষাগত যোগ্যতা")]
-        public int? EducationInfoId { get; set; }
-        public virtual EducationInfo EducationInfo { get; set; }
+        public string EducationName { get; set; }
 
         [DisplayName("কি ধরণের সামাজিক সুরক্ষা সুবিধা অতীতে পেয়েছেন")]
-        public int? SocialBenefitBeforeId { get; set; }
-        public virtual SocialBenefit SocialBenefitBefore { get; set; }
+        public string SocialBenefitBefore { get; set; }
         [DisplayName("অন্যান্য কি ধরণের সামাজিক সুরক্ষা সুবিধা পাওয়ার যোগ্য")]
-        public int? SocialBenefitEligibleId { get; set; }
-        public virtual SocialBenefit SocialBenefitEligible { get; set; }
+        public string SocialBenefitEligible { get; set; }
         [DisplayName("বর্তমানে কি ধরণের সামাজিক সুরক্ষা সুবিধা পাচ্ছেন")]
-        public int? SocialBenefitRunningId { get; set; }
-        public virtual SocialBenefit SocialBenefitRunning { get; set; }
+        public string SocialBenefitRunning { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }
