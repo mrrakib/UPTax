@@ -40,6 +40,7 @@ namespace UPTax.Data
         public DbSet<TaxGenerateInfo> TaxGenerateInfos { get; set; }
         public DbSet<Relationship> Relationships { get; set; }
         public DbSet<Member> Members { get; set; }
+        public DbSet<TaxInstallment> TaxInstallments { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

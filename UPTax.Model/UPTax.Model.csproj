@@ -106,6 +106,7 @@
     <Compile Include="Models\Religion.cs" />
     <Compile Include="Models\SocialBenefit.cs" />
     <Compile Include="Models\TaxGenerateInfo.cs" />
+    <Compile Include="Models\TaxInstallment.cs" />
     <Compile Include="Models\UnionDetails\UnionParishad.cs" />
     <Compile Include="Models\UnionDetails\CompanySocialProfile.cs" />
     <Compile Include="Models\UnionDetails\WardInfo.cs" />
