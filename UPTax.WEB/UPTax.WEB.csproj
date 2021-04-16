@@ -695,7 +695,6 @@
     <Content Include="bower_components\chart.js\src\Chart.Line.js" />
     <Content Include="bower_components\chart.js\src\Chart.PolarArea.js" />
     <Content Include="bower_components\chart.js\src\Chart.Radar.js" />
-    <Content Include="bower_components\ckeditor\.npm\assets\ckeditor4.png" />
     <Content Include="bower_components\ckeditor\adapters\jquery.js" />
     <Content Include="bower_components\ckeditor\ckeditor.js" />
     <Content Include="bower_components\ckeditor\config.js" />
@@ -11395,20 +11394,6 @@
     <Content Include="Content\assets\libs\parsleyjs\parsley.min.js" />
     <Content Include="Content\assets\libs\pdfmake\build\pdfmake.min.js" />
     <Content Include="Content\assets\libs\pdfmake\build\vfs_fonts.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\dbcs-codec.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\dbcs-data.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\index.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\internal.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\sbcs-codec.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\sbcs-data-generated.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\sbcs-data.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\utf16.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\utf32.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\utf7.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\lib\bom-handling.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\lib\extend-node.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\lib\index.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\lib\streams.js" />
     <Content Include="Content\assets\libs\pdfmake\webpack-standardfonts.config.js" />
     <Content Include="Content\assets\libs\popper.js\esm\popper-utils.min.js" />
     <Content Include="Content\assets\libs\popper.js\esm\popper.min.js" />
@@ -12062,7 +12047,6 @@
     <Content Include="bower_components\chart.js\README.md" />
     <Content Include="bower_components\ckeditor\.bower.json" />
     <Content Include="bower_components\ckeditor\.github\ISSUE_TEMPLATE" />
-    <Content Include="bower_components\ckeditor\.npm\README.md" />
     <Content Include="bower_components\ckeditor\bower.json" />
     <Content Include="bower_components\ckeditor\CHANGES.md" />
     <Content Include="bower_components\ckeditor\composer.json" />
@@ -12581,14 +12565,6 @@
     <Content Include="Content\assets\libs\gmaps\jsdoc.json" />
     <Content Include="Content\assets\libs\gmaps\umd.hbs" />
     <Content Include="Content\assets\libs\morris.js\bower.travis.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\big5-added.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\cp936.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\cp949.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\cp950.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\eucjp.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\gb18030-ranges.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\gbk-added.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\shiftjis.json" />
     <Content Include="Content\assets\libs\popper.js\umd\popper.js.flow" />
     <Content Include="Content\assets\libs\slick-slider\slick\config.rb" />
     <Content Include="Content\assets\libs\slick-slider\slick\fonts\slick.eot" />
@@ -12624,15 +12600,6 @@
     <Content Include="venobox\venobox.css" />
     <Content Include="venobox\venobox.js" />
     <Content Include="venobox\venobox.min.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -12706,9 +12673,17 @@
     <Content Include="Views\Members\Create.cshtml" />
     <Content Include="Views\Members\Edit.cshtml" />
     <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bower_components\ckeditor\.npm\assets\" />
     <Folder Include="Content\assets\libs\alertifyjs\src\" />
     <Folder Include="Content\assets\libs\bootstrap-daterangepicker\example\" />
     <Folder Include="Content\assets\libs\bootstrap-maxlength\src\" />

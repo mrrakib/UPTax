@@ -142,7 +142,7 @@ namespace UPTax
                      "~/Content/assets/libs/node-waves/waves.min.js",
                      "~/Content/assets/libs/alertifyjs/build/alertify.min.js",
                      "~/Content/assets/js/pages/alertifyjs.init.js",
-                     "~/Content/assets/js/pages/dashboard.init.js",
+                     //"~/Content/assets/js/pages/dashboard.init.js",
                      "~/Content/assets/libs/parsleyjs/parsley.min.js",
                      "~/Content/assets/js/pages/form-validation.init.js",
                      "~/Content/assets/js/avro-v1.1.4.min.js",
