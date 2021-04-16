@@ -220,6 +220,10 @@
     <Compile Include="Migrations\202104051000232_TaxInstallmentInfo.Designer.cs">
       <DependentUpon>202104051000232_TaxInstallmentInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104160410127_Alter_TaxInstallMent_add_isPaid.cs" />
+    <Compile Include="Migrations\202104160410127_Alter_TaxInstallMent_add_isPaid.Designer.cs">
+      <DependentUpon>202104160410127_Alter_TaxInstallMent_add_isPaid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
@@ -352,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104051000232_TaxInstallmentInfo.resx">
       <DependentUpon>202104051000232_TaxInstallmentInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104160410127_Alter_TaxInstallMent_add_isPaid.resx">
+      <DependentUpon>202104160410127_Alter_TaxInstallMent_add_isPaid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

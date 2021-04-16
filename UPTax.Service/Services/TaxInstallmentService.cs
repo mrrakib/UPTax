@@ -16,18 +16,23 @@ namespace UPTax.Service.Services
         bool Delete(int id);
         IEnumerable<TaxInstallment> GetAll();
         TaxInstallment GetDetails(int id);
-        bool IsExistingItem(string keyName, int? id);
+        bool IsExistingItem(string keyName, int finYearId, int? id);
         bool Save();
+        VMTaxInstallment GenerateSingleTaxInstallment(string holdingNo, int finYearId);
     }
     public class TaxInstallmentService : ITaxInstallmentService
     {
         private readonly ITaxInstallmentRepository _taxInstallmentRepository;
+        private readonly IHouseOwnerRepository _houseOwnerRepository;
+        private readonly ITaxGenerateInfoRepository _taxGenerateInfoRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public TaxInstallmentService(ITaxInstallmentRepository taxInstallmentRepository, IUnitOfWork unitOfWork)
+        public TaxInstallmentService(ITaxInstallmentRepository taxInstallmentRepository, IHouseOwnerRepository houseOwnerRepository, IUnitOfWork unitOfWork, ITaxGenerateInfoRepository taxGenerateInfoRepository)
         {
             _taxInstallmentRepository = taxInstallmentRepository;
+            _houseOwnerRepository = houseOwnerRepository;
             _unitOfWork = unitOfWork;
+            _taxGenerateInfoRepository = taxGenerateInfoRepository;
         }
         public bool Add(TaxInstallment model)
         {
@@ -58,13 +63,13 @@ namespace UPTax.Service.Services
             return _taxInstallmentRepository.Get(u => u.Id == id && u.IsDeleted == false);
         }
 
-        public bool IsExistingItem(string keyName, int? id)
+        public bool IsExistingItem(string keyName, int finYearId, int? id)
         {
             var count = 0;
             if (id == null)
-                count = _taxInstallmentRepository.GetCount(a => a.IsDeleted == false && a.HoldingNo == keyName.Trim());
+                count = _taxInstallmentRepository.GetCount(a => a.IsDeleted == false && a.HoldingNo == keyName.Trim() && a.FinancialYearId == finYearId && a.IsPaid == true);
             else
-                count = _taxInstallmentRepository.GetCount(a => a.IsDeleted == false && a.HoldingNo == keyName.Trim() && a.Id != id);
+                count = _taxInstallmentRepository.GetCount(a => a.IsDeleted == false && a.HoldingNo == keyName.Trim() && a.FinancialYearId == finYearId && a.IsPaid == true && a.Id != id);
             return count > 0 ? true : false;
         }
 
@@ -80,6 +85,38 @@ namespace UPTax.Service.Services
                 var errorMessage = ex.Message;
                 return false;
             }
+        }
+
+        public VMTaxInstallment GenerateSingleTaxInstallment(string holdingNo, int finYearId)
+        {
+            VMTaxInstallment result = new VMTaxInstallment();
+            VMTaxInstallmentDetails resultDetails = new VMTaxInstallmentDetails();
+            HouseOwner houseOwner = _houseOwnerRepository.Get(h => h.HoldingNo.Equals(holdingNo) && h.IsDeleted == false);
+            TaxGenerateInfo taxInfo = _taxGenerateInfoRepository.Get(h => h.HoldingNo.Equals(holdingNo) && h.IsDeleted == false && h.FinancialYearId == finYearId);
+            TaxInstallment taxInstallment = _taxInstallmentRepository.Get(t => t.HoldingNo.Equals(holdingNo) && t.IsPaid == false && t.FinancialYearId == finYearId && t.IsDeleted == false);
+            decimal OutstandingTaxAmount = taxInstallment != null ? taxInstallment.TaxAmount : 0;
+            decimal PenaltyAmount = taxInstallment != null ? taxInstallment.PenaltyAmount : 0;
+
+            if (taxInfo != null)
+            {
+                resultDetails = new VMTaxInstallmentDetails
+                {
+                    HouseOwnerId = houseOwner.Id,
+                    HouseOwnerName = houseOwner.OwnerNameInBangla,
+                    InstallmentAmount = (decimal)taxInfo.TotalTax,
+                    DueAmount = ((decimal)taxInfo.TotalTax - OutstandingTaxAmount),
+                    InstallmentDate = DateTime.Now,
+                    PenaltyAmount = PenaltyAmount
+                };
+                result = new VMTaxInstallment
+                {
+                    HoldingNo = houseOwner.HoldingNo,
+                    FinancialYearId = finYearId,
+                    vMTaxInstallmentDetails = resultDetails
+                };
+                return result;
+            }
+            return result;
         }
     }
 }

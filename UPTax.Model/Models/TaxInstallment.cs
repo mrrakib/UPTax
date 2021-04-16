@@ -16,5 +16,6 @@ namespace UPTax.Model.Models
         public decimal OutstandingAmount { get; set; }
         public decimal PenaltyAmount { get; set; }
         public DateTime TaxPaymentDate { get; set; }
+        public bool IsPaid { get; set; }
     }
 }

@@ -89,7 +89,7 @@ namespace UPTax.Service.Services
         {
             VMTaxGenerator result = new VMTaxGenerator();
             VMTaxGeneratorDetails resultDetails = new VMTaxGeneratorDetails();
-            HouseOwner houseOwner = _houseOwnerRepository.Get(h => h.HoldingNo.Equals(holdingNo));
+            HouseOwner houseOwner = _houseOwnerRepository.Get(h => h.HoldingNo.Equals(holdingNo) && h.IsDeleted == false);
 
             if (houseOwner != null)
             {

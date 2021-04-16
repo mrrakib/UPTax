@@ -118,6 +118,8 @@
     <Compile Include="ViewModels\VMLogin.cs" />
     <Compile Include="ViewModels\VMMenuPermission.cs" />
     <Compile Include="ViewModels\VMRegister.cs" />
+    <Compile Include="ViewModels\VMTaxInstallmentDetails.cs" />
+    <Compile Include="ViewModels\VMTaxInstallment.cs" />
     <Compile Include="ViewModels\VMTaxGeneratorDetails.cs" />
     <Compile Include="ViewModels\VMTaxGenerator.cs" />
     <Compile Include="ViewModels\VMUserInfo.cs" />

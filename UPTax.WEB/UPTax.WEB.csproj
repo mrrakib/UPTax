@@ -178,6 +178,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationInfoController.cs" />
+    <Compile Include="Controllers\TaxInstallmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HouseOwnerController.cs" />
     <Compile Include="Controllers\InfrastructureController.cs" />
@@ -12674,6 +12675,8 @@
     <Content Include="Views\Members\Edit.cshtml" />
     <Content Include="Views\Members\Index.cshtml" />
     <Content Include="Web.config" />
+    <Content Include="Views\TaxInstallment\_partialTaxInstallment.cshtml" />
+    <Content Include="Views\TaxInstallment\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
