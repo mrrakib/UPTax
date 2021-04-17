@@ -202,6 +202,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationInfoController.cs" />
+    <Compile Include="Controllers\RPTTaxCollectionSingleController.cs" />
     <Compile Include="Controllers\TaxInstallmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HouseOwnerController.cs" />
@@ -6659,6 +6660,7 @@
     <Content Include="Content\assets\fonts\fa-regular-400.svg" />
     <Content Include="Content\assets\fonts\fa-solid-900.svg" />
     <Content Include="Content\assets\fonts\themify.svg" />
+    <Content Include="Content\assets\images\bduptax_logo.png" />
     <Content Include="Content\assets\images\bg-pattern.png" />
     <Content Include="Content\assets\images\coming-soon.png" />
     <Content Include="Content\assets\images\error-img.png" />
@@ -12716,6 +12718,7 @@
     <Content Include="Web.config" />
     <Content Include="Views\TaxInstallment\_partialTaxInstallment.cshtml" />
     <Content Include="Views\TaxInstallment\Index.cshtml" />
+    <Content Include="Views\RPTTaxCollectionSingle\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
