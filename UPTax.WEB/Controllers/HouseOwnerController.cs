@@ -71,8 +71,8 @@ namespace UPTax.Controllers
             ViewBag.SocialBenefitEligibleId = socialBenifits;
             ViewBag.SocialBenefitRunningId = socialBenifits;
 
-            ViewBag.Genders = _genderService.GetAll();
-            ViewBag.Religions = _religionService.GetAll();
+            ViewBag.ReligionId = new SelectList(_religionService.GetDropdownItemList(), "Id", "Name");
+            ViewBag.GenderId = new SelectList(_genderService.GetDropdownItemList(), "Id", "Name");
 
             return View();
         }
@@ -103,8 +103,8 @@ namespace UPTax.Controllers
             ViewBag.SocialBenefitEligibleId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitEligibleId); ;
             ViewBag.SocialBenefitRunningId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitRunningId); ;
 
-            ViewBag.Genders = _genderService.GetAll();
-            ViewBag.Religions = _religionService.GetAll();
+            ViewBag.ReligionId = new SelectList(_religionService.GetDropdownItemList(), "Id", "Name");
+            ViewBag.GenderId = new SelectList(_genderService.GetDropdownItemList(), "Id", "Name");
 
             return View(model);
         }

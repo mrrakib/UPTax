@@ -176,24 +176,17 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.ReligionId) <span class="required">*</span></label><br />
-                                    @for (int i = 0; i < religions.Count; i++)
-                                    {
-                                        <div class="form-check form-check-inline">
-                                            @Html.RadioButtonFor(model => model.ReligionId, religions[i].Id, new { @class = "form-check-input", @id = "inlineRadioReligionId" + i })
-                                            <label class="form-check-label" for="inlineRadioReligionId'@i'">@religions[i].Name</label>
-                                        </div>
-                                    }
+                                    @Html.DropDownList("ReligionId", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        খানা প্রধানের ধর্ম দেয়া বাধ্যতামূলক!
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.GenderId) <span class="required">*</span></label><br />
-
-                                    @for (int i = 0; i < genders.Count; i++)
-                                    {
-                                        <div class="form-check form-check-inline">
-                                            @Html.RadioButtonFor(model => model.GenderId, genders[i].Id, new { @class = "form-check-input", @id = "inlineRadioGenderId" + i })
-                                            <label class="form-check-label" for="inlineRadioGenderId'@i'">@genders[i].Name</label>
-                                        </div>
-                                    }
+                                    @Html.DropDownList("GenderId", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        খানা প্রধানের লিঙ্গ দেয়া বাধ্যতামূলক!
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.ProfessionId)</label>
