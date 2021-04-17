@@ -1,0 +1,158 @@
+﻿@model UPTax.Model.ViewModels.VMTaxGenerator
+
+@{
+    ViewBag.Title = "সংরক্ষণ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">সিঙ্গেল কর জেনারেটর</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active">কর জেনারেট করুন</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">সিঙ্গেল কর জেনারেটর ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Index", "GenerateTaxInfo", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+
+                                <div class="col-md-6 mb-6">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationCustom03">
+                                            @Html.DisplayNameFor(model => model.HoldingNo) <span class="required">*</span>
+                                        </label>
+                                        @Html.TextBoxFor(m => m.HoldingNo, new { @id = "validationCustom03", @class = "form-control txtHolding", @placeholder = "হোল্ডিং নং", @maxLength = "250", @required = "required" })
+                                        <div class="invalid-feedback">
+                                            হোল্ডিং নং দেয়া বাধ্যতামূলক!
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationCustom03">
+                                            @Html.DisplayNameFor(model => model.FinancialYearId)
+                                        </label>
+
+                                        @Html.DropDownList("FinancialYearId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlFinancialYearId", @required = "required" })
+                                        <div class="invalid-feedback">
+                                            অর্থবছর দেয়া বাধ্যতামূলক!
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mb-3">
+                                        <label for="">@Html.DisplayNameFor(model => model.YearlyTaxRate) <span class="required">*</span></label>
+                                        @Html.TextBoxFor(m => m.YearlyTaxRate, new { @id = "txtYearlyTaxRate", @class = "form-control", @placeholder = "মুনাফার হার", @min = "0.5", @step = "0.1", @type = "number", @disabled = "disabled", @style = "opacity: 0.5" })
+                                    </div>
+                                    <button class="btn btn-info" id="generateTax" type="button">জেনারেট করুন</button>
+
+                                </div>
+
+
+                                <div id="partialTax" class="col-md-6">
+                                    <!-- partial tax view load here -->
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+@section Scripts {
+    <script src="~/Content/assets/js/pages/form-click-validation.init.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".txtHolding").blur(function () {
+
+                if ($(".txtHolding").val().length < 0 || $(".txtHolding").val().length == 0) {
+                    alert("হোল্ডিং নাম্বার বাধ্যতামূলক!");
+                    return false;
+                }
+
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetTaxRate")',
+                    dataType: 'json',
+                    data: { holdingNo: $(".txtHolding").val() },
+                    success: function (result) {
+                        $('#txtYearlyTaxRate').val(null);
+                        $('#txtYearlyTaxRate').val(result);
+                        $('#txtYearlyTaxRate').css('opacity', '1');
+                    },
+                    error: function (ex) {
+                        $('html, body').animate({ scrollTop: 0 }, 'fast');
+                    }
+                });
+
+            });
+
+
+            $("#generateTax").click(function () {
+
+                if ($(".txtHolding").val().length < 0 || $(".txtHolding").val().length == 0) {
+                    alert("হোল্ডিং নাম্বার বাধ্যতামূলক!");
+                    return false;
+                }
+
+                if ($("#ddlFinancialYearId").val() < 0 || $("#ddlFinancialYearId").val() == 0) {
+                    alert("অর্থবছর বাধ্যতামূলক!");
+                    return false;
+                }
+
+
+
+                $.ajax({
+                    type: 'Post',
+                    url: '@Url.Action("GenerateTax")',
+                    dataType: 'html',
+                    data: { holdingNo: $(".txtHolding").val(), finYearId: $("#ddlFinancialYearId").val() },
+                    success: function (result) {
+                        //alert(result);
+                        $('#partialTax').empty();
+                        debugger;
+                        if (result === "\"exist\"") {
+                            location.reload();
+                        } else {
+                            $('#partialTax').html(result);
+                        }
+                        //$('#partialTax').empty();
+
+                    },
+                    error: function (ex) {
+                        $('html, body').animate({ scrollTop: 0 }, 'fast');
+                    }
+                });
+
+            });
+        });
+    </script>
+
+
+}
