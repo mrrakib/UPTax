@@ -116,8 +116,7 @@
             });
 
 
-            $("#generateTax").click(function () {
-
+            $("#generateTaxInstallMent").click(function () {
                 if ($(".txtHolding").val().length < 0 || $(".txtHolding").val().length == 0) {
                     alert("হোল্ডিং নাম্বার বাধ্যতামূলক!");
                     return false;
@@ -128,11 +127,9 @@
                     return false;
                 }
 
-
-
                 $.ajax({
                     type: 'Post',
-                    url: '@Url.Action("GenerateTax")',
+                    url: '@Url.Action("GenerateTaxInstallMent")',
                     dataType: 'html',
                     data: { holdingNo: $(".txtHolding").val(), finYearId: $("#ddlFinancialYearId").val() },
                     success: function (result) {

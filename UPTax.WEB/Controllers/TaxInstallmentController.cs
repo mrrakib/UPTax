@@ -43,7 +43,7 @@ namespace UPTax.Controllers
 
         [RapidAuthorization]
         [HttpPost]
-        public ActionResult Index(VMTaxGenerator vm)
+        public ActionResult Index(VMTaxInstallment vm)
         {
             ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name", vm.FinancialYearId);
 
@@ -51,27 +51,33 @@ namespace UPTax.Controllers
             {
                 try
                 {
-                    TaxGenerateInfo model = new TaxGenerateInfo
+                    decimal actualDue = vm.vMTaxInstallmentDetails.InstallmentAmount - vm.vMTaxInstallmentDetails.DueAmount;
+                    HouseOwner owner = _houseOwnerService.GetDetails(vm.vMTaxInstallmentDetails.HouseOwnerId);
+                    bool isPaid = actualDue > 0 ? false : true;
+                    TaxInstallment model = new TaxInstallment
                     {
                         FinancialYearId = vm.FinancialYearId,
                         HoldingNo = vm.HoldingNo,
-                        HouseOwnerId = vm.VMTaxGeneratorDetails.HouseOwnerId,
+                        WardInfoId = owner.WardInfoId,
                         UnionId = _unionId,
-                        TaxPercentage = vm.YearlyTaxRate,
-                        TotalTax = vm.VMTaxGeneratorDetails.TotalYearlyTax,
+                        TaxPaymentDate = vm.vMTaxInstallmentDetails.InstallmentDate,
+                        TaxAmount = vm.vMTaxInstallmentDetails.InstallmentAmount,
+                        OutstandingAmount = vm.vMTaxInstallmentDetails.InstallmentAmount - actualDue,
+                        PenaltyAmount = vm.vMTaxInstallmentDetails.PenaltyAmount,
+                        IsPaid = isPaid,
                         IsDeleted = false,
                         CreatedBy = RapidSession.UserId,
                         CreatedDate = DateTime.Now
                     };
-                    //if (_taxInstallmentService.Add(model))
-                    //{
-                    //    _message.save(this);
-                    //    return RedirectToAction("Index");
-                    //}
-                    //else
-                    //{
-                    //    _message.custom(this, "সেভ করতে সমস্যা হয়েছে!");
-                    //}
+                    if (_taxInstallmentService.Add(model))
+                    {
+                        _message.save(this);
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        _message.custom(this, "সেভ করতে সমস্যা হয়েছে!");
+                    }
 
                 }
                 catch (Exception ex)

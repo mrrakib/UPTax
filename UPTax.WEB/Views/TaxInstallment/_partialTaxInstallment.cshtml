@@ -10,12 +10,13 @@
     <table class="table table-bordered">
         @if (Model.vMTaxInstallmentDetails != null)
         {
-            <tr>
-                <th>কর দাতার নাম</th>
-                <td>@Html.DisplayFor(m => m.vMTaxInstallmentDetails.HouseOwnerName)</td>
-                @Html.HiddenFor(m => m.vMTaxInstallmentDetails.HouseOwnerName)
-                @Html.HiddenFor(m => m.vMTaxInstallmentDetails.HouseOwnerId)
-            </tr>
+        <tr>
+            <th>কর দাতার নাম</th>
+            <td>@Html.DisplayFor(m => m.vMTaxInstallmentDetails.HouseOwnerName)</td>
+            @Html.HiddenFor(m => m.vMTaxInstallmentDetails.HouseOwnerName)
+            @Html.HiddenFor(m => m.vMTaxInstallmentDetails.HouseOwnerId)
+            @Html.HiddenFor(m => m.vMTaxInstallmentDetails.InstallmentAmount)
+        </tr>
             <tr>
                 <th>জমার তারিখ</th>
                 <td>
