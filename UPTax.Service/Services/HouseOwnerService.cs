@@ -1,5 +1,6 @@
 ﻿using PagedList;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UPTax.Data.Infrastructure;
@@ -21,6 +22,9 @@ namespace UPTax.Service.Services
         bool Save();
         int GetIdByHoldingNum(string holdingNum, int unionId);
         double GetTaxRateByHoldingNum(string holdingNum, int unionId);
+        IEnumerable GetTubeWellDropdownItemList();
+        IEnumerable GetSanitaryDropdownItemList();
+        IEnumerable GetLivingTypeDropdownItemList();
     }
     public class HouseOwnerService : IHouseOwnerService
     {
@@ -153,7 +157,32 @@ namespace UPTax.Service.Services
             {
                 return ownerTaxRate;
             }
+        }
 
+        public IEnumerable GetTubeWellDropdownItemList()
+        {
+            return new List<IdNameDropdown>() {
+                new IdNameDropdown() { IdStr = "হ্যাঁ", Name = "হ্যাঁ" },
+                new IdNameDropdown() { IdStr = "না", Name = "না" }
+            };
+        }
+
+        public IEnumerable GetSanitaryDropdownItemList()
+        {
+            return new List<IdNameDropdown>() {
+                new IdNameDropdown() { IdStr = "পাকা পায়খানা", Name = "পাকা পায়খানা" },
+                new IdNameDropdown() { IdStr = "কাঁচা পায়খানা", Name = "কাঁচা পায়খানা" },
+                new IdNameDropdown() { IdStr = "নাই", Name = "নাই" }
+            };
+        }
+
+        public IEnumerable GetLivingTypeDropdownItemList()
+        {
+            return new List<IdNameDropdown>() {
+                new IdNameDropdown() { IdStr = "নিজে বসবাস", Name = "নিজে বসবাস" },
+                new IdNameDropdown() { IdStr = "ভাড়া দেওয়া", Name = "ভাড়া দেওয়া" },
+                new IdNameDropdown() { IdStr = "উভয়", Name = "উভয়" }
+            };
         }
     }
 }

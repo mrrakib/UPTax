@@ -73,6 +73,9 @@ namespace UPTax.Controllers
 
             ViewBag.ReligionId = new SelectList(_religionService.GetDropdownItemList(), "Id", "Name");
             ViewBag.GenderId = new SelectList(_genderService.GetDropdownItemList(), "Id", "Name");
+            ViewBag.IsTubeWell = new SelectList(_houseOwnerService.GetTubeWellDropdownItemList(), "IdStr", "Name");
+            ViewBag.Sanitary = new SelectList(_houseOwnerService.GetSanitaryDropdownItemList(), "IdStr", "Name");
+            ViewBag.LivingType = new SelectList(_houseOwnerService.GetLivingTypeDropdownItemList(), "IdStr", "Name");
 
             return View();
         }
@@ -103,8 +106,11 @@ namespace UPTax.Controllers
             ViewBag.SocialBenefitEligibleId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitEligibleId); ;
             ViewBag.SocialBenefitRunningId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitRunningId); ;
 
-            ViewBag.ReligionId = new SelectList(_religionService.GetDropdownItemList(), "Id", "Name");
-            ViewBag.GenderId = new SelectList(_genderService.GetDropdownItemList(), "Id", "Name");
+            ViewBag.ReligionId = new SelectList(_religionService.GetDropdownItemList(), "Id", "Name", model.ReligionId);
+            ViewBag.GenderId = new SelectList(_genderService.GetDropdownItemList(), "Id", "Name", model.GenderId);
+            ViewBag.IsTubeWell = new SelectList(_houseOwnerService.GetTubeWellDropdownItemList(), "IdStr", "Name", model.IsTubeWell);
+            ViewBag.Sanitary = new SelectList(_houseOwnerService.GetSanitaryDropdownItemList(), "IdStr", "Name", model.Sanitary);
+            ViewBag.LivingType = new SelectList(_houseOwnerService.GetLivingTypeDropdownItemList(), "IdStr", "Name", model.LivingType);
 
             return View(model);
         }

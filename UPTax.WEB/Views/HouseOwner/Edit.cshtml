@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="VillageInfoId">@Html.DisplayNameFor(model => model.VillageInfoId) <span class="required">*</span></label>
-                                   @Html.DropDownList("VillageInfoId", null, "Select...", new { @class = "form-control validationCustom03" })
+                                    @Html.DropDownList("VillageInfoId", null, "Select...", new { @class = "form-control validationCustom03" })
                                     <div class="invalid-feedback">
                                         গ্রাম দেয়া বাধ্যতামূলক!
                                     </div>
@@ -176,25 +176,18 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.ReligionId) <span class="required">*</span></label><br />
-                                    @for (int i = 0; i < religions.Count; i++)
-                                    {
-                                        <div class="form-check form-check-inline">
-                                            @Html.RadioButtonFor(model => model.ReligionId, religions[i].Id, new { @class = "form-check-input", @id = "inlineRadioReligionId" + i })
-                                            <label class="form-check-label" for="inlineRadioReligionId'@i'">@religions[i].Name</label>
-                                        </div>
-                                    }
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.ReligionId) <span class="required"></span></label><br />
+                                    @Html.DropDownList("ReligionId", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        খানা প্রধানের ধর্ম দেয়া বাধ্যতামূলক!
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.GenderId) <span class="required">*</span></label><br />
-
-                                    @for (int i = 0; i < genders.Count; i++)
-                                    {
-                                        <div class="form-check form-check-inline">
-                                            @Html.RadioButtonFor(model => model.GenderId, genders[i].Id, new { @class = "form-check-input", @id = "inlineRadioGenderId" + i })
-                                            <label class="form-check-label" for="inlineRadioGenderId'@i'">@genders[i].Name</label>
-                                        </div>
-                                    }
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.GenderId) <span class="required"></span></label><br />
+                                    @Html.DropDownList("GenderId", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        খানা প্রধানের লিঙ্গ দেয়া বাধ্যতামূলক!
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.ProfessionId)</label>
@@ -205,31 +198,17 @@
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.IsTubeWell) <span class="required">*</span></label><br />
-                                    <div class="form-check form-check-inline">
-                                        @Html.RadioButtonFor(model => model.IsTubeWell, true, new { @class = "form-check-input", @id = "inlineRadioIsTubeWellYes" })
-                                        <label class="form-check-label" for="inlineRadioIsTubeWellYes">হ্যাঁ</label>
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.IsTubeWell) <span class="required"></span></label><br />
+                                    @Html.DropDownList("IsTubeWell", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        নলকূপ আছে কিনা দেয়া বাধ্যতামূলক!
                                     </div>
-                                    <div class="form-check form-check-inline">
-                                        @Html.RadioButtonFor(model => model.IsTubeWell, false, new { @class = "form-check-input", @id = "inlineRadioIsTubeWellNo" })
-                                        <label class="form-check-label" for="inlineRadioIsTubeWellNo">না</label>
-                                    </div>
-
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Sanitary) <span class="required">*</span></label><br />
-
-                                    <div class="form-check form-check-inline">
-                                        @Html.RadioButtonFor(model => model.Sanitary, "পাকা পায়খানা", new { @class = "form-check-input", @id = "inlineRadioYesBuilding" })
-                                        <label class="form-check-label" for="inlineRadioYesBuilding">পাকা পায়খানা</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        @Html.RadioButtonFor(model => model.Sanitary, "কাঁচা পায়খানা", new { @class = "form-check-input", @id = "inlineRadioSanitaryYes" })
-                                        <label class="form-check-label" for="inlineRadioSanitaryYes">কাঁচা পায়খানা</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        @Html.RadioButtonFor(model => model.Sanitary, "নাই", new { @class = "form-check-input", @id = "inlineRadioSanitaryNo" })
-                                        <label class="form-check-label" for="inlineRadioSanitaryNo">নাই</label>
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Sanitary) <span class="required"></span></label><br />
+                                    @Html.DropDownList("Sanitary", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        স্যানিটারি আছে কিনা দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
@@ -276,21 +255,11 @@
                                         ঋনের বার্ষিক সুদ দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
-
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.LivingType) <span class="required">*</span></label><br />
-
-                                    <div class="form-check form-check-inline">
-                                        @Html.RadioButtonFor(model => model.LivingType, "নিজে বসবাস", new { @class = "form-check-input", @id = "inlineRadioSelfLiving" })
-                                        <label class="form-check-label" for="inlineRadioSelfLiving">নিজে বসবাস</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        @Html.RadioButtonFor(model => model.LivingType, "ভাড়া দেওয়া", new { @class = "form-check-input", @id = "inlineRadioRentLiving" })
-                                        <label class="form-check-label" for="inlineRadioRentLiving">ভাড়া দেওয়া</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        @Html.RadioButtonFor(model => model.LivingType, "উভয়", new { @class = "form-check-input", @id = "inlineRadioBoth" })
-                                        <label class="form-check-label" for="inlineRadioBoth">উভয়</label>
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.LivingType) <span class="required"></span></label><br />
+                                    @Html.DropDownList("LivingType", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        বসবাসের ধরণ দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
@@ -303,14 +272,12 @@
                             </div>
 
                             <button class="btn btn-primary" type="submit">হালনাগাদ করুন</button>
-
                         }
                     </div>
                 </div>
             </div>
         </div>
         <!-- end row -->
-
     </div> <!-- container-fluid -->
 </div>
 

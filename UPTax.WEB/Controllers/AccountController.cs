@@ -1,8 +1,4 @@
-﻿using UPTax.Data;
-using UPTax.Helper;
-using UPTax.Model.Models.Account;
-using UPTax.Model.ViewModels;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using System;
@@ -11,8 +7,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using UPTax.Data;
 using UPTax.Filter;
-using UPTax.Service.Services.UPDetails;
+using UPTax.Helper;
+using UPTax.Model.Models.Account;
+using UPTax.Model.ViewModels;
 
 namespace UPTax.Controllers
 {
