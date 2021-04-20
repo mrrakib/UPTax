@@ -92,7 +92,7 @@ namespace UPTax.Controllers
                 if (!isExistingItem && _houseOwnerService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
+                    return View();
                 }
                 _message.custom(this, "এই হোল্ডিং নাম্বার আছে!");
             }

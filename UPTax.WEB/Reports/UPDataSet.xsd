@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="UPDataSet" targetNamespace="http://tempuri.org/UPDataSet.xsd" xmlns:mstns="http://tempuri.org/UPDataSet.xsd" xmlns="http://tempuri.org/UPDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="UPDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="UPDataSet" msprop:Generator_UserDSName="UPDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SingleHoldingTax" msprop:Generator_TableClassName="SingleHoldingTaxDataTable" msprop:Generator_TableVarName="tableSingleHoldingTax" msprop:Generator_TablePropName="SingleHoldingTax" msprop:Generator_RowDeletingName="SingleHoldingTaxRowDeleting" msprop:Generator_RowChangingName="SingleHoldingTaxRowChanging" msprop:Generator_RowEvHandlerName="SingleHoldingTaxRowChangeEventHandler" msprop:Generator_RowDeletedName="SingleHoldingTaxRowDeleted" msprop:Generator_UserTableName="SingleHoldingTax" msprop:Generator_RowChangedName="SingleHoldingTaxRowChanged" msprop:Generator_RowEvArgName="SingleHoldingTaxRowChangeEvent" msprop:Generator_RowClassName="SingleHoldingTaxRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HoldingNo" msprop:Generator_ColumnVarNameInTable="columnHoldingNo" msprop:Generator_ColumnPropNameInRow="HoldingNo" msprop:Generator_ColumnPropNameInTable="HoldingNoColumn" msprop:Generator_UserColumnName="HoldingNo" type="xs:string" minOccurs="0" />
+              <xs:element name="OwnerName" msprop:Generator_ColumnVarNameInTable="columnOwnerName" msprop:Generator_ColumnPropNameInRow="OwnerName" msprop:Generator_ColumnPropNameInTable="OwnerNameColumn" msprop:Generator_UserColumnName="OwnerName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
