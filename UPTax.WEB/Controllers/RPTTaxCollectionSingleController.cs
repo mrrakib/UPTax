@@ -38,21 +38,22 @@ namespace UPTax.Controllers
         [HttpPost]
         public ActionResult Index(VMCommonParams commonParams)
         {
-
+            List<VMCommonParams> parList = new List<VMCommonParams>();
             ReportViewer reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Local;
             reportViewer.SizeToReportContent = true;
             reportViewer.Width = Unit.Percentage(100);
             reportViewer.Height = Unit.Percentage(100);
             reportViewer.PageCountMode = new PageCountMode();
-            reportViewer.LocalReport.ReportPath = Request.MapPath("~/Areas/HRM/Reports/RDLC/RPTEmployeeWiseTimeKeeping.rdlc");
+            reportViewer.LocalReport.ReportPath = Request.MapPath("~/Reports/RDLC/Report1.rdlc");
             //reportViewer.LocalReport.SetParameters(GetReportParameter(data));
+            commonParams.FinancialYearName = "2020-2021";
             reportViewer.LocalReport.SetParameters(GetReportParameter(commonParams));
-            ReportDataSource A = new ReportDataSource("DataSet1", commonParams); //get actual data here
+            ReportDataSource A = new ReportDataSource("DataSet1", parList); //get actual data here
 
             reportViewer.LocalReport.DataSources.Add(A);
             ViewBag.ReportViewer = reportViewer;
-            return View("~/Areas/HRM/Views/RPTEmployeeWiseTimeKeeping/GenerateReportEmployeeWiseTimeKeeping.cshtml");
+            return View("~/Views/RPTTaxCollectionSingle/RPTTaxCollectionSingle.cshtml");
 
         }
 
@@ -64,7 +65,9 @@ namespace UPTax.Controllers
             
             List<ReportParameter> paraList = new List<ReportParameter>();
             paraList.Add(new ReportParameter("UnionName", union.Name));
-            paraList.Add(new ReportParameter("FromDate", commonParams.PaymentDate.Value.ToString("dd MMM, yyyy")));
+            paraList.Add(new ReportParameter("UnionAddress", union.Description));
+            paraList.Add(new ReportParameter("FinYear", commonParams.FinancialYearName));
+            //paraList.Add(new ReportParameter("FromDate", commonParams.PaymentDate.Value.ToString("dd MMM, yyyy")));
 
             return paraList;
         }

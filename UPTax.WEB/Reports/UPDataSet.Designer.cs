@@ -283,6 +283,36 @@ namespace UPTax.Reports {
             
             private global::System.Data.DataColumn columnOwnerName;
             
+            private global::System.Data.DataColumn columnWardNo;
+            
+            private global::System.Data.DataColumn columnParentName;
+            
+            private global::System.Data.DataColumn columnMobileNo;
+            
+            private global::System.Data.DataColumn columnBillAddress;
+            
+            private global::System.Data.DataColumn columnPaymentDate;
+            
+            private global::System.Data.DataColumn columnCurrentAmount;
+            
+            private global::System.Data.DataColumn columnCurrentDueAmount;
+            
+            private global::System.Data.DataColumn columnPrevDueAmount;
+            
+            private global::System.Data.DataColumn columnPrevAmount;
+            
+            private global::System.Data.DataColumn columnPenaltyDueAmount;
+            
+            private global::System.Data.DataColumn columnPenaltyAmount;
+            
+            private global::System.Data.DataColumn columnCurrentTotalAmount;
+            
+            private global::System.Data.DataColumn columnPrevTotalAmount;
+            
+            private global::System.Data.DataColumn columnPenaltyTotalAmount;
+            
+            private global::System.Data.DataColumn columnGrandTotalAmount;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public SingleHoldingTaxDataTable() {
@@ -334,6 +364,126 @@ namespace UPTax.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn WardNoColumn {
+                get {
+                    return this.columnWardNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ParentNameColumn {
+                get {
+                    return this.columnParentName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MobileNoColumn {
+                get {
+                    return this.columnMobileNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BillAddressColumn {
+                get {
+                    return this.columnBillAddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PaymentDateColumn {
+                get {
+                    return this.columnPaymentDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CurrentAmountColumn {
+                get {
+                    return this.columnCurrentAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CurrentDueAmountColumn {
+                get {
+                    return this.columnCurrentDueAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PrevDueAmountColumn {
+                get {
+                    return this.columnPrevDueAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PrevAmountColumn {
+                get {
+                    return this.columnPrevAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PenaltyDueAmountColumn {
+                get {
+                    return this.columnPenaltyDueAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PenaltyAmountColumn {
+                get {
+                    return this.columnPenaltyAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CurrentTotalAmountColumn {
+                get {
+                    return this.columnCurrentTotalAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PrevTotalAmountColumn {
+                get {
+                    return this.columnPrevTotalAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PenaltyTotalAmountColumn {
+                get {
+                    return this.columnPenaltyTotalAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn GrandTotalAmountColumn {
+                get {
+                    return this.columnGrandTotalAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -369,11 +519,43 @@ namespace UPTax.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SingleHoldingTaxRow AddSingleHoldingTaxRow(string HoldingNo, string OwnerName) {
+            public SingleHoldingTaxRow AddSingleHoldingTaxRow(
+                        string HoldingNo, 
+                        string OwnerName, 
+                        string WardNo, 
+                        string ParentName, 
+                        string MobileNo, 
+                        string BillAddress, 
+                        string PaymentDate, 
+                        string CurrentAmount, 
+                        string CurrentDueAmount, 
+                        string PrevDueAmount, 
+                        string PrevAmount, 
+                        string PenaltyDueAmount, 
+                        string PenaltyAmount, 
+                        string CurrentTotalAmount, 
+                        string PrevTotalAmount, 
+                        string PenaltyTotalAmount, 
+                        string GrandTotalAmount) {
                 SingleHoldingTaxRow rowSingleHoldingTaxRow = ((SingleHoldingTaxRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         HoldingNo,
-                        OwnerName};
+                        OwnerName,
+                        WardNo,
+                        ParentName,
+                        MobileNo,
+                        BillAddress,
+                        PaymentDate,
+                        CurrentAmount,
+                        CurrentDueAmount,
+                        PrevDueAmount,
+                        PrevAmount,
+                        PenaltyDueAmount,
+                        PenaltyAmount,
+                        CurrentTotalAmount,
+                        PrevTotalAmount,
+                        PenaltyTotalAmount,
+                        GrandTotalAmount};
                 rowSingleHoldingTaxRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSingleHoldingTaxRow);
                 return rowSingleHoldingTaxRow;
@@ -398,6 +580,21 @@ namespace UPTax.Reports {
             internal void InitVars() {
                 this.columnHoldingNo = base.Columns["HoldingNo"];
                 this.columnOwnerName = base.Columns["OwnerName"];
+                this.columnWardNo = base.Columns["WardNo"];
+                this.columnParentName = base.Columns["ParentName"];
+                this.columnMobileNo = base.Columns["MobileNo"];
+                this.columnBillAddress = base.Columns["BillAddress"];
+                this.columnPaymentDate = base.Columns["PaymentDate"];
+                this.columnCurrentAmount = base.Columns["CurrentAmount"];
+                this.columnCurrentDueAmount = base.Columns["CurrentDueAmount"];
+                this.columnPrevDueAmount = base.Columns["PrevDueAmount"];
+                this.columnPrevAmount = base.Columns["PrevAmount"];
+                this.columnPenaltyDueAmount = base.Columns["PenaltyDueAmount"];
+                this.columnPenaltyAmount = base.Columns["PenaltyAmount"];
+                this.columnCurrentTotalAmount = base.Columns["CurrentTotalAmount"];
+                this.columnPrevTotalAmount = base.Columns["PrevTotalAmount"];
+                this.columnPenaltyTotalAmount = base.Columns["PenaltyTotalAmount"];
+                this.columnGrandTotalAmount = base.Columns["GrandTotalAmount"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -407,6 +604,36 @@ namespace UPTax.Reports {
                 base.Columns.Add(this.columnHoldingNo);
                 this.columnOwnerName = new global::System.Data.DataColumn("OwnerName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOwnerName);
+                this.columnWardNo = new global::System.Data.DataColumn("WardNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWardNo);
+                this.columnParentName = new global::System.Data.DataColumn("ParentName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnParentName);
+                this.columnMobileNo = new global::System.Data.DataColumn("MobileNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMobileNo);
+                this.columnBillAddress = new global::System.Data.DataColumn("BillAddress", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBillAddress);
+                this.columnPaymentDate = new global::System.Data.DataColumn("PaymentDate", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPaymentDate);
+                this.columnCurrentAmount = new global::System.Data.DataColumn("CurrentAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCurrentAmount);
+                this.columnCurrentDueAmount = new global::System.Data.DataColumn("CurrentDueAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCurrentDueAmount);
+                this.columnPrevDueAmount = new global::System.Data.DataColumn("PrevDueAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrevDueAmount);
+                this.columnPrevAmount = new global::System.Data.DataColumn("PrevAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrevAmount);
+                this.columnPenaltyDueAmount = new global::System.Data.DataColumn("PenaltyDueAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPenaltyDueAmount);
+                this.columnPenaltyAmount = new global::System.Data.DataColumn("PenaltyAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPenaltyAmount);
+                this.columnCurrentTotalAmount = new global::System.Data.DataColumn("CurrentTotalAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCurrentTotalAmount);
+                this.columnPrevTotalAmount = new global::System.Data.DataColumn("PrevTotalAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrevTotalAmount);
+                this.columnPenaltyTotalAmount = new global::System.Data.DataColumn("PenaltyTotalAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPenaltyTotalAmount);
+                this.columnGrandTotalAmount = new global::System.Data.DataColumn("GrandTotalAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGrandTotalAmount);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -581,6 +808,246 @@ namespace UPTax.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string WardNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.WardNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'WardNo\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.WardNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ParentName {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.ParentNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ParentName\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.ParentNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string MobileNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.MobileNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MobileNo\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.MobileNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string BillAddress {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.BillAddressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BillAddress\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.BillAddressColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PaymentDate {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.PaymentDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PaymentDate\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.PaymentDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CurrentAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.CurrentAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CurrentAmount\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.CurrentAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CurrentDueAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.CurrentDueAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CurrentDueAmount\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.CurrentDueAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PrevDueAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.PrevDueAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PrevDueAmount\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.PrevDueAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PrevAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.PrevAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PrevAmount\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.PrevAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PenaltyDueAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.PenaltyDueAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PenaltyDueAmount\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.PenaltyDueAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PenaltyAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.PenaltyAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PenaltyAmount\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.PenaltyAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CurrentTotalAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.CurrentTotalAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CurrentTotalAmount\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.CurrentTotalAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PrevTotalAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.PrevTotalAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PrevTotalAmount\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.PrevTotalAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PenaltyTotalAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.PenaltyTotalAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PenaltyTotalAmount\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.PenaltyTotalAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string GrandTotalAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.GrandTotalAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GrandTotalAmount\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.GrandTotalAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsHoldingNoNull() {
                 return this.IsNull(this.tableSingleHoldingTax.HoldingNoColumn);
             }
@@ -601,6 +1068,186 @@ namespace UPTax.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetOwnerNameNull() {
                 this[this.tableSingleHoldingTax.OwnerNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsWardNoNull() {
+                return this.IsNull(this.tableSingleHoldingTax.WardNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetWardNoNull() {
+                this[this.tableSingleHoldingTax.WardNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsParentNameNull() {
+                return this.IsNull(this.tableSingleHoldingTax.ParentNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetParentNameNull() {
+                this[this.tableSingleHoldingTax.ParentNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMobileNoNull() {
+                return this.IsNull(this.tableSingleHoldingTax.MobileNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMobileNoNull() {
+                this[this.tableSingleHoldingTax.MobileNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBillAddressNull() {
+                return this.IsNull(this.tableSingleHoldingTax.BillAddressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBillAddressNull() {
+                this[this.tableSingleHoldingTax.BillAddressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPaymentDateNull() {
+                return this.IsNull(this.tableSingleHoldingTax.PaymentDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPaymentDateNull() {
+                this[this.tableSingleHoldingTax.PaymentDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCurrentAmountNull() {
+                return this.IsNull(this.tableSingleHoldingTax.CurrentAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCurrentAmountNull() {
+                this[this.tableSingleHoldingTax.CurrentAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCurrentDueAmountNull() {
+                return this.IsNull(this.tableSingleHoldingTax.CurrentDueAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCurrentDueAmountNull() {
+                this[this.tableSingleHoldingTax.CurrentDueAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPrevDueAmountNull() {
+                return this.IsNull(this.tableSingleHoldingTax.PrevDueAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPrevDueAmountNull() {
+                this[this.tableSingleHoldingTax.PrevDueAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPrevAmountNull() {
+                return this.IsNull(this.tableSingleHoldingTax.PrevAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPrevAmountNull() {
+                this[this.tableSingleHoldingTax.PrevAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPenaltyDueAmountNull() {
+                return this.IsNull(this.tableSingleHoldingTax.PenaltyDueAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPenaltyDueAmountNull() {
+                this[this.tableSingleHoldingTax.PenaltyDueAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPenaltyAmountNull() {
+                return this.IsNull(this.tableSingleHoldingTax.PenaltyAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPenaltyAmountNull() {
+                this[this.tableSingleHoldingTax.PenaltyAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCurrentTotalAmountNull() {
+                return this.IsNull(this.tableSingleHoldingTax.CurrentTotalAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCurrentTotalAmountNull() {
+                this[this.tableSingleHoldingTax.CurrentTotalAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPrevTotalAmountNull() {
+                return this.IsNull(this.tableSingleHoldingTax.PrevTotalAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPrevTotalAmountNull() {
+                this[this.tableSingleHoldingTax.PrevTotalAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPenaltyTotalAmountNull() {
+                return this.IsNull(this.tableSingleHoldingTax.PenaltyTotalAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPenaltyTotalAmountNull() {
+                this[this.tableSingleHoldingTax.PenaltyTotalAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsGrandTotalAmountNull() {
+                return this.IsNull(this.tableSingleHoldingTax.GrandTotalAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetGrandTotalAmountNull() {
+                this[this.tableSingleHoldingTax.GrandTotalAmountColumn] = global::System.Convert.DBNull;
             }
         }
         
