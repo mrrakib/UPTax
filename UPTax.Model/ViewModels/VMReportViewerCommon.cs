@@ -11,5 +11,7 @@ namespace UPTax.Model.ViewModels
     {
         [DisplayName("হোল্ডিং নাম্বার")]
         public string HoldingNo { get; set; }
+        [DisplayName("অর্থবছর")]
+        public string FinancialYearId { get; set; }
     }
 }

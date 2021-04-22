@@ -85,6 +85,10 @@
           <DataField>GrandTotalAmount</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="GrandAmountStr">
+          <DataField>GrandAmountStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>UPDataSet</rd:DataSetName>
@@ -109,6 +113,7 @@
                   <TextRun>
                     <Value>=Parameters!UnionName.Value</Value>
                     <Style>
+                      <FontFamily>Kalpurush</FontFamily>
                       <FontSize>12pt</FontSize>
                     </Style>
                   </TextRun>
@@ -127,10 +132,6 @@
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
           <Textbox Name="UnionAddress">
@@ -141,7 +142,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=Parameters!UnionAddress.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>kalpurush</FontFamily>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -159,10 +162,6 @@
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
           <Textbox Name="Textbox3">
@@ -386,7 +385,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!WardNo.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -475,7 +476,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!HoldingNo.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -564,7 +567,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!OwnerName.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -653,7 +658,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!ParentName.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -742,7 +749,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!MobileNo.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -831,7 +840,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!BillAddress.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -912,21 +923,22 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PaymentDate">
+                        <Textbox Name="FromDate">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PaymentDate.Value</Value>
-                                  <Style />
+                                  <Value>=Parameters!FromDate.Value</Value>
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PaymentDate</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1257,12 +1269,12 @@
                                 <TextRun>
                                   <Value>=Fields!CurrentDueAmount.Value</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1273,6 +1285,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1288,12 +1301,12 @@
                                 <TextRun>
                                   <Value>=Fields!CurrentAmount.Value</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1304,6 +1317,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1317,14 +1331,14 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CurrentTotalAmount.Value</Value>
+                                  <Value>=(Fields!CurrentAmount.Value + Fields!CurrentDueAmount.Value)</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1335,6 +1349,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1386,12 +1401,12 @@
                                 <TextRun>
                                   <Value>=Fields!PrevDueAmount.Value</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1402,6 +1417,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1417,12 +1433,12 @@
                                 <TextRun>
                                   <Value>=Fields!PrevAmount.Value</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1433,37 +1449,39 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PrevTotalAmount">
+                        <Textbox Name="CurrentTotalAmount2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PrevTotalAmount.Value</Value>
+                                  <Value>=(Fields!PrevAmount.Value + Fields!PrevDueAmount.Value)</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PrevTotalAmount</rd:DefaultName>
+                          <rd:DefaultName>CurrentTotalAmount</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1515,12 +1533,12 @@
                                 <TextRun>
                                   <Value>=Fields!PenaltyDueAmount.Value</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1531,6 +1549,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1546,12 +1565,12 @@
                                 <TextRun>
                                   <Value>=Fields!PenaltyAmount.Value</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1562,6 +1581,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1575,14 +1595,14 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PenaltyTotalAmount.Value</Value>
+                                  <Value>=(Fields!PenaltyAmount.Value + Fields!PenaltyDueAmount.Value)</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1593,6 +1613,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1630,6 +1651,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                         <ColSpan>3</ColSpan>
@@ -1664,6 +1686,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1756,25 +1779,26 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox84">
+                        <Textbox Name="GrandTotalAmount1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!GrandTotalAmount.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox84</rd:DefaultName>
+                          <rd:DefaultName>GrandTotalAmount1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1896,14 +1920,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox88">
+                        <Textbox Name="GrandAmountStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!GrandAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
                                   </Style>
@@ -1914,7 +1938,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox88</rd:DefaultName>
+                          <rd:DefaultName>GrandAmountStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -2111,6 +2135,7 @@
                 <TablixMember />
               </TablixMembers>
             </TablixRowHierarchy>
+            <DataSetName>DataSet1</DataSetName>
             <Top>3.0927in</Top>
             <Left>0.41125in</Left>
             <Height>1.12625in</Height>
@@ -2123,9 +2148,8 @@
             </Style>
           </Tablix>
           <Line Name="Line1">
-            <Top>0.12028in</Top>
             <Left>5.17583in</Left>
-            <Height>4.17014in</Height>
+            <Height>4.5in</Height>
             <Width>0in</Width>
             <ZIndex>9</ZIndex>
             <Style>
@@ -2145,6 +2169,7 @@
                   <TextRun>
                     <Value>=Parameters!UnionName.Value</Value>
                     <Style>
+                      <FontFamily>kalpurush</FontFamily>
                       <FontSize>12pt</FontSize>
                     </Style>
                   </TextRun>
@@ -2155,7 +2180,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>UnionName</rd:DefaultName>
-            <Top>0.10691in</Top>
+            <Top>0.12028in</Top>
             <Left>6.24521in</Left>
             <Height>0.1875in</Height>
             <Width>2.52083in</Width>
@@ -2164,10 +2189,6 @@
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
           <Textbox Name="UnionAddress2">
@@ -2178,7 +2199,9 @@
                 <TextRuns>
                   <TextRun>
                     <Value>=Parameters!UnionAddress.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>kalpurush</FontFamily>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -2196,10 +2219,6 @@
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
           <Textbox Name="Textbox6">
@@ -2307,37 +2326,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox8">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>গ্রাহক কপি</Value>
-                    <Style>
-                      <FontFamily>Kalpurush</FontFamily>
-                      <FontSize>9pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>0.6083in</Top>
-            <Left>6.81396in</Left>
-            <Height>0.1875in</Height>
-            <Width>1.27083in</Width>
-            <ZIndex>15</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Textbox>
           <Tablix Name="Tablix4">
             <TablixBody>
               <TablixColumns>
@@ -2423,7 +2411,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!WardNo.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2512,7 +2502,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!HoldingNo.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2601,7 +2593,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!OwnerName.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2690,7 +2684,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!ParentName.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2779,7 +2775,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!MobileNo.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2868,7 +2866,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!BillAddress.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2949,21 +2949,22 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PaymentDate2">
+                        <Textbox Name="FromDate2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PaymentDate.Value</Value>
-                                  <Style />
+                                  <Value>=Parameters!FromDate.Value</Value>
+                                  <Style>
+                                    <FontFamily>kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PaymentDate</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -3090,7 +3091,7 @@
             <Left>5.55354in</Left>
             <Height>1.17169in</Height>
             <Width>3.7882in</Width>
-            <ZIndex>16</ZIndex>
+            <ZIndex>15</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3299,7 +3300,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3310,6 +3311,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -3330,7 +3332,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3341,27 +3343,28 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CurrentTotalAmount2">
+                        <Textbox Name="CurrentTotalAmount3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CurrentTotalAmount.Value</Value>
+                                  <Value>=(Fields!CurrentAmount.Value + Fields!CurrentDueAmount.Value)</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3372,6 +3375,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -3428,7 +3432,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3439,6 +3443,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -3459,7 +3464,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3470,6 +3475,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -3483,14 +3489,14 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PrevTotalAmount.Value</Value>
+                                  <Value>=(Fields!PrevAmount.Value + Fields!PrevDueAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3501,6 +3507,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -3557,7 +3564,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3568,6 +3575,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -3588,7 +3596,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3599,27 +3607,28 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PenaltyTotalAmount2">
+                        <Textbox Name="PenaltyTotalAmount3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PenaltyTotalAmount.Value</Value>
+                                  <Value>=(Fields!PenaltyAmount.Value + Fields!PenaltyDueAmount.Value)</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3630,6 +3639,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -3731,7 +3741,7 @@
             <Left>5.55354in</Left>
             <Height>0.7396in</Height>
             <Width>3.93751in</Width>
-            <ZIndex>17</ZIndex>
+            <ZIndex>16</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3800,14 +3810,15 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!GrandTotalAmount.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -3940,7 +3951,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!GrandAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
                                   </Style>
@@ -4148,27 +4159,61 @@
                 <TablixMember />
               </TablixMembers>
             </TablixRowHierarchy>
+            <DataSetName>DataSet1</DataSetName>
             <Top>3.07933in</Top>
             <Left>5.52854in</Left>
             <Height>1.12625in</Height>
             <Width>4.3125in</Width>
-            <ZIndex>18</ZIndex>
+            <ZIndex>17</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
             </Style>
           </Tablix>
+          <Textbox Name="Textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>গ্রাহক কপি</Value>
+                    <Style>
+                      <FontFamily>Kalpurush</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>0.61385in</Top>
+            <Left>6.83896in</Left>
+            <Height>0.1875in</Height>
+            <Width>1.27083in</Width>
+            <ZIndex>18</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>4.5in</Height>
         <Style />
       </Body>
       <Width>10.06125in</Width>
       <Page>
-        <LeftMargin>1in</LeftMargin>
-        <RightMargin>1in</RightMargin>
-        <TopMargin>1in</TopMargin>
-        <BottomMargin>1in</BottomMargin>
+        <PageHeight>6.5in</PageHeight>
+        <PageWidth>11in</PageWidth>
+        <LeftMargin>0.25in</LeftMargin>
+        <RightMargin>0.25in</RightMargin>
+        <TopMargin>0.25in</TopMargin>
+        <BottomMargin>0.25in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
@@ -4187,6 +4232,12 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="FinYear">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FromDate">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>

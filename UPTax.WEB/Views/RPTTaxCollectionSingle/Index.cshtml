@@ -42,6 +42,16 @@
                                             হোল্ডিং নং দেয়া বাধ্যতামূলক!
                                         </div>
                                     </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationCustom03">
+                                            @Html.DisplayNameFor(model => model.FinancialYearId)
+                                        </label>
+
+                                        @Html.DropDownList("FinancialYearId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlFinancialYearId", @required = "required" })
+                                        <div class="invalid-feedback">
+                                            অর্থবছর দেয়া বাধ্যতামূলক!
+                                        </div>
+                                    </div>
 
                                     <button formtarget="_blank" class="btn btn-info" id="generateTax" type="submit">প্রতিবেদন দেখুন</button>
 

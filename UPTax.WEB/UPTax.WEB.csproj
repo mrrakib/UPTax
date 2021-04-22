@@ -232,6 +232,7 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utility\DateTimeBinder.cs" />
+    <Compile Include="Utility\NumberToWordConverterNew.cs" />
     <Compile Include="Utility\TrimModelBinder.cs" />
   </ItemGroup>
   <ItemGroup>

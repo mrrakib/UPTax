@@ -9,7 +9,9 @@ using UPTax.Filter;
 using UPTax.Helper;
 using UPTax.Model.Models.UnionDetails;
 using UPTax.Model.ViewModels;
+using UPTax.Service.Services;
 using UPTax.Service.Services.UPDetails;
+using UPTax.Utility;
 
 namespace UPTax.Controllers
 {
@@ -17,20 +19,25 @@ namespace UPTax.Controllers
     {
         #region Global Variables
         private readonly IUnionParishadService _unionParishadService;
+        private readonly IFinancialYearService _financialYearService;
+        private readonly ITaxInstallmentService _taxInstallmentService;
 
         private readonly int _unionId = RapidSession.UnionId;
         #endregion
 
         #region Constructor
-        public RPTTaxCollectionSingleController(IUnionParishadService unionParishadService)
+        public RPTTaxCollectionSingleController(IUnionParishadService unionParishadService, IFinancialYearService financialYearService, ITaxInstallmentService taxInstallmentService)
         {
             _unionParishadService = unionParishadService;
+            _financialYearService = financialYearService;
+            _taxInstallmentService = taxInstallmentService;
         }
         #endregion
         // GET: RPTTaxCollectionList
         [RapidAuthorization]
         public ActionResult Index()
         {
+            ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
             return View();
         }
 
@@ -38,6 +45,12 @@ namespace UPTax.Controllers
         [HttpPost]
         public ActionResult Index(VMCommonParams commonParams)
         {
+            ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name", commonParams.FinancialYearId);
+
+            List<VMRPTTaxCollectionSingle> resultSet = new List<VMRPTTaxCollectionSingle>();
+            VMRPTTaxCollectionSingle result = _taxInstallmentService.GetMRPTTaxCollectionSingle(commonParams.HoldingNo, commonParams.FinancialYearId, _unionId);
+            resultSet.Add(result);
+
             List<VMCommonParams> parList = new List<VMCommonParams>();
             ReportViewer reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Local;
@@ -47,9 +60,16 @@ namespace UPTax.Controllers
             reportViewer.PageCountMode = new PageCountMode();
             reportViewer.LocalReport.ReportPath = Request.MapPath("~/Reports/RDLC/Report1.rdlc");
             //reportViewer.LocalReport.SetParameters(GetReportParameter(data));
-            commonParams.FinancialYearName = "2020-2021";
+            commonParams.FinancialYearName = result != null ? result.FinancialYearName : "N/A";
+            commonParams.PaymentDate = result != null ? result.PaymentDate : (DateTime?)null;
+            string numberToWord = "";
+            if (result != null)
+            {
+                numberToWord = NumberToWordConverterNew.ConvertToWords(result.GrandTotalAmount, "BDT", "Taka");
+            }
+            result.GrandAmountStr = numberToWord;
             reportViewer.LocalReport.SetParameters(GetReportParameter(commonParams));
-            ReportDataSource A = new ReportDataSource("DataSet1", parList); //get actual data here
+            ReportDataSource A = new ReportDataSource("DataSet1", resultSet); //get actual data here
 
             reportViewer.LocalReport.DataSources.Add(A);
             ViewBag.ReportViewer = reportViewer;
@@ -66,8 +86,8 @@ namespace UPTax.Controllers
             List<ReportParameter> paraList = new List<ReportParameter>();
             paraList.Add(new ReportParameter("UnionName", union.Name));
             paraList.Add(new ReportParameter("UnionAddress", union.Description));
+            paraList.Add(new ReportParameter("FromDate", commonParams.PaymentDate.Value.ToString("dd MMM, yyyy")));
             paraList.Add(new ReportParameter("FinYear", commonParams.FinancialYearName));
-            //paraList.Add(new ReportParameter("FromDate", commonParams.PaymentDate.Value.ToString("dd MMM, yyyy")));
 
             return paraList;
         }

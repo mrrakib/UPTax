@@ -1,6 +1,8 @@
 ﻿using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository;
@@ -19,6 +21,7 @@ namespace UPTax.Service.Services
         bool IsExistingItem(string keyName, int finYearId, int? id);
         bool Save();
         VMTaxInstallment GenerateSingleTaxInstallment(string holdingNo, int finYearId);
+        VMRPTTaxCollectionSingle GetMRPTTaxCollectionSingle(string holdingNo, int finYearId, int unionId);
     }
     public class TaxInstallmentService : ITaxInstallmentService
     {
@@ -116,6 +119,18 @@ namespace UPTax.Service.Services
                 };
                 return result;
             }
+            return result;
+        }
+
+        public VMRPTTaxCollectionSingle GetMRPTTaxCollectionSingle(string holdingNo, int finYearId, int unionId)
+        {
+            var result = _taxInstallmentRepository.ExecStoreProcedure<VMRPTTaxCollectionSingle>("GetSingleTaxDetails @holdingNo,@finYearId, @unionId",
+
+                new SqlParameter("holdingNo", SqlDbType.NVarChar) { Value = holdingNo },
+                new SqlParameter("finYearId", SqlDbType.Int) { Value = finYearId },
+                new SqlParameter("unionId", SqlDbType.Int) { Value = unionId }
+                ).FirstOrDefault();
+
             return result;
         }
     }
