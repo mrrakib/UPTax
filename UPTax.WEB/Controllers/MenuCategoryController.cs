@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
@@ -61,14 +58,11 @@ namespace UPTax.Controllers
                 if (_menuCategoryService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
                 }
                 else
                 {
                     _message.custom(this, "ক্যাটাগরি যোগ করতে সমস্যা হয়েছে!");
                 }
-                
-                return View(model);
             }
             return View(model);
         }
@@ -112,8 +106,8 @@ namespace UPTax.Controllers
                 {
                     _message.custom(this, "ক্যাটাগরি হালনাগাদ করতে সমস্যা হয়েছে!");
                 }
-                
-                
+
+
             }
             return View(model);
         }
