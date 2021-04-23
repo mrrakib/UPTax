@@ -91,7 +91,7 @@ namespace UPTax.Controllers
 
             ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name", model.EducationInfoId);
             ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name", model.ProfessionId);
-            ViewBag.RelationshipId = new SelectList(_relationshipService.GetDropdownItemList(), "Id", "Name");
+            ViewBag.RelationshipId = new SelectList(_relationshipService.GetDropdownItemList(), "Id", "Name", model.RelationshipId);
 
             var socialBenifits = _socialBenefitService.GetDropdownItemList();
             ViewBag.SocialBenefitBeforeId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitBeforeId);
