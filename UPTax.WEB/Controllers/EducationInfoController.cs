@@ -49,9 +49,11 @@ namespace UPTax.Controllers
                 if (!isExistingItem && _educationInfoService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
                 }
-                _message.custom(this, "এই নামে একটি শিক্ষাগত যোগ্যতা আছে!");
+                else
+                {
+                    _message.custom(this, "এই নামে একটি শিক্ষাগত যোগ্যতা আছে!");
+                }
                 return View(model);
             }
             return View(model);

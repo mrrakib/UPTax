@@ -50,10 +50,11 @@ namespace UPTax.Controllers
                 if (!isExistingItem && _ProfessionInfoService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
                 }
-                _message.custom(this, "এই নামে একটি পেশা আছে!");
-                return View(model);
+                else
+                {
+                    _message.custom(this, "এই নামে একটি পেশা আছে!");
+                }
             }
             return View(model);
         }

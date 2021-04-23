@@ -59,14 +59,12 @@ namespace UPTax.Controllers
                 if (!isExistingItem && _instituteInfoService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
                 }
                 ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);
                 var villages = _villageInfoService.GetByWardId(model.WardInfoId ?? 0).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
                 ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
 
                 _message.custom(this, "এই নামে একটি কলেজ / অফিসের নাম আছে!");
-                return View(model);
             }
             return View(model);
         }

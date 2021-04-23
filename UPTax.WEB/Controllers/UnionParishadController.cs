@@ -53,8 +53,10 @@ namespace UPTax.Controllers
                     _message.save(this);
                     return View();
                 }
-                _message.custom(this, "এই নামে একটি ইউনিয়ন পরিষদ আছে!");
-                return View(model);
+                else
+                {
+                    _message.custom(this, "এই নামে একটি ইউনিয়ন পরিষদ আছে!");
+                }
             }
             return View(model);
         }
