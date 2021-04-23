@@ -84,9 +84,12 @@ namespace UPTax.Controllers
                     model.CreatedBy = _userId;
                     _memberService.Add(model);
                     _message.save(this);
-                    return RedirectToAction("Index");
+                    //return RedirectToAction("Index");
                 }
-                _message.custom(this, "এই হোল্ডিং নাম্বার পাওয়া যায় নাই!");
+                else
+                {
+                    _message.custom(this, "এই হোল্ডিং নাম্বার পাওয়া যায় নাই!");
+                }
             }
 
             ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name", model.EducationInfoId);
