@@ -1270,6 +1270,7 @@
                                   <Value>=Fields!CurrentDueAmount.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1302,6 +1303,7 @@
                                   <Value>=Fields!CurrentAmount.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1334,6 +1336,8 @@
                                   <Value>=(Fields!CurrentAmount.Value + Fields!CurrentDueAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1402,6 +1406,7 @@
                                   <Value>=Fields!PrevDueAmount.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1434,6 +1439,7 @@
                                   <Value>=Fields!PrevAmount.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1466,6 +1472,8 @@
                                   <Value>=(Fields!PrevAmount.Value + Fields!PrevDueAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1534,6 +1542,7 @@
                                   <Value>=Fields!PenaltyDueAmount.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1566,6 +1575,7 @@
                                   <Value>=Fields!PenaltyAmount.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1598,6 +1608,8 @@
                                   <Value>=(Fields!PenaltyAmount.Value + Fields!PenaltyDueAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1671,6 +1683,8 @@
                                   <Value>=Fields!GrandTotalAmount.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1790,6 +1804,7 @@
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1930,6 +1945,7 @@
                                   <Value>=Fields!GrandAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3299,6 +3315,7 @@
                                   <Value>=Fields!CurrentDueAmount.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3331,6 +3348,7 @@
                                   <Value>=Fields!CurrentAmount.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3363,6 +3381,8 @@
                                   <Value>=(Fields!CurrentAmount.Value + Fields!CurrentDueAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3431,6 +3451,7 @@
                                   <Value>=Fields!PrevDueAmount.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3463,6 +3484,7 @@
                                   <Value>=Fields!PrevAmount.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3495,6 +3517,8 @@
                                   <Value>=(Fields!PrevAmount.Value + Fields!PrevDueAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3563,6 +3587,7 @@
                                   <Value>=Fields!PenaltyDueAmount.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3595,6 +3620,7 @@
                                   <Value>=Fields!PenaltyAmount.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3627,6 +3653,8 @@
                                   <Value>=(Fields!PenaltyAmount.Value + Fields!PenaltyDueAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3699,6 +3727,8 @@
                                   <Value>=Fields!GrandTotalAmount.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3817,6 +3847,7 @@
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3957,6 +3988,7 @@
                                   <Value>=Fields!GrandAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
