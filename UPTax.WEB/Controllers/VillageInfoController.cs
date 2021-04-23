@@ -63,7 +63,6 @@ namespace UPTax.Controllers
                 model.CreatedBy = _userId;
                 _VillageInfoService.Add(model);
                 _message.save(this);
-                return RedirectToAction("Index");
             }
             return View(model);
         }

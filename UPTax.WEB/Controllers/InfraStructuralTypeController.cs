@@ -60,14 +60,11 @@ namespace UPTax.Controllers
                 if (_infraStructuralTypeService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
                 }
                 else
                 {
                     _message.custom(this, "অবকাঠামোর ধরন যোগ করতে সমস্যা হয়েছে!");
                 }
-
-                return View(model);
             }
             return View(model);
         }

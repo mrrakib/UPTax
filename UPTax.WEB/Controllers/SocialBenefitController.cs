@@ -49,10 +49,11 @@ namespace UPTax.Controllers
                 if (!isExistingItem && _SocialBenefitService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
                 }
-                _message.custom(this, "এই নামে একটি সামাজিক সুযোগ-সুবিধা আছে!");
-                return View(model);
+                else
+                {
+                    _message.custom(this, "এই নামে একটি সামাজিক সুযোগ-সুবিধা আছে!");
+                }
             }
             return View(model);
         }

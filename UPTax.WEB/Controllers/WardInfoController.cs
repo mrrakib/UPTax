@@ -53,10 +53,11 @@ namespace UPTax.Controllers
                 if (!isExistingWard && _wardInfoService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
                 }
-                _message.custom(this, "এই নামে একটি ওয়ার্ড আছে!");
-                return View(model);
+                else
+                {
+                    _message.custom(this, "এই নামে একটি ওয়ার্ড আছে!");
+                }
             }
             return View(model);
         }

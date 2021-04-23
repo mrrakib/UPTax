@@ -92,9 +92,11 @@ namespace UPTax.Controllers
                 if (!isExistingItem && _houseOwnerService.Add(model))
                 {
                     _message.save(this);
-                    return View();
                 }
-                _message.custom(this, "এই হোল্ডিং নাম্বার আছে!");
+                else
+                {
+                    _message.custom(this, "এই হোল্ডিং নাম্বার আছে!");
+                }
             }
 
             ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);

@@ -51,10 +51,11 @@ namespace UPTax.Controllers
                 if (!existingItem && _unionParishadService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
                 }
-                _message.custom(this, "এই নামে একটি ইউনিয়ন পরিষদ আছে!");
-                return View(model);
+                else
+                {
+                    _message.custom(this, "এই নামে একটি ইউনিয়ন পরিষদ আছে!");
+                }
             }
             return View(model);
         }
