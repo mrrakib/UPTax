@@ -87,7 +87,7 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _houseOwnerService.IsExistingItem(model.HoldingNo, null);
+                var isExistingItem = _houseOwnerService.IsExistingItem(model.HoldingNo);
                 model.CreatedBy = _userId;
                 if (!isExistingItem && _houseOwnerService.Add(model))
                 {

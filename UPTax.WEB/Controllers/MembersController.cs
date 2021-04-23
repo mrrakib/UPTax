@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
 using UPTax.Model.Models;
@@ -77,10 +78,15 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.CreatedBy = _userId;
-                _memberService.Add(model);
-                _message.save(this);
-                return RedirectToAction("Index");
+                var isExistHoldingNo = _houseOwnerService.IsExistingItem(model.HoldingNo);
+                if (isExistHoldingNo)
+                {
+                    model.CreatedBy = _userId;
+                    _memberService.Add(model);
+                    _message.save(this);
+                    return RedirectToAction("Index");
+                }
+                _message.custom(this, "এই হোল্ডিং নাম্বার পাওয়া যায় নাই!");
             }
 
             ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name", model.EducationInfoId);
@@ -96,6 +102,68 @@ namespace UPTax.Controllers
             ViewBag.Religions = _religionService.GetAll();
 
             return View(model);
+        }
+        [RapidAuthorization]
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            Member model = _memberService.GetDetails(id);
+            if (model == null)
+            {
+                return PartialView("_Error");
+            }
+            ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name", model.EducationInfoId);
+            ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name", model.ProfessionId);
+            ViewBag.RelationshipId = new SelectList(_relationshipService.GetDropdownItemList(), "Id", "Name", model.RelationshipId);
+
+            var socialBenifits = _socialBenefitService.GetDropdownItemList();
+            ViewBag.SocialBenefitBeforeId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitBeforeId);
+            ViewBag.SocialBenefitEligibleId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitEligibleId); ;
+            ViewBag.SocialBenefitRunningId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitRunningId); ;
+
+            ViewBag.Genders = _genderService.GetAll();
+            ViewBag.Religions = _religionService.GetAll();
+
+            return View(model);
+        }
+
+        [RapidAuthorization]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Member model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.UpdatedBy = _userId;
+                model.UpdatedDate = DateTime.UtcNow;
+                _memberService.Update(model);
+                _message.update(this);
+                return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });
+            }
+            ViewBag.EducationInfoId = new SelectList(_educationInfoService.GetDropdownItemList(), "Id", "Name", model.EducationInfoId);
+            ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name", model.ProfessionId);
+            ViewBag.RelationshipId = new SelectList(_relationshipService.GetDropdownItemList(), "Id", "Name", model.RelationshipId);
+
+            var socialBenifits = _socialBenefitService.GetDropdownItemList();
+            ViewBag.SocialBenefitBeforeId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitBeforeId);
+            ViewBag.SocialBenefitEligibleId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitEligibleId); ;
+            ViewBag.SocialBenefitRunningId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitRunningId); ;
+
+            ViewBag.Genders = _genderService.GetAll();
+            ViewBag.Religions = _religionService.GetAll();
+
+            return View(model);
+        }
+
+        [RapidAuthorization]
+        public ActionResult Delete(int id)
+        {
+            if (_memberService.Delete(id))
+            {
+                _message.delete(this);
+                return RedirectToAction("Index");
+            }
+            return PartialView("_Error");
         }
     }
 }

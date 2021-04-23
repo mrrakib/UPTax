@@ -3,9 +3,8 @@
 
 @{
     ViewBag.Title = "হালনাগাদ";
-    var title = "খানার অন্যান্য সদস্যের তথ্য";
-
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var title = "খানার অন্যান্য সদস্যের তথ্য";
 
     List<Gender> genders = ViewBag.Genders == null ? new List<Gender>() : ViewBag.Genders;
     List<Religion> religions = ViewBag.Religions == null ? new List<Religion>() : ViewBag.Religions;
@@ -47,13 +46,14 @@
                         {
                             @Html.AntiForgeryToken()
                             @Html.HiddenFor(a => a.Id)
+                            @Html.HiddenFor(a => a.HoldingNo)
                             <input type="text" name="CreateDate" value="@Model.CreatedDate.ToString("dd-mm-yyyyy")" hidden />
                             @Html.HiddenFor(a => a.CreatedBy)
                             @Html.HiddenFor(a => a.IsDeleted)
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     @Html.LabelFor(model => model.HoldingNo, new { @class = "required" })
-                                    @Html.TextBoxFor(m => m.HoldingNo, new { @class = "form-control", @placeholder = "হোল্ডিং নং", @maxLength = "250", @required = "required" })
+                                    @Html.TextBoxFor(m => m.HoldingNo, new { @class = "form-control", @disabled = "true", @placeholder = "হোল্ডিং নং", @maxLength = "250", @required = "required" })
                                     <div class="invalid-feedback">
                                         হোল্ডিং নং দেয়া বাধ্যতামূলক!
                                     </div>
@@ -70,6 +70,13 @@
                                     @Html.DropDownList("ProfessionId", null, String.Empty, new { @class = "selectize" })
                                     <div class="invalid-feedback">
                                         পেশা দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(model => model.RelationshipId, new { @class = "required" })
+                                    @Html.DropDownList("RelationshipId", null, String.Empty, new { @class = "selectize", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        খানা প্রধানের সাথে সম্পর্ক দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">

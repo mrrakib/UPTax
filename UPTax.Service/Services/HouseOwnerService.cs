@@ -18,7 +18,7 @@ namespace UPTax.Service.Services
         IPagedList GetPagedList(string holdingNo, int pageNo, int pageSize);
         IEnumerable<HouseOwner> GetAll();
         HouseOwner GetDetails(int id);
-        bool IsExistingItem(string holdingNo, int? id);
+        bool IsExistingItem(string holdingNo, int id = 0);
         bool Save();
         int GetIdByHoldingNum(string holdingNum, int unionId);
         double GetTaxRateByHoldingNum(string holdingNum, int unionId);
@@ -104,10 +104,10 @@ namespace UPTax.Service.Services
             }
         }
 
-        public bool IsExistingItem(string holdingNo, int? id)
+        public bool IsExistingItem(string holdingNo, int id = 0)
         {
             var count = 0;
-            if (id == null)
+            if (id == 0)
                 count = _HouseOwnerRepository.GetCount(a => a.IsDeleted == false && a.HoldingNo == holdingNo.Trim());
             else
                 count = _HouseOwnerRepository.GetCount(a => a.IsDeleted == false && a.HoldingNo == holdingNo.Trim() && a.Id != id);

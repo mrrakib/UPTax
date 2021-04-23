@@ -39,10 +39,10 @@ namespace UPTax.Service.Services
 
         public bool Delete(int id)
         {
-            Member wardInfo = _MemberRepository.GetById(id);
-            wardInfo.IsDeleted = true;
+            Member member = _MemberRepository.GetById(id);
+            member.IsDeleted = true;
 
-            _MemberRepository.Update(wardInfo);
+            _MemberRepository.Update(member);
             return Save();
         }
         public bool Update(Member model)
