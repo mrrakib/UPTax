@@ -21,6 +21,7 @@ namespace UPTax.Controllers
         private readonly IUnionParishadService _unionParishadService;
         private readonly IFinancialYearService _financialYearService;
         private readonly ITaxInstallmentService _taxInstallmentService;
+        private readonly Message _message = new Message();
 
         private readonly int _unionId = RapidSession.UnionId;
         #endregion
@@ -49,6 +50,11 @@ namespace UPTax.Controllers
 
             List<VMRPTTaxCollectionSingle> resultSet = new List<VMRPTTaxCollectionSingle>();
             VMRPTTaxCollectionSingle result = _taxInstallmentService.GetMRPTTaxCollectionSingle(commonParams.HoldingNo, commonParams.FinancialYearId, _unionId);
+            if (result == null)
+            {
+                _message.custom(this, "দুঃখিত! কোন তথ্য পাওয়া যায়নি।");
+                return View();
+            }
             resultSet.Add(result);
 
             List<VMCommonParams> parList = new List<VMCommonParams>();

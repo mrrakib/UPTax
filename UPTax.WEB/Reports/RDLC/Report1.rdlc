@@ -222,9 +222,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>0.77917in</Top>
-            <Left>1.59667in</Left>
+            <Left>1.44667in</Left>
             <Height>0.1875in</Height>
-            <Width>0.53125in</Width>
+            <Width>0.68125in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -2109,6 +2109,9 @@
                               <Color>Silver</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <TopBorder>
+                              <Style>None</Style>
+                            </TopBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -2279,9 +2282,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>0.7658in</Top>
-            <Left>6.71396in</Left>
+            <Left>6.56396in</Left>
             <Height>0.1875in</Height>
-            <Width>0.53125in</Width>
+            <Width>0.70902in</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -4133,6 +4136,9 @@
                               <Color>Silver</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <TopBorder>
+                              <Style>None</Style>
+                            </TopBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>

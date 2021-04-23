@@ -51,7 +51,7 @@ namespace UPTax.Controllers
                 if (!existingItem && _unionParishadService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
+                    return View();
                 }
                 _message.custom(this, "এই নামে একটি ইউনিয়ন পরিষদ আছে!");
                 return View(model);
@@ -88,7 +88,8 @@ namespace UPTax.Controllers
                 }
                 _unionParishadService.Update(model);
                 _message.update(this);
-                return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });
+                return View();
+                //return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });
             }
             return View(model);
         }
