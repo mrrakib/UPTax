@@ -162,6 +162,9 @@ namespace UPTax.Controllers
             ViewBag.GenderId = new SelectList(_genderService.GetDropdownItemList(), "Id", "Name", model.GenderId);
             ViewBag.ReligionId = new SelectList(_religionService.GetDropdownItemList(), "Id", "Name", model.ReligionId);
             //ViewBag.Religions = _religionService.GetAll();
+            ViewBag.IsTubeWell = new SelectList(_houseOwnerService.GetTubeWellDropdownItemList(), "IdStr", "Name", model.IsTubeWell);
+            ViewBag.Sanitary = new SelectList(_houseOwnerService.GetSanitaryDropdownItemList(), "IdStr", "Name", model.Sanitary);
+            ViewBag.LivingType = new SelectList(_houseOwnerService.GetLivingTypeDropdownItemList(), "IdStr", "Name", model.LivingType);
 
             var villages = _villageInfoService.GetByWardId(model.WardInfoId).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
             ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
@@ -198,6 +201,9 @@ namespace UPTax.Controllers
 
             ViewBag.GenderId = new SelectList(_genderService.GetDropdownItemList(), "Id", "Name", model.GenderId);
             ViewBag.ReligionId = new SelectList(_religionService.GetDropdownItemList(), "Id", "Name", model.ReligionId);
+            ViewBag.IsTubeWell = new SelectList(_houseOwnerService.GetTubeWellDropdownItemList(), "IdStr", "Name", model.IsTubeWell);
+            ViewBag.Sanitary = new SelectList(_houseOwnerService.GetSanitaryDropdownItemList(), "IdStr", "Name", model.Sanitary);
+            ViewBag.LivingType = new SelectList(_houseOwnerService.GetLivingTypeDropdownItemList(), "IdStr", "Name", model.LivingType);
 
             var villages = _villageInfoService.GetByWardId(model.WardInfoId).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
             ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);

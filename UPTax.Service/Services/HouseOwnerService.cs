@@ -172,8 +172,8 @@ namespace UPTax.Service.Services
         public IEnumerable GetTubeWellDropdownItemList()
         {
             return new List<IdNameDropdown>() {
-                new IdNameDropdown() { IdStr = "হ্যাঁ", Name = "হ্যাঁ" },
-                new IdNameDropdown() { IdStr = "না", Name = "না" }
+                new IdNameDropdown() { IdStr = "true", Name = "হ্যাঁ" },
+                new IdNameDropdown() { IdStr = "false", Name = "না" }
             };
         }
 
