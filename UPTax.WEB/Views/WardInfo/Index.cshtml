@@ -54,19 +54,26 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                @using (Html.BeginForm("Index", "WardInfo", FormMethod.Get, new { autocomplete = "off", @class = "" }))
+                                @using (Ajax.BeginForm("Index", "WardInfo", FormMethod.Get, new AjaxOptions
+                                {
+                                    UpdateTargetId = "mainContainer",
+                                    InsertionMode = InsertionMode.Replace
+                                }, new { autocomplete = "off" }))
                                 {
                                     <table class="table">
                                         <tr class="">
                                             <td class="col-sm-1" style="width:1%">
+                                                @*<span style="font-weight:bold;">Page Size</span><br />*@
                                                 <i class="fa fa-filter" style="margin-right: 5px; color: #aeaeae; font-size: 22px; padding-top: 5px;  "></i>
                                                 @Html.TextBox("dataSize", ViewBag.dataSize as string, new { @type = "number", @min = "1", @max = "100", @class = "", @style = "width:60px;height:30px;border: 1px solid #DDE2E8;" })
                                             </td>
                                             <td class="col-sm-1" style="width:2%">
+                                                @*<span style="font-weight:bold;">Page Size</span><br />*@
                                                 @Html.TextBox("name", ViewBag.name as string, new { @class = "form-control col-md-12 col-xs-12", placeholder = "ওয়ার্ড এর নাম" })
                                             </td>
                                             <td class="" style="width:2%;">
                                                 <center><button type="submit" class="btn btn-sm btn-info"><i class="fa fa-search" style="margin-right: 5px; color: #008BBB"></i>খুঁজুন</button></center>
+                                                @*style="background-color: #e6e6e6; "*@
                                             </td>
                                         </tr>
                                     </table>
@@ -142,7 +149,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
         $(function () {
-
+           
         });
     </script>
 }
