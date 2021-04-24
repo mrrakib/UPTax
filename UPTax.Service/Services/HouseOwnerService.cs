@@ -15,7 +15,7 @@ namespace UPTax.Service.Services
         bool Add(HouseOwner model);
         bool Update(HouseOwner model);
         bool Delete(int id);
-        IPagedList GetPagedList(string holdingNo, int pageNo, int pageSize);
+        IPagedList GetPagedList(string holdingNo, int wardId, int villageId, int pageNo, int pageSize);
         IEnumerable<HouseOwner> GetAll();
         HouseOwner GetDetails(int id);
         bool IsExistingItem(string holdingNo, int id = 0);
@@ -65,7 +65,7 @@ namespace UPTax.Service.Services
             return _HouseOwnerRepository.Get(u => u.Id == id && u.IsDeleted == false);
         }
 
-        public IPagedList GetPagedList(string holdingNo, int pageNo, int pageSize)
+        public IPagedList GetPagedList(string holdingNo, int wardId, int villageId, int pageNo, int pageSize)
         {
             try
             {
@@ -78,6 +78,16 @@ namespace UPTax.Service.Services
                 {
                     searchPrm += string.Format(@" WHERE h.IsDeleted=0");
                 }
+
+                if (wardId > 0)
+                {
+                    searchPrm += string.Format(@" AND h.WardInfoId = {0}", wardId);
+                }
+                if (villageId > 0)
+                {
+                    searchPrm += string.Format(@" AND h.VillageInfoId = {0}", villageId);
+                }
+
                 string query = string.Format(@"SELECT h.*, w.WardNo WardName, u.[Name] UnionName, v.VillageName, e.Degree EducationName, g.[Name] GenderName, r.[Name] ReligionName, p.ProfessionTitle ProfessionName, sbr.Title SocialBenefitRunningName, sbe.Title SocialBenefitEligibleName, sbb.Title SocialBenefitBeforeName from HouseOwners h 
                                                 JOIN WardInfo w ON h.WardInfoId=w.Id  
                                                 JOIN UnionParishad u ON w.UnionId=u.Id
@@ -91,7 +101,7 @@ namespace UPTax.Service.Services
                                                 LEFT JOIN SocialBenefits sbb ON h.SocialBenefitBeforeId=sbb.Id
                                                 {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
-                string countQuery = string.Format(@"SELECT COUNT(*) FROM HouseOwners WHERE IsDeleted=0 AND HoldingNo LIKE N'%{0}%'", holdingNo?.Trim());
+                string countQuery = string.Format(@"SELECT COUNT(*) FROM HouseOwners h {0}", searchPrm);
 
                 int rowCount = _HouseOwnerRepository.SQLQuery<int>(countQuery);
                 List<VHouseOwner> houseOwner = _HouseOwnerRepository.SQLQueryList<VHouseOwner>(query).OrderByDescending(a => a.CreatedDate).ToList();

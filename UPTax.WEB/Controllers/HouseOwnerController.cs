@@ -48,13 +48,35 @@ namespace UPTax.Controllers
 
         // GET: HouseOwner
         [RapidAuthorization]
-        public ActionResult Index(string name, int page = 1, int dataSize = 10)
+        public ActionResult Index(string name, int ward = 0, int village = 0, int page = 1, int dataSize = 10)
         {
             ViewBag.dataSize = dataSize;
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
+            
+            
+            ViewBag.wardId = ward;
+            ViewBag.villageId = village;
 
-            var listData = _houseOwnerService.GetPagedList(holdingNo: name, page, dataSize);
+            if (ward == 0)
+            {
+                ViewBag.ward = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
+            }
+            else
+            {
+                ViewBag.ward = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", ward);
+            }
+
+            if (village == 0)
+            {
+                ViewBag.village = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name");
+            }
+            else
+            {
+                ViewBag.village = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name", village);
+            }
+
+            var listData = _houseOwnerService.GetPagedList(holdingNo: name, ward, village, page, dataSize);
             return View(listData);
         }
 
@@ -136,8 +158,10 @@ namespace UPTax.Controllers
             ViewBag.SocialBenefitEligibleId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitEligibleId); ;
             ViewBag.SocialBenefitRunningId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitRunningId); ;
 
-            ViewBag.Genders = _genderService.GetAll();
-            ViewBag.Religions = _religionService.GetAll();
+            //ViewBag.Genders = _genderService.GetAll();
+            ViewBag.GenderId = new SelectList(_genderService.GetDropdownItemList(), "Id", "Name", model.GenderId);
+            ViewBag.ReligionId = new SelectList(_religionService.GetDropdownItemList(), "Id", "Name", model.ReligionId);
+            //ViewBag.Religions = _religionService.GetAll();
 
             var villages = _villageInfoService.GetByWardId(model.WardInfoId).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
             ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
@@ -172,8 +196,8 @@ namespace UPTax.Controllers
             ViewBag.SocialBenefitEligibleId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitEligibleId); ;
             ViewBag.SocialBenefitRunningId = new SelectList(socialBenifits, "Id", "Name", model.SocialBenefitRunningId); ;
 
-            ViewBag.Genders = _genderService.GetAll();
-            ViewBag.Religions = _religionService.GetAll();
+            ViewBag.GenderId = new SelectList(_genderService.GetDropdownItemList(), "Id", "Name", model.GenderId);
+            ViewBag.ReligionId = new SelectList(_religionService.GetDropdownItemList(), "Id", "Name", model.ReligionId);
 
             var villages = _villageInfoService.GetByWardId(model.WardInfoId).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
             ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);

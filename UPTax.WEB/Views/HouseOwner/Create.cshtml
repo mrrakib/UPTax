@@ -45,7 +45,7 @@
                         @using (Html.BeginForm("Create", "HouseOwner", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
-                         
+
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.WardInfoId) <span class="required"></span></label>
@@ -257,7 +257,7 @@
                                     @Html.DropDownList("LivingType", null, String.Empty, new { @class = "selectize" })
                                     <div class="invalid-feedback">
                                         বসবাসের ধরণ দেয়া বাধ্যতামূলক!
-                                    </div>                                   
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.PreviousDueAmount)</label>
@@ -334,7 +334,7 @@
             function GetVillageDropdown() {
                 var wardId = $("#WardInfoId").val();
                 $("#VillageInfoId").empty();
-                $('#VillageInfoId').append(new Option('Select...', ''));
+                //$('#VillageInfoId').append(new Option('Select...', ''));
                 debugger;
 
                   $.ajax({
@@ -345,10 +345,11 @@
                         data: { wardId},
                       success: function (data) {
 
-                            debugger;
-                            data.forEach(function (item) {
-                                $('#VillageInfoId').append(new Option(item.Name, item.Id));
-                            });
+                          debugger;
+                          var count = 0;
+                          data.forEach(function (item) {
+                              $('#VillageInfoId').append(new Option(item.Name, item.Id));
+                          });
                         },
                         error: function (xhr) {
                             alert(xhr.responseText);

@@ -71,6 +71,22 @@
                                             <td class="col-sm-1" style="width:2%">
                                                 @Html.TextBox("name", ViewBag.name as string, new { @class = "form-control col-md-12 col-xs-12", placeholder = "হোল্ডিং নং" })
                                             </td>
+                                            <td class="col-sm-1" style="width:2%">
+                                                @Html.DropDownList("ward", null, "---ওয়ার্ড---", new
+                                           {
+                                               @class = "default form-control",
+                                               style = "",
+                                               @id = "ddlWard"
+                                           })
+                                            </td>
+                                            <td class="col-sm-1" style="width:2%">
+                                                @Html.DropDownList("village", null, "---গ্রাম---", new
+                                           {
+                                               @class = "default form-control",
+                                               style = "",
+                                               @id = "ddlVillage"
+                                           })
+                                            </td>
                                             <td class="" style="width:2%;">
                                                 <center><button type="submit" class="btn btn-sm btn-info"><i class="fa fa-search" style="margin-right: 5px; color: #008BBB"></i>খুঁজুন</button></center>
                                             </td>
@@ -174,6 +190,9 @@
                                 @Html.PagedListPager(Model, page => Url.Action("Index",
                                     new
                                     {
+                                        name = ViewBag.name,
+                                        ward = ViewBag.wardId,
+                                        village = ViewBag.villageId,
                                         page,
                                         dataSize = ViewBag.dataSize
                                     }),
@@ -218,6 +237,36 @@
             //        rightColumns: 1
             //    }
             //});
+
+            $("#ddlWard").change(function () {
+                GetVillageDropdown();
+            });
+
         });
+
+        function GetVillageDropdown() {
+            var wardId = $("#ddlWard").val();
+                $("#ddlVillage").empty();
+            $('#ddlVillage').append(new Option('Select...', ''));
+                debugger;
+
+                  $.ajax({
+                        url: '@Url.Action("GetVillage", "VillageInfo")',
+                        dataType: "json",
+                        type: "GET",
+                        cache: false,
+                        data: { wardId},
+                      success: function (data) {
+
+                            debugger;
+                            data.forEach(function (item) {
+                                $('#ddlVillage').append(new Option(item.Name, item.Id));
+                            });
+                        },
+                        error: function (xhr) {
+                            alert(xhr.responseText);
+                        }
+                 });
+            }
     </script>
 }
