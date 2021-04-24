@@ -54,11 +54,7 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                @using (Ajax.BeginForm("Index", "InfraStructuralType", FormMethod.Get, new AjaxOptions
-                                {
-                                    UpdateTargetId = "mainContainer",
-                                    InsertionMode = InsertionMode.Replace
-                                }, new { autocomplete = "off" }))
+                                @using (Html.BeginForm("Index", "InfraStructuralType", FormMethod.Get, new { autocomplete = "off", @class = "" }))
                                 {
                                     <table class="table">
                                         <tr class="">
@@ -124,11 +120,12 @@
                                         page,
                                         dataSize = ViewBag.dataSize
                                     }),
-                                    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions {
+                                    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new PagedListRenderOptions
+                                         {
                                         LiElementClasses = new string[] { "paginate_button page-item" },
                                         UlElementClasses = new string[] { "pagination" },
                                         ContainerDivClasses = new string[] { "dataTables_paginate paging_simple_numbers" },
-                                        
+
                                     },
                                     new AjaxOptions()
                                     {
@@ -146,7 +143,6 @@
     <!-- end row -->
 
 </div> <!-- container-fluid -->
-
 <!-- /.box -->
 
 
