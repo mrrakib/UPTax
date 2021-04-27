@@ -258,7 +258,7 @@ namespace UPTax.Controllers
                                 user.IsActive = regViewModel.IsActive;
                                 user.FullName = regViewModel.Name;
                                 user.UnionId = regViewModel.UnionId;
-                                user.PasswordHash = manager.PasswordHasher.HashPassword(regViewModel.Password);
+                                //user.PasswordHash = manager.PasswordHasher.HashPassword(regViewModel.Password);
                             }
                         }
                         var rolesForUser = await manager.GetRolesAsync(user.Id);

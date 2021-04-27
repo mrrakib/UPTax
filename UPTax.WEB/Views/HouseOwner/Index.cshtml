@@ -247,8 +247,7 @@
         function GetVillageDropdown() {
             var wardId = $("#ddlWard").val();
                 $("#ddlVillage").empty();
-            $('#ddlVillage').append(new Option('Select...', ''));
-                debugger;
+            //$('#ddlVillage').append(new Option('Select...', ''));
 
                   $.ajax({
                         url: '@Url.Action("GetVillage", "VillageInfo")',

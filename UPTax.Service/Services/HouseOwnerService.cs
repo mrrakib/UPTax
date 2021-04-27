@@ -99,12 +99,12 @@ namespace UPTax.Service.Services
                                                 LEFT JOIN SocialBenefits sbr ON h.SocialBenefitRunningId=sbr.Id
                                                 LEFT JOIN SocialBenefits sbe ON h.SocialBenefitEligibleId=sbe.Id
                                                 LEFT JOIN SocialBenefits sbb ON h.SocialBenefitBeforeId=sbb.Id
-                                                {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
+                                                {0} ORDER BY h.HoldingNo OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
                 string countQuery = string.Format(@"SELECT COUNT(*) FROM HouseOwners h {0}", searchPrm);
 
                 int rowCount = _HouseOwnerRepository.SQLQuery<int>(countQuery);
-                List<VHouseOwner> houseOwner = _HouseOwnerRepository.SQLQueryList<VHouseOwner>(query).OrderByDescending(a => a.CreatedDate).ToList();
+                List<VHouseOwner> houseOwner = _HouseOwnerRepository.SQLQueryList<VHouseOwner>(query).ToList();
                 return new StaticPagedList<VHouseOwner>(houseOwner, pageNo, pageSize, rowCount);
             }
             catch (Exception ex)

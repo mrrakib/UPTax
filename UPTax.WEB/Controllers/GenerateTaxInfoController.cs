@@ -84,7 +84,7 @@ namespace UPTax.Controllers
         }
         #endregion
 
-        [RapidAuthorization]
+        [RapidAuthorization(All = true)]
         public ActionResult GenerateTax(string holdingNo, int finYearId)
         {
             int houseOwnerId = _houseOwnerService.GetIdByHoldingNum(holdingNo, _unionId);
@@ -100,7 +100,7 @@ namespace UPTax.Controllers
             return PartialView("~/Views/GenerateTaxInfo/_partialTaxInfo.cshtml", tax);
         }
 
-        [RapidAuthorization]
+        [RapidAuthorization(All = true)]
         public ActionResult GetTaxRate(string holdingNo)
         {
             double houseOwnerTaxRate = _houseOwnerService.GetTaxRateByHoldingNum(holdingNo, _unionId);
