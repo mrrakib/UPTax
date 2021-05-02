@@ -197,7 +197,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationInfoController.cs" />
+    <Compile Include="Controllers\CreateHouseOwnerController.cs" />
     <Compile Include="Controllers\RPTTaxCollectionSingleController.cs" />
+    <Compile Include="Controllers\TaxInstallmentDeleteController.cs" />
+    <Compile Include="Controllers\TaxInstallmentEditController.cs" />
     <Compile Include="Controllers\TaxInstallmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HouseOwnerController.cs" />
@@ -12708,7 +12711,6 @@
     <Content Include="Views\Shared\_sideBar - Copy.cshtml" />
     <Content Include="Views\Account\UnAuthorized.cshtml" />
     <Content Include="Views\Account\SelectUnion.cshtml" />
-    <Content Include="Views\HouseOwner\Create.cshtml" />
     <Content Include="Views\HouseOwner\Edit.cshtml" />
     <Content Include="Views\HouseOwner\Index.cshtml" />
     <Content Include="Views\InfraStructuralType\Create.cshtml" />
@@ -12725,6 +12727,11 @@
     <Content Include="Views\RPTTaxCollectionSingle\Index.cshtml" />
     <Content Include="Views\RPTTaxCollectionSingle\RPTTaxCollectionSingle.cshtml" />
     <Content Include="Views\Shared\_ReportLayout.cshtml" />
+    <Content Include="Views\CreateHouseOwner\Index.cshtml" />
+    <Content Include="Views\TaxInstallmentEdit\_partialTaxInstallmentEdit.cshtml" />
+    <Content Include="Views\TaxInstallmentEdit\Index.cshtml" />
+    <Content Include="Views\TaxInstallmentDelete\_partialTaxInstallmentDelete.cshtml" />
+    <Content Include="Views\TaxInstallmentDelete\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

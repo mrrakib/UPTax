@@ -90,7 +90,7 @@ namespace UPTax.Controllers
         }
         #endregion
 
-        [RapidAuthorization]
+        [RapidAuthorization(All = true)]
         public ActionResult GenerateTaxInstallMent(string holdingNo, int finYearId)
         {
             if (_taxInstallmentService.IsExistingItem(holdingNo, finYearId, null))

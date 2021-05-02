@@ -1,7 +1,7 @@
 ﻿@model UPTax.Model.ViewModels.VMTaxGenerator
 
 @{
-    ViewBag.Title = "কর জমা";
+    ViewBag.Title = "কর হালনাগাদ";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -9,9 +9,9 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-md-8">
-                <h4 class="page-title mb-1">কর জমা</h4>
+                <h4 class="page-title mb-1">কর হালনাগাদ</h4>
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item active">কর জমা করুন</li>
+                    <li class="breadcrumb-item active">কর হালনাগাদ করুন</li>
                 </ol>
             </div>
         </div>
@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <h4 class="header-title">কর জমা ফরম</h4>
                         <p class="card-title-desc"></p>
-                        @using (Html.BeginForm("Index", "TaxInstallment", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("Index", "TaxInstallmentEdit", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             <div class="row">
@@ -93,7 +93,7 @@
 
                 $.ajax({
                     type: 'Post',
-                    url: '@Url.Action("GenerateTaxInstallMent")',
+                    url: '@Url.Action("GetTaxInstallMent")',
                     dataType: 'html',
                     data: { holdingNo: $(".txtHolding").val(), finYearId: $("#ddlFinancialYearId").val() },
                     success: function (result) {

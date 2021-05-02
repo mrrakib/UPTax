@@ -22,6 +22,7 @@ namespace UPTax.Service.Services
         bool Save();
         VMTaxInstallment GenerateSingleTaxInstallment(string holdingNo, int finYearId);
         VMRPTTaxCollectionSingle GetMRPTTaxCollectionSingle(string holdingNo, int finYearId, int unionId);
+        VMTaxInstallment GeteSingleTaxInstallment(string holdingNo, int finYearId);
     }
     public class TaxInstallmentService : ITaxInstallmentService
     {
@@ -114,6 +115,39 @@ namespace UPTax.Service.Services
                 result = new VMTaxInstallment
                 {
                     HoldingNo = houseOwner.HoldingNo,
+                    FinancialYearId = finYearId,
+                    vMTaxInstallmentDetails = resultDetails
+                };
+                return result;
+            }
+            return result;
+        }
+
+        public VMTaxInstallment GeteSingleTaxInstallment(string holdingNo, int finYearId)
+        {
+            VMTaxInstallment result = new VMTaxInstallment();
+            VMTaxInstallmentDetails resultDetails = new VMTaxInstallmentDetails();
+            HouseOwner houseOwner = _houseOwnerRepository.Get(h => h.HoldingNo.Equals(holdingNo) && h.IsDeleted == false);
+            //TaxGenerateInfo taxInfo = _taxGenerateInfoRepository.Get(h => h.HoldingNo.Equals(holdingNo) && h.IsDeleted == false && h.FinancialYearId == finYearId);
+            TaxInstallment taxInstallment = _taxInstallmentRepository.Get(t => t.HoldingNo.Equals(holdingNo) && t.FinancialYearId == finYearId && t.IsDeleted == false);
+            decimal OutstandingTaxAmount = taxInstallment != null ? taxInstallment.OutstandingAmount : 0;
+            decimal PenaltyAmount = taxInstallment != null ? taxInstallment.PenaltyAmount : 0;
+
+            if (taxInstallment != null)
+            {
+                resultDetails = new VMTaxInstallmentDetails
+                {
+                    HouseOwnerId = houseOwner.Id,
+                    HouseOwnerName = houseOwner.OwnerNameInBangla,
+                    InstallmentAmount = taxInstallment.TaxAmount,
+                    DueAmount = (taxInstallment.TaxAmount - OutstandingTaxAmount),
+                    InstallmentDate = taxInstallment.TaxPaymentDate,
+                    PenaltyAmount = taxInstallment.PenaltyAmount
+                };
+                result = new VMTaxInstallment
+                {
+                    Id = taxInstallment.Id,
+                    HoldingNo = taxInstallment.HoldingNo,
                     FinancialYearId = finYearId,
                     vMTaxInstallmentDetails = resultDetails
                 };
