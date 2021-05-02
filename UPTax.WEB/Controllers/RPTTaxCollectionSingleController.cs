@@ -78,8 +78,17 @@ namespace UPTax.Controllers
             ReportDataSource A = new ReportDataSource("DataSet1", resultSet); //get actual data here
 
             reportViewer.LocalReport.DataSources.Add(A);
-            ViewBag.ReportViewer = reportViewer;
-            return View("~/Views/RPTTaxCollectionSingle/RPTTaxCollectionSingle.cshtml");
+            reportViewer.LocalReport.Refresh();
+            Warning[] warnings;
+            string[] streamIds;
+            string mimeType = string.Empty;
+            string encoding = string.Empty;
+            string extension = string.Empty;
+            string deviceInf = "<DeviceInfo><PageHeight>8.5in</PageHeight><PageWidth>11in</PageWidth></DeviceInfo>";
+            byte[] bytes = reportViewer.LocalReport.Render("PDF", deviceInf, out mimeType, out encoding, out extension, out streamIds, out warnings);
+            return File(bytes, "application/pdf");
+            //ViewBag.ReportViewer = reportViewer;
+            //return View("~/Views/RPTTaxCollectionSingle/RPTTaxCollectionSingle.cshtml");
 
         }
 
