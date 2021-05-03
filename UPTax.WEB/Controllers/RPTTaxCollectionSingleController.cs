@@ -1,7 +1,9 @@
 ﻿using Microsoft.Reporting.WebForms;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
@@ -84,11 +86,29 @@ namespace UPTax.Controllers
             string mimeType = string.Empty;
             string encoding = string.Empty;
             string extension = string.Empty;
+            reportViewer.ShowToolBar = false;
             string deviceInf = "<DeviceInfo><PageHeight>8.5in</PageHeight><PageWidth>11in</PageWidth></DeviceInfo>";
             byte[] bytes = reportViewer.LocalReport.Render("PDF", deviceInf, out mimeType, out encoding, out extension, out streamIds, out warnings);
-            return File(bytes, "application/pdf");
-            //ViewBag.ReportViewer = reportViewer;
-            //return View("~/Views/RPTTaxCollectionSingle/RPTTaxCollectionSingle.cshtml");
+            //return File(bytes, "application/pdf");
+
+            //Type tip = reportViewer.GetType();
+            //FieldInfo[] pr = tip.GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
+            //System.Drawing.Printing.PageSettings ps = new System.Drawing.Printing.PageSettings();
+            //ps.Landscape = true;
+            /////ps......
+
+
+            //foreach (FieldInfo item in pr)
+            //{
+            //    if (item.Name == "m_pageSettings")
+            //    {
+            //        item.SetValue(reportViewer, ps);
+
+            //    }
+            //}
+
+            ViewBag.ReportViewer = reportViewer;
+            return View("~/Views/RPTTaxCollectionSingle/RPTTaxCollectionSingle.cshtml");
 
         }
 

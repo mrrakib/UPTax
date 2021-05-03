@@ -352,7 +352,7 @@ namespace UPTax.Controllers
         {
             var roleStore = new RoleStore<IdentityRole>(db);
             var roleMngr = new RoleManager<IdentityRole>(roleStore);
-            var roles = roleMngr.Roles.ToList();
+            var roles = roleMngr.Roles.Where(r => !r.Name.Equals("Super Admin")).ToList();
             return roles;
         }
         private List<string> _GetRoleNameByUserId(string Id)

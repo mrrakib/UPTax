@@ -124,8 +124,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>UnionName</rd:DefaultName>
-            <Top>0.12028in</Top>
-            <Left>1.12792in</Left>
+            <Top>0.23885in</Top>
+            <Left>1.74459in</Left>
             <Height>0.1875in</Height>
             <Width>2.52083in</Width>
             <Style>
@@ -144,6 +144,7 @@
                     <Value>=Parameters!UnionAddress.Value</Value>
                     <Style>
                       <FontFamily>kalpurush</FontFamily>
+                      <FontSize>11pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -153,9 +154,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>UnionAddress</rd:DefaultName>
-            <Top>0.28833in</Top>
-            <Left>0.64875in</Left>
-            <Height>0.18194in</Height>
+            <Top>0.5158in</Top>
+            <Left>1.26333in</Left>
+            <Height>0.1875in</Height>
             <Width>3.30208in</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -174,7 +175,7 @@
                     <Value>ইউপি করের বিল</Value>
                     <Style>
                       <FontFamily>Kalpurush</FontFamily>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>11pt</FontSize>
                       <Color>HotPink</Color>
                     </Style>
                   </TextRun>
@@ -185,10 +186,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>0.43972in</Top>
-            <Left>1.72167in</Left>
-            <Height>0.1875in</Height>
-            <Width>1.27083in</Width>
+            <Top>0.86939in</Top>
+            <Left>2.19817in</Left>
+            <Height>0.22917in</Height>
+            <Width>1.46875in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -210,7 +211,7 @@
                     <Value>অর্থবছরঃ</Value>
                     <Style>
                       <FontFamily>Kalpurush</FontFamily>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>11pt</FontSize>
                       <Color>HotPink</Color>
                     </Style>
                   </TextRun>
@@ -221,10 +222,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>0.77917in</Top>
-            <Left>1.44667in</Left>
+            <Top>1.52917in</Top>
+            <Left>1.69667in</Left>
             <Height>0.1875in</Height>
-            <Width>0.68125in</Width>
+            <Width>1.03542in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -245,7 +246,7 @@
                   <TextRun>
                     <Value>=Parameters!FinYear.Value</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>11pt</FontSize>
                       <Color>HotPink</Color>
                     </Style>
                   </TextRun>
@@ -254,10 +255,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>FinYear</rd:DefaultName>
-            <Top>0.77917in</Top>
-            <Left>2.19736in</Left>
+            <Top>1.52917in</Top>
+            <Left>2.94736in</Left>
             <Height>0.1875in</Height>
-            <Width>1in</Width>
+            <Width>1.35417in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -279,7 +280,7 @@
                     <Value>ইউপি কপি</Value>
                     <Style>
                       <FontFamily>Kalpurush</FontFamily>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>11pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -289,8 +290,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>0.62167in</Top>
-            <Left>1.69667in</Left>
+            <Top>1.168in</Top>
+            <Left>2.30234in</Left>
             <Height>0.1875in</Height>
             <Width>1.27083in</Width>
             <ZIndex>5</ZIndex>
@@ -304,18 +305,18 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.18924in</Width>
+                  <Width>1.53276in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.32292in</Width>
+                  <Width>0.66644in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.27604in</Width>
+                  <Width>2.61956in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -329,6 +330,7 @@
                                   <Value>ওয়ার্ড</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -358,7 +360,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -387,6 +391,7 @@
                                   <Value>=Fields!WardNo.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -406,7 +411,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -420,6 +425,7 @@
                                   <Value>হোল্ডিং নং</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -449,7 +455,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -478,6 +486,7 @@
                                   <Value>=Fields!HoldingNo.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -497,7 +506,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -511,6 +520,7 @@
                                   <Value>করদাতার নাম</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -540,7 +550,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -569,6 +581,7 @@
                                   <Value>=Fields!OwnerName.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -588,7 +601,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -602,6 +615,7 @@
                                   <Value>পিতা/স্বামীর নাম</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -631,7 +645,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -660,6 +676,7 @@
                                   <Value>=Fields!ParentName.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -679,7 +696,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.159in</Height>
+                  <Height>0.30893in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -693,6 +710,7 @@
                                   <Value>মোবাইল নং</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -722,7 +740,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -751,6 +771,7 @@
                                   <Value>=Fields!MobileNo.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -770,7 +791,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -784,6 +805,7 @@
                                   <Value>বিলের ঠিকানা</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -813,7 +835,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -842,6 +866,7 @@
                                   <Value>=Fields!BillAddress.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -861,7 +886,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -875,6 +900,7 @@
                                   <Value>জমাদানের তারিখ</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -904,7 +930,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -933,6 +961,7 @@
                                   <Value>=Parameters!FromDate.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -951,7 +980,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -965,6 +994,7 @@
                                   <Value>বকেয়া বছর</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -994,7 +1024,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -1021,7 +1053,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1061,10 +1095,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>1.02167in</Top>
-            <Left>0.43625in</Left>
-            <Height>1.17169in</Height>
-            <Width>3.7882in</Width>
+            <Top>2.03532in</Top>
+            <Left>0.30083in</Left>
+            <Height>2.37112in</Height>
+            <Width>4.81875in</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -1076,21 +1110,21 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.01042in</Width>
+                  <Width>1.23594in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.01042in</Width>
+                  <Width>1.23594in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.01042in</Width>
+                  <Width>1.23594in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.90625in</Width>
+                  <Width>1.13177in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.14792in</Height>
+                  <Height>0.34359in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1104,6 +1138,7 @@
                                   <Value>করের বিবরণ</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1119,7 +1154,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <VerticalAlign>Bottom</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1136,6 +1171,7 @@
                                   <Value>বকেয়া</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1151,7 +1187,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <VerticalAlign>Bottom</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1167,7 +1203,8 @@
                                 <TextRun>
                                   <Value>চলতি</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>Nikosh</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>#047895</Color>
                                   </Style>
@@ -1184,7 +1221,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <VerticalAlign>Bottom</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1201,6 +1238,7 @@
                                   <Value>মোট</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>#047895</Color>
                                   </Style>
@@ -1217,7 +1255,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <VerticalAlign>Bottom</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -1225,7 +1263,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14792in</Height>
+                  <Height>0.34359in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1239,6 +1277,7 @@
                                   <Value>হোল্ডিং কর</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1270,6 +1309,7 @@
                                   <Value>=Fields!CurrentDueAmount.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -1303,6 +1343,7 @@
                                   <Value>=Fields!CurrentAmount.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -1336,6 +1377,7 @@
                                   <Value>=(Fields!CurrentAmount.Value + Fields!CurrentDueAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
@@ -1361,7 +1403,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14792in</Height>
+                  <Height>0.34359in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1375,6 +1417,7 @@
                                   <Value>পূর্বের কর</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1406,6 +1449,7 @@
                                   <Value>=Fields!PrevDueAmount.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -1439,6 +1483,7 @@
                                   <Value>=Fields!PrevAmount.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -1472,6 +1517,7 @@
                                   <Value>=(Fields!PrevAmount.Value + Fields!PrevDueAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
@@ -1497,7 +1543,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14792in</Height>
+                  <Height>0.34359in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1511,6 +1557,7 @@
                                   <Value>দণ্ড</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1542,6 +1589,7 @@
                                   <Value>=Fields!PenaltyDueAmount.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -1575,6 +1623,7 @@
                                   <Value>=Fields!PenaltyAmount.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -1608,6 +1657,7 @@
                                   <Value>=(Fields!PenaltyAmount.Value + Fields!PenaltyDueAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
@@ -1633,7 +1683,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14792in</Height>
+                  <Height>0.34359in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1647,6 +1697,7 @@
                                   <Value>সর্বমোট</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1683,6 +1734,7 @@
                                   <Value>=Fields!GrandTotalAmount.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
@@ -1727,10 +1779,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>2.28367in</Top>
-            <Left>0.43625in</Left>
-            <Height>0.7396in</Height>
-            <Width>3.93751in</Width>
+            <Top>4.41266in</Top>
+            <Left>0.29042in</Left>
+            <Height>1.71793in</Height>
+            <Width>4.83958in</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -1742,18 +1794,18 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.17361in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.3125in</Width>
+                  <Width>2.48611in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.17361in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.52208in</Height>
+                  <Height>0.82069in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1767,6 +1819,7 @@
                                   <Value>প্রাপ্ত টাকা</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1840,7 +1893,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1854,7 +1907,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1868,7 +1921,7 @@
                                   <Value>চেয়ারম্যান এর স্বাক্ষর</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1895,7 +1948,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.19792in</Height>
+                  <Height>0.49653in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1909,6 +1962,7 @@
                                   <Value>কথায়</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1945,6 +1999,7 @@
                                   <Value>=Fields!GrandAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1981,6 +2036,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2010,7 +2066,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.40625in</Height>
+                  <Height>0.70486in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2024,6 +2080,7 @@
                                   <Value>আদায়কারীর স্বাক্ষর</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -2060,6 +2117,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2095,7 +2153,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2109,7 +2167,7 @@
                                   <Value>ব্যাংক সীল / ইউপি কার্যালয়ের সীলমোহর</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2155,10 +2213,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>3.0927in</Top>
-            <Left>0.41125in</Left>
-            <Height>1.12625in</Height>
-            <Width>4.3125in</Width>
+            <Top>6.20728in</Top>
+            <Left>0.28625in</Left>
+            <Height>2.02208in</Height>
+            <Width>4.83333in</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -2167,8 +2225,8 @@
             </Style>
           </Tablix>
           <Line Name="Line1">
-            <Left>5.17583in</Left>
-            <Height>4.5in</Height>
+            <Left>5.38416in</Left>
+            <Height>8.5in</Height>
             <Width>0in</Width>
             <ZIndex>9</ZIndex>
             <Style>
@@ -2188,7 +2246,7 @@
                   <TextRun>
                     <Value>=Parameters!UnionName.Value</Value>
                     <Style>
-                      <FontFamily>kalpurush</FontFamily>
+                      <FontFamily>Kalpurush</FontFamily>
                       <FontSize>12pt</FontSize>
                     </Style>
                   </TextRun>
@@ -2199,8 +2257,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>UnionName</rd:DefaultName>
-            <Top>0.12028in</Top>
-            <Left>6.24521in</Left>
+            <Top>0.25474in</Top>
+            <Left>7.0177in</Left>
             <Height>0.1875in</Height>
             <Width>2.52083in</Width>
             <ZIndex>10</ZIndex>
@@ -2220,6 +2278,7 @@
                     <Value>=Parameters!UnionAddress.Value</Value>
                     <Style>
                       <FontFamily>kalpurush</FontFamily>
+                      <FontSize>11pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2229,9 +2288,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>UnionAddress</rd:DefaultName>
-            <Top>0.27496in</Top>
-            <Left>5.76604in</Left>
-            <Height>0.18194in</Height>
+            <Top>0.53169in</Top>
+            <Left>6.53644in</Left>
+            <Height>0.1875in</Height>
             <Width>3.30208in</Width>
             <ZIndex>11</ZIndex>
             <Style>
@@ -2250,7 +2309,7 @@
                     <Value>ইউপি করের বিল</Value>
                     <Style>
                       <FontFamily>Kalpurush</FontFamily>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>11pt</FontSize>
                       <Color>HotPink</Color>
                     </Style>
                   </TextRun>
@@ -2261,10 +2320,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>0.42635in</Top>
-            <Left>6.83896in</Left>
-            <Height>0.1875in</Height>
-            <Width>1.27083in</Width>
+            <Top>0.88528in</Top>
+            <Left>7.47128in</Left>
+            <Height>0.22917in</Height>
+            <Width>1.46875in</Width>
             <ZIndex>12</ZIndex>
             <Style>
               <Border>
@@ -2286,7 +2345,7 @@
                     <Value>অর্থবছরঃ</Value>
                     <Style>
                       <FontFamily>Kalpurush</FontFamily>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>11pt</FontSize>
                       <Color>HotPink</Color>
                     </Style>
                   </TextRun>
@@ -2297,10 +2356,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>0.7658in</Top>
-            <Left>6.56396in</Left>
+            <Top>1.54506in</Top>
+            <Left>6.96978in</Left>
             <Height>0.1875in</Height>
-            <Width>0.70902in</Width>
+            <Width>1.03542in</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -2312,55 +2371,53 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="FinYear2">
+          <Textbox Name="Textbox8">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!FinYear.Value</Value>
+                    <Value>গ্রাহক কপি</Value>
                     <Style>
-                      <FontSize>9pt</FontSize>
-                      <Color>HotPink</Color>
+                      <FontFamily>Kalpurush</FontFamily>
+                      <FontSize>11pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>FinYear</rd:DefaultName>
-            <Top>0.7658in</Top>
-            <Left>7.31465in</Left>
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <Top>1.18389in</Top>
+            <Left>7.57545in</Left>
             <Height>0.1875in</Height>
-            <Width>1in</Width>
+            <Width>1.27083in</Width>
             <ZIndex>14</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
           <Tablix Name="Tablix4">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.18924in</Width>
+                  <Width>1.57442in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.32292in</Width>
+                  <Width>0.7081in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.27604in</Width>
+                  <Width>2.66122in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2374,6 +2431,7 @@
                                   <Value>ওয়ার্ড</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -2403,7 +2461,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2432,6 +2492,7 @@
                                   <Value>=Fields!WardNo.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2451,7 +2512,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2465,6 +2526,7 @@
                                   <Value>হোল্ডিং নং</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -2494,7 +2556,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2523,6 +2587,7 @@
                                   <Value>=Fields!HoldingNo.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2542,7 +2607,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2556,6 +2621,7 @@
                                   <Value>করদাতার নাম</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -2585,7 +2651,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2614,6 +2682,7 @@
                                   <Value>=Fields!OwnerName.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2633,7 +2702,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2647,6 +2716,7 @@
                                   <Value>পিতা/স্বামীর নাম</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -2676,7 +2746,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2705,6 +2777,7 @@
                                   <Value>=Fields!ParentName.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2724,7 +2797,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.159in</Height>
+                  <Height>0.30893in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2738,6 +2811,7 @@
                                   <Value>মোবাইল নং</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -2767,7 +2841,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2796,6 +2872,7 @@
                                   <Value>=Fields!MobileNo.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2815,7 +2892,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2829,6 +2906,7 @@
                                   <Value>বিলের ঠিকানা</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -2858,7 +2936,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2887,6 +2967,7 @@
                                   <Value>=Fields!BillAddress.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2906,7 +2987,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2920,6 +3001,7 @@
                                   <Value>জমাদানের তারিখ</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -2949,7 +3031,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -2978,6 +3062,7 @@
                                   <Value>=Parameters!FromDate.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2996,7 +3081,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14467in</Height>
+                  <Height>0.2946in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3010,6 +3095,7 @@
                                   <Value>বকেয়া বছর</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>11pt</FontSize>
                                     <Color>#047895</Color>
                                   </Style>
                                 </TextRun>
@@ -3039,7 +3125,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>:</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -3066,7 +3154,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>11pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3106,10 +3196,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>1.0083in</Top>
-            <Left>5.55354in</Left>
-            <Height>1.17169in</Height>
-            <Width>3.7882in</Width>
+            <Top>2.05121in</Top>
+            <Left>5.69894in</Left>
+            <Height>2.37113in</Height>
+            <Width>4.94375in</Width>
             <ZIndex>15</ZIndex>
             <Style>
               <Border>
@@ -3121,21 +3211,21 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.01042in</Width>
+                  <Width>1.26719in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.01042in</Width>
+                  <Width>1.26719in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.01042in</Width>
+                  <Width>1.26719in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.90625in</Width>
+                  <Width>1.16302in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.14792in</Height>
+                  <Height>0.34359in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3149,6 +3239,7 @@
                                   <Value>করের বিবরণ</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -3164,7 +3255,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <VerticalAlign>Bottom</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -3181,6 +3272,7 @@
                                   <Value>বকেয়া</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -3196,7 +3288,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <VerticalAlign>Bottom</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -3212,7 +3304,8 @@
                                 <TextRun>
                                   <Value>চলতি</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>Nikosh</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>#047895</Color>
                                   </Style>
@@ -3229,7 +3322,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <VerticalAlign>Bottom</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -3246,6 +3339,7 @@
                                   <Value>মোট</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>#047895</Color>
                                   </Style>
@@ -3262,7 +3356,7 @@
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <VerticalAlign>Bottom</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -3270,7 +3364,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14792in</Height>
+                  <Height>0.34359in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3284,6 +3378,7 @@
                                   <Value>হোল্ডিং কর</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3314,7 +3409,8 @@
                                 <TextRun>
                                   <Value>=Fields!CurrentDueAmount.Value</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -3347,7 +3443,8 @@
                                 <TextRun>
                                   <Value>=Fields!CurrentAmount.Value</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -3381,6 +3478,7 @@
                                   <Value>=(Fields!CurrentAmount.Value + Fields!CurrentDueAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
@@ -3406,7 +3504,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14792in</Height>
+                  <Height>0.34359in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3420,6 +3518,7 @@
                                   <Value>পূর্বের কর</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3450,7 +3549,8 @@
                                 <TextRun>
                                   <Value>=Fields!PrevDueAmount.Value</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -3483,7 +3583,8 @@
                                 <TextRun>
                                   <Value>=Fields!PrevAmount.Value</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -3507,7 +3608,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PrevTotalAmount2">
+                        <Textbox Name="CurrentTotalAmount4">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -3516,7 +3617,8 @@
                                 <TextRun>
                                   <Value>=(Fields!PrevAmount.Value + Fields!PrevDueAmount.Value)</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
@@ -3527,7 +3629,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PrevTotalAmount</rd:DefaultName>
+                          <rd:DefaultName>CurrentTotalAmount</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -3542,7 +3644,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14792in</Height>
+                  <Height>0.34359in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3556,6 +3658,7 @@
                                   <Value>দণ্ড</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3586,7 +3689,8 @@
                                 <TextRun>
                                   <Value>=Fields!PenaltyDueAmount.Value</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -3619,7 +3723,8 @@
                                 <TextRun>
                                   <Value>=Fields!PenaltyAmount.Value</Value>
                                   <Style>
-                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
@@ -3643,7 +3748,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PenaltyTotalAmount3">
+                        <Textbox Name="PenaltyTotalAmount2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -3653,6 +3758,7 @@
                                   <Value>=(Fields!PenaltyAmount.Value + Fields!PenaltyDueAmount.Value)</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
@@ -3678,7 +3784,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.14792in</Height>
+                  <Height>0.34359in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3692,6 +3798,7 @@
                                   <Value>সর্বমোট</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -3708,6 +3815,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                         <ColSpan>3</ColSpan>
@@ -3727,6 +3835,7 @@
                                   <Value>=Fields!GrandTotalAmount.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>0.00;(0.00)</Format>
                                   </Style>
@@ -3744,6 +3853,7 @@
                               <Style>Solid</Style>
                             </Border>
                             <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingRight>2pt</PaddingRight>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -3770,10 +3880,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>2.2703in</Top>
-            <Left>5.55354in</Left>
-            <Height>0.7396in</Height>
-            <Width>3.93751in</Width>
+            <Top>4.42855in</Top>
+            <Left>5.68853in</Left>
+            <Height>1.71795in</Height>
+            <Width>4.9646in</Width>
             <ZIndex>16</ZIndex>
             <Style>
               <Border>
@@ -3785,18 +3895,18 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.21527in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.3125in</Width>
+                  <Width>2.52777in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>1.21527in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.52208in</Height>
+                  <Height>0.82069in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3810,6 +3920,7 @@
                                   <Value>প্রাপ্ত টাকা</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -3836,7 +3947,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox85">
+                        <Textbox Name="GrandTotalAmount3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -3856,7 +3967,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox84</rd:DefaultName>
+                          <rd:DefaultName>GrandTotalAmount1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -3883,7 +3994,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3897,7 +4008,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3911,7 +4022,7 @@
                                   <Value>চেয়ারম্যান এর স্বাক্ষর</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3938,11 +4049,11 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.19792in</Height>
+                  <Height>0.49653in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox92">
+                        <Textbox Name="Textbox88">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -3952,6 +4063,7 @@
                                   <Value>কথায়</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -3978,7 +4090,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox96">
+                        <Textbox Name="GrandAmountStr2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -3988,6 +4100,7 @@
                                   <Value>=Fields!GrandAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -3997,7 +4110,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox88</rd:DefaultName>
+                          <rd:DefaultName>GrandAmountStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -4014,7 +4127,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox97">
+                        <Textbox Name="Textbox92">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -4024,6 +4137,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4053,11 +4167,11 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.40625in</Height>
+                  <Height>0.70486in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox98">
+                        <Textbox Name="Textbox96">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -4067,6 +4181,7 @@
                                   <Value>আদায়কারীর স্বাক্ষর</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -4093,7 +4208,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox99">
+                        <Textbox Name="Textbox97">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -4103,6 +4218,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4128,7 +4244,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox100">
+                        <Textbox Name="Textbox98">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -4138,7 +4254,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4152,7 +4268,7 @@
                                   <Value>ব্যাংক সীল / ইউপি কার্যালয়ের সীলমোহর</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4198,10 +4314,10 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>3.07933in</Top>
-            <Left>5.52854in</Left>
-            <Height>1.12625in</Height>
-            <Width>4.3125in</Width>
+            <Top>6.22318in</Top>
+            <Left>5.68436in</Left>
+            <Height>2.02208in</Height>
+            <Width>4.95832in</Width>
             <ZIndex>17</ZIndex>
             <Style>
               <Border>
@@ -4209,49 +4325,47 @@
               </Border>
             </Style>
           </Tablix>
-          <Textbox Name="Textbox8">
+          <Textbox Name="FinYear2">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>গ্রাহক কপি</Value>
+                    <Value>=Parameters!FinYear.Value</Value>
                     <Style>
-                      <FontFamily>Kalpurush</FontFamily>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>11pt</FontSize>
+                      <Color>HotPink</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
+                <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox3</rd:DefaultName>
-            <Top>0.61385in</Top>
-            <Left>6.83896in</Left>
+            <rd:DefaultName>FinYear</rd:DefaultName>
+            <Top>1.54506in</Top>
+            <Left>8.18435in</Left>
             <Height>0.1875in</Height>
-            <Width>1.27083in</Width>
+            <Width>1.35417in</Width>
             <ZIndex>18</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>4.5in</Height>
+        <Height>8.5in</Height>
         <Style />
       </Body>
-      <Width>10.06125in</Width>
+      <Width>11.20522in</Width>
       <Page>
-        <PageHeight>6.5in</PageHeight>
+        <PageHeight>8.5in</PageHeight>
         <PageWidth>11in</PageWidth>
-        <LeftMargin>0.25in</LeftMargin>
-        <RightMargin>0.25in</RightMargin>
-        <TopMargin>0.25in</TopMargin>
-        <BottomMargin>0.25in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
