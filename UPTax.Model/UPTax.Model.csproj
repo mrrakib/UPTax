@@ -122,6 +122,7 @@
     <Compile Include="ViewModels\VMRegister.cs" />
     <Compile Include="ViewModels\VMReportViewerCommon.cs" />
     <Compile Include="ViewModels\VMRPTTaxCollectionSingle.cs" />
+    <Compile Include="ViewModels\VMRPTTaxReceipt.cs" />
     <Compile Include="ViewModels\VMTaxInstallmentDetails.cs" />
     <Compile Include="ViewModels\VMTaxInstallment.cs" />
     <Compile Include="ViewModels\VMTaxGeneratorDetails.cs" />

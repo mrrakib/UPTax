@@ -15,5 +15,7 @@ namespace UPTax.Model.ViewModels
         public string FinancialYearName { get; set; }
         public int FinancialYearId { get; set; }
         public string HoldingNo { get; set; }
+        public int VillageInfoId { get; set; }
+        public int WardInfoId { get; set; }
     }
 }

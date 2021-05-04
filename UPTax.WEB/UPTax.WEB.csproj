@@ -198,6 +198,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationInfoController.cs" />
     <Compile Include="Controllers\CreateHouseOwnerController.cs" />
+    <Compile Include="Controllers\RPTTaxReceiptPrintController.cs" />
     <Compile Include="Controllers\RPTTaxCollectionSingleController.cs" />
     <Compile Include="Controllers\TaxInstallmentDeleteController.cs" />
     <Compile Include="Controllers\TaxInstallmentEditController.cs" />
@@ -12729,6 +12730,8 @@
     <Content Include="Views\TaxInstallmentDelete\_partialTaxInstallmentDelete.cshtml" />
     <Content Include="Views\TaxInstallmentDelete\Index.cshtml" />
     <Content Include="Views\TopSheet\Index.cshtml" />
+    <Content Include="Views\RPTTaxReceiptPrint\Index.cshtml" />
+    <Content Include="Views\RPTTaxReceiptPrint\RPTTaxCollectionSingle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

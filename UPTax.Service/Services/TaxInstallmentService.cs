@@ -23,6 +23,7 @@ namespace UPTax.Service.Services
         VMRPTTaxCollectionSingle GetMRPTTaxCollectionSingle(string holdingNo, int finYearId, int unionId);
         VMTaxInstallment GeteSingleTaxInstallment(string holdingNo, int finYearId);
         IEnumerable<TopSheetReportSP> GetTopSheetReport(string financialYear);
+        List<VMRPTTaxReceipt> GetRPTTaxReceipt(int villageId, int wardId, int finYearId, int unionId);
     }
     public class TaxInstallmentService : ITaxInstallmentService
     {
@@ -164,6 +165,19 @@ namespace UPTax.Service.Services
                 new SqlParameter("finYearId", SqlDbType.Int) { Value = finYearId },
                 new SqlParameter("unionId", SqlDbType.Int) { Value = unionId }
                 ).FirstOrDefault();
+
+            return result;
+        }
+
+        public List<VMRPTTaxReceipt> GetRPTTaxReceipt(int villageId, int wardId, int finYearId, int unionId)
+        {
+            var result = _taxInstallmentRepository.ExecStoreProcedure<VMRPTTaxReceipt>("GetAllTaxReceipt @villageInfoId, @wardInfoId, @finYearId, @unionId",
+
+                new SqlParameter("villageInfoId", SqlDbType.Int) { Value = villageId },
+                new SqlParameter("wardInfoId", SqlDbType.Int) { Value = wardId },
+                new SqlParameter("finYearId", SqlDbType.Int) { Value = finYearId },
+                new SqlParameter("unionId", SqlDbType.Int) { Value = unionId }
+                ).ToList();
 
             return result;
         }

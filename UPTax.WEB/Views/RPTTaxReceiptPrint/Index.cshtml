@@ -1,0 +1,119 @@
+﻿@model UPTax.Model.ViewModels.VMCommonParams
+
+@{
+    ViewBag.Title = "কর আদায়";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">কর আদায়</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active">কর আদায়ের প্রতিবেদন দেখুন</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">কর আদায়ের প্রতিবেদন ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Index", "RPTTaxReceiptPrint", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+
+                                <div class="col-md-6 mb-6">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationCustom03">ওয়ার্ড <span class="required"></span></label>
+                                        @Html.DropDownList("WardInfoId", null, "--Select--", new { @class = "form-control validationCustom03", @id = "ddlWardInfoId", @required="required" })
+                                        <div class="invalid-feedback">
+                                            ওয়ার্ড দেয়া বাধ্যতামূলক!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="ddlVillageInfoId">গ্রাম <span class="required"></span></label>
+                                        @Html.DropDownList("VillageInfoId", null, "--Select--", new { @class = "form-control validationCustom03", @id= "ddlVillageInfoId", @required = "required" })
+                                        <div class="invalid-feedback">
+                                            গ্রাম দেয়া বাধ্যতামূলক!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationCustom03">
+                                            অর্থবছর <span class="required"></span>
+                                        </label>
+
+                                        @Html.DropDownList("FinancialYearId", null, "--Select--", new { @class = "form-control validationCustom03", @id = "ddlFinancialYearId", @required = "required" })
+                                        <div class="invalid-feedback">
+                                            অর্থবছর দেয়া বাধ্যতামূলক!
+                                        </div>
+                                    </div>
+
+                                    <button formtarget="_blank" class="btn btn-info" id="generateTax" type="submit">প্রিন্ট করুন</button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+@section Scripts {
+    <script src="~/Content/assets/js/pages/form-click-validation.init.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ddlWardInfoId").change(function () {
+                GetVillageDropdown();
+            });
+        });
+
+        function GetVillageDropdown() {
+                var wardId = $("#ddlWardInfoId").val();
+                $("#ddlVillageInfoId").empty();
+                //$('#VillageInfoId').append(new Option('Select...', ''));
+                debugger;
+
+                  $.ajax({
+                        url: '@Url.Action("GetVillage", "VillageInfo")',
+                        dataType: "json",
+                        type: "GET",
+                        cache: false,
+                        data: { wardId},
+                      success: function (data) {
+
+                          debugger;
+                          var count = 0;
+                          data.forEach(function (item) {
+                              $('#ddlVillageInfoId').append(new Option(item.Name, item.Id));
+                          });
+                        },
+                        error: function (xhr) {
+                            alert(xhr.responseText);
+                        }
+                 });
+            }
+    </script>
+
+
+}
