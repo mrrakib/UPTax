@@ -27,7 +27,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var listData = _SocialBenefitService.GetPagedList(keyName: name, page, dataSize);
+            var listData = _SocialBenefitService.GetPagedList(name, page, dataSize);
             return View(listData);
         }
 

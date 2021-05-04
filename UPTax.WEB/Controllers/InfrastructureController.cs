@@ -35,7 +35,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var listData = _infrastructureInfoService.GetPagedList(degree: name, page, dataSize);
+            var listData = _infrastructureInfoService.GetPagedList(name, page, dataSize);
             return View(listData);
         }
 

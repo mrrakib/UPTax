@@ -27,7 +27,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var listData = _ProfessionInfoService.GetPagedList(degree: name, page, dataSize);
+            var listData = _ProfessionInfoService.GetPagedList(name, page, dataSize);
             return View(listData);
         }
 

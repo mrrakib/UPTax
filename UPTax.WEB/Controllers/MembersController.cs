@@ -48,7 +48,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var listData = _memberService.GetPagedList(holdingNo: name, page, dataSize);
+            var listData = _memberService.GetPagedList(name, page, dataSize);
             return View(listData);
         }
 
