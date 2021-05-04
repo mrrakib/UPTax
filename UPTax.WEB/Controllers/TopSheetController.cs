@@ -20,11 +20,6 @@ namespace UPTax.Controllers
             ViewBag.FinancialYear = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
             return View();
         }
-        public ActionResult A()
-        {
-            ViewBag.FinancialYear = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
-            return View();
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
