@@ -135,8 +135,7 @@ namespace UPTax.Service.Services
             {
                 Id = u.Id,
                 Name = u.YearName
-            }).ToList();
+            }).OrderByDescending(a => a.Id).ToList();
         }
-
     }
 }
