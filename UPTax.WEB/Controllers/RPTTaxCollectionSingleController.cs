@@ -87,7 +87,7 @@ namespace UPTax.Controllers
             string mimeType = string.Empty;
             string encoding = string.Empty;
             string extension = string.Empty;
-            reportViewer.ShowToolBar = false;
+            //reportViewer.ShowToolBar = false;
             string deviceInf = "<DeviceInfo><PageHeight>9.5in</PageHeight><PageWidth>14in</PageWidth></DeviceInfo>";
             byte[] bytes = reportViewer.LocalReport.Render("PDF", deviceInf, out mimeType, out encoding, out extension, out streamIds, out warnings);
 

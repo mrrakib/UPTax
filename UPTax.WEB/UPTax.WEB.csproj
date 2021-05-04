@@ -11650,10 +11650,6 @@
     <Content Include="Content\assets\libs\tinymce\themes\silver\index.js" />
     <Content Include="Content\assets\libs\tinymce\themes\silver\theme.min.js" />
     <Content Include="Content\assets\libs\tinymce\tinymce.min.js" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
@@ -11724,7 +11720,6 @@
     <Content Include="dist\js\pages\dashboard.js" />
     <Content Include="dist\js\pages\dashboard2.js" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="plugins\bootstrap-slider\bootstrap-slider.js" />
@@ -11870,8 +11865,6 @@
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="ReportViewerWebForm.aspx" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="bower_components\bootstrap-colorpicker\.bower.json" />
     <Content Include="bower_components\bootstrap-colorpicker\.editorconfig" />
     <Content Include="bower_components\bootstrap-colorpicker\.github\CODE_OF_CONDUCT.md" />
@@ -12721,7 +12714,9 @@
     <Content Include="Views\Members\Create.cshtml" />
     <Content Include="Views\Members\Edit.cshtml" />
     <Content Include="Views\Members\Index.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\TaxInstallment\_partialTaxInstallment.cshtml" />
     <Content Include="Views\TaxInstallment\Index.cshtml" />
     <Content Include="Views\RPTTaxCollectionSingle\Index.cshtml" />
@@ -12770,14 +12765,6 @@
     <Folder Include="Views\Shared\Admin\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
@@ -12803,7 +12790,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\RDLC\Report1.rdlc" />
+    <EmbeddedResource Include="Reports\RDLC\Report1.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

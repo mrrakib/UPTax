@@ -76,7 +76,7 @@ namespace UPTax.Controllers
                 ViewBag.village = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name", village);
             }
 
-            var listData = _houseOwnerService.GetPagedList(holdingNo: name, ward, village, page, dataSize);
+            var listData = _houseOwnerService.GetPagedList(name, ward, village, page, dataSize);
             return View(listData);
         }
 
