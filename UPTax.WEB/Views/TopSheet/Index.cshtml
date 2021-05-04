@@ -1,0 +1,180 @@
+﻿@model IEnumerable<UPTax.Model.ViewModels.TopSheetReportSP>
+
+@{
+    ViewBag.Title = "অর্থ বছর";
+    int rowNo = 0;
+    int totalWardNo = 0;
+    int totalVillageCount = 0;
+    int totalHoldingCount = 0;
+    int totalTaxCollectHoldingCount = 0;
+    int dueTotalTaxCollectHoldingCount = 0;
+    decimal totalTaxAmount = 0;
+    decimal totalCollectTaxAmount = 0;
+    decimal totalDueTaxAmount = 0;
+    decimal totalPreviousDueAmount = 0;
+    decimal totalPreviousDueCollectAmount = 0;
+    decimal totalCollection = 0;
+    decimal totalDues = 0;
+    decimal taxCollectPercentage = 0;
+
+}
+
+<div class="row justify-content-center">
+    <div class="col-xl-5 col-sm-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="text-center">অর্থ বছর নির্বাচন করুন</h5>
+                @using (Html.BeginForm("Index", "TopSheet", FormMethod.Post, new { @class = "form-horizontal", role = "form", @autocomplete = "off" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div style="color:red; font-weight:bold">
+                        @Html.Raw(Html.ValidationSummary(false).ToHtmlString())
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-12 mb-3">
+                                <label for="validationCustom03">অর্থ বছর<span style="color: red">*</span> </label>
+                                @Html.DropDownList("FinancialYear", null, "--নির্বাচন করুন--", new { @class = "form-control", @id = "financialYearId", @required = "required" })
+                            <div class="invalid-feedback">
+                                অর্থ বছর দেয়া বাধ্যতামূলক!
+                            </div>
+                            </div>
+                            <div class="mt-4">
+                                <button class="btn btn-success btn-block waves-effect waves-light" type="submit">সার্চ করুন</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="col-xl-12 col-sm-12 col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="header-title">
+                        @Model.First().YearName অর্থ বছর
+                    </h5>
+                    <div class="table-responsive">
+                        <table id="datatable" class="table table-sm table-bordered dt-responsive table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr style="background-color: lightgray">
+                                    <th>নং</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().WardNo)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().TotalVillageCount)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().TotalHoldingCount)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().TotalTaxCollectHoldingCount)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().DueTotalTaxCollectHoldingCount)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().TotalTaxAmount)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().TotalCollectTaxAmount)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().TotalDueTaxAmount)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().TotalPreviousDueAmount)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().TotalPreviousDueCollectAmount)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().TotalCollection)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().TotalDues)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().YearName)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().TaxCollectPercentage)</th>
+                                    <th>@Html.DisplayNameFor(a => a.First().Comments)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    rowNo++;
+                                    totalWardNo++;
+                                    totalVillageCount += item.TotalVillageCount;
+                                    totalHoldingCount += item.TotalHoldingCount;
+                                    totalTaxCollectHoldingCount += item.TotalTaxCollectHoldingCount;
+                                    dueTotalTaxCollectHoldingCount += item.DueTotalTaxCollectHoldingCount;
+                                    totalTaxAmount += item.TotalTaxAmount;
+                                    totalCollectTaxAmount += item.TotalCollectTaxAmount;
+                                    totalDueTaxAmount += item.TotalDueTaxAmount;
+                                    totalPreviousDueAmount += item.TotalPreviousDueAmount;
+                                    totalPreviousDueCollectAmount += item.TotalPreviousDueCollectAmount;
+                                    totalCollection += item.TotalCollection;
+                                    totalDues += item.TotalDues;
+                                    taxCollectPercentage += item.TaxCollectPercentage;
+                                    <tr>
+                                        <td>@rowNo</td>
+                                        <td class="">@item.WardNo</td>
+                                        <td class="">@item.TotalVillageCount</td>
+                                        <td class="">@item.TotalHoldingCount</td>
+                                        <td class="">@item.TotalTaxCollectHoldingCount</td>
+                                        <td class="">@item.DueTotalTaxCollectHoldingCount</td>
+                                        <td class="">@item.TotalTaxAmount</td>
+                                        <td class="">@item.TotalCollectTaxAmount</td>
+                                        <td class="">@item.TotalDueTaxAmount</td>
+                                        <td class="">@item.TotalPreviousDueAmount</td>
+                                        <td class="">@item.TotalPreviousDueCollectAmount</td>
+                                        <td class="">@item.TotalCollection</td>
+                                        <td class="">@item.TotalDues</td>
+                                        <td class="">@item.YearName</td>
+                                        <td class="">@item.TaxCollectPercentage.ToString("0.00") %</td>
+                                        <td class="">@item.Comments</td>
+                                        <td></td>
+                                    </tr>
+                                }
+                            <tr style="font-weight:bold; background-color:lightyellow;">
+                                <td>সর্বমোট</td>
+                                <td class="">@totalWardNo</td>
+                                <td class="">@totalVillageCount</td>
+                                <td class="">@totalHoldingCount</td>
+                                <td class="">@totalTaxCollectHoldingCount</td>
+                                <td class="">@dueTotalTaxCollectHoldingCount</td>
+                                <td class="">@totalTaxAmount</td>
+                                <td class="">@totalCollectTaxAmount</td>
+                                <td class="">@totalDueTaxAmount</td>
+                                <td class="">@totalPreviousDueAmount</td>
+                                <td class="">@totalPreviousDueCollectAmount</td>
+                                <td class="">@totalCollection</td>
+                                <td class="">@totalDues</td>
+                                <td class=""></td>
+                                @{
+                                    var percentage = taxCollectPercentage / totalWardNo;
+                                    <td class="">@percentage.ToString("0.00") %</td>
+                                }
+                                <td class=""></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="float-right">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="text-center">চলতি অর্থ বছরের সমস্ত আদায়ের সমষ্টি</h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-sm table-bordered dt-responsive table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr style="font-weight:bold; background-color:lightgray;">
+                                            <th>@Html.DisplayNameFor(a => a.First().TotalCollectTaxAmount)</th>
+                                            <th>@Html.DisplayNameFor(a => a.First().TotalPreviousDueCollectAmount)</th>
+                                            <th>@Html.DisplayNameFor(a => a.First().TotalCollection)</th>                                          
+                                        </tr>
+                                    </thead>
+                                    <tbody>                                     
+                                        <tr>
+                                            <td class="">@totalCollectTaxAmount</td>
+                                            <td class="">@totalPreviousDueCollectAmount</td>
+                                            <td class="">@totalCollection</td>                                        
+                                        </tr>
+                                    </tbody>
+                                </table>
+                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

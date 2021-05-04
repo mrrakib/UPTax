@@ -1,5 +1,4 @@
-﻿using PagedList;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -23,6 +22,7 @@ namespace UPTax.Service.Services
         VMTaxInstallment GenerateSingleTaxInstallment(string holdingNo, int finYearId);
         VMRPTTaxCollectionSingle GetMRPTTaxCollectionSingle(string holdingNo, int finYearId, int unionId);
         VMTaxInstallment GeteSingleTaxInstallment(string holdingNo, int finYearId);
+        IEnumerable<TopSheetReportSP> GetTopSheetReport(string financialYear);
     }
     public class TaxInstallmentService : ITaxInstallmentService
     {
@@ -166,6 +166,13 @@ namespace UPTax.Service.Services
                 ).FirstOrDefault();
 
             return result;
+        }
+
+        public IEnumerable<TopSheetReportSP> GetTopSheetReport(string financialYear)
+        {
+            var query = $"EXEC TopSheetReport {financialYear}";
+            var data = _taxInstallmentRepository.SQLQueryList<TopSheetReportSP>(query).ToList();
+            return data;
         }
     }
 }

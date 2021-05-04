@@ -58,10 +58,10 @@
       <HintPath>..\packages\BeginCollectionItem.1.2.1.0\lib\net35\BeginCollectionItem.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -214,6 +214,7 @@
     <Compile Include="Controllers\ProfessionInfoController.cs" />
     <Compile Include="Controllers\SocialBenefitController.cs" />
     <Compile Include="Controllers\InfraStructuralTypeController.cs" />
+    <Compile Include="Controllers\TopSheetController.cs" />
     <Compile Include="Controllers\UnionParishadController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -12727,6 +12728,7 @@
     <Content Include="Views\TaxInstallmentEdit\Index.cshtml" />
     <Content Include="Views\TaxInstallmentDelete\_partialTaxInstallmentDelete.cshtml" />
     <Content Include="Views\TaxInstallmentDelete\Index.cshtml" />
+    <Content Include="Views\TopSheet\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
