@@ -52,20 +52,18 @@ namespace UPTax.Controllers
                 ReportPath = Path.Combine(HttpContext.Server.MapPath("~/Reports/RDLC/"), "TopSheetReport.rdlc"),
                 ReportBody = modelPDF.ToDataTable()
             };
-
-            var header = new ReportHeader
-            {
-                Name = "Top Sheet Report",
-                Address = "USA",
-                //Logo = new Uri(HttpContext.Server.MapPath("~/Image/logo.png")).AbsoluteUri
-            };
-
             var reportViewer = new LocalReport
             {
                 EnableExternalImages = true,
                 ReportPath = results.ReportPath,
             };
 
+            var header = new ReportHeader
+            {
+                Name = "Top Sheet Report",
+                Address = "Natore, Bangladesh",
+                //Logo = new Uri(HttpContext.Server.MapPath("~/Image/logo.png")).AbsoluteUri
+            };
             var rptHead = new ReportDataSource("ReportHeader", header.ToDataTable());
             reportViewer.DataSources.Add(rptHead);
 
