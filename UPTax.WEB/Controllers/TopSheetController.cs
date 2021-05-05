@@ -1,8 +1,10 @@
 ﻿using System.Web.Mvc;
+using UPTax.Filter;
 using UPTax.Service.Services;
 
 namespace UPTax.Controllers
 {
+    [RapidAuthorization]
     public class TopSheetController : Controller
     {
         private readonly IFinancialYearService _financialYearService;
@@ -15,6 +17,8 @@ namespace UPTax.Controllers
         }
 
         // GET: TopSheet/Index
+        [HttpGet]
+        [RapidAuthorization]
         public ActionResult Index()
         {
             ViewBag.FinancialYear = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
@@ -22,6 +26,7 @@ namespace UPTax.Controllers
         }
 
         [HttpPost]
+        [RapidAuthorization]
         [ValidateAntiForgeryToken]
         public ActionResult Index(string financialYear = "")
         {
@@ -32,6 +37,7 @@ namespace UPTax.Controllers
         }
 
         [HttpGet]
+        [RapidAuthorization]
         public ActionResult Export(string financialYearId = "")
         {
             var data = _taxInstallmentService.GetTopSheetReport(financialYearId);
