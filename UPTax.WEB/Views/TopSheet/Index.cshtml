@@ -35,9 +35,9 @@
                             <div class="col-md-12 mb-3">
                                 <label for="validationCustom03">অর্থ বছর<span style="color: red">*</span> </label>
                                 @Html.DropDownList("FinancialYear", null, "--নির্বাচন করুন--", new { @class = "form-control", @id = "financialYearId", @required = "required" })
-                            <div class="invalid-feedback">
-                                অর্থ বছর দেয়া বাধ্যতামূলক!
-                            </div>
+                                <div class="invalid-feedback">
+                                    অর্থ বছর দেয়া বাধ্যতামূলক!
+                                </div>
                             </div>
                             <div class="mt-4">
                                 <button class="btn btn-success btn-block waves-effect waves-light" type="submit">সার্চ করুন</button>
@@ -55,8 +55,8 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="header-title">
-                        @Model.First().YearName অর্থ বছর
-                    </h5>
+                        @Html.ActionLink("প্রিন্ট  "+Model.First().YearName +" অর্থ বছর", "Export", new { controller = "TopSheet", area = "", financialYearId = Model.First().FinancialYearId }, new { target = "_blank" })
+                    </h5>                  
                     <div class="table-responsive">
                         <table id="datatable" class="table table-sm table-bordered dt-responsive table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
@@ -116,27 +116,27 @@
                                         <td></td>
                                     </tr>
                                 }
-                            <tr style="font-weight:bold; background-color:lightyellow;">
-                                <td>সর্বমোট</td>
-                                <td class="">@totalWardNo</td>
-                                <td class="">@totalVillageCount</td>
-                                <td class="">@totalHoldingCount</td>
-                                <td class="">@totalTaxCollectHoldingCount</td>
-                                <td class="">@dueTotalTaxCollectHoldingCount</td>
-                                <td class="">@totalTaxAmount</td>
-                                <td class="">@totalCollectTaxAmount</td>
-                                <td class="">@totalDueTaxAmount</td>
-                                <td class="">@totalPreviousDueAmount</td>
-                                <td class="">@totalPreviousDueCollectAmount</td>
-                                <td class="">@totalCollection</td>
-                                <td class="">@totalDues</td>
-                                <td class=""></td>
-                                @{
-                                    var percentage = taxCollectPercentage / totalWardNo;
-                                    <td class="">@percentage.ToString("0.00") %</td>
-                                }
-                                <td class=""></td>
-                            </tr>
+                                <tr style="font-weight:bold; background-color:lightyellow;">
+                                    <td>সর্বমোট</td>
+                                    <td class="">@totalWardNo</td>
+                                    <td class="">@totalVillageCount</td>
+                                    <td class="">@totalHoldingCount</td>
+                                    <td class="">@totalTaxCollectHoldingCount</td>
+                                    <td class="">@dueTotalTaxCollectHoldingCount</td>
+                                    <td class="">@totalTaxAmount</td>
+                                    <td class="">@totalCollectTaxAmount</td>
+                                    <td class="">@totalDueTaxAmount</td>
+                                    <td class="">@totalPreviousDueAmount</td>
+                                    <td class="">@totalPreviousDueCollectAmount</td>
+                                    <td class="">@totalCollection</td>
+                                    <td class="">@totalDues</td>
+                                    <td class=""></td>
+                                    @{
+                                        var percentage = taxCollectPercentage / totalWardNo;
+                                        <td class="">@percentage.ToString("0.00") %</td>
+                                    }
+                                    <td class=""></td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="float-right">
@@ -158,18 +158,18 @@
                                         <tr style="font-weight:bold; background-color:lightgray;">
                                             <th>@Html.DisplayNameFor(a => a.First().TotalCollectTaxAmount)</th>
                                             <th>@Html.DisplayNameFor(a => a.First().TotalPreviousDueCollectAmount)</th>
-                                            <th>@Html.DisplayNameFor(a => a.First().TotalCollection)</th>                                          
+                                            <th>@Html.DisplayNameFor(a => a.First().TotalCollection)</th>
                                         </tr>
                                     </thead>
-                                    <tbody>                                     
+                                    <tbody>
                                         <tr>
                                             <td class="">@totalCollectTaxAmount</td>
                                             <td class="">@totalPreviousDueCollectAmount</td>
-                                            <td class="">@totalCollection</td>                                        
+                                            <td class="">@totalCollection</td>
                                         </tr>
                                     </tbody>
                                 </table>
-                             
+
                             </div>
                         </div>
                     </div>

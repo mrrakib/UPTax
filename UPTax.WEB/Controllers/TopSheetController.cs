@@ -30,5 +30,13 @@ namespace UPTax.Controllers
             ViewBag.FinancialYear = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name", financialYear);
             return View(data);
         }
+
+        [HttpGet]
+        public ActionResult Export(string financialYearId = "")
+        {
+            var data = _taxInstallmentService.GetTopSheetReport(financialYearId);
+
+            return View(data);
+        }
     }
 }
