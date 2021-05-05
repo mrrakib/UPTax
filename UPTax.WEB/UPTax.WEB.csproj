@@ -234,6 +234,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UPDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ReportUtility.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utility\DateTimeBinder.cs" />

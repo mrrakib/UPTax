@@ -1,6 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using Microsoft.Reporting.WebForms;
+using System.IO;
+using System.Web.Mvc;
 using UPTax.Filter;
+using UPTax.Model;
 using UPTax.Service.Services;
+using UPTax.WEB;
 
 namespace UPTax.Controllers
 {
@@ -40,9 +44,37 @@ namespace UPTax.Controllers
         [RapidAuthorization]
         public ActionResult Export(string financialYearId = "")
         {
-            var data = _taxInstallmentService.GetTopSheetReport(financialYearId);
+            var modelPDF = _taxInstallmentService.GetTopSheetReport(financialYearId);
+            var results = new ReportProperty<dynamic>
+            {
+                ReportTitle = "Top Sheet Report",
+                ReportViewName = "Top Sheet Report",
+                ReportPath = Path.Combine(HttpContext.Server.MapPath("~/Reports/RDLC/"), "TopSheetReport.rdlc"),
+                ReportBody = modelPDF.ToDataTable()
+            };
 
-            return View(data);
+            var header = new ReportHeader
+            {
+                Name = "Top Sheet Report",
+                Address = "USA",
+                //Logo = new Uri(HttpContext.Server.MapPath("~/Image/logo.png")).AbsoluteUri
+            };
+
+            var reportViewer = new LocalReport
+            {
+                EnableExternalImages = true,
+                ReportPath = results.ReportPath,
+            };
+
+            var rptHead = new ReportDataSource("ReportHeader", header.ToDataTable());
+            reportViewer.DataSources.Add(rptHead);
+
+            var rptDs = new ReportDataSource("TopSheetReportBody", results.ReportBody);
+            reportViewer.DataSources.Add(rptDs);
+
+            string mimeType;
+            var renderedBytes = ReportUtility.RenderedReportViewer(reportViewer, "PDF", out mimeType);
+            return File(renderedBytes, mimeType);
         }
     }
 }
