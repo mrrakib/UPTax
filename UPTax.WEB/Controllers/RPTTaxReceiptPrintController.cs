@@ -55,11 +55,10 @@ namespace UPTax.Controllers
         [HttpPost]
         public ActionResult Index(VMCommonParams commonParams)
         {
-            ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name", commonParams.FinancialYearId);
+            //ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name", commonParams.FinancialYearId);
 
-            List<VMRPTTaxCollectionSingle> resultSet = new List<VMRPTTaxCollectionSingle>();
-            VMRPTTaxCollectionSingle result = _taxInstallmentService.GetMRPTTaxCollectionSingle(commonParams.HoldingNo, commonParams.FinancialYearId, _unionId);
-            if (result == null)
+            List<VMRPTTaxReceipt> result = _taxInstallmentService.GetRPTTaxReceipt(commonParams.VillageInfoId, commonParams.WardInfoId, commonParams.FinancialYearId, _unionId);
+            if (result.Count == 0)
             {
                 _message.custom(this, "দুঃখিত! কোন তথ্য পাওয়া যায়নি।");
                 ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name", commonParams.FinancialYearId);
@@ -67,7 +66,6 @@ namespace UPTax.Controllers
                 ViewBag.VillageInfoId = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name", commonParams.VillageInfoId);
                 return View();
             }
-            resultSet.Add(result);
 
             List<VMCommonParams> parList = new List<VMCommonParams>();
             ReportViewer reportViewer = new ReportViewer();
@@ -78,13 +76,11 @@ namespace UPTax.Controllers
             reportViewer.PageCountMode = new PageCountMode();
             reportViewer.LocalReport.ReportPath = Request.MapPath("~/Reports/RDLC/TaxReceipt.rdlc");
             //reportViewer.LocalReport.SetParameters(GetReportParameter(data));
-            commonParams.FinancialYearName = result != null ? result.FinancialYearName : "N/A";
-            commonParams.PaymentDate = result != null ? result.PaymentDate : (DateTime?)null;
-            string numberToWord = "";
-            
-            result.GrandAmountStr = numberToWord;
+
+            commonParams.FinancialYearName = result.FirstOrDefault().YearName;
+
             reportViewer.LocalReport.SetParameters(GetReportParameter(commonParams));
-            ReportDataSource A = new ReportDataSource("DataSet1", resultSet); //get actual data here
+            ReportDataSource A = new ReportDataSource("DataSet1", result); //get actual data here
 
             reportViewer.LocalReport.DataSources.Add(A);
             reportViewer.LocalReport.Refresh();
@@ -112,7 +108,6 @@ namespace UPTax.Controllers
             List<ReportParameter> paraList = new List<ReportParameter>();
             paraList.Add(new ReportParameter("UnionName", union.Name));
             paraList.Add(new ReportParameter("UnionAddress", union.Description));
-            paraList.Add(new ReportParameter("FromDate", commonParams.PaymentDate.Value.ToString("dd MMM, yyyy")));
             paraList.Add(new ReportParameter("FinYear", commonParams.FinancialYearName));
 
             return paraList;

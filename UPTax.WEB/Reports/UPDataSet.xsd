@@ -35,6 +35,23 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="TaxReceipt" msprop:Generator_TableClassName="TaxReceiptDataTable" msprop:Generator_TableVarName="tableTaxReceipt" msprop:Generator_RowChangedName="TaxReceiptRowChanged" msprop:Generator_TablePropName="TaxReceipt" msprop:Generator_RowDeletingName="TaxReceiptRowDeleting" msprop:Generator_RowChangingName="TaxReceiptRowChanging" msprop:Generator_RowEvHandlerName="TaxReceiptRowChangeEventHandler" msprop:Generator_RowDeletedName="TaxReceiptRowDeleted" msprop:Generator_RowClassName="TaxReceiptRow" msprop:Generator_UserTableName="TaxReceipt" msprop:Generator_RowEvArgName="TaxReceiptRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HoldingNo" msprop:Generator_ColumnVarNameInTable="columnHoldingNo" msprop:Generator_ColumnPropNameInRow="HoldingNo" msprop:Generator_ColumnPropNameInTable="HoldingNoColumn" msprop:Generator_UserColumnName="HoldingNo" type="xs:string" minOccurs="0" />
+              <xs:element name="OwnerNameInBangla" msprop:Generator_ColumnVarNameInTable="columnOwnerNameInBangla" msprop:Generator_ColumnPropNameInRow="OwnerNameInBangla" msprop:Generator_ColumnPropNameInTable="OwnerNameInBanglaColumn" msprop:Generator_UserColumnName="OwnerNameInBangla" type="xs:string" minOccurs="0" />
+              <xs:element name="FatherHusbandName" msprop:Generator_ColumnVarNameInTable="columnFatherHusbandName" msprop:Generator_ColumnPropNameInRow="FatherHusbandName" msprop:Generator_ColumnPropNameInTable="FatherHusbandNameColumn" msprop:Generator_UserColumnName="FatherHusbandName" type="xs:string" minOccurs="0" />
+              <xs:element name="MobileNo" msprop:Generator_ColumnVarNameInTable="columnMobileNo" msprop:Generator_ColumnPropNameInRow="MobileNo" msprop:Generator_ColumnPropNameInTable="MobileNoColumn" msprop:Generator_UserColumnName="MobileNo" type="xs:string" minOccurs="0" />
+              <xs:element name="WardNo" msprop:Generator_ColumnVarNameInTable="columnWardNo" msprop:Generator_ColumnPropNameInRow="WardNo" msprop:Generator_ColumnPropNameInTable="WardNoColumn" msprop:Generator_UserColumnName="WardNo" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxAmount" msprop:Generator_ColumnVarNameInTable="columnTaxAmount" msprop:Generator_ColumnPropNameInRow="TaxAmount" msprop:Generator_ColumnPropNameInTable="TaxAmountColumn" msprop:Generator_UserColumnName="TaxAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="DueAmount" msprop:Generator_ColumnVarNameInTable="columnDueAmount" msprop:Generator_ColumnPropNameInRow="DueAmount" msprop:Generator_ColumnPropNameInTable="DueAmountColumn" msprop:Generator_UserColumnName="DueAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxPaymentDate" msprop:Generator_ColumnVarNameInTable="columnTaxPaymentDate" msprop:Generator_ColumnPropNameInRow="TaxPaymentDate" msprop:Generator_ColumnPropNameInTable="TaxPaymentDateColumn" msprop:Generator_UserColumnName="TaxPaymentDate" type="xs:string" minOccurs="0" />
+              <xs:element name="YearName" msprop:Generator_ColumnVarNameInTable="columnYearName" msprop:Generator_ColumnPropNameInRow="YearName" msprop:Generator_ColumnPropNameInTable="YearNameColumn" msprop:Generator_UserColumnName="YearName" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalCollection" msprop:Generator_ColumnVarNameInTable="columnTotalCollection" msprop:Generator_ColumnPropNameInRow="TotalCollection" msprop:Generator_ColumnPropNameInTable="TotalCollectionColumn" msprop:Generator_UserColumnName="TotalCollection" type="xs:string" minOccurs="0" />
+              <xs:element name="VillageName" msprop:Generator_ColumnVarNameInTable="columnVillageName" msprop:Generator_ColumnPropNameInRow="VillageName" msprop:Generator_ColumnPropNameInTable="VillageNameColumn" msprop:Generator_UserColumnName="VillageName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>
