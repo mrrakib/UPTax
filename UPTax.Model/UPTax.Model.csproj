@@ -113,6 +113,8 @@
     <Compile Include="Models\VillageInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\IdNameDropdown.cs" />
+    <Compile Include="ViewModels\ReportHeader.cs" />
+    <Compile Include="ViewModels\ReportProperty.cs" />
     <Compile Include="ViewModels\TopSheetReportSP.cs" />
     <Compile Include="ViewModels\VHouseOwner.cs" />
     <Compile Include="ViewModels\VMCommonParams.cs" />

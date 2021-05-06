@@ -31,6 +31,7 @@ namespace UPTax.Model.ViewModels
         public decimal TotalDues { get; set; }
         [DisplayName("অর্থ বছর")]
         public string YearName { get; set; }
+        public int FinancialYearId { get; set; }
         [DisplayName("আদায়ের শতকরা হার")]
         [Range(0, 9999999999999999.99, ErrorMessage = "Invalid Target Price; Max 18 digits")]
         public decimal TaxCollectPercentage { get; set; }
