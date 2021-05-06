@@ -19,5 +19,6 @@ namespace UPTax.Model.ViewModels
         public DateTime TaxPaymentDate { get; set; }
         public string YearName { get; set; }
         public decimal TotalCollection { get; set; }
+        public string TaxPaymentDateStr { get; set; }
     }
 }

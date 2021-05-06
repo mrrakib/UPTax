@@ -12731,7 +12731,7 @@
     <Content Include="Views\TaxInstallmentDelete\Index.cshtml" />
     <Content Include="Views\TopSheet\Index.cshtml" />
     <Content Include="Views\RPTTaxReceiptPrint\Index.cshtml" />
-    <Content Include="Views\RPTTaxReceiptPrint\RPTTaxCollectionSingle.cshtml" />
+    <Content Include="Views\RPTTaxReceiptPrint\RPTTaxReceipt.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

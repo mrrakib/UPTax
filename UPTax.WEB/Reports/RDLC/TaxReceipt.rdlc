@@ -53,6 +53,10 @@
           <DataField>TaxPaymentDate</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="TaxPaymentDateStr">
+          <DataField>TaxPaymentDateStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="YearName">
           <DataField>YearName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -228,7 +232,7 @@
             </Paragraphs>
             <rd:DefaultName>FinYear</rd:DefaultName>
             <Top>1.03229in</Top>
-            <Left>4.29046in</Left>
+            <Left>4.41546in</Left>
             <Height>0.1875in</Height>
             <Width>1.35417in</Width>
             <ZIndex>4</ZIndex>
@@ -252,10 +256,10 @@
                   <Width>0.89585in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.59027in</Width>
+                  <Width>0.6736in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.65834in</Width>
+                  <Width>0.71042in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.03957in</Width>
@@ -778,7 +782,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -811,7 +817,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>HoldingNo</rd:DefaultName>
@@ -844,7 +852,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>YearName</rd:DefaultName>
@@ -864,23 +874,25 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="TaxPaymentDate">
+                        <Textbox Name="TaxPaymentDateStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!TaxPaymentDate.Value</Value>
+                                  <Value>=Fields!TaxPaymentDateStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>TaxPaymentDate</rd:DefaultName>
+                          <rd:DefaultName>TaxPaymentDateStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -910,7 +922,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>OwnerNameInBangla</rd:DefaultName>
@@ -943,7 +957,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>FatherHusbandName</rd:DefaultName>
@@ -976,7 +992,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>MobileNo</rd:DefaultName>
@@ -1009,7 +1027,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>WardNo</rd:DefaultName>
@@ -1042,7 +1062,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>VillageName</rd:DefaultName>
@@ -1191,9 +1213,9 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
             <Top>1.53in</Top>
-            <Left>0.30707in</Left>
+            <Left>0.18207in</Left>
             <Height>0.57292in</Height>
-            <Width>8.32715in</Width>
+            <Width>8.46256in</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>

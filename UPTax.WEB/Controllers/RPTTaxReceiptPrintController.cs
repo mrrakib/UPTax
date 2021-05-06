@@ -73,6 +73,7 @@ namespace UPTax.Controllers
             reportViewer.SizeToReportContent = true;
             reportViewer.Width = Unit.Percentage(100);
             reportViewer.Height = Unit.Percentage(100);
+            reportViewer.ShowToolBar = false;
             reportViewer.PageCountMode = new PageCountMode();
             reportViewer.LocalReport.ReportPath = Request.MapPath("~/Reports/RDLC/TaxReceipt.rdlc");
             //reportViewer.LocalReport.SetParameters(GetReportParameter(data));
@@ -90,11 +91,13 @@ namespace UPTax.Controllers
             string encoding = string.Empty;
             string extension = string.Empty;
             //reportViewer.ShowToolBar = false;
-            string deviceInf = "<DeviceInfo><PageHeight>14in</PageHeight><PageWidth>9.5in</PageWidth></DeviceInfo>";
-            byte[] bytes = reportViewer.LocalReport.Render("PDF", deviceInf, out mimeType, out encoding, out extension, out streamIds, out warnings);
+            //string deviceInf = "<DeviceInfo><PageHeight>14in</PageHeight><PageWidth>9.5in</PageWidth></DeviceInfo>";
+            //byte[] bytes = reportViewer.LocalReport.Render("PDF", deviceInf, out mimeType, out encoding, out extension, out streamIds, out warnings);
 
 
-            return File(bytes, "application/pdf");
+            //return File(bytes, "application/pdf");
+            ViewBag.ReportViewer = reportViewer;
+            return View("~/Views/RPTTaxReceiptPrint/RPTTaxReceipt.cshtml");
 
 
         }

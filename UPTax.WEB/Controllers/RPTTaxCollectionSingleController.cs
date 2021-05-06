@@ -87,7 +87,7 @@ namespace UPTax.Controllers
             string mimeType = string.Empty;
             string encoding = string.Empty;
             string extension = string.Empty;
-            //reportViewer.ShowToolBar = false;
+            reportViewer.ShowToolBar = false;
             string deviceInf = "<DeviceInfo><PageHeight>9.5in</PageHeight><PageWidth>14in</PageWidth></DeviceInfo>";
             byte[] bytes = reportViewer.LocalReport.Render("PDF", deviceInf, out mimeType, out encoding, out extension, out streamIds, out warnings);
 
@@ -103,7 +103,7 @@ namespace UPTax.Controllers
             //reportViewer.SetPageSettings(pg);
             //this.reportViewer.ReportRefresh();
 
-            return File(bytes, "application/pdf");
+            //return File(bytes, "application/pdf");
 
             //Type tip = reportViewer.GetType();
             //FieldInfo[] pr = tip.GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
@@ -121,8 +121,8 @@ namespace UPTax.Controllers
             //    }
             //}
 
-            //ViewBag.ReportViewer = reportViewer;
-            //return View("~/Views/RPTTaxCollectionSingle/RPTTaxCollectionSingle.cshtml");
+            ViewBag.ReportViewer = reportViewer;
+            return View("~/Views/RPTTaxCollectionSingle/RPTTaxCollectionSingle.cshtml");
 
         }
 
