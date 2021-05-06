@@ -1,11 +1,6 @@
 ﻿using Microsoft.Reporting.WebForms;
-using System;
 using System.Collections.Generic;
-using System.Drawing.Printing;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using UPTax.Filter;
@@ -14,7 +9,6 @@ using UPTax.Model.Models.UnionDetails;
 using UPTax.Model.ViewModels;
 using UPTax.Service.Services;
 using UPTax.Service.Services.UPDetails;
-using UPTax.Utility;
 
 namespace UPTax.Controllers
 {
@@ -104,7 +98,7 @@ namespace UPTax.Controllers
         public List<ReportParameter> GetReportParameter(VMCommonParams commonParams)
         {
             UnionParishad union = _unionParishadService.GetDetails(_unionId);
-            
+
             List<ReportParameter> paraList = new List<ReportParameter>();
             paraList.Add(new ReportParameter("UnionName", union.Name));
             paraList.Add(new ReportParameter("UnionAddress", union.Description));

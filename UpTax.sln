@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPTax.WEB", "UPTax.WEB\UPTax.WEB.csproj", "{858285E2-7623-4173-83DD-CE1425B61832}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPTax.Data", "UPTax.Data\UPTax.Data.csproj", "{5D01C379-B0E0-489C-AA3C-D904109588FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPTax.Model", "UPTax.Model\UPTax.Model.csproj", "{97549144-7914-46EA-ACDA-C0AB104D0040}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPTax.Service", "UPTax.Service\UPTax.Service.csproj", "{B956D07C-87C0-46FB-90A1-9E383837D64D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPTax.WEB", "UPTax.WEB\UPTax.WEB.csproj", "{DC7A92BC-CDC9-43F0-90D6-3E84BE762347}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{858285E2-7623-4173-83DD-CE1425B61832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{858285E2-7623-4173-83DD-CE1425B61832}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{858285E2-7623-4173-83DD-CE1425B61832}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{858285E2-7623-4173-83DD-CE1425B61832}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5D01C379-B0E0-489C-AA3C-D904109588FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5D01C379-B0E0-489C-AA3C-D904109588FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D01C379-B0E0-489C-AA3C-D904109588FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{B956D07C-87C0-46FB-90A1-9E383837D64D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B956D07C-87C0-46FB-90A1-9E383837D64D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B956D07C-87C0-46FB-90A1-9E383837D64D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC7A92BC-CDC9-43F0-90D6-3E84BE762347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC7A92BC-CDC9-43F0-90D6-3E84BE762347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC7A92BC-CDC9-43F0-90D6-3E84BE762347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC7A92BC-CDC9-43F0-90D6-3E84BE762347}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

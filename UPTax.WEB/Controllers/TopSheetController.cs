@@ -1,4 +1,5 @@
 ﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.IO;
 using System.Web.Mvc;
 using UPTax.Model;
@@ -39,13 +40,11 @@ namespace UPTax.Controllers
         [HttpGet]
         public ActionResult Export(string financialYearId = "")
         {
-            var modelPDF = _taxInstallmentService.GetTopSheetReport(financialYearId);
             var results = new ReportProperty<dynamic>
             {
                 ReportTitle = "Top Sheet Report",
                 ReportViewName = "Top Sheet Report",
-                ReportPath = Path.Combine(HttpContext.Server.MapPath("~/Reports/RDLC/"), "TopSheetReport.rdlc"),
-                ReportBody = modelPDF.ToDataTable()
+                ReportPath = Path.Combine(HttpContext.Server.MapPath("~/Reports/RDLC/"), "TopSheetReport.rdlc")
             };
             var reportViewer = new LocalReport
             {
@@ -57,13 +56,14 @@ namespace UPTax.Controllers
             {
                 Name = "Top Sheet Report",
                 Address = "Natore, Bangladesh",
-                //Logo = new Uri(HttpContext.Server.MapPath("~/Image/logo.png")).AbsoluteUri
+                Logo = new Uri(HttpContext.Server.MapPath("~/Image/logo.png")).AbsoluteUri
             };
             var rptHead = new ReportDataSource("ReportHeader", header.ToDataTable());
             reportViewer.DataSources.Add(rptHead);
 
-            var rptDs = new ReportDataSource("TopSheetReportBody", results.ReportBody);
-            reportViewer.DataSources.Add(rptDs);
+            //var modelPDF = _taxInstallmentService.GetTopSheetReport(financialYearId);
+            //var rptDs = new ReportDataSource("TopSheetReportBody", modelPDF.ToDataTable());
+            //reportViewer.DataSources.Add(rptDs);
 
             string mimeType;
             var renderedBytes = ReportUtility.RenderedReportViewer(reportViewer, "PDF", out mimeType);
