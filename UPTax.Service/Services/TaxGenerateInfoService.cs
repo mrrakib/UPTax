@@ -111,5 +111,29 @@ namespace UPTax.Service.Services
             }
             return result;
         }
+
+        public List<VMAllTaxGenerator> GenerateAllTax(int villId, int wardId, int unionId)
+        {
+            List<VMAllTaxGenerator> result = new List<VMAllTaxGenerator>();
+            List<HouseOwner> houseOwnerList = _houseOwnerRepository.GetMany(h => h.VillageInfoId == villId && h.WardInfoId == wardId && h.VillageInfo.UnionId == unionId && h.IsDeleted == false).ToList();
+
+            if (houseOwnerList.Count > 0)
+            {
+                foreach (var houseOwner in houseOwnerList)
+                {
+                    double yearlyRent = houseOwner.YearlyRentAmount ?? 0;
+                    VMAllTaxGenerator singleResult = new VMAllTaxGenerator
+                    {
+                        HoldingNo = houseOwner.HoldingNo,
+                        HouseOwnerId = houseOwner.Id,
+                        TotalYearlyRent = yearlyRent,
+                        TotalYearlyTax = ((yearlyRent * (houseOwner.YearlyInterestRate ?? 0)) / 100)
+                    };
+                    result.Add(singleResult);
+                }
+                return result;
+            }
+            return result;
+        }
     }
 }

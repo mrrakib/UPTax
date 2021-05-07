@@ -117,6 +117,7 @@
     <Compile Include="ViewModels\ReportProperty.cs" />
     <Compile Include="ViewModels\TopSheetReportSP.cs" />
     <Compile Include="ViewModels\VHouseOwner.cs" />
+    <Compile Include="ViewModels\VMAllTaxGenerator.cs" />
     <Compile Include="ViewModels\VMCommonParams.cs" />
     <Compile Include="ViewModels\VMember.cs" />
     <Compile Include="ViewModels\VMLogin.cs" />
