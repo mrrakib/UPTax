@@ -21,6 +21,7 @@ namespace UPTax.Service.Services
         bool Save();
         int? GetFinancialYearIdByDate(DateTime date);
         List<IdNameDropdown> GetAllForDropdown();
+        string GetNameById(int id);
     }
     public class FinancialYearService : IFinancialYearService
     {
@@ -136,6 +137,12 @@ namespace UPTax.Service.Services
                 Id = u.Id,
                 Name = u.YearName
             }).OrderByDescending(a => a.Id).ToList();
+        }
+
+        public string GetNameById(int id)
+        {
+            FinancialYear year = _financialYearRepository.Get(f => f.Id == id);
+            return year != null ? year.YearName : "";
         }
     }
 }

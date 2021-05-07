@@ -198,6 +198,9 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationInfoController.cs" />
     <Compile Include="Controllers\CreateHouseOwnerController.cs" />
+    <Compile Include="Controllers\GenerateAllTaxInfoController.cs" />
+    <Compile Include="Controllers\RPTTaxByVillageController.cs" />
+    <Compile Include="Controllers\RPTTaxByWardController.cs" />
     <Compile Include="Controllers\RPTTaxReceiptPrintController.cs" />
     <Compile Include="Controllers\RPTTaxCollectionSingleController.cs" />
     <Compile Include="Controllers\TaxInstallmentDeleteController.cs" />
@@ -12733,6 +12736,11 @@
     <Content Include="Views\TopSheet\Index.cshtml" />
     <Content Include="Views\RPTTaxReceiptPrint\Index.cshtml" />
     <Content Include="Views\RPTTaxReceiptPrint\RPTTaxReceipt.cshtml" />
+    <Content Include="Views\GenerateAllTaxInfo\Index.cshtml" />
+    <Content Include="Views\RPTTaxByWard\Index.cshtml" />
+    <Content Include="Views\RPTTaxByWard\RPTTaxReceipt.cshtml" />
+    <Content Include="Views\RPTTaxByVillage\Index.cshtml" />
+    <Content Include="Views\RPTTaxByVillage\RPTTaxReceipt.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -12796,6 +12804,12 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\RDLC\TaxInfoByWard.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RDLC\TaxInfoByVillage.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RDLC\TaxReceipt.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>

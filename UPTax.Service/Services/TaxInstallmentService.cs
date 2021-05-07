@@ -24,6 +24,8 @@ namespace UPTax.Service.Services
         VMTaxInstallment GeteSingleTaxInstallment(string holdingNo, int finYearId);
         IEnumerable<TopSheetReportSP> GetTopSheetReport(string financialYear);
         List<VMRPTTaxReceipt> GetRPTTaxReceipt(int villageId, int wardId, int finYearId, int unionId);
+        List<VMWordOrVillWiseTaxReport> GetRPTTaxInfoByWord(int villageId, int wardId, int finYearId, int unionId);
+        List<VMWordOrVillWiseTaxReport> GetRPTTaxInfoByVillage(int villageId, int finYearId, int unionId);
     }
     public class TaxInstallmentService : ITaxInstallmentService
     {
@@ -187,6 +189,31 @@ namespace UPTax.Service.Services
             var query = $"EXEC TopSheetReport {financialYear}";
             var data = _taxInstallmentRepository.SQLQueryList<TopSheetReportSP>(query).ToList();
             return data;
+        }
+
+        public List<VMWordOrVillWiseTaxReport> GetRPTTaxInfoByWord(int villageId, int wardId, int finYearId, int unionId)
+        {
+            var result = _taxInstallmentRepository.ExecStoreProcedure<VMWordOrVillWiseTaxReport>("GetTaxDetailsByWord @wardId, @villageId, @finYearId, @unionId",
+
+                new SqlParameter("wardId", SqlDbType.Int) { Value = wardId },
+                new SqlParameter("villageId", SqlDbType.Int) { Value = villageId },
+                new SqlParameter("finYearId", SqlDbType.Int) { Value = finYearId },
+                new SqlParameter("unionId", SqlDbType.Int) { Value = unionId }
+                ).ToList();
+
+            return result;
+        }
+
+        public List<VMWordOrVillWiseTaxReport> GetRPTTaxInfoByVillage(int villageId, int finYearId, int unionId)
+        {
+            var result = _taxInstallmentRepository.ExecStoreProcedure<VMWordOrVillWiseTaxReport>("GetTaxDetailsByVillage @villageId, @finYearId, @unionId",
+
+                new SqlParameter("villageId", SqlDbType.Int) { Value = villageId },
+                new SqlParameter("finYearId", SqlDbType.Int) { Value = finYearId },
+                new SqlParameter("unionId", SqlDbType.Int) { Value = unionId }
+                ).ToList();
+
+            return result;
         }
     }
 }

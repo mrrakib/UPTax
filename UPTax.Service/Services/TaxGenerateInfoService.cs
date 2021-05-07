@@ -12,6 +12,7 @@ namespace UPTax.Service.Services
     public interface ITaxGenerateInfoService
     {
         bool Add(TaxGenerateInfo model);
+        bool AddRange(List<TaxGenerateInfo> models);
         bool Update(TaxGenerateInfo model);
         bool Delete(int id);
         IEnumerable<TaxGenerateInfo> GetAll();
@@ -19,6 +20,7 @@ namespace UPTax.Service.Services
         bool IsExistingItem(int financialYearId, int houseOwnerId, int? id);
         bool Save();
         VMTaxGenerator GenerateSingleTax(string holdingNo);
+        List<VMAllTaxGenerator> GenerateAllTax(int villId, int wardId, int financialYearId, int unionId);
     }
     public class TaxGenerateInfoService : ITaxGenerateInfoService
     {
@@ -112,10 +114,12 @@ namespace UPTax.Service.Services
             return result;
         }
 
-        public List<VMAllTaxGenerator> GenerateAllTax(int villId, int wardId, int unionId)
+        public List<VMAllTaxGenerator> GenerateAllTax(int villId, int wardId, int financialYearId, int unionId)
         {
             List<VMAllTaxGenerator> result = new List<VMAllTaxGenerator>();
             List<HouseOwner> houseOwnerList = _houseOwnerRepository.GetMany(h => h.VillageInfoId == villId && h.WardInfoId == wardId && h.VillageInfo.UnionId == unionId && h.IsDeleted == false).ToList();
+            List<TaxGenerateInfo> installMents = _taxGenerateInfoRepository.GetMany(f => f.FinancialYearId == financialYearId && f.UnionId == unionId && f.IsDeleted == false).ToList();
+            houseOwnerList = houseOwnerList.Where(h => !installMents.Any(i => i.HoldingNo == h.HoldingNo)).ToList();
 
             if (houseOwnerList.Count > 0)
             {
@@ -127,6 +131,7 @@ namespace UPTax.Service.Services
                         HoldingNo = houseOwner.HoldingNo,
                         HouseOwnerId = houseOwner.Id,
                         TotalYearlyRent = yearlyRent,
+                        YearlyTaxRate = (houseOwner.YearlyInterestRate ?? 0),
                         TotalYearlyTax = ((yearlyRent * (houseOwner.YearlyInterestRate ?? 0)) / 100)
                     };
                     result.Add(singleResult);
@@ -134,6 +139,12 @@ namespace UPTax.Service.Services
                 return result;
             }
             return result;
+        }
+
+        public bool AddRange(List<TaxGenerateInfo> models)
+        {
+            _taxGenerateInfoRepository.AddMultiple(models);
+            return Save();
         }
     }
 }

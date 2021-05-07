@@ -131,6 +131,7 @@
     <Compile Include="ViewModels\VMTaxGeneratorDetails.cs" />
     <Compile Include="ViewModels\VMTaxGenerator.cs" />
     <Compile Include="ViewModels\VMUserInfo.cs" />
+    <Compile Include="ViewModels\VMWordOrVillWiseTaxReport.cs" />
     <Compile Include="ViewModels\VVillageInfo.cs" />
   </ItemGroup>
   <ItemGroup>

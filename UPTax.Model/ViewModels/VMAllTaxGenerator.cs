@@ -12,5 +12,7 @@ namespace UPTax.Model.ViewModels
         public double TotalYearlyRent { get; set; }
         public double TotalYearlyTax { get; set; }
         public string HoldingNo { get; set; }
+        public int MyProperty { get; set; }
+        public double YearlyTaxRate { get; set; }
     }
 }

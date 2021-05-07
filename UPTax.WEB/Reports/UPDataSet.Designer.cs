@@ -28,6 +28,8 @@ namespace UPTax.Reports {
         
         private TaxReceiptDataTable tableTaxReceipt;
         
+        private TaxInfoByVillOrWordDataTable tableTaxInfoByVillOrWord;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -61,6 +63,9 @@ namespace UPTax.Reports {
                 }
                 if ((ds.Tables["TaxReceipt"] != null)) {
                     base.Tables.Add(new TaxReceiptDataTable(ds.Tables["TaxReceipt"]));
+                }
+                if ((ds.Tables["TaxInfoByVillOrWord"] != null)) {
+                    base.Tables.Add(new TaxInfoByVillOrWordDataTable(ds.Tables["TaxInfoByVillOrWord"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -97,6 +102,16 @@ namespace UPTax.Reports {
         public TaxReceiptDataTable TaxReceipt {
             get {
                 return this.tableTaxReceipt;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public TaxInfoByVillOrWordDataTable TaxInfoByVillOrWord {
+            get {
+                return this.tableTaxInfoByVillOrWord;
             }
         }
         
@@ -173,6 +188,9 @@ namespace UPTax.Reports {
                 if ((ds.Tables["TaxReceipt"] != null)) {
                     base.Tables.Add(new TaxReceiptDataTable(ds.Tables["TaxReceipt"]));
                 }
+                if ((ds.Tables["TaxInfoByVillOrWord"] != null)) {
+                    base.Tables.Add(new TaxInfoByVillOrWordDataTable(ds.Tables["TaxInfoByVillOrWord"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -218,6 +236,12 @@ namespace UPTax.Reports {
                     this.tableTaxReceipt.InitVars();
                 }
             }
+            this.tableTaxInfoByVillOrWord = ((TaxInfoByVillOrWordDataTable)(base.Tables["TaxInfoByVillOrWord"]));
+            if ((initTable == true)) {
+                if ((this.tableTaxInfoByVillOrWord != null)) {
+                    this.tableTaxInfoByVillOrWord.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -232,6 +256,8 @@ namespace UPTax.Reports {
             base.Tables.Add(this.tableSingleHoldingTax);
             this.tableTaxReceipt = new TaxReceiptDataTable();
             base.Tables.Add(this.tableTaxReceipt);
+            this.tableTaxInfoByVillOrWord = new TaxInfoByVillOrWordDataTable();
+            base.Tables.Add(this.tableTaxInfoByVillOrWord);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -243,6 +269,12 @@ namespace UPTax.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeTaxReceipt() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeTaxInfoByVillOrWord() {
             return false;
         }
         
@@ -306,6 +338,9 @@ namespace UPTax.Reports {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void TaxReceiptRowChangeEventHandler(object sender, TaxReceiptRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void TaxInfoByVillOrWordRowChangeEventHandler(object sender, TaxInfoByVillOrWordRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1183,6 +1218,428 @@ namespace UPTax.Reports {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class TaxInfoByVillOrWordDataTable : global::System.Data.TypedTableBase<TaxInfoByVillOrWordRow> {
+            
+            private global::System.Data.DataColumn columnHoldingNo;
+            
+            private global::System.Data.DataColumn columnOwnerName;
+            
+            private global::System.Data.DataColumn columnParentName;
+            
+            private global::System.Data.DataColumn columnMobileNo;
+            
+            private global::System.Data.DataColumn columnWardNo;
+            
+            private global::System.Data.DataColumn columnTotalBuildingHouse;
+            
+            private global::System.Data.DataColumn columnTotalRawHouse;
+            
+            private global::System.Data.DataColumn columnTotalSemiBuildingHouse;
+            
+            private global::System.Data.DataColumn columnYearlyRentAmount;
+            
+            private global::System.Data.DataColumn columnTotalTax;
+            
+            private global::System.Data.DataColumn columnVillageName;
+            
+            private global::System.Data.DataColumn columnPeviousDue;
+            
+            private global::System.Data.DataColumn columnComments;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TaxInfoByVillOrWordDataTable() {
+                this.TableName = "TaxInfoByVillOrWord";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal TaxInfoByVillOrWordDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected TaxInfoByVillOrWordDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HoldingNoColumn {
+                get {
+                    return this.columnHoldingNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OwnerNameColumn {
+                get {
+                    return this.columnOwnerName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ParentNameColumn {
+                get {
+                    return this.columnParentName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MobileNoColumn {
+                get {
+                    return this.columnMobileNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn WardNoColumn {
+                get {
+                    return this.columnWardNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalBuildingHouseColumn {
+                get {
+                    return this.columnTotalBuildingHouse;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalRawHouseColumn {
+                get {
+                    return this.columnTotalRawHouse;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalSemiBuildingHouseColumn {
+                get {
+                    return this.columnTotalSemiBuildingHouse;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn YearlyRentAmountColumn {
+                get {
+                    return this.columnYearlyRentAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalTaxColumn {
+                get {
+                    return this.columnTotalTax;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn VillageNameColumn {
+                get {
+                    return this.columnVillageName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PeviousDueColumn {
+                get {
+                    return this.columnPeviousDue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CommentsColumn {
+                get {
+                    return this.columnComments;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TaxInfoByVillOrWordRow this[int index] {
+                get {
+                    return ((TaxInfoByVillOrWordRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TaxInfoByVillOrWordRowChangeEventHandler TaxInfoByVillOrWordRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TaxInfoByVillOrWordRowChangeEventHandler TaxInfoByVillOrWordRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TaxInfoByVillOrWordRowChangeEventHandler TaxInfoByVillOrWordRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TaxInfoByVillOrWordRowChangeEventHandler TaxInfoByVillOrWordRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddTaxInfoByVillOrWordRow(TaxInfoByVillOrWordRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TaxInfoByVillOrWordRow AddTaxInfoByVillOrWordRow(string HoldingNo, string OwnerName, string ParentName, string MobileNo, string WardNo, string TotalBuildingHouse, string TotalRawHouse, string TotalSemiBuildingHouse, string YearlyRentAmount, string TotalTax, string VillageName, string PeviousDue, string Comments) {
+                TaxInfoByVillOrWordRow rowTaxInfoByVillOrWordRow = ((TaxInfoByVillOrWordRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        HoldingNo,
+                        OwnerName,
+                        ParentName,
+                        MobileNo,
+                        WardNo,
+                        TotalBuildingHouse,
+                        TotalRawHouse,
+                        TotalSemiBuildingHouse,
+                        YearlyRentAmount,
+                        TotalTax,
+                        VillageName,
+                        PeviousDue,
+                        Comments};
+                rowTaxInfoByVillOrWordRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTaxInfoByVillOrWordRow);
+                return rowTaxInfoByVillOrWordRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                TaxInfoByVillOrWordDataTable cln = ((TaxInfoByVillOrWordDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new TaxInfoByVillOrWordDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnHoldingNo = base.Columns["HoldingNo"];
+                this.columnOwnerName = base.Columns["OwnerName"];
+                this.columnParentName = base.Columns["ParentName"];
+                this.columnMobileNo = base.Columns["MobileNo"];
+                this.columnWardNo = base.Columns["WardNo"];
+                this.columnTotalBuildingHouse = base.Columns["TotalBuildingHouse"];
+                this.columnTotalRawHouse = base.Columns["TotalRawHouse"];
+                this.columnTotalSemiBuildingHouse = base.Columns["TotalSemiBuildingHouse"];
+                this.columnYearlyRentAmount = base.Columns["YearlyRentAmount"];
+                this.columnTotalTax = base.Columns["TotalTax"];
+                this.columnVillageName = base.Columns["VillageName"];
+                this.columnPeviousDue = base.Columns["PeviousDue"];
+                this.columnComments = base.Columns["Comments"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnHoldingNo = new global::System.Data.DataColumn("HoldingNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHoldingNo);
+                this.columnOwnerName = new global::System.Data.DataColumn("OwnerName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOwnerName);
+                this.columnParentName = new global::System.Data.DataColumn("ParentName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnParentName);
+                this.columnMobileNo = new global::System.Data.DataColumn("MobileNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMobileNo);
+                this.columnWardNo = new global::System.Data.DataColumn("WardNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWardNo);
+                this.columnTotalBuildingHouse = new global::System.Data.DataColumn("TotalBuildingHouse", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalBuildingHouse);
+                this.columnTotalRawHouse = new global::System.Data.DataColumn("TotalRawHouse", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalRawHouse);
+                this.columnTotalSemiBuildingHouse = new global::System.Data.DataColumn("TotalSemiBuildingHouse", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalSemiBuildingHouse);
+                this.columnYearlyRentAmount = new global::System.Data.DataColumn("YearlyRentAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnYearlyRentAmount);
+                this.columnTotalTax = new global::System.Data.DataColumn("TotalTax", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalTax);
+                this.columnVillageName = new global::System.Data.DataColumn("VillageName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVillageName);
+                this.columnPeviousDue = new global::System.Data.DataColumn("PeviousDue", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPeviousDue);
+                this.columnComments = new global::System.Data.DataColumn("Comments", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComments);
+                this.columnOwnerName.Caption = "OwnerNameInBangla";
+                this.columnParentName.Caption = "FatherHusbandName";
+                this.columnTotalBuildingHouse.Caption = "TaxAmount";
+                this.columnTotalRawHouse.Caption = "DueAmount";
+                this.columnTotalSemiBuildingHouse.Caption = "TaxPaymentDate";
+                this.columnYearlyRentAmount.Caption = "YearName";
+                this.columnTotalTax.Caption = "TotalCollection";
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TaxInfoByVillOrWordRow NewTaxInfoByVillOrWordRow() {
+                return ((TaxInfoByVillOrWordRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new TaxInfoByVillOrWordRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(TaxInfoByVillOrWordRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.TaxInfoByVillOrWordRowChanged != null)) {
+                    this.TaxInfoByVillOrWordRowChanged(this, new TaxInfoByVillOrWordRowChangeEvent(((TaxInfoByVillOrWordRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.TaxInfoByVillOrWordRowChanging != null)) {
+                    this.TaxInfoByVillOrWordRowChanging(this, new TaxInfoByVillOrWordRowChangeEvent(((TaxInfoByVillOrWordRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.TaxInfoByVillOrWordRowDeleted != null)) {
+                    this.TaxInfoByVillOrWordRowDeleted(this, new TaxInfoByVillOrWordRowChangeEvent(((TaxInfoByVillOrWordRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.TaxInfoByVillOrWordRowDeleting != null)) {
+                    this.TaxInfoByVillOrWordRowDeleting(this, new TaxInfoByVillOrWordRowChangeEvent(((TaxInfoByVillOrWordRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveTaxInfoByVillOrWordRow(TaxInfoByVillOrWordRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                UPDataSet ds = new UPDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "TaxInfoByVillOrWordDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class SingleHoldingTaxRow : global::System.Data.DataRow {
@@ -1997,6 +2454,388 @@ namespace UPTax.Reports {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class TaxInfoByVillOrWordRow : global::System.Data.DataRow {
+            
+            private TaxInfoByVillOrWordDataTable tableTaxInfoByVillOrWord;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal TaxInfoByVillOrWordRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableTaxInfoByVillOrWord = ((TaxInfoByVillOrWordDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HoldingNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.HoldingNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HoldingNo\' in table \'TaxInfoByVillOrWord\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.HoldingNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string OwnerName {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.OwnerNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OwnerName\' in table \'TaxInfoByVillOrWord\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.OwnerNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ParentName {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.ParentNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ParentName\' in table \'TaxInfoByVillOrWord\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.ParentNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MobileNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.MobileNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MobileNo\' in table \'TaxInfoByVillOrWord\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.MobileNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string WardNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.WardNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'WardNo\' in table \'TaxInfoByVillOrWord\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.WardNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalBuildingHouse {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.TotalBuildingHouseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalBuildingHouse\' in table \'TaxInfoByVillOrWord\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.TotalBuildingHouseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalRawHouse {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.TotalRawHouseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalRawHouse\' in table \'TaxInfoByVillOrWord\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.TotalRawHouseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalSemiBuildingHouse {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.TotalSemiBuildingHouseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalSemiBuildingHouse\' in table \'TaxInfoByVillOrWord\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.TotalSemiBuildingHouseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string YearlyRentAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.YearlyRentAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'YearlyRentAmount\' in table \'TaxInfoByVillOrWord\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.YearlyRentAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalTax {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.TotalTaxColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalTax\' in table \'TaxInfoByVillOrWord\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.TotalTaxColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string VillageName {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.VillageNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VillageName\' in table \'TaxInfoByVillOrWord\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.VillageNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PeviousDue {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.PeviousDueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PeviousDue\' in table \'TaxInfoByVillOrWord\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.PeviousDueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Comments {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxInfoByVillOrWord.CommentsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Comments\' in table \'TaxInfoByVillOrWord\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxInfoByVillOrWord.CommentsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHoldingNoNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.HoldingNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHoldingNoNull() {
+                this[this.tableTaxInfoByVillOrWord.HoldingNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOwnerNameNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.OwnerNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOwnerNameNull() {
+                this[this.tableTaxInfoByVillOrWord.OwnerNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsParentNameNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.ParentNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetParentNameNull() {
+                this[this.tableTaxInfoByVillOrWord.ParentNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMobileNoNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.MobileNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMobileNoNull() {
+                this[this.tableTaxInfoByVillOrWord.MobileNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsWardNoNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.WardNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetWardNoNull() {
+                this[this.tableTaxInfoByVillOrWord.WardNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalBuildingHouseNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.TotalBuildingHouseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalBuildingHouseNull() {
+                this[this.tableTaxInfoByVillOrWord.TotalBuildingHouseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalRawHouseNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.TotalRawHouseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalRawHouseNull() {
+                this[this.tableTaxInfoByVillOrWord.TotalRawHouseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalSemiBuildingHouseNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.TotalSemiBuildingHouseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalSemiBuildingHouseNull() {
+                this[this.tableTaxInfoByVillOrWord.TotalSemiBuildingHouseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsYearlyRentAmountNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.YearlyRentAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetYearlyRentAmountNull() {
+                this[this.tableTaxInfoByVillOrWord.YearlyRentAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalTaxNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.TotalTaxColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalTaxNull() {
+                this[this.tableTaxInfoByVillOrWord.TotalTaxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVillageNameNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.VillageNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVillageNameNull() {
+                this[this.tableTaxInfoByVillOrWord.VillageNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPeviousDueNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.PeviousDueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPeviousDueNull() {
+                this[this.tableTaxInfoByVillOrWord.PeviousDueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCommentsNull() {
+                return this.IsNull(this.tableTaxInfoByVillOrWord.CommentsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCommentsNull() {
+                this[this.tableTaxInfoByVillOrWord.CommentsColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2050,6 +2889,40 @@ namespace UPTax.Reports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TaxReceiptRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class TaxInfoByVillOrWordRowChangeEvent : global::System.EventArgs {
+            
+            private TaxInfoByVillOrWordRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TaxInfoByVillOrWordRowChangeEvent(TaxInfoByVillOrWordRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TaxInfoByVillOrWordRow Row {
                 get {
                     return this.eventRow;
                 }
