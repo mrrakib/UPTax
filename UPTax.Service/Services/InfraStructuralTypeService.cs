@@ -5,6 +5,7 @@ using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository;
 using UPTax.Model.Models;
+using UPTax.Model.ViewModels;
 
 namespace UPTax.Service.Services
 {
@@ -19,6 +20,7 @@ namespace UPTax.Service.Services
         bool IsExistingItem(string keyName, int? id);
         bool Save();
         InfraStructuralType GetByStaticId(int staticId);
+        List<IdNameDropdown> GetAllForDropdown();
     }
     public class InfraStructuralTypeService : IInfraStructuralTypeService
     {
@@ -114,6 +116,16 @@ namespace UPTax.Service.Services
         public InfraStructuralType GetByStaticId(int staticId)
         {
             return _infraStructuralTypeRepository.Get(a => !a.IsDeleted && a.StaticId == staticId);
+        }
+
+        public List<IdNameDropdown> GetAllForDropdown()
+        {
+            var data = new List<IdNameDropdown>()
+            {
+                new IdNameDropdown(){ IdStr="আবাসিক", Name="আবাসিক"},
+                new IdNameDropdown(){ IdStr="বাণিজ্যিক", Name="বাণিজ্যিক"}
+            };
+            return data;
         }
     }
 }

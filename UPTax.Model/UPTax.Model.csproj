@@ -115,7 +115,7 @@
     <Compile Include="ViewModels\IdNameDropdown.cs" />
     <Compile Include="ViewModels\ReportHeader.cs" />
     <Compile Include="ViewModels\ReportProperty.cs" />
-    <Compile Include="ViewModels\TopSheetReportSP.cs" />
+    <Compile Include="ViewModels\SPTopSheetReport.cs" />
     <Compile Include="ViewModels\VHouseOwner.cs" />
     <Compile Include="ViewModels\VMAllTaxGenerator.cs" />
     <Compile Include="ViewModels\VMCommonParams.cs" />
@@ -133,6 +133,7 @@
     <Compile Include="ViewModels\VMUserInfo.cs" />
     <Compile Include="ViewModels\VMWordOrVillWiseTaxReport.cs" />
     <Compile Include="ViewModels\VVillageInfo.cs" />
+    <Compile Include="ViewModels\SPWardVillageWiseDueReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -20,6 +20,7 @@ namespace UPTax.Service.Services.UPDetails
         IPagedList GetPagedList(string wardNo, int unionId, int pageNo, int pageSize);
         bool IsExistingWard(string wardNo, int unionId, int? wardId);
         List<IdNameDropdown> GetDropdownItemList(int unionId);
+        List<SPWardVillageWiseDueReport> GetWardVillageWiseReport(int wardId, int villageId, string infrastructureType, int financialYearId);
     }
     public class WardInfoService : IWardInfoService
     {
@@ -121,5 +122,11 @@ namespace UPTax.Service.Services.UPDetails
             }).ToList();
         }
 
+        public List<SPWardVillageWiseDueReport> GetWardVillageWiseReport(int wardId, int villageId, string infrastructureType, int financialYearId)
+        {
+            var query = $"EXEC WardVillageWiseDueReport {wardId}, {villageId}, '{infrastructureType}', {financialYearId}";
+            var data = _wardInfoRepository.SQLQueryList<SPWardVillageWiseDueReport>(query).ToList();
+            return data;
+        }
     }
 }

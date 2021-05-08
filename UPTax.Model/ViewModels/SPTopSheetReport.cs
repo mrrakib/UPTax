@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UPTax.Model.ViewModels
 {
-    public class TopSheetReportSP
+    public class SPTopSheetReport
     {
         [DisplayName("ওয়ার্ড নাম্বার")]
         public string WardNo { get; set; }

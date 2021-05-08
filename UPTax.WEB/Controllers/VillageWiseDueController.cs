@@ -1,38 +1,56 @@
 ﻿using System.Web.Mvc;
+using UPTax.Helper;
 using UPTax.Service.Services;
+using UPTax.Service.Services.UPDetails;
+using Message = UPTax.Helper.Message;
 
 namespace UPTax.Controllers
 {
     public class VillageWiseDueController : Controller
     {
+        private readonly Message _message = new Message();
+        private readonly string _userId = RapidSession.UserId;
+        private readonly int _unionId = RapidSession.UnionId;
         private readonly IFinancialYearService _financialYearService;
         private readonly ITaxInstallmentService _taxInstallmentService;
+        private readonly IWardInfoService _wardInfoService;
+        private readonly IVillageInfoService _villageInfoService;
+        private readonly IInfraStructuralTypeService _infraStructuralTypeService;
 
-        public VillageWiseDueController(IFinancialYearService financialYearService, ITaxInstallmentService taxInstallmentService)
+        public VillageWiseDueController(IFinancialYearService financialYearService,
+            ITaxInstallmentService taxInstallmentService,
+            IWardInfoService wardInfoService,
+            IVillageInfoService villageInfoService,
+            IInfraStructuralTypeService infraStructuralTypeService)
         {
             _financialYearService = financialYearService;
             _taxInstallmentService = taxInstallmentService;
+            _wardInfoService = wardInfoService;
+            _villageInfoService = villageInfoService;
+            _infraStructuralTypeService = infraStructuralTypeService;
         }
 
         // GET: VillageWiseDue/Index
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.WardId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
-            ViewBag.VillageId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
-            ViewBag.InfrastructureType = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
+            ViewBag.WardId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
+            ViewBag.VillageId = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name");
+            ViewBag.InfrastructureType = new SelectList(_infraStructuralTypeService.GetAllForDropdown(), "IdStr", "Name");
             ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(string wardId, string villageId, string infrastructureType, string financialYearId)
+        public ActionResult Index(int wardId, int villageId, string infrastructureType, int financialYearId)
         {
-            ViewBag.Wards = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
-            ViewBag.Villages = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
-            ViewBag.InfrastructureType = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
-            ViewBag.FinancialYear = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
+            var data = _wardInfoService.GetWardVillageWiseReport(wardId, villageId, infrastructureType, financialYearId);
+
+            ViewBag.WardId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", wardId);
+            ViewBag.VillageId = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name", villageId);
+            ViewBag.InfrastructureType = new SelectList(_infraStructuralTypeService.GetAllForDropdown(), "IdStr", "Name", infrastructureType);
+            ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name", financialYearId);
             return View();
         }
     }

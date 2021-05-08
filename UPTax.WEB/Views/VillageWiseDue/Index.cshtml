@@ -70,3 +70,49 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //var table = $('#datatable').DataTable({
+            //    scrollY: "300px",
+            //    scrollX: true,
+            //    scrollCollapse: true,
+            //    paging: false,
+            //    fixedColumns: {
+            //        leftColumns: 1,
+            //        rightColumns: 1
+            //    }
+            //});
+
+            $("#wardId").change(function () {
+                GetVillageDropdown();
+            });
+
+        });
+
+        function GetVillageDropdown() {
+            var wardId = $("#wardId").val();
+            $("#villageId").empty();
+
+                  $.ajax({
+                        url: '@Url.Action("GetVillage", "VillageInfo")',
+                        dataType: "json",
+                        type: "GET",
+                        cache: false,
+                        data: { wardId},
+                      success: function (data) {
+
+                            debugger;
+                            data.forEach(function (item) {
+                                $('#villageId').append(new Option(item.Name, item.Id));
+                            });
+                        },
+                        error: function (xhr) {
+                            alert(xhr.responseText);
+                        }
+                 });
+            }
+    </script>
+}

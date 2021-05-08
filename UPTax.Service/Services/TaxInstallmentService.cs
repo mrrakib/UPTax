@@ -22,7 +22,7 @@ namespace UPTax.Service.Services
         VMTaxInstallment GenerateSingleTaxInstallment(string holdingNo, int finYearId);
         VMRPTTaxCollectionSingle GetMRPTTaxCollectionSingle(string holdingNo, int finYearId, int unionId);
         VMTaxInstallment GeteSingleTaxInstallment(string holdingNo, int finYearId);
-        IEnumerable<TopSheetReportSP> GetTopSheetReport(string financialYear);
+        IEnumerable<SPTopSheetReport> GetTopSheetReport(string financialYear);
         List<VMRPTTaxReceipt> GetRPTTaxReceipt(int villageId, int wardId, int finYearId, int unionId);
         List<VMWordOrVillWiseTaxReport> GetRPTTaxInfoByWord(int villageId, int wardId, int finYearId, int unionId);
         List<VMWordOrVillWiseTaxReport> GetRPTTaxInfoByVillage(int villageId, int finYearId, int unionId);
@@ -184,10 +184,10 @@ namespace UPTax.Service.Services
             return result;
         }
 
-        public IEnumerable<TopSheetReportSP> GetTopSheetReport(string financialYear)
+        public IEnumerable<SPTopSheetReport> GetTopSheetReport(string financialYear)
         {
             var query = $"EXEC TopSheetReport {financialYear}";
-            var data = _taxInstallmentRepository.SQLQueryList<TopSheetReportSP>(query).ToList();
+            var data = _taxInstallmentRepository.SQLQueryList<SPTopSheetReport>(query).ToList();
             return data;
         }
 
