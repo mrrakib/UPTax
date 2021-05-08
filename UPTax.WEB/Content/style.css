@@ -49,3 +49,7 @@ span.logo-lg {
         width: 100px;
         height: 50px;
     }
+
+@page {
+    size: auto;
+}

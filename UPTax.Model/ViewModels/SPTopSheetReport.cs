@@ -35,6 +35,7 @@ namespace UPTax.Model.ViewModels
         [DisplayName("আদায়ের শতকরা হার")]
         [Range(0, 9999999999999999.99, ErrorMessage = "Invalid Target Price; Max 18 digits")]
         public decimal TaxCollectPercentage { get; set; }
+        public decimal TotalDueCollectAmount { get; set; }
         [DisplayName("মন্তব্য")]
         public string Comments { get; set; }
     }

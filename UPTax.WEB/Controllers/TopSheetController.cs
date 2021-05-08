@@ -1,8 +1,16 @@
 ﻿using Microsoft.Reporting.WebForms;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using UPTax.Helper;
 using UPTax.Model;
+using UPTax.Model.Models.UnionDetails;
+using UPTax.Model.ViewModels;
 using UPTax.Service.Services;
+using UPTax.Service.Services.UPDetails;
 using UPTax.WEB;
 
 namespace UPTax.Controllers
@@ -11,11 +19,15 @@ namespace UPTax.Controllers
     {
         private readonly IFinancialYearService _financialYearService;
         private readonly ITaxInstallmentService _taxInstallmentService;
+        private readonly IUnionParishadService _unionParishadService;
+        private readonly int _unionId = RapidSession.UnionId;
+        private readonly Message _message = new Message();
 
-        public TopSheetController(IFinancialYearService financialYearService, ITaxInstallmentService taxInstallmentService)
+        public TopSheetController(IFinancialYearService financialYearService, ITaxInstallmentService taxInstallmentService, IUnionParishadService unionParishadService)
         {
             _financialYearService = financialYearService;
             _taxInstallmentService = taxInstallmentService;
+            _unionParishadService = unionParishadService;
         }
 
         // GET: TopSheet/Index
@@ -39,35 +51,53 @@ namespace UPTax.Controllers
         [HttpGet]
         public ActionResult Export(string financialYearId = "")
         {
-            var modelPDF = _taxInstallmentService.GetTopSheetReport(financialYearId);
-            var results = new ReportProperty<dynamic>
-            {
-                ReportTitle = "Top Sheet Report",
-                ReportViewName = "Top Sheet Report",
-                ReportPath = Path.Combine(HttpContext.Server.MapPath("~/Reports/RDLC/"), "TopSheetReport.rdlc"),
-                ReportBody = modelPDF.ToDataTable()
-            };
-            var reportViewer = new LocalReport
-            {
-                EnableExternalImages = true,
-                ReportPath = results.ReportPath,
-            };
+            var modelPDF = _taxInstallmentService.GetTopSheetReport(financialYearId).ToList();
+            
+            ReportViewer reportViewer = new ReportViewer();
+            reportViewer.ProcessingMode = ProcessingMode.Local;
+            reportViewer.SizeToReportContent = true;
+            reportViewer.Width = Unit.Percentage(100);
+            reportViewer.Height = Unit.Percentage(100);
+            reportViewer.ShowToolBar = false;
+            reportViewer.PageCountMode = new PageCountMode();
+            reportViewer.LocalReport.ReportPath = Request.MapPath("~/Reports/RDLC/RPTTopSheet.rdlc");
 
-            var header = new ReportHeader
+            VMCommonParams commonParams = new VMCommonParams
             {
-                Name = "Top Sheet Report",
-                Address = "Natore, Bangladesh",
-                //Logo = new Uri(HttpContext.Server.MapPath("~/Image/logo.png")).AbsoluteUri
+                FinancialYearId = Convert.ToInt32(financialYearId)
             };
-            var rptHead = new ReportDataSource("ReportHeader", header.ToDataTable());
-            reportViewer.DataSources.Add(rptHead);
+            reportViewer.LocalReport.SetParameters(GetReportParameter(commonParams));
+            ReportDataSource A = new ReportDataSource("DataSet1", modelPDF); //get actual data here
 
-            var rptDs = new ReportDataSource("TopSheetReportBody", results.ReportBody);
-            reportViewer.DataSources.Add(rptDs);
+            reportViewer.LocalReport.DataSources.Add(A);
+            reportViewer.LocalReport.Refresh();
+            Warning[] warnings;
+            string[] streamIds;
+            string mimeType = string.Empty;
+            string encoding = string.Empty;
+            string extension = string.Empty;
 
-            string mimeType;
-            var renderedBytes = ReportUtility.RenderedReportViewer(reportViewer, "PDF", out mimeType);
-            return File(renderedBytes, mimeType);
+
+            //return File(bytes, "application/pdf");
+            ViewBag.ReportViewer = reportViewer;
+            return View("~/Views/TopSheet/RPTTopsheet.cshtml");
         }
+
+        #region GetReportParameter
+
+        public List<ReportParameter> GetReportParameter(VMCommonParams commonParams)
+        {
+            UnionParishad union = _unionParishadService.GetDetails(_unionId);
+            string YearName = _financialYearService.GetNameById(commonParams.FinancialYearId);
+
+            List<ReportParameter> paraList = new List<ReportParameter>();
+            paraList.Add(new ReportParameter("UnionName", union.Name));
+            paraList.Add(new ReportParameter("UnionAddress", union.Description));
+            paraList.Add(new ReportParameter("FinYear", YearName));
+
+            return paraList;
+        }
+
+        #endregion
     }
 }
