@@ -1,0 +1,131 @@
+﻿@{
+    var title = "ডেইলি পোষ্টিং রিপোর্ট";
+    ViewBag.Title = title;
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">@title</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        @using (Html.BeginForm("Index", "VillageWiseDue", FormMethod.Post, new { @class = "form-horizontal", role = "form", @autocomplete = "off" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div style="color:red; font-weight:bold">
+                                @Html.Raw(Html.ValidationSummary(false).ToHtmlString())
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <label for="validationCustom03">ওয়ার্ড<span style="color: red">*</span> </label>
+                                    @Html.DropDownList("WardId", null, "--ওয়ার্ড নির্বাচন করুন--", new { @class = "form-control", @id = "wardId", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        ওয়ার্ড দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <label for="validationCustom03">অর্থ বছর<span style="color: red">*</span> </label>
+                                    @Html.DropDownList("FinancialYearId", null, "--অর্থ বছর নির্বাচন করুন--", new { @class = "form-control", @id = "financialYearId", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        অর্থ বছর দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <label for="validationCustom03">শুরুর তারিখ<span style="color: red">*</span> </label>
+                                    @Html.DropDownList("FinancialYearId", null, "--অর্থ বছর নির্বাচন করুন--", new { @class = "form-control", @id = "financialYearId", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        শুরুর তারিখ দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <label for="validationCustom03">শেষের তারিখ<span style="color: red">*</span> </label>
+                                    @Html.DropDownList("FinancialYearId", null, "--অর্থ বছর নির্বাচন করুন--", new { @class = "form-control", @id = "financialYearId", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        শেষের তারিখ দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="mt-4">
+                                        <button class="btn btn-success btn-block waves-effect waves-light" type="submit">খোঁজ করুন</button>
+                                    </div>
+                                </div> 
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="mt-4">
+                                        <button class="btn btn-success btn-block waves-effect waves-light" type="submit">প্রিন্ট করুন</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1>Body Here...</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        @*$(document).ready(function () {
+
+            //var table = $('#datatable').DataTable({
+            //    scrollY: "300px",
+            //    scrollX: true,
+            //    scrollCollapse: true,
+            //    paging: false,
+            //    fixedColumns: {
+            //        leftColumns: 1,
+            //        rightColumns: 1
+            //    }
+            //});
+
+            $("#wardId").change(function () {
+                GetVillageDropdown();
+            });
+
+        });
+
+        function GetVillageDropdown() {
+            var wardId = $("#wardId").val();
+            $("#villageId").empty();
+
+                  $.ajax({
+                        url: '@Url.Action("GetVillage", "VillageInfo")',
+                        dataType: "json",
+                        type: "GET",
+                        cache: false,
+                        data: { wardId},
+                      success: function (data) {
+
+                            debugger;
+                            data.forEach(function (item) {
+                                $('#villageId').append(new Option(item.Name, item.Id));
+                            });
+                        },
+                        error: function (xhr) {
+                            alert(xhr.responseText);
+                        }
+                 });
+            }*@
+    </script>
+}
