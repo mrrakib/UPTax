@@ -115,10 +115,12 @@
     <Compile Include="ViewModels\IdNameDropdown.cs" />
     <Compile Include="ViewModels\ReportHeader.cs" />
     <Compile Include="ViewModels\ReportProperty.cs" />
+    <Compile Include="ViewModels\SPDailyPostingReport.cs" />
     <Compile Include="ViewModels\SPTopSheetReport.cs" />
     <Compile Include="ViewModels\VHouseOwner.cs" />
     <Compile Include="ViewModels\VMAllTaxGenerator.cs" />
     <Compile Include="ViewModels\VMCommonParams.cs" />
+    <Compile Include="ViewModels\VMDailyPostingReport.cs" />
     <Compile Include="ViewModels\VMember.cs" />
     <Compile Include="ViewModels\VMLogin.cs" />
     <Compile Include="ViewModels\VMMenuPermission.cs" />
