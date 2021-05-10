@@ -25,6 +25,7 @@ namespace UPTax.Service.Services
         IEnumerable GetTubeWellDropdownItemList();
         IEnumerable GetSanitaryDropdownItemList();
         IEnumerable GetLivingTypeDropdownItemList();
+        List<SPDailyPostingReport> GetDailyPostingReport(VMDailyPostingReport model);
     }
     public class HouseOwnerService : IHouseOwnerService
     {
@@ -193,6 +194,13 @@ namespace UPTax.Service.Services
                 new IdNameDropdown() { IdStr = "ভাড়া দেওয়া", Name = "ভাড়া দেওয়া" },
                 new IdNameDropdown() { IdStr = "উভয়", Name = "উভয়" }
             };
+        }
+
+        public List<SPDailyPostingReport> GetDailyPostingReport(VMDailyPostingReport model)
+        {
+            var query = $"EXEC DailyPostingReport {model.WardId}, {model.FinancialYearId}, '{model.StartDate.ToString("yyyy-MM-dd")}', '{model.EndDate.ToString("yyyy-MM-dd")}'";
+            var data = _HouseOwnerRepository.SQLQueryList<SPDailyPostingReport>(query).ToList();
+            return data;
         }
     }
 }
