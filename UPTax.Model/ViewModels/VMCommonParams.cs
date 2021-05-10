@@ -17,5 +17,7 @@ namespace UPTax.Model.ViewModels
         public string HoldingNo { get; set; }
         public int VillageInfoId { get; set; }
         public int WardInfoId { get; set; }
+        public DateTime? PrintDate { get; set; }
+        public DateTime? LastInstallmentDate { get; set; }
     }
 }
