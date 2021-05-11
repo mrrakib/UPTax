@@ -12750,6 +12750,7 @@
     <Content Include="Views\RPTFormatBillPrint\Index.cshtml" />
     <Content Include="Views\RPTFormatBillPrint\RPTFormatBillPrint.cshtml" />
     <Content Include="Views\DailyPostingReport\Index.cshtml" />
+    <Content Include="Views\DailyPostingReport\RPTDailyPosting.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

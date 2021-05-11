@@ -92,6 +92,22 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="DailyPosting" msprop:Generator_TableClassName="DailyPostingDataTable" msprop:Generator_TableVarName="tableDailyPosting" msprop:Generator_RowChangedName="DailyPostingRowChanged" msprop:Generator_TablePropName="DailyPosting" msprop:Generator_RowDeletingName="DailyPostingRowDeleting" msprop:Generator_RowChangingName="DailyPostingRowChanging" msprop:Generator_RowEvHandlerName="DailyPostingRowChangeEventHandler" msprop:Generator_RowDeletedName="DailyPostingRowDeleted" msprop:Generator_RowClassName="DailyPostingRow" msprop:Generator_UserTableName="DailyPosting" msprop:Generator_RowEvArgName="DailyPostingRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HoldingNo" msprop:Generator_ColumnVarNameInTable="columnHoldingNo" msprop:Generator_ColumnPropNameInRow="HoldingNo" msprop:Generator_ColumnPropNameInTable="HoldingNoColumn" msprop:Generator_UserColumnName="HoldingNo" type="xs:string" minOccurs="0" />
+              <xs:element name="HouseOwnerName" msprop:Generator_ColumnVarNameInTable="columnHouseOwnerName" msprop:Generator_ColumnPropNameInRow="HouseOwnerName" msprop:Generator_ColumnPropNameInTable="HouseOwnerNameColumn" msprop:Generator_UserColumnName="HouseOwnerName" type="xs:string" minOccurs="0" />
+              <xs:element name="MobileNo" msprop:Generator_ColumnVarNameInTable="columnMobileNo" msprop:Generator_ColumnPropNameInRow="MobileNo" msprop:Generator_ColumnPropNameInTable="MobileNoColumn" msprop:Generator_UserColumnName="MobileNo" type="xs:string" minOccurs="0" />
+              <xs:element name="YearName" msprop:Generator_ColumnVarNameInTable="columnYearName" msprop:Generator_ColumnPropNameInRow="YearName" msprop:Generator_ColumnPropNameInTable="YearNameColumn" msprop:Generator_UserColumnName="YearName" type="xs:string" minOccurs="0" />
+              <xs:element name="TaxPaymentDateStr" msprop:Generator_ColumnVarNameInTable="columnTaxPaymentDateStr" msprop:Generator_ColumnPropNameInRow="TaxPaymentDateStr" msprop:Generator_ColumnPropNameInTable="TaxPaymentDateStrColumn" msprop:Generator_UserColumnName="TaxPaymentDateStr" type="xs:string" minOccurs="0" />
+              <xs:element name="VillageName" msprop:Generator_ColumnVarNameInTable="columnVillageName" msprop:Generator_ColumnPropNameInRow="VillageName" msprop:Generator_ColumnPropNameInTable="VillageNameColumn" msprop:Generator_UserColumnName="VillageName" type="xs:string" minOccurs="0" />
+              <xs:element name="OutstandingAmount" msprop:Generator_ColumnVarNameInTable="columnOutstandingAmount" msprop:Generator_ColumnPropNameInRow="OutstandingAmount" msprop:Generator_ColumnPropNameInTable="OutstandingAmountColumn" msprop:Generator_UserColumnName="OutstandingAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="WardNo" msprop:Generator_ColumnVarNameInTable="columnWardNo" msprop:Generator_ColumnPropNameInRow="WardNo" msprop:Generator_ColumnPropNameInTable="WardNoColumn" msprop:Generator_UserColumnName="WardNo" type="xs:string" minOccurs="0" />
+              <xs:element name="PreviousDueAmount" msprop:Generator_ColumnVarNameInTable="columnPreviousDueAmount" msprop:Generator_ColumnPropNameInRow="PreviousDueAmount" msprop:Generator_ColumnPropNameInTable="PreviousDueAmountColumn" msprop:Generator_UserColumnName="PreviousDueAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalCollectAmount" msprop:Generator_ColumnVarNameInTable="columnTotalCollectAmount" msprop:Generator_ColumnPropNameInRow="TotalCollectAmount" msprop:Generator_ColumnPropNameInTable="TotalCollectAmountColumn" msprop:Generator_UserColumnName="TotalCollectAmount" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

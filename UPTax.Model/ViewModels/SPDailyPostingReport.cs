@@ -25,5 +25,6 @@ namespace UPTax.Model.ViewModels
         public decimal PreviousDueAmount { get; set; }
         [DisplayName("সর্বমোট আদায়")]
         public decimal TotalCollectAmount { get; set; }
+        public string TaxPaymentDateStr { get; set; }
     }
 }
