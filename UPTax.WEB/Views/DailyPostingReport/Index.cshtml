@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="mt-4">
-                                        <button formtarget="_blank" class="btn btn-success btn-block waves-effect waves-light" onclick="submitButton('pdf')" type="button">প্রিন্ট করুন</button>
+                                        <button class="btn btn-success btn-block waves-effect waves-light" onclick="submitButton('pdf')" type="button">প্রিন্ট করুন</button>
                                     </div>
                                 </div>
                             </div>
@@ -151,8 +151,11 @@
     <script type="text/javascript">
         function submitButton(pdf) {
             debugger;
-            
+
             document.getElementById('ReportType').value = pdf;
+            if (pdf == 'pdf')
+                $('#submitForm').attr('target', '_blank');
+
             document.getElementById('submitForm').submit();
         }
     </script>
