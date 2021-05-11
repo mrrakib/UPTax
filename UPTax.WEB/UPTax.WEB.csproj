@@ -19,7 +19,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44325</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -12748,6 +12749,7 @@
     <Content Include="Views\TopSheet\RPTTopsheet.cshtml" />
     <Content Include="Views\RPTFormatBillPrint\Index.cshtml" />
     <Content Include="Views\RPTFormatBillPrint\RPTFormatBillPrint.cshtml" />
+    <Content Include="Views\DailyPostingReport\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -12813,6 +12815,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Reports\RDLC\RPTFormatBillPrint.rdlc" />
     <EmbeddedResource Include="Reports\RDLC\RPTTopSheet.rdlc" />
+    <EmbeddedResource Include="Reports\RDLC\RPTDailyPosting.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RDLC\TaxInfoByWard.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
