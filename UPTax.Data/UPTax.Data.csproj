@@ -224,9 +224,14 @@
     <Compile Include="Migrations\202104160410127_Alter_TaxInstallMent_add_isPaid.Designer.cs">
       <DependentUpon>202104160410127_Alter_TaxInstallMent_add_isPaid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105221611042_MessageInfoMigration.cs" />
+    <Compile Include="Migrations\202105221611042_MessageInfoMigration.Designer.cs">
+      <DependentUpon>202105221611042_MessageInfoMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
+    <Compile Include="Repository\MessageInfoRepository.cs" />
     <Compile Include="Repository\RelationshipRepository.cs" />
     <Compile Include="Repository\MemberRepository.cs" />
     <Compile Include="Repository\InfraStructuralTypeRepository.cs" />
@@ -359,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104160410127_Alter_TaxInstallMent_add_isPaid.resx">
       <DependentUpon>202104160410127_Alter_TaxInstallMent_add_isPaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105221611042_MessageInfoMigration.resx">
+      <DependentUpon>202105221611042_MessageInfoMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 
 namespace UPTax.Helper
@@ -83,7 +81,6 @@ namespace UPTax.Helper
                 }
 
             }
-
             set
             {
                 HttpContext.Current.Session[con] = value;
@@ -96,7 +93,6 @@ namespace UPTax.Helper
             {
                 return (string)HttpContext.Current.Session[dateTimeFormat];
             }
-
             set
             {
                 HttpContext.Current.Session[dateTimeFormat] = value;
@@ -116,7 +112,6 @@ namespace UPTax.Helper
                     return 0;
                 }
             }
-
             set
             {
                 HttpContext.Current.Session[unionId] = value;
@@ -127,7 +122,6 @@ namespace UPTax.Helper
         {
             HttpContext.Current.Session.Clear();
             //HttpContext.Current.Session.Abandon();
-
         }
     }
 }
