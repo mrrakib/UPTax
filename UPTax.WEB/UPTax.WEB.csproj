@@ -19,8 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44325</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -201,6 +200,7 @@
     <Compile Include="Controllers\EducationInfoController.cs" />
     <Compile Include="Controllers\CreateHouseOwnerController.cs" />
     <Compile Include="Controllers\GenerateAllTaxInfoController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\RPTTaxByVillageController.cs" />
     <Compile Include="Controllers\RPTTaxByWardController.cs" />
     <Compile Include="Controllers\RPTFormatBillPrintController.cs" />
@@ -12751,6 +12751,8 @@
     <Content Include="Views\RPTFormatBillPrint\RPTFormatBillPrint.cshtml" />
     <Content Include="Views\DailyPostingReport\Index.cshtml" />
     <Content Include="Views\DailyPostingReport\RPTDailyPosting.cshtml" />
+    <Content Include="Views\Message\Inbox.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
