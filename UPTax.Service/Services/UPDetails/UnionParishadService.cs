@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UPTax.Data.Infrastructure;
+using UPTax.Data.Repository.Autofac;
 using UPTax.Data.Repository.UPDetails;
 using UPTax.Model.Models.UnionDetails;
 using UPTax.Model.ViewModels;
@@ -22,14 +23,17 @@ namespace UPTax.Service.Services.UPDetails
         IPagedList GetPaged(string name, int pageNo, int pageSize);
         bool IsExistingItem(UnionParishad model);
         int CountUnion();
+        List<IdNameDropdown> GetAdminOrUserByUnionId(int unionId);
     }
     public class UnionParishadService : IUnionParishadService
     {
         private readonly IUnionParishadRepository _unionParishadRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public UnionParishadService(IUnionParishadRepository unionParishadRepository, IUnitOfWork unitOfWork)
+        public UnionParishadService(IUnionParishadRepository unionParishadRepository, IUserRepository userRepository, IUnitOfWork unitOfWork)
         {
             _unionParishadRepository = unionParishadRepository;
+            _userRepository = userRepository;
             _unitOfWork = unitOfWork;
         }
         public bool Add(UnionParishad model)
@@ -131,6 +135,12 @@ namespace UPTax.Service.Services.UPDetails
         {
             var union = _unionParishadRepository.GetAll().ToList();
             return union != null ? union.Count : 0;
+        }
+
+        public List<IdNameDropdown> GetAdminOrUserByUnionId(int unionId)
+        {
+            var users = _userRepository.GetMany(a => a.UnionId == unionId).Select(a => new IdNameDropdown() { IdStr = a.Id, Name = a.FullName });
+            return users.ToList();
         }
     }
 }

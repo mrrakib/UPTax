@@ -2,6 +2,8 @@
 using UPTax.Helper;
 using UPTax.Model.Models;
 using UPTax.Service.Services;
+using UPTax.Service.Services.Autofac;
+using UPTax.Service.Services.UPDetails;
 
 namespace UPTax.Controllers
 {
@@ -12,10 +14,14 @@ namespace UPTax.Controllers
         private readonly string _roleName = RapidSession.RoleName;
         private readonly int _unionId = RapidSession.UnionId;
         private readonly IMessageInfoService _messageInfoService;
+        private readonly IUnionParishadService _unionParishadService;
+        private readonly IUserService _userService;
 
-        public MessageController(IMessageInfoService messageInfoService)
+        public MessageController(IMessageInfoService messageInfoService, IUnionParishadService unionParishadService, IUserService userService)
         {
             _messageInfoService = messageInfoService;
+            _unionParishadService = unionParishadService;
+            _userService = userService;
         }
 
         // GET: Message
@@ -36,22 +42,52 @@ namespace UPTax.Controllers
                 return View(data);
             }
         }
+        // GET: Message/Create
+        public ActionResult Create()
+        {
+            var union = _unionParishadService.GetAllForDropdown();
+            ViewBag.UnionId = new SelectList(union, "Id", "Name");
+            var users = _userService.GetAllForDropdown();
+            ViewBag.ToAdminUserId = new SelectList(users, "IdStr", "Name");
+            return View(new MessageInfo());
+        }
+
+        // GET: Message/Create
+        [HttpPost]
+        public ActionResult Create(MessageInfo message)
+        {
+            if (ModelState.IsValid)
+            {
+                message.CreatedBy = _userId;
+                message.ToSupperAdminUserId = _userId;
+                var created = _messageInfoService.Add(message);
+                if (created)
+                {
+                    _message.save(this);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    _message.custom(this, "পরে আবার চেষ্টা করুন");
+                }
+            }
+            var union = _unionParishadService.GetAllForDropdown();
+            ViewBag.UnionId = new SelectList(union, "Id", "Name");
+            var users = _userService.GetAllForDropdown();
+            ViewBag.ToAdminUserId = new SelectList(users, "IdStr", "Name");
+            return View();
+        }
 
         // GET: Message/Inbox
         public ActionResult Inbox()
         {
             return View();
         }
-        // GET: Message/Create
-        public ActionResult Create()
+
+        public ActionResult GetAdminOrUser(int unionId = 0)
         {
-            return View();
-        }
-        // GET: Message/Create
-        [HttpPost]
-        public ActionResult Create(MessageInfo message)
-        {
-            return View();
+            var model = _unionParishadService.GetAdminOrUserByUnionId(unionId);
+            return Json(model, JsonRequestBehavior.AllowGet);
         }
     }
 }
