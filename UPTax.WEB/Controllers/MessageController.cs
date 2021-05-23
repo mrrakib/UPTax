@@ -54,6 +54,7 @@ namespace UPTax.Controllers
 
         // GET: Message/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(MessageInfo message)
         {
             if (ModelState.IsValid)
@@ -75,7 +76,7 @@ namespace UPTax.Controllers
             ViewBag.UnionId = new SelectList(union, "Id", "Name");
             var users = _userService.GetAllForDropdown();
             ViewBag.ToAdminUserId = new SelectList(users, "IdStr", "Name");
-            return View();
+            return View(message);
         }
 
         // GET: Message/Inbox

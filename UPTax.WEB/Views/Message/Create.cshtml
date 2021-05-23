@@ -39,22 +39,22 @@
                             @Html.AntiForgeryToken()
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayName("ইউনিয়ন") <span class="required"></span></label>
+                                    <label for="validationCustom03">@Html.Label("ইউনিয়ন") <span class="required"></span></label>
                                     @Html.DropDownList("UnionId", null, "Select...", new { @class = "selectize validationCustom03" })
                                     <div class="invalid-feedback">
                                         ইউনিয়ন দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="ToAdminUserId">@Html.DisplayName("Admin/User Name")</label>
+                                    <label for="ToAdminUserId">@Html.Label("Admin/User Name")</label>
                                     @Html.DropDownList("ToAdminUserId", null, "Select...", new { @class = "selectize" })
                                     <div class="invalid-feedback">
                                         Admin/User Name দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.Message) <span class="required"></span></label>
-                                    @Html.TextAreaFor(m => m.Message, new { @id = "validationCustom03", @class = "form-control", @placeholder = "মেসেজ...", @maxLength = "2050", @required = "required" })
+                                    @Html.LabelFor(model => model.Message, new { @class = "required" })
+                                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control", @placeholder = "মেসেজ...", @maxLength = "2050", @required = "required" })
                                     <div class="invalid-feedback">
                                         মেসেজ দেয়া বাধ্যতামূলক!
                                     </div>
@@ -72,7 +72,6 @@
 </div>
 
 @section Scripts {
-
     <script type="text/javascript">
         $(document).ready(function () {
             $("#UnionId").change(function () {
@@ -83,7 +82,7 @@
                 var unionId = $("#UnionId").val();
                 $("#ToAdminUserId").empty();
                 $('#ToAdminUserId').append(new Option('Select...', ''));
-
+                debugger;
                   $.ajax({
                         url: '@Url.Action("GetAdminOrUser", "Message")',
                         dataType: "json",
