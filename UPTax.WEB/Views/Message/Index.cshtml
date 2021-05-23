@@ -85,19 +85,36 @@
                             </div>
                         }
                         <div class="table-responsive">
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                <thead>
-                                    <tr>
-                                        <th>নং</th>
-                                        <th>এডমিন</th>
-                                        <th>মেসেজ</th>
-                                        <th>অপারেশন</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            @if (Model != null)
+                            {
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>নং</th>
+                                            <th>এডমিন</th>
+                                            <th>মেসেজ</th>
+                                            <th>অপারেশন</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
+                                        @foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
+                                        {
+                                            rowNo++;
+                                            <tr>
+                                                <td>@rowNo</td>
+                                                <td class="">@item.Data.ToAdminUserName</td>
+                                                <td class="">@item.Data.Message</td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <span>Data Not Found!</span>
+                            }
                         </div>
                     </div>
                 </div>

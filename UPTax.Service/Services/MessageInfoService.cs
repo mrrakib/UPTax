@@ -74,14 +74,15 @@ namespace UPTax.Service.Services
                 {
                     searchPrm += string.Format(@" WHERE m.IsDeleted=0");
                 }
-                string query = string.Format(@"SELECT m.Id, m.[Message], au.FullName ToAdminUserName,sau.FullName ToSupperAdminUserName  FROM MessageInfo m
-                                               JOIN Users au ON m.ToAdminUserId=au.Id
+                string query = string.Format(@"SELECT m.Id, m.[Message], ISNULL(au.FullName,'All Admin') ToAdminUserName,sau.FullName ToSupperAdminUserName, m.CreatedDate  FROM MessageInfo m
                                                JOIN Users sau ON m.ToSupperAdminUserId=sau.Id
+                                               LEFT JOIN Users au ON m.ToAdminUserId=au.Id
                                                {0} ORDER BY m.Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
                 string countQuery = string.Format(@"SELECT COUNT(m.Id)  FROM MessageInfo m
-                                                    JOIN Users au ON m.ToAdminUserId=au.Id
-                                                    JOIN Users sau ON m.ToSupperAdminUserId=sau.Id WHERE m.IsDeleted=0 AND au.FullName LIKE N'%{0}%'", searchItem?.Trim());
+                                                    JOIN Users sau ON m.ToSupperAdminUserId=sau.Id 
+                                                    LEFT JOIN Users au ON m.ToAdminUserId=au.Id
+                                                    {0}", searchPrm);
 
                 int rowCount = _messageInfoRepository.SQLQuery<int>(countQuery);
                 var data = _messageInfoRepository.SQLQueryList<VMMessageInfo>(query).OrderByDescending(a => a.CreatedDate).ToList();
@@ -107,12 +108,12 @@ namespace UPTax.Service.Services
                     searchPrm += string.Format(@" WHERE m.IsDeleted=0  AND au.Id='{0}'", adminUserId);
                 }
                 string query = string.Format(@"SELECT m.Id, m.[Message], au.FullName ToAdminUserName,sau.FullName ToSupperAdminUserName  FROM MessageInfo m
-                                               JOIN Users au ON m.ToAdminUserId=au.Id
                                                JOIN Users sau ON m.ToSupperAdminUserId=sau.Id
+                                               LEFT JOIN Users au ON m.ToAdminUserId=au.Id
                                                {0} ORDER BY m.Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
                 string countQuery = string.Format(@"SELECT COUNT(m.Id)  FROM MessageInfo m
-                                                    JOIN Users au ON m.ToAdminUserId=au.Id
+                                                    LEFT JOIN Users au ON m.ToAdminUserId=au.Id
                                                     JOIN Users sau ON m.ToSupperAdminUserId=sau.Id WHERE m.IsDeleted=0 AND au.FullName LIKE N'%{0}%' AND au.Id='{1}'", searchItem?.Trim(), adminUserId);
 
                 int rowCount = _messageInfoRepository.SQLQuery<int>(countQuery);

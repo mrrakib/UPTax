@@ -55,13 +55,13 @@ namespace UPTax.Controllers
         // GET: Message/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(MessageInfo message)
+        public ActionResult Create(MessageInfo model)
         {
             if (ModelState.IsValid)
             {
-                message.CreatedBy = _userId;
-                message.ToSupperAdminUserId = _userId;
-                var created = _messageInfoService.Add(message);
+                model.CreatedBy = _userId;
+                model.ToSupperAdminUserId = _userId;
+                var created = _messageInfoService.Add(model);
                 if (created)
                 {
                     _message.save(this);
@@ -76,7 +76,7 @@ namespace UPTax.Controllers
             ViewBag.UnionId = new SelectList(union, "Id", "Name");
             var users = _userService.GetAllForDropdown();
             ViewBag.ToAdminUserId = new SelectList(users, "IdStr", "Name");
-            return View(message);
+            return View(model);
         }
 
         // GET: Message/Inbox
