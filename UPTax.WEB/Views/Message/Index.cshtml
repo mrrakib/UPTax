@@ -1,5 +1,29 @@
-﻿@{
+﻿@model PagedList.IPagedList<UPTax.Model.ViewModels.VMMessageInfo>
+
+@using PagedList.Mvc;
+@{
     ViewBag.Title = "মেসেজ বক্স";
+    if (Request.IsAjaxRequest())
+    {
+        Layout = null;
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    int dataSize = 10;
+
+    if (ViewBag.dataSize != null)
+    {
+        dataSize = ViewBag.dataSize;
+    };
+    int pageNo = 1;
+    if (ViewBag.page != null)
+    {
+        pageNo = ViewBag.page;
+    };
+    int rowNo = dataSize * pageNo;
+    rowNo = rowNo - dataSize;
 }
 
 <div class="page-title-box">
@@ -7,9 +31,12 @@
         <div class="row align-items-center">
             <div class="col-md-8">
                 <h4 class="page-title mb-1">@ViewBag.Title</h4>
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item active">অপারেট করুন</li>
-                </ol>
+                @if (ViewBag.IsSupperAdmin)
+                {
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item active">অপারেট করুন</li>
+                    </ol>
+                }
             </div>
         </div>
     </div>
@@ -22,37 +49,41 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="float-right ml-2">
-                            <a class="btn btn-sm btn-info btn-flat margin" href="@Url.Action("Create")">মেসেজ যোগ করুন</a>
+                            @if (ViewBag.IsSupperAdmin)
+                            {
+                                <a class="btn btn-sm btn-info btn-flat margin" href="@Url.Action("Create")">মেসেজ যোগ করুন</a>
+                            }
                         </div>
-
                         <h5 class="header-title mb-4">সমস্ত @ViewBag.Title</h5>
 
-                        <div class="row">
-                            <div class="col-sm-12">
-                                @using (Ajax.BeginForm("Index", "VillageInfo", FormMethod.Get, new AjaxOptions
-                                {
-                                    UpdateTargetId = "mainContainer",
-                                    InsertionMode = InsertionMode.Replace
-                                }, new { autocomplete = "off" }))
-                                {
-                                    <table class="table">
-                                        <tr class="">
-                                            <td class="col-sm-1" style="width:1%">
-                                                <i class="fa fa-filter" style="margin-right: 5px; color: #aeaeae; font-size: 22px; padding-top: 5px;  "></i>
-                                                @Html.TextBox("dataSize", ViewBag.dataSize as string, new { @type = "number", @min = "1", @max = "100", @class = "", @style = "width:60px;height:30px;border: 1px solid #DDE2E8;" })
-                                            </td>
-                                            <td class="col-sm-1" style="width:2%">
-                                                @Html.TextBox("name", ViewBag.name as string, new { @class = "form-control col-md-12 col-xs-12", placeholder = "এডমিন নাম" })
-                                            </td>
-                                            <td class="" style="width:2%;">
-                                                <center><button type="submit" class="btn btn-sm btn-info"><i class="fa fa-search" style="margin-right: 5px; color: #008BBB"></i>খুঁজুন</button></center>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                }
+                        @if (ViewBag.IsSupperAdmin)
+                        {
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    @using (Ajax.BeginForm("Index", "Message", FormMethod.Get, new AjaxOptions
+                                    {
+                                        UpdateTargetId = "mainContainer",
+                                        InsertionMode = InsertionMode.Replace
+                                    }, new { autocomplete = "off" }))
+                                    {
+                                        <table class="table">
+                                            <tr class="">
+                                                <td class="col-sm-1" style="width:1%">
+                                                    <i class="fa fa-filter" style="margin-right: 5px; color: #aeaeae; font-size: 22px; padding-top: 5px;  "></i>
+                                                    @Html.TextBox("dataSize", ViewBag.dataSize as string, new { @type = "number", @min = "1", @max = "100", @class = "", @style = "width:60px;height:30px;border: 1px solid #DDE2E8;" })
+                                                </td>
+                                                <td class="col-sm-1" style="width:2%">
+                                                    @Html.TextBox("name", ViewBag.name as string, new { @class = "form-control col-md-12 col-xs-12", placeholder = "এডমিন নাম" })
+                                                </td>
+                                                <td class="" style="width:2%;">
+                                                    <center><button type="submit" class="btn btn-sm btn-info"><i class="fa fa-search" style="margin-right: 5px; color: #008BBB"></i>খুঁজুন</button></center>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    }
+                                </div>
                             </div>
-                        </div>
-
+                        }
                         <div class="table-responsive">
                             <table id="datatable" class="table table-bordered dt-responsive nowrap table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>

@@ -125,6 +125,7 @@
     <Compile Include="ViewModels\VMember.cs" />
     <Compile Include="ViewModels\VMLogin.cs" />
     <Compile Include="ViewModels\VMMenuPermission.cs" />
+    <Compile Include="ViewModels\VMMessageInfo.cs" />
     <Compile Include="ViewModels\VMRegister.cs" />
     <Compile Include="ViewModels\VMReportViewerCommon.cs" />
     <Compile Include="ViewModels\VMRPTTaxCollectionSingle.cs" />

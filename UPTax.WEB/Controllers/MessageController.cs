@@ -19,12 +19,22 @@ namespace UPTax.Controllers
         }
 
         // GET: Message
-        public ActionResult Index()
+        public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
-            ViewBag.IsAdmin = _roleName == "Admin" ? true : false;
-
-            var data = _messageInfoService.GetAll();
-            return View();
+            ViewBag.dataSize = dataSize;
+            ViewBag.page = page;
+            ViewBag.name = name?.Trim();
+            ViewBag.IsSupperAdmin = _roleName == "Super Admin" ? true : false;
+            if (ViewBag.IsSupperAdmin)
+            {
+                var data = _messageInfoService.GetPagedList(name, page, dataSize);
+                return View(data);
+            }
+            else
+            {
+                var data = _messageInfoService.GetPagedList(adminUserId: _userId, name, page, dataSize);
+                return View(data);
+            }
         }
 
         // GET: Message/Inbox

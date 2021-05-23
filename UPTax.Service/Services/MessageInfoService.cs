@@ -14,10 +14,11 @@ namespace UPTax.Service.Services
         bool Add(MessageInfo model);
         bool Update(MessageInfo model);
         bool Delete(int id);
-        IPagedList GetPagedList(string holdingNo, int pageNo, int pageSize);
+        IPagedList GetPagedList(string searchItem, int pageNo, int pageSize);
+        IPagedList GetPagedList(string adminUserId, string searchItem, int pageNo, int pageSize);
         IEnumerable<MessageInfo> GetAll();
         MessageInfo GetDetails(int id);
-        bool IsExistingItem(string holdingNo, int? id);
+        bool IsExistingItem(string searchItem, int? id);
         bool Save();
     }
 
@@ -60,53 +61,68 @@ namespace UPTax.Service.Services
             return _messageInfoRepository.Get(u => u.Id == id && u.IsDeleted == false);
         }
 
-        public IPagedList GetPagedList(string holdingNo, int pageNo, int pageSize)
+        public IPagedList GetPagedList(string searchItem, int pageNo, int pageSize)
         {
             try
             {
                 string searchPrm = string.Empty;
-                if (!string.IsNullOrWhiteSpace(holdingNo))
+                if (!string.IsNullOrWhiteSpace(searchItem))
                 {
-                    searchPrm += string.Format(@" WHERE h.IsDeleted=0 AND h.HoldingNo LIKE N'%{0}%'", holdingNo.Trim());
+                    searchPrm += string.Format(@" WHERE m.IsDeleted=0 AND au.FullName LIKE N'%{0}%'", searchItem?.Trim());
                 }
                 else
                 {
-                    searchPrm += string.Format(@" WHERE h.IsDeleted=0");
+                    searchPrm += string.Format(@" WHERE m.IsDeleted=0");
                 }
-                string query = string.Format(@"SELECT h.Id,
-                                                h.HoldingNo,
-                                                h.MemberNameInBangla,
-                                                p.ProfessionTitle Profession,
-                                                h.DateOfBirth,
-                                                h.BirthRegistrationNumber,
-                                                h.NIDNumber,
-                                                g.[Name] GenderName, 
-                                                r.[Name] Relationship,
-                                                e.Degree EducationName, 
-                                                sbr.Title SocialBenefitRunningName,
-                                                sbe.Title SocialBenefitEligibleName, 
-                                                sbb.Title SocialBenefitBeforeName,
-                                                h.CreatedDate
-                                                FROM Members h 
-                                                JOIN Genders g ON h.GenderId=g.Id
-                                                JOIN Relationships r ON h.RelationshipId=r.Id
-                                                LEFT JOIN EducationInfo e ON h.EducationInfoId=e.Id
-                                                LEFT JOIN ProfessionInfo p ON h.ProfessionId=p.Id
-                                                LEFT JOIN SocialBenefits sbr ON h.SocialBenefitRunningId=sbr.Id
-                                                LEFT JOIN SocialBenefits sbe ON h.SocialBenefitEligibleId=sbe.Id
-                                                LEFT JOIN SocialBenefits sbb ON h.SocialBenefitBeforeId=sbb.Id
-                                                {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
+                string query = string.Format(@"SELECT m.Id, m.[Message], au.FullName ToAdminUserName,sau.FullName ToSupperAdminUserName  FROM MessageInfo m
+                                               JOIN Users au ON m.ToAdminUserId=au.Id
+                                               JOIN Users sau ON m.ToSupperAdminUserId=sau.Id
+                                               {0} ORDER BY m.Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
-                string countQuery = string.Format(@"SELECT COUNT(*) FROM Members WHERE IsDeleted=0 AND HoldingNo LIKE N'%{0}%'", holdingNo?.Trim());
+                string countQuery = string.Format(@"SELECT COUNT(m.Id)  FROM MessageInfo m
+                                                    JOIN Users au ON m.ToAdminUserId=au.Id
+                                                    JOIN Users sau ON m.ToSupperAdminUserId=sau.Id WHERE m.IsDeleted=0 AND au.FullName LIKE N'%{0}%'", searchItem?.Trim());
 
                 int rowCount = _messageInfoRepository.SQLQuery<int>(countQuery);
-                List<VMember> Member = _messageInfoRepository.SQLQueryList<VMember>(query).OrderByDescending(a => a.CreatedDate).ToList();
-                return new StaticPagedList<VMember>(Member, pageNo, pageSize, rowCount);
+                var data = _messageInfoRepository.SQLQueryList<VMMessageInfo>(query).OrderByDescending(a => a.CreatedDate).ToList();
+                return new StaticPagedList<VMMessageInfo>(data, pageNo, pageSize, rowCount);
             }
             catch (Exception ex)
             {
                 var errorMessage = ex.Message;
-                return new StaticPagedList<VMember>(new List<VMember> { }, pageNo, pageSize, 0);
+                return new StaticPagedList<VMMessageInfo>(new List<VMMessageInfo> { }, pageNo, pageSize, 0);
+            }
+        }
+        public IPagedList GetPagedList(string adminUserId, string searchItem, int pageNo, int pageSize)
+        {
+            try
+            {
+                string searchPrm = string.Empty;
+                if (!string.IsNullOrWhiteSpace(searchItem))
+                {
+                    searchPrm += string.Format(@" WHERE m.IsDeleted=0 AND au.FullName LIKE N'%{0}%'  AND au.Id='{1}'", searchItem?.Trim(), adminUserId);
+                }
+                else
+                {
+                    searchPrm += string.Format(@" WHERE m.IsDeleted=0  AND au.Id='{0}'", adminUserId);
+                }
+                string query = string.Format(@"SELECT m.Id, m.[Message], au.FullName ToAdminUserName,sau.FullName ToSupperAdminUserName  FROM MessageInfo m
+                                               JOIN Users au ON m.ToAdminUserId=au.Id
+                                               JOIN Users sau ON m.ToSupperAdminUserId=sau.Id
+                                               {0} ORDER BY m.Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
+
+                string countQuery = string.Format(@"SELECT COUNT(m.Id)  FROM MessageInfo m
+                                                    JOIN Users au ON m.ToAdminUserId=au.Id
+                                                    JOIN Users sau ON m.ToSupperAdminUserId=sau.Id WHERE m.IsDeleted=0 AND au.FullName LIKE N'%{0}%' AND au.Id='{1}'", searchItem?.Trim(), adminUserId);
+
+                int rowCount = _messageInfoRepository.SQLQuery<int>(countQuery);
+                var data = _messageInfoRepository.SQLQueryList<VMMessageInfo>(query).OrderByDescending(a => a.CreatedDate).ToList();
+                return new StaticPagedList<VMMessageInfo>(data, pageNo, pageSize, rowCount);
+            }
+            catch (Exception ex)
+            {
+                var errorMessage = ex.Message;
+                return new StaticPagedList<VMMessageInfo>(new List<VMMessageInfo> { }, pageNo, pageSize, 0);
             }
         }
 
