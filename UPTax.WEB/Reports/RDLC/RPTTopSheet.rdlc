@@ -293,13 +293,13 @@
                   <Width>0.53611in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.9375in</Width>
+                  <Width>0.77083in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.17708in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.61458in</Width>
+                  <Width>0.75in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.65625in</Width>
@@ -1409,7 +1409,7 @@
             <Top>1.48438in</Top>
             <Left>0.14493in</Left>
             <Height>0.57292in</Height>
-            <Width>10.07747in</Width>
+            <Width>10.04622in</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -1444,9 +1444,7 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>হাল আদায়
-
-
-Tax Amount</Value>
+</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1567,7 +1565,7 @@ Tax Amount</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!TotalCollectTaxAmount.Value</Value>
+                                  <Value>=SUM(Fields!TotalCollectTaxAmount.Value)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1597,7 +1595,7 @@ Tax Amount</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!TotalDueCollectAmount.Value</Value>
+                                  <Value>=SUM(Fields!TotalDueCollectAmount.Value)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -1627,7 +1625,7 @@ Tax Amount</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!TotalCollectTaxAmount.Value + Fields!TotalDueCollectAmount.Value</Value>
+                                  <Value>=SUM(Fields!TotalCollection.Value)</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>

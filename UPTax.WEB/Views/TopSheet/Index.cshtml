@@ -55,7 +55,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="header-title">
-                        @Html.ActionLink("প্রিন্ট  "+Model.First().YearName +" অর্থ বছর", "Export", new { controller = "TopSheet", area = "", financialYearId = Model.First().FinancialYearId }, new { target = "_blank" })
+                        @Html.ActionLink("প্রিন্ট  "+Model.First().YearName +" অর্থ বছর", "Export", new { controller = "TopSheet", area = "", financialYearId = Model.First().FinancialYearId }, new { target = "_blank", @class= "btn btn-info btn-block waves-effect waves-light" })
                     </h5>                  
                     <div class="table-responsive">
                         <table id="datatable" class="table table-sm table-bordered dt-responsive table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">

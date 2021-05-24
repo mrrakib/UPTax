@@ -14,6 +14,7 @@ namespace UPTax.Model.ViewModels
         public int FinancialYearId { get; set; }
         [DisplayName("হোল্ডিং নাম্বার")]
         public string HoldingNo { get; set; }
+        public int TaxGenerateId { get; set; }
         public VMTaxInstallmentDetails vMTaxInstallmentDetails { get; set; }
     }
 }

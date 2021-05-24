@@ -21,14 +21,16 @@ namespace UPTax.Controllers
         private readonly ITaxInstallmentService _taxInstallmentService;
         private readonly IFinancialYearService _financialYearService;
         private readonly IHouseOwnerService _houseOwnerService;
+        private readonly ITaxGenerateInfoService _taxGenerateInfoService;
         #endregion
 
         #region constructor
-        public TaxInstallmentEditController(ITaxInstallmentService taxInstallmentService, IFinancialYearService financialYearService, IHouseOwnerService houseOwnerService)
+        public TaxInstallmentEditController(ITaxInstallmentService taxInstallmentService, IFinancialYearService financialYearService, IHouseOwnerService houseOwnerService, ITaxGenerateInfoService taxGenerateInfoService)
         {
             _taxInstallmentService = taxInstallmentService;
             _financialYearService = financialYearService;
             _houseOwnerService = houseOwnerService;
+            _taxGenerateInfoService = taxGenerateInfoService;
         }
         #endregion
 
@@ -51,32 +53,51 @@ namespace UPTax.Controllers
             {
                 try
                 {
-                    TaxInstallment modelUp = _taxInstallmentService.GetDetails(vm.Id);
-                    if (modelUp != null)
+
+                    if (vm.TaxGenerateId > 0)
                     {
-                        decimal actualDue = modelUp.TaxAmount - vm.vMTaxInstallmentDetails.InstallmentAmount;
-                        HouseOwner owner = _houseOwnerService.GetDetails(vm.vMTaxInstallmentDetails.HouseOwnerId);
-                        bool isPaid = actualDue > 0 ? false : true;
-                        if (actualDue > 0)
+                        TaxGenerateInfo modelUp = _taxGenerateInfoService.GetDetails(vm.TaxGenerateId);
+                        if (modelUp != null)
                         {
-                            modelUp.OutstandingAmount = vm.vMTaxInstallmentDetails.InstallmentAmount - actualDue;
+                            modelUp.TotalTax = (double)vm.vMTaxInstallmentDetails.InstallmentAmount;
+                            modelUp.UpdatedBy = RapidSession.UserId;
+                            modelUp.UpdatedDate = DateTime.Now;
+
+                            if (_taxGenerateInfoService.Update(modelUp))
+                            {
+                                _message.update(this);
+                                return RedirectToAction("Index");
+                            }
+                            else
+                            {
+                                _message.custom(this, "সেভ করতে সমস্যা হয়েছে!");
+                            }
                         }
-                        else
+                    }
+                    else
+                    {
+                        TaxInstallment modelUp = _taxInstallmentService.GetDetails(vm.Id);
+                        if (modelUp != null)
                         {
+                            //decimal actualDue = modelUp.TaxAmount - vm.vMTaxInstallmentDetails.InstallmentAmount;
+                            HouseOwner owner = _houseOwnerService.GetDetails(vm.vMTaxInstallmentDetails.HouseOwnerId);
+                            bool isPaid = false;
+                            modelUp.TaxAmount = vm.vMTaxInstallmentDetails.InstallmentAmount;
                             modelUp.OutstandingAmount = vm.vMTaxInstallmentDetails.InstallmentAmount;
-                        }
-                        modelUp.IsPaid = isPaid;
-                        modelUp.UpdatedBy = RapidSession.UserId;
-                        modelUp.UpdatedDate = DateTime.Now;
-                        modelUp.TaxAmount = vm.vMTaxInstallmentDetails.InstallmentAmount;
-                        if (_taxInstallmentService.Update(modelUp))
-                        {
-                            _message.update(this);
-                            return RedirectToAction("Index");
-                        }
-                        else
-                        {
-                            _message.custom(this, "সেভ করতে সমস্যা হয়েছে!");
+                            modelUp.IsPaid = isPaid;
+                            modelUp.UpdatedBy = RapidSession.UserId;
+                            modelUp.UpdatedDate = DateTime.Now;
+                            modelUp.TaxAmount = vm.vMTaxInstallmentDetails.InstallmentAmount;
+                            
+                            if (_taxInstallmentService.Update(modelUp))
+                            {
+                                _message.update(this);
+                                return RedirectToAction("Index");
+                            }
+                            else
+                            {
+                                _message.custom(this, "সেভ করতে সমস্যা হয়েছে!");
+                            }
                         }
                     }
                     
