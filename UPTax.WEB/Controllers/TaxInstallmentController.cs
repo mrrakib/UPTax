@@ -62,13 +62,20 @@ namespace UPTax.Controllers
                         UnionId = _unionId,
                         TaxPaymentDate = vm.vMTaxInstallmentDetails.InstallmentDate,
                         TaxAmount = vm.vMTaxInstallmentDetails.InstallmentAmount,
-                        OutstandingAmount = vm.vMTaxInstallmentDetails.InstallmentAmount - actualDue,
+                        OutstandingAmount = (actualDue == vm.vMTaxInstallmentDetails.InstallmentAmount) ? vm.vMTaxInstallmentDetails.InstallmentAmount : (vm.vMTaxInstallmentDetails.InstallmentAmount - actualDue),
                         PenaltyAmount = vm.vMTaxInstallmentDetails.PenaltyAmount,
                         IsPaid = isPaid,
                         IsDeleted = false,
                         CreatedBy = RapidSession.UserId,
                         CreatedDate = DateTime.Now
                     };
+                    if (vm.Id > 0)
+                    {
+                        if (_taxInstallmentService.Delete(vm.Id))
+                        {
+                            model.IsPaid = vm.vMTaxInstallmentDetails.DueAmount > 0 ? false : true;
+                        }
+                    }
                     if (_taxInstallmentService.Add(model))
                     {
                         _message.save(this);

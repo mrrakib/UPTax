@@ -104,25 +104,51 @@ namespace UPTax.Service.Services
             decimal OutstandingTaxAmount = taxInstallment != null ? taxInstallment.TaxAmount : 0;
             decimal PenaltyAmount = taxInstallment != null ? taxInstallment.PenaltyAmount : 0;
 
-            if (taxInfo != null)
+            if (taxInstallment != null)
             {
                 resultDetails = new VMTaxInstallmentDetails
                 {
                     HouseOwnerId = houseOwner.Id,
                     HouseOwnerName = houseOwner.OwnerNameInBangla,
-                    InstallmentAmount = (decimal)taxInfo.TotalTax,
-                    DueAmount = ((decimal)taxInfo.TotalTax - OutstandingTaxAmount),
-                    InstallmentDate = DateTime.Now,
-                    PenaltyAmount = PenaltyAmount
+                    InstallmentAmount = taxInstallment.TaxAmount,
+                    DueAmount = taxInstallment.TaxAmount - OutstandingTaxAmount,
+                    InstallmentDate = taxInstallment.TaxPaymentDate,
+                    PenaltyAmount = taxInstallment.PenaltyAmount
                 };
                 result = new VMTaxInstallment
                 {
+                    Id = taxInstallment != null ? taxInstallment.Id : 0,
                     HoldingNo = houseOwner.HoldingNo,
                     FinancialYearId = finYearId,
                     vMTaxInstallmentDetails = resultDetails
                 };
                 return result;
             }
+            else
+            {
+                if (taxInfo != null)
+                {
+                    resultDetails = new VMTaxInstallmentDetails
+                    {
+                        HouseOwnerId = houseOwner.Id,
+                        HouseOwnerName = houseOwner.OwnerNameInBangla,
+                        InstallmentAmount = (decimal)taxInfo.TotalTax,
+                        DueAmount = ((decimal)taxInfo.TotalTax - OutstandingTaxAmount),
+                        InstallmentDate = DateTime.Now,
+                        PenaltyAmount = PenaltyAmount
+                    };
+                    result = new VMTaxInstallment
+                    {
+                        Id = taxInstallment != null ? taxInstallment.Id : 0,
+                        HoldingNo = houseOwner.HoldingNo,
+                        FinancialYearId = finYearId,
+                        vMTaxInstallmentDetails = resultDetails
+                    };
+                    return result;
+                }
+            }
+
+            
             return result;
         }
 
@@ -131,7 +157,7 @@ namespace UPTax.Service.Services
             VMTaxInstallment result = new VMTaxInstallment();
             VMTaxInstallmentDetails resultDetails = new VMTaxInstallmentDetails();
             HouseOwner houseOwner = _houseOwnerRepository.Get(h => h.HoldingNo.Equals(holdingNo) && h.IsDeleted == false);
-            //TaxGenerateInfo taxInfo = _taxGenerateInfoRepository.Get(h => h.HoldingNo.Equals(holdingNo) && h.IsDeleted == false && h.FinancialYearId == finYearId);
+            TaxGenerateInfo taxInfo = _taxGenerateInfoRepository.Get(h => h.HoldingNo.Equals(holdingNo) && h.IsDeleted == false && h.FinancialYearId == finYearId);
             TaxInstallment taxInstallment = _taxInstallmentRepository.Get(t => t.HoldingNo.Equals(holdingNo) && t.FinancialYearId == finYearId && t.IsDeleted == false);
             decimal OutstandingTaxAmount = taxInstallment != null ? taxInstallment.OutstandingAmount : 0;
             decimal PenaltyAmount = taxInstallment != null ? taxInstallment.PenaltyAmount : 0;
@@ -155,6 +181,30 @@ namespace UPTax.Service.Services
                     vMTaxInstallmentDetails = resultDetails
                 };
                 return result;
+            }
+            //new busienss
+            else
+            {
+                if (taxInfo != null)
+                {
+                    resultDetails = new VMTaxInstallmentDetails
+                    {
+                        HouseOwnerId = houseOwner.Id,
+                        HouseOwnerName = houseOwner.OwnerNameInBangla,
+                        InstallmentAmount = (decimal)taxInfo.TotalTax,
+                        DueAmount = 0,
+                        InstallmentDate = DateTime.Now,
+                        PenaltyAmount = 0
+                    };
+                    result = new VMTaxInstallment
+                    {
+                        TaxGenerateId = taxInfo.Id,
+                        HoldingNo = houseOwner.HoldingNo,
+                        FinancialYearId = finYearId,
+                        vMTaxInstallmentDetails = resultDetails
+                    };
+                    return result;
+                }
             }
             return result;
         }
