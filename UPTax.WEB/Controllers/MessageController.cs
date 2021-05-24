@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using UPTax.Helper;
 using UPTax.Model.Models;
 using UPTax.Service.Services;
@@ -47,8 +48,6 @@ namespace UPTax.Controllers
         {
             var union = _unionParishadService.GetAllForDropdown();
             ViewBag.UnionId = new SelectList(union, "Id", "Name");
-            var users = _userService.GetAllForDropdown();
-            ViewBag.ToAdminUserId = new SelectList(users, "IdStr", "Name");
             return View(new MessageInfo());
         }
 
@@ -65,7 +64,7 @@ namespace UPTax.Controllers
                 if (created)
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Message");
                 }
                 else
                 {
@@ -74,8 +73,6 @@ namespace UPTax.Controllers
             }
             var union = _unionParishadService.GetAllForDropdown();
             ViewBag.UnionId = new SelectList(union, "Id", "Name");
-            var users = _userService.GetAllForDropdown();
-            ViewBag.ToAdminUserId = new SelectList(users, "IdStr", "Name");
             return View(model);
         }
 
@@ -90,5 +87,36 @@ namespace UPTax.Controllers
             var model = _unionParishadService.GetAdminOrUserByUnionId(unionId);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+        #region Update
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            MessageInfo model = _messageInfoService.GetDetails(id);
+            if (model == null)
+            {
+                return PartialView("_Error");
+            }
+            var union = _unionParishadService.GetAllForDropdown();
+            ViewBag.UnionId = new SelectList(union, "Id", "Name", model.UnionId);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(MessageInfo model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.UpdatedBy = _userId;
+                model.UpdatedDate = DateTime.UtcNow;
+                _messageInfoService.Update(model);
+                _message.update(this);
+                return RedirectToAction("Index", "Message");
+            }
+            var union = _unionParishadService.GetAllForDropdown();
+            ViewBag.UnionId = new SelectList(union, "Id", "Name", model.UnionId);
+            return View(model);
+        }
+        #endregion
     }
 }
