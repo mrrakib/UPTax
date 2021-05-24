@@ -84,73 +84,73 @@
                                 </div>
                             </div>
                         }
-                    <div class="table-responsive">
-                        @if (Model != null)
-                        {
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                <thead>
-                                    <tr>
-                                        <th>নং</th>
-                                        <th>মেসেজ</th>
-                                        <th>তৈরীর তারিখ</th>
-                                        <th>এডমিন</th>
-                                        <th>সুপার এডমিন</th>
-                                        @if (ViewBag.IsSupperAdmin)
-                                        {
-                                            <th>অপারেশন</th>
-                                        }
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    @foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
-                                    {
-                                        rowNo++;
+                        <div class="table-responsive">
+                            @if (Model != null)
+                            {
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
                                         <tr>
-                                            <td>@rowNo</td>
-                                            <td class="">@item.Data.Message</td>
-                                            <td class="">@item.Data.CreatedDate.ToString("dd MMM, yyyy")</td>
-                                            <td class="">@item.Data.ToAdminUserName</td>
-                                            <td class="">@item.Data.ToSupperAdminUserName</td>
-                                            @if (ViewBag.IsSupperAdmin)
-                                            {
+                                            <th>নং</th>
+                                            <th>মেসেজ</th>
+                                            <th>তৈরীর তারিখ</th>
+                                            <th>এডমিন</th>
+                                            <th>সুপার এডমিন</th>
+                                            <th>অপারেশন</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var item in Model.Select((x, i) => new { Data = x, Index = i }))
+                                        {
+                                            rowNo++;
+                                            <tr>
+                                                <td>@rowNo</td>
+                                                <td class="">@item.Data.Message</td>
+                                                <td class="">@item.Data.CreatedDate.ToString("dd MMM, yyyy")</td>
+                                                <td class="">@item.Data.ToAdminUserName</td>
+                                                <td class="">@item.Data.ToSupperAdminUserName</td>
                                                 <td>
-                                                    <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
-                                                        <i class="mdi mdi-pencil"></i>
+                                                    @if (ViewBag.IsSupperAdmin)
+                                                    {
+                                                        <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
+                                                            <i class="mdi mdi-pencil"></i>
+                                                        </a>
+                                                    }
+                                                    <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Reply", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="Reply Message...">
+                                                        <i class="mdi mdi-pencil"> Reply Details</i>
                                                     </a>
                                                 </td>
-                                            }
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                            <div class="float-right">
-                                @Html.PagedListPager(Model, page => Url.Action("Index",
-                                    new
-                                    {
-                                        page,
-                                        dataSize = ViewBag.dataSize
-                                    }),
-                                    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
-                                    new PagedListRenderOptions()
-                                    {
-                                        LiElementClasses = new string[] { "paginate_button page-item" },
-                                        UlElementClasses = new string[] { "pagination" },
-                                        ContainerDivClasses = new string[] { "dataTables_paginate paging_simple_numbers" },
-                                    },
-                                    new AjaxOptions()
-                                    {
-                                        HttpMethod = "GET",
-                                        UpdateTargetId = "mainContainer"
-                                    })
-                                )
-                            </div>
-                        }
-                        else
-                        {
-                            <span>Data Not Found!</span>
-                        }
-                    </div>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="float-right">
+                                    @Html.PagedListPager(Model, page => Url.Action("Index",
+                                        new
+                                        {
+                                            page,
+                                            dataSize = ViewBag.dataSize
+                                        }),
+                                        PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+                                        new PagedListRenderOptions()
+                                        {
+                                            LiElementClasses = new string[] { "paginate_button page-item" },
+                                            UlElementClasses = new string[] { "pagination" },
+                                            ContainerDivClasses = new string[] { "dataTables_paginate paging_simple_numbers" },
+                                        },
+                                        new AjaxOptions()
+                                        {
+                                            HttpMethod = "GET",
+                                            UpdateTargetId = "mainContainer"
+                                        })
+                                    )
+                                </div>
+                            }
+                            else
+                            {
+                                <span>Data Not Found!</span>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
