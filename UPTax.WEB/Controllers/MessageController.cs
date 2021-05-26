@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using UPTax.Helper;
 using UPTax.Model.Models;
+using UPTax.Model.ViewModels;
 using UPTax.Service.Services;
 using UPTax.Service.Services.Autofac;
 using UPTax.Service.Services.UPDetails;
@@ -17,15 +19,20 @@ namespace UPTax.Controllers
         private readonly IMessageInfoService _messageInfoService;
         private readonly IUnionParishadService _unionParishadService;
         private readonly IUserService _userService;
+        private readonly IMessageReplyService _messageReplyService;
 
-        public MessageController(IMessageInfoService messageInfoService, IUnionParishadService unionParishadService, IUserService userService)
+        public MessageController(IMessageInfoService messageInfoService,
+            IUnionParishadService unionParishadService,
+            IUserService userService,
+            IMessageReplyService messageReplyService)
         {
             _messageInfoService = messageInfoService;
             _unionParishadService = unionParishadService;
             _userService = userService;
+            _messageReplyService = messageReplyService;
         }
 
-        // GET: Message
+        // GET: Message/Index
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
         {
             ViewBag.dataSize = dataSize;
@@ -80,6 +87,38 @@ namespace UPTax.Controllers
         public ActionResult Inbox()
         {
             return View();
+        }
+
+        // GET: Message/Reply
+        public ActionResult Reply(int id = 0)
+        {
+            var message = _messageInfoService.GetDetails(id);
+            if (message == null)
+            {
+                return View("_Error");
+            }
+            var replies = _messageReplyService.GetAllByMessageId(id).ToList();
+
+            var messageDetails = new VMMessageInfo()
+            {
+                Id = message.Id,
+                MessageReply = replies,
+                Message = message.Message
+            };
+            return View(messageDetails);
+        }
+
+        [HttpPost]
+        public ActionResult Reply(VMMessageInfo model)
+        {
+            var reply = new MessageReply() { MessageInfoId = model.Id, ReplyerUserId = _userId, ReplyMessage = model.ReplyMessage, CreatedDate = DateTime.Now };
+            var replied = _messageReplyService.Add(reply);
+            if (replied)
+                return RedirectToAction("Reply", "Message", new { id = model.Id });
+
+            var replies = _messageReplyService.GetAllByMessageId(model.Id).ToList();
+            model.MessageReply = replies;
+            return View(model);
         }
 
         public ActionResult GetAdminOrUser(int unionId = 0)
