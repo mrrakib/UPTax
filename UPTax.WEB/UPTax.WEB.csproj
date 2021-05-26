@@ -19,7 +19,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44325</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -408,6 +409,7 @@
     <Content Include="assets\js\theme.js" />
     <Content Include="assets\js\vendor\jquery-3.5.1.min.js" />
     <Content Include="assets\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="assets\UserImages\up_00fc4c63-9062-4c3c-a2d6-45780b3d4b99.png" />
     <Content Include="assets\webfonts\fa-brands-400.svg" />
     <Content Include="assets\webfonts\fa-regular-400.svg" />
     <Content Include="assets\webfonts\fa-solid-900.svg" />
