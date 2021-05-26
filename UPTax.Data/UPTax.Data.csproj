@@ -232,9 +232,14 @@
     <Compile Include="Migrations\202105230429091_RequiredMessage.Designer.cs">
       <DependentUpon>202105230429091_RequiredMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105241616092_MessageReplyMigration.cs" />
+    <Compile Include="Migrations\202105241616092_MessageReplyMigration.Designer.cs">
+      <DependentUpon>202105241616092_MessageReplyMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
+    <Compile Include="Repository\MessageReplyRepository.cs" />
     <Compile Include="Repository\MessageInfoRepository.cs" />
     <Compile Include="Repository\RelationshipRepository.cs" />
     <Compile Include="Repository\MemberRepository.cs" />
@@ -374,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105230429091_RequiredMessage.resx">
       <DependentUpon>202105230429091_RequiredMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105241616092_MessageReplyMigration.resx">
+      <DependentUpon>202105241616092_MessageReplyMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
