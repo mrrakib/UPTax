@@ -3,7 +3,7 @@ namespace UPTax.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class MessageReplyMigration : DbMigration
+    public partial class test : DbMigration
     {
         public override void Up()
         {

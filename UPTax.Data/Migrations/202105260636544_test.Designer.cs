@@ -7,13 +7,13 @@ namespace UPTax.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class MessageReplyMigration : IMigrationMetadata
+    public sealed partial class test : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(MessageReplyMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(test));
         
         string IMigrationMetadata.Id
         {
-            get { return "202105241616092_MessageReplyMigration"; }
+            get { return "202105260636544_test"; }
         }
         
         string IMigrationMetadata.Source
