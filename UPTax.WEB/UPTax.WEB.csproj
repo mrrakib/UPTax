@@ -12758,6 +12758,7 @@
     <Content Include="Views\Message\Create.cshtml" />
     <Content Include="Views\Message\Edit.cshtml" />
     <Content Include="Views\Message\Reply.cshtml" />
+    <Content Include="Views\User\MyProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
