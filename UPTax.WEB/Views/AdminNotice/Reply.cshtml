@@ -1,0 +1,90 @@
+﻿@model UPTax.Model.ViewModels.VMMessageInfo
+
+@{
+    ViewBag.Title = "মেসেজ ইনবক্স";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var title = "মেসেজ ইনবক্স";
+}
+<style>
+    div.inline .form-control {
+        display: inline;
+    }
+</style>
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">@title</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">অপারেট @title</a></li>
+                    <li class="breadcrumb-item active">সকল উত্তর</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right ml-2">
+                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">তালিকা দেখুন</a>
+                        </div>
+                        <h4 class="header-title">@Model.Message</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Reply", "Message", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(a => a.Id)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @if (Model.MessageReply != null && Model.MessageReply.Count > 0)
+                                    {
+                                        <table class="table table-sm table-hover">
+                                            <tbody>
+                                                @foreach (var item in Model.MessageReply)
+                                                {
+                                                    <tr>
+                                                        <td class="">
+                                                            @item.ReplyMessage<br /><span style="font-size:8px;">Replied By-@(item.ReplyerUser?.FullName) | @item.CreatedDate.ToString("dd MMM, yyyy mm:hh tt")</span>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    }
+                                    else
+                                    {
+                                        <strong>তথ্য পাওয়া যায় নি, আপনার প্রথম উত্তর লিখুন!</strong><br /><br />
+                                    }
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    @Html.TextAreaFor(m => m.ReplyMessage, new { @class = "form-control", @placeholder = "প্রতিউত্তর...", @maxLength = "2050", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        প্রতিউত্তর দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-reply-all"></i> উত্তর দিন
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div><!-- container-fluid -->
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+}

@@ -200,6 +200,7 @@
     <Compile Include="Controllers\EducationInfoController.cs" />
     <Compile Include="Controllers\CreateHouseOwnerController.cs" />
     <Compile Include="Controllers\GenerateAllTaxInfoController.cs" />
+    <Compile Include="Controllers\AdminNoticeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\RPTTaxByVillageController.cs" />
     <Compile Include="Controllers\RPTTaxByWardController.cs" />
@@ -12757,6 +12758,12 @@
     <Content Include="Views\Message\Create.cshtml" />
     <Content Include="Views\Message\Edit.cshtml" />
     <Content Include="Views\Message\Reply.cshtml" />
+    <Content Include="Views\User\MyProfile.cshtml" />
+    <Content Include="Views\AdminNotice\Create.cshtml" />
+    <Content Include="Views\AdminNotice\Edit.cshtml" />
+    <Content Include="Views\AdminNotice\Inbox.cshtml" />
+    <Content Include="Views\AdminNotice\Index.cshtml" />
+    <Content Include="Views\AdminNotice\Reply.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

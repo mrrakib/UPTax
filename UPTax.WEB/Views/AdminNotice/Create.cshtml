@@ -1,0 +1,106 @@
+﻿@model UPTax.Model.Models.AdminNotice
+@{
+    ViewBag.Title = "সংরক্ষণ | নোটিস";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var title = "এডমিন নোটিস";
+    string dateFormat = UPTax.Helper.RapidSession.DateTimeFormat;
+}
+<style>
+    div.inline .form-control {
+        display: inline;
+    }
+</style>
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">@title</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">অপারেট @title</a></li>
+                    <li class="breadcrumb-item active">@title যোগ করুন</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right ml-2">
+                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">তালিকা দেখুন</a>
+                        </div>
+                        <h4 class="header-title">@title সংরক্ষণ ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Create", "AdminNotice", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom03">@Html.Label("ইউনিয়ন") <span class="required"></span></label>
+                                    @Html.DropDownList("UnionId", null, "Select...", new { @class = "selectize validationCustom03" })
+                                    <div class="invalid-feedback">
+                                        ইউনিয়ন দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 mb-3">
+                                    <label for="validationCustom03">@Html.Label("শুরুর তারিখ") <span class="required"></span></label>
+                                    @if (Model != null)
+                                    {
+                                        @Html.TextBoxFor(model => model.FromDate, Model.FromDate.ToString(dateFormat), new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false" })
+                                    }
+                                    else
+                                    {
+
+                                        @Html.TextBoxFor(model => model.FromDate, "", new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false" })
+                                    }
+                                    <div class="invalid-feedback">
+                                        শুরুর তারিখ দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="validationCustom03">@Html.Label("শেষের তারিখ") <span class="required"></span></label>
+                                    @if (Model != null)
+                                    {
+                                        @Html.TextBoxFor(model => model.ToDate, Model.ToDate.ToString(dateFormat), new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false" })
+                                    }
+                                    else
+                                    {
+
+                                        @Html.TextBoxFor(model => model.ToDate, "", new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false" })
+                                    }
+                                    <div class="invalid-feedback">
+                                        শেষের তারিখ দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    @Html.LabelFor(model => model.Message, new { @class = "required" })
+                                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control bangla", @placeholder = "নোটিস...", @maxLength = "2050", @required = "required", @rows="5" })
+                                    <div class="invalid-feedback">
+                                        নোটিস দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">সংরক্ষণ করুন</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+        });
+    </script>
+}

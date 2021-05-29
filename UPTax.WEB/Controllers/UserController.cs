@@ -416,5 +416,19 @@ namespace UPTax.Controllers
         }
         #endregion
 
+        #region MyProfile Info
+        [HttpGet]
+        [RapidAuthorization]
+        public ActionResult MyProfile()
+        {
+            if (RapidSession.RoleName.Equals("Super Admin"))
+            {
+                VMMyProfile profileAdmin = _userService.GetMyProfileDataAdmin(RapidSession.UserId, RapidSession.UnionId);
+            }
+            VMMyProfile profile = _userService.GetMyProfileData(RapidSession.UnionId);
+            return View(profile);
+        }
+        #endregion
+
     }
 }

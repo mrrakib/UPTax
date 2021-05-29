@@ -43,6 +43,7 @@ namespace UPTax.Data
         public DbSet<TaxInstallment> TaxInstallments { get; set; }
         public DbSet<MessageInfo> MessageInfo { get; set; }
         public DbSet<MessageReply> MessageReply { get; set; }
+        public DbSet<AdminNotice> AdminNotices { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -1,0 +1,107 @@
+﻿@model UPTax.Model.ViewModels.VMMyProfile
+
+@{
+    ViewBag.Title = "ইউজার প্রোফাইল";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .form-control {
+        border: 1px solid transparent;
+        font-weight: bold;
+    }
+</style>
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">ইউজার</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active">ইউজার প্রোফাইল</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right ml-2">
+                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">তালিকা দেখুন</a>
+                        </div>
+                        <h4 class="header-title">ইউজার প্রোফাইল ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        {
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <img class="thumbnail" width="400" height="400" src="@Model.ImagePath" alt="ছবি পাওয়া যায়নি" />
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>ইউজারের তথ্য</h5>
+                                    <hr />
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label"> নাম </label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" value="@Model.FullName" disabled />
+                                        </div>
+
+                                        <label class="col-md-2 col-form-label"> মোবাইল </label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" value="@Model.PhoneNumber" disabled />
+                                        </div>
+
+                                        <label class="col-md-2 col-form-label"> ইমেইল </label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" value="@Model.Email" disabled />
+                                        </div>
+
+                                    </div>
+
+                                    <h5>সংযুক্ত ইউনিয়নের তথ্য</h5>
+                                    <hr />
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label">ইউনিয়ন </label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" value="@Model.UnionName" disabled />
+                                        </div>
+
+                                        <label class="col-md-2 col-form-label"> মোবাইল </label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" value="@Model.UpPhone" disabled />
+                                        </div>
+
+                                        <label class="col-md-2 col-form-label"> ইমেইল </label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" value="@Model.UpMail" disabled />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+
+
+}

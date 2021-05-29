@@ -17,7 +17,7 @@ namespace UPTax.Controllers
         private Message _message = new Message();
 
         private readonly IUnionParishadService _unionParishadService;
-        private readonly string subPath = "~/assets/UserImages";
+        private readonly string subPath = "/assets/UserImages";
         private readonly string uploadFileName = "up_";
         #endregion
 
