@@ -19,8 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44325</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -12812,6 +12811,10 @@
     <ProjectReference Include="..\UPTax.Service\UPTax.Service.csproj">
       <Project>{b956d07c-87c0-46fb-90a1-9e383837d64d}</Project>
       <Name>UPTax.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpTax.Utilities\UpTax.Utilities.csproj">
+      <Project>{66bc36ac-34f1-4e32-8112-e7f1f3c27142}</Project>
+      <Name>UpTax.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

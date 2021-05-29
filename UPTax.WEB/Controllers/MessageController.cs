@@ -123,7 +123,7 @@ namespace UPTax.Controllers
 
         public ActionResult GetAdminOrUser(int unionId = 0)
         {
-            var model = _unionParishadService.GetAdminOrUserByUnionId(unionId);
+            var model = _unionParishadService.GetAdminOrUserByUnionId(unionId, _roleName);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
         #region Update

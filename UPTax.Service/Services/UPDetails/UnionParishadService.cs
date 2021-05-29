@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UpTax.Utilities.Enum;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository.Autofac;
 using UPTax.Data.Repository.UPDetails;
@@ -23,7 +24,7 @@ namespace UPTax.Service.Services.UPDetails
         IPagedList GetPaged(string name, int pageNo, int pageSize);
         bool IsExistingItem(UnionParishad model);
         int CountUnion();
-        List<IdNameDropdown> GetAdminOrUserByUnionId(int unionId);
+        List<IdNameDropdown> GetAdminOrUserByUnionId(int unionId, string roleName);
     }
     public class UnionParishadService : IUnionParishadService
     {
@@ -109,7 +110,6 @@ namespace UPTax.Service.Services.UPDetails
                 var errorMessage = ex.Message;
                 return new StaticPagedList<UnionParishad>(new List<UnionParishad> { }, pageNo, pageSize, 0);
             }
-
         }
 
         public List<IdNameDropdown> GetAllForDropdown()
@@ -137,10 +137,23 @@ namespace UPTax.Service.Services.UPDetails
             return union != null ? union.Count : 0;
         }
 
-        public List<IdNameDropdown> GetAdminOrUserByUnionId(int unionId)
+        public List<IdNameDropdown> GetAdminOrUserByUnionId(int unionId, string roleName)
         {
-            var users = _userRepository.GetMany(a => a.UnionId == unionId).Select(a => new IdNameDropdown() { IdStr = a.Id, Name = a.FullName });
-            return users.ToList();
+            if (roleName == RoleEnum.Admin.ToString())
+            {
+                roleName = "Super Admin";
+            }
+            else
+            {
+                roleName = "Admin";
+            }
+            string query = string.Format(@"SELECT u.Id IdStr, u.FullName [Name] FROM Users u
+                                              INNER JOIN UserRoles ur ON u.Id =ur.UserId
+                                              INNER JOIN Roles r ON r.Id=ur.RoleId
+                                              WHERE u.UnionId={0} AND r.[Name]='{1}' ORDER BY u.FullName ASC", unionId, roleName);
+
+            var data = _unionParishadRepository.SQLQueryList<IdNameDropdown>(query);
+            return data.ToList();
         }
     }
 }

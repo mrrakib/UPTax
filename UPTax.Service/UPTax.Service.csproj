@@ -117,6 +117,10 @@
       <Project>{97549144-7914-46ea-acda-c0ab104d0040}</Project>
       <Name>UPTax.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UpTax.Utilities\UpTax.Utilities.csproj">
+      <Project>{66BC36AC-34F1-4E32-8112-E7F1F3C27142}</Project>
+      <Name>UpTax.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
