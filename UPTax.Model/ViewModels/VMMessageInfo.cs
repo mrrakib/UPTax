@@ -11,6 +11,7 @@ namespace UPTax.Model.ViewModels
         public string ReplyMessage { get; set; }
         public string ToAdminUserName { get; set; }
         public string ToSupperAdminUserName { get; set; }
+        public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public List<MessageReply> MessageReply { get; set; }
     }

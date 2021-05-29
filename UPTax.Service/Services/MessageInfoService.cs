@@ -20,6 +20,7 @@ namespace UPTax.Service.Services
         MessageInfo GetDetails(int id);
         bool IsExistingItem(string searchItem, int? id);
         bool Save();
+        List<IdNameDropdown> GetSuperAdminDropDownList();
     }
 
     public class MessageInfoService : IMessageInfoService
@@ -74,7 +75,7 @@ namespace UPTax.Service.Services
                 {
                     searchPrm += string.Format(@" WHERE m.IsDeleted=0");
                 }
-                string query = string.Format(@"SELECT m.Id, m.[Message], ISNULL(au.FullName,'All Admin') ToAdminUserName,sau.FullName ToSupperAdminUserName, m.CreatedDate  FROM MessageInfo m
+                string query = string.Format(@"SELECT m.Id, m.[Message], ISNULL(au.FullName,'All Admin') ToAdminUserName,sau.FullName ToSupperAdminUserName, m.CreatedDate, m.CreatedBy FROM MessageInfo m
                                                JOIN Users sau ON m.ToSupperAdminUserId=sau.Id
                                                LEFT JOIN Users au ON m.ToAdminUserId=au.Id
                                                {0} ORDER BY m.Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
@@ -107,8 +108,8 @@ namespace UPTax.Service.Services
                 {
                     searchPrm += string.Format(@" WHERE m.IsDeleted=0 AND (au.Id='{0}' OR au.Id IS NULL)", adminUserId);
                 }
-                string query = string.Format(@"SELECT m.Id, m.[Message], ISNULL(au.FullName,'All Admin') ToAdminUserName,sau.FullName ToSupperAdminUserName, m.CreatedDate  FROM MessageInfo m
-                                               JOIN Users sau ON m.ToSupperAdminUserId=sau.Id
+                string query = string.Format(@"SELECT m.Id, m.[Message], ISNULL(au.FullName,'All Admin') ToAdminUserName,ISNULL(sau.FullName,'All Super Admin') ToSupperAdminUserName, m.CreatedDate, m.CreatedBy FROM MessageInfo m
+                                               LEFT JOIN Users sau ON m.ToSupperAdminUserId=sau.Id
                                                LEFT JOIN Users au ON m.ToAdminUserId=au.Id
                                                {0} ORDER BY m.Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
@@ -150,6 +151,18 @@ namespace UPTax.Service.Services
                 var errorMessage = ex.Message;
                 return false;
             }
+        }
+
+        public List<IdNameDropdown> GetSuperAdminDropDownList()
+        {
+            string roleName = "Super Admin";
+            string query = string.Format(@"SELECT u.Id IdStr, u.FullName [Name] FROM Users u
+                                              INNER JOIN UserRoles ur ON u.Id =ur.UserId
+                                              INNER JOIN Roles r ON r.Id=ur.RoleId
+                                              WHERE r.[Name]='{0}' ORDER BY u.FullName ASC", roleName);
+
+            var data = _messageInfoRepository.SQLQueryList<IdNameDropdown>(query);
+            return data.ToList();
         }
     }
 }

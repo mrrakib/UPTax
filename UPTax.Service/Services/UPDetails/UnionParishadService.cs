@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UpTax.Utilities.Enum;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository.Autofac;
 using UPTax.Data.Repository.UPDetails;
@@ -24,7 +23,7 @@ namespace UPTax.Service.Services.UPDetails
         IPagedList GetPaged(string name, int pageNo, int pageSize);
         bool IsExistingItem(UnionParishad model);
         int CountUnion();
-        List<IdNameDropdown> GetAdminOrUserByUnionId(int unionId, string roleName);
+        List<IdNameDropdown> GetAdminOrUserByUnionId(int unionId);
     }
     public class UnionParishadService : IUnionParishadService
     {
@@ -137,16 +136,9 @@ namespace UPTax.Service.Services.UPDetails
             return union != null ? union.Count : 0;
         }
 
-        public List<IdNameDropdown> GetAdminOrUserByUnionId(int unionId, string roleName)
+        public List<IdNameDropdown> GetAdminOrUserByUnionId(int unionId)
         {
-            if (roleName == RoleEnum.Admin.ToString())
-            {
-                roleName = "Super Admin";
-            }
-            else
-            {
-                roleName = "Admin";
-            }
+            string roleName = "Admin";
             string query = string.Format(@"SELECT u.Id IdStr, u.FullName [Name] FROM Users u
                                               INNER JOIN UserRoles ur ON u.Id =ur.UserId
                                               INNER JOIN Roles r ON r.Id=ur.RoleId

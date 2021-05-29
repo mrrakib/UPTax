@@ -36,24 +36,35 @@
                         <p class="card-title-desc"></p>
                         @using (Html.BeginForm("Create", "Message", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
                         {
-                            @Html.AntiForgeryToken()
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="validationCustom03">@Html.Label("ইউনিয়ন") <span class="required"></span></label>
-                                    @Html.DropDownList("UnionId", null, "Select...", new { @class = "selectize validationCustom03" })
-                                    <div class="invalid-feedback">
-                                        ইউনিয়ন দেয়া বাধ্যতামূলক!
+                            @Html.AntiForgeryToken()<div class="row">
+                                @if (!ViewBag.IsUser)
+                                {
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationCustom03">@Html.Label("ইউনিয়ন") <span class="required"></span></label>
+                                        @Html.DropDownList("UnionId", null, "Select...", new { @class = "selectize validationCustom03" })
+                                        <div class="invalid-feedback">
+                                            ইউনিয়ন দেয়া বাধ্যতামূলক!
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="ToAdminUserId">@Html.Label("Admin/User Name")</label>
-                                    <select name="ToAdminUserId" id="ToAdminUserId" class="form-control validationCustom03">
-                                        <option value="">Select All Users...</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Admin/User Name দেয়া বাধ্যতামূলক!
+
+
+                                    <div class="col-md-6 mb-3">
+                                        <label for="ToAdminUserId">@Html.Label("Admin/User Name")</label>
+                                        <select name="ToAdminUserId" id="ToAdminUserId" class="form-control validationCustom03">
+                                            <option value="">Select All Users...</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Admin/User Name দেয়া বাধ্যতামূলক!
+                                        </div>
                                     </div>
-                                </div>
+                                }
+                                @if (ViewBag.IsUser)
+                                {
+                                    <div class="col-md-12 mb-3">
+                                        <label for="ToAdminUserId">@Html.Label("Super Admin Name")</label>
+                                        @Html.DropDownList("ToSupperAdminUserId", null, "Select...", new { @class = "selectize validationCustom03" })
+                                    </div>
+                                }
                                 <div class="col-md-12 mb-3">
                                     @Html.LabelFor(model => model.Message, new { @class = "required" })
                                     @Html.TextAreaFor(m => m.Message, new { @class = "form-control", @placeholder = "মেসেজ...", @maxLength = "2050", @required = "required" })

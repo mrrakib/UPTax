@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using UpTax.Utilities.Enum;
 using UPTax.Helper;
 using UPTax.Model.Models;
 using UPTax.Model.ViewModels;
@@ -38,8 +39,8 @@ namespace UPTax.Controllers
             ViewBag.dataSize = dataSize;
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
-            ViewBag.IsSupperAdmin = _roleName == "Super Admin" ? true : false;
-            if (ViewBag.IsSupperAdmin)
+            ViewBag.UserId = _userId;
+            if (_roleName == "Super Admin")
             {
                 var data = _messageInfoService.GetPagedList(name, page, dataSize);
                 return View(data);
@@ -55,6 +56,11 @@ namespace UPTax.Controllers
         {
             var union = _unionParishadService.GetAllForDropdown();
             ViewBag.UnionId = new SelectList(union, "Id", "Name");
+            ViewBag.IsUser = _roleName == RoleEnum.Admin.ToString() ? true : false;
+            if (ViewBag.IsUser)
+            {
+                ViewBag.ToSupperAdminUserId = new SelectList(_messageInfoService.GetSuperAdminDropDownList(), "IdStr", "Name");
+            }
             return View(new MessageInfo());
         }
 
@@ -66,7 +72,14 @@ namespace UPTax.Controllers
             if (ModelState.IsValid)
             {
                 model.CreatedBy = _userId;
-                model.ToSupperAdminUserId = _userId;
+                if (_roleName == RoleEnum.Admin.ToString())
+                {
+                    model.ToAdminUserId = _userId;
+                }
+                else
+                {
+                    model.ToSupperAdminUserId = _userId;
+                }
                 var created = _messageInfoService.Add(model);
                 if (created)
                 {
@@ -79,7 +92,12 @@ namespace UPTax.Controllers
                 }
             }
             var union = _unionParishadService.GetAllForDropdown();
-            ViewBag.UnionId = new SelectList(union, "Id", "Name");
+            ViewBag.UnionId = new SelectList(union, "Id", "Name", model.UnionId);
+            ViewBag.IsUser = _roleName == RoleEnum.Admin.ToString() ? true : false;
+            if (ViewBag.IsUser)
+            {
+                ViewBag.ToSupperAdminUserId = new SelectList(_messageInfoService.GetSuperAdminDropDownList(), "IdStr", "Name", model.ToSupperAdminUserId);
+            }
             return View(model);
         }
 
@@ -123,7 +141,7 @@ namespace UPTax.Controllers
 
         public ActionResult GetAdminOrUser(int unionId = 0)
         {
-            var model = _unionParishadService.GetAdminOrUserByUnionId(unionId, _roleName);
+            var model = _unionParishadService.GetAdminOrUserByUnionId(unionId);
             return Json(model, JsonRequestBehavior.AllowGet);
         }
         #region Update
@@ -135,6 +153,12 @@ namespace UPTax.Controllers
             {
                 return PartialView("_Error");
             }
+            ViewBag.IsUser = _roleName == "Admin" ? true : false;
+            if (ViewBag.IsUser)
+            {
+                ViewBag.ToSupperAdminUserId = new SelectList(_messageInfoService.GetSuperAdminDropDownList(), "IdStr", "Name", model.ToSupperAdminUserId);
+            }
+
             var union = _unionParishadService.GetAllForDropdown();
             ViewBag.UnionId = new SelectList(union, "Id", "Name", model.UnionId);
             return View(model);
@@ -152,6 +176,12 @@ namespace UPTax.Controllers
                 _message.update(this);
                 return RedirectToAction("Index", "Message");
             }
+            ViewBag.IsUser = _roleName == "Admin" ? true : false;
+            if (ViewBag.IsUser)
+            {
+                ViewBag.ToSupperAdminUserId = new SelectList(_messageInfoService.GetSuperAdminDropDownList(), "IdStr", "Name", model.ToSupperAdminUserId);
+            }
+
             var union = _unionParishadService.GetAllForDropdown();
             ViewBag.UnionId = new SelectList(union, "Id", "Name", model.UnionId);
             return View(model);
