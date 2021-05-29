@@ -51,6 +51,7 @@ namespace UPTax.Controllers
                 return View(data);
             }
         }
+
         // GET: Message/Create
         public ActionResult Create()
         {
