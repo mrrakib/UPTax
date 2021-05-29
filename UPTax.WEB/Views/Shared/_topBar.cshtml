@@ -1,4 +1,5 @@
-﻿<header id="page-topbar">
+﻿@using UPTax.Helper;
+<header id="page-topbar">
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
@@ -27,6 +28,14 @@
             </button>
 
         </div>
+        @if (!string.IsNullOrEmpty(RapidSession.Notice))
+        {
+            <div style="width: 60%; color: red;">
+                    <marquee vspace="2%" width="100%" direction="left" height="100%">
+                        @RapidSession.Notice
+                    </marquee>
+            </div>
+        }
 
         <div class="d-flex">
 

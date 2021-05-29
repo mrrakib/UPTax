@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using UPTax.Model.Models.UnionDetails;
 
@@ -12,5 +13,7 @@ namespace UPTax.Model.Models
         public int UnionId { get; set; }
         [ForeignKey("UnionId")]
         public virtual UnionParishad Union { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace UPTax.Service.Services
         AdminNotice GetDetails(int id);
         bool IsExistingItem(int? id);
         bool Save();
+        string GetAllNoticeByToday(int unionId);
     }
 
     public class AdminNoticeService : IAdminNoticeService
@@ -59,6 +60,25 @@ namespace UPTax.Service.Services
         {
             return _adminNoticeRepository.Get(u => u.Id == id && u.IsDeleted == false);
         }
+        public string GetAllNoticeByToday(int unionId)
+        {
+            DateTime today = DateTime.Now;
+            var date = today.Date; 
+            string query = string.Format(@"SELECT an.Message AdminMessage FROM AdminNotice an WHERE an.UnionId = {0} AND an.IsDeleted = 0
+AND '{1}' BETWEEN an.FromDate AND an.ToDate", unionId, date);
+            List<VMNotice> notices = new List<VMNotice>();
+            notices = _adminNoticeRepository.SQLQueryList<VMNotice>(query).ToList();
+            string noticeMessage = string.Empty;
+            if (notices.Count > 0)
+            {
+                foreach (var item in notices)
+                {
+                    noticeMessage += "   *** " + item.AdminMessage + " ***   ";
+                }
+            }
+            return noticeMessage;
+        }
+
 
         public IPagedList GetPagedList(string searchItem, int pageNo, int pageSize)
         {
@@ -67,32 +87,31 @@ namespace UPTax.Service.Services
                 string searchPrm = string.Empty;
                 if (!string.IsNullOrWhiteSpace(searchItem))
                 {
-                    searchPrm += string.Format(@" WHERE m.IsDeleted=0 AND au.FullName LIKE N'%{0}%'", searchItem?.Trim());
+                    searchPrm += string.Format(@" WHERE an.IsDeleted=0 AND up.Name LIKE N'%{0}%'", searchItem?.Trim());
                 }
                 else
                 {
-                    searchPrm += string.Format(@" WHERE m.IsDeleted=0");
+                    searchPrm += string.Format(@" WHERE an.IsDeleted=0");
                 }
-                string query = string.Format(@"SELECT m.Id, m.[Message], ISNULL(au.FullName,'All Admin') ToAdminUserName,sau.FullName ToSupperAdminUserName, m.CreatedDate  FROM MessageInfo m
-                                               JOIN Users sau ON m.ToSupperAdminUserId=sau.Id
-                                               LEFT JOIN Users au ON m.ToAdminUserId=au.Id
-                                               {0} ORDER BY m.Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
+                string query = string.Format(@"SELECT an.Id, up.Name, an.FromDate, an.ToDate FROM AdminNotice an
+LEFT JOIN UnionParishad up ON an.UnionId = up.Id
+                                               {0} ORDER BY an.Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
-                string countQuery = string.Format(@"SELECT COUNT(m.Id)  FROM MessageInfo m
-                                                    JOIN Users sau ON m.ToSupperAdminUserId=sau.Id 
-                                                    LEFT JOIN Users au ON m.ToAdminUserId=au.Id
+                string countQuery = string.Format(@"SELECT COUNT(an.Id)  FROM AdminNotice an
+                                                    LEFT JOIN UnionParishad up ON an.UnionId = up.Id
                                                     {0}", searchPrm);
 
                 int rowCount = _adminNoticeRepository.SQLQuery<int>(countQuery);
-                var data = _adminNoticeRepository.SQLQueryList<VMMessageInfo>(query).OrderByDescending(a => a.CreatedDate).ToList();
-                return new StaticPagedList<VMMessageInfo>(data, pageNo, pageSize, rowCount);
+                var data = _adminNoticeRepository.SQLQueryList<VMAdminNotice>(query).ToList();
+                return new StaticPagedList<VMAdminNotice>(data, pageNo, pageSize, rowCount);
             }
             catch (Exception ex)
             {
                 var errorMessage = ex.Message;
-                return new StaticPagedList<VMMessageInfo>(new List<VMMessageInfo> { }, pageNo, pageSize, 0);
+                return new StaticPagedList<VMAdminNotice>(new List<VMAdminNotice> { }, pageNo, pageSize, 0);
             }
         }
+
 
         public bool IsExistingItem(int? id)
         {

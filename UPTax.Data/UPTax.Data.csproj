@@ -244,6 +244,10 @@
     <Compile Include="Migrations\202105280600390_AdminNotice_tbl.Designer.cs">
       <DependentUpon>202105280600390_AdminNotice_tbl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105290505250_alter_AdminNotice_Add_date.cs" />
+    <Compile Include="Migrations\202105290505250_alter_AdminNotice_Add_date.Designer.cs">
+      <DependentUpon>202105290505250_alter_AdminNotice_Add_date.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
@@ -397,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105280600390_AdminNotice_tbl.resx">
       <DependentUpon>202105280600390_AdminNotice_tbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105290505250_alter_AdminNotice_Add_date.resx">
+      <DependentUpon>202105290505250_alter_AdminNotice_Add_date.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

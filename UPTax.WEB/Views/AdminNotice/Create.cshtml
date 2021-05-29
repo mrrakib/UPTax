@@ -1,8 +1,9 @@
-﻿@model UPTax.Model.Models.MessageInfo
+﻿@model UPTax.Model.Models.AdminNotice
 @{
-    ViewBag.Title = "সংরক্ষণ | মেসেজ বক্স";
+    ViewBag.Title = "সংরক্ষণ | নোটিস";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    var title = "মেসেজ বক্স";
+    var title = "এডমিন নোটিস";
+    string dateFormat = UPTax.Helper.RapidSession.DateTimeFormat;
 }
 <style>
     div.inline .form-control {
@@ -34,7 +35,7 @@
                         </div>
                         <h4 class="header-title">@title সংরক্ষণ ফরম</h4>
                         <p class="card-title-desc"></p>
-                        @using (Html.BeginForm("Create", "Message", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("Create", "AdminNotice", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             <div class="row">
@@ -45,20 +46,43 @@
                                         ইউনিয়ন দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="ToAdminUserId">@Html.Label("Admin/User Name")</label>
-                                    <select name="ToAdminUserId" id="ToAdminUserId" class="form-control validationCustom03">
-                                        <option value="">Select All Users...</option>
-                                    </select>
+
+                                <div class="col-md-3 mb-3">
+                                    <label for="validationCustom03">@Html.Label("শুরুর তারিখ") <span class="required"></span></label>
+                                    @if (Model != null)
+                                    {
+                                        @Html.TextBoxFor(model => model.FromDate, Model.FromDate.ToString(dateFormat), new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false" })
+                                    }
+                                    else
+                                    {
+
+                                        @Html.TextBoxFor(model => model.FromDate, "", new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false" })
+                                    }
                                     <div class="invalid-feedback">
-                                        Admin/User Name দেয়া বাধ্যতামূলক!
+                                        শুরুর তারিখ দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="validationCustom03">@Html.Label("শেষের তারিখ") <span class="required"></span></label>
+                                    @if (Model != null)
+                                    {
+                                        @Html.TextBoxFor(model => model.ToDate, Model.ToDate.ToString(dateFormat), new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false" })
+                                    }
+                                    else
+                                    {
+
+                                        @Html.TextBoxFor(model => model.ToDate, "", new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false" })
+                                    }
+                                    <div class="invalid-feedback">
+                                        শেষের তারিখ দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12 mb-3">
                                     @Html.LabelFor(model => model.Message, new { @class = "required" })
-                                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control", @placeholder = "মেসেজ...", @maxLength = "2050", @required = "required" })
+                                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control bangla", @placeholder = "নোটিস...", @maxLength = "2050", @required = "required", @rows="5" })
                                     <div class="invalid-feedback">
-                                        মেসেজ দেয়া বাধ্যতামূলক!
+                                        নোটিস দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                             </div>
@@ -76,33 +100,7 @@
 @section Scripts {
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#UnionId").change(function () {
-                GetAdminUserDropdown();
-            });
-
-            function GetAdminUserDropdown() {
-                var unionId = $("#UnionId").val();
-                $("#ToAdminUserId").empty();
-                $('#ToAdminUserId').append(new Option('Select All Users...', ''));
-                debugger;
-                  $.ajax({
-                        url: '@Url.Action("GetAdminOrUser", "Message")',
-                        dataType: "json",
-                        type: "GET",
-                        cache: false,
-                      data: { unionId},
-                      success: function (data) {
-
-                            debugger;
-                            data.forEach(function (item) {
-                                $('#ToAdminUserId').append(new Option(item.Name, item.IdStr));
-                            });
-                        },
-                        error: function (xhr) {
-                            alert(xhr.responseText);
-                        }
-                 });
-            }
+            
         });
     </script>
 }

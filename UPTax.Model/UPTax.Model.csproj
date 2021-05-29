@@ -121,6 +121,7 @@
     <Compile Include="ViewModels\SPDailyPostingReport.cs" />
     <Compile Include="ViewModels\SPTopSheetReport.cs" />
     <Compile Include="ViewModels\VHouseOwner.cs" />
+    <Compile Include="ViewModels\VMAdminNotice.cs" />
     <Compile Include="ViewModels\VMAllTaxGenerator.cs" />
     <Compile Include="ViewModels\VMCommonParams.cs" />
     <Compile Include="ViewModels\VMDailyPostingReport.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="ViewModels\VMMenuPermission.cs" />
     <Compile Include="ViewModels\VMMessageInfo.cs" />
     <Compile Include="ViewModels\VMMyProfile.cs" />
+    <Compile Include="ViewModels\VMNotice.cs" />
     <Compile Include="ViewModels\VMRegister.cs" />
     <Compile Include="ViewModels\VMReportViewerCommon.cs" />
     <Compile Include="ViewModels\VMRPTTaxCollectionSingle.cs" />
