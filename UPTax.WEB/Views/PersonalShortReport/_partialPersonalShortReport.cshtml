@@ -1,0 +1,60 @@
+﻿@model UPTax.Model.ViewModels.VMPersonalShortReport
+
+@{
+    Layout = null;
+    var due = Model.TotalYearlyTax - Model.TotalYearlyPaidTax;
+}
+
+
+<div class="col-md-12 mt-6">
+    <table class="table table-bordered">
+        @if (!string.IsNullOrEmpty(Model.HoldingNo))
+        {
+            <tr>
+                <th>হোল্ডিং নং</th>
+                <td>@Html.DisplayFor(m => m.HoldingNo)</td>
+            </tr>
+            <tr>
+                <th>সর্বমোট বাৎসরিক কর</th>
+                <td>
+                    @Html.DisplayFor(m => m.TotalYearlyTax)
+                </td>
+
+            </tr>
+
+            <tr>
+                <th>সর্বমোট প্রদান</th>
+                <td>@Html.DisplayFor(m => m.TotalYearlyPaidTax)</td>
+            </tr>
+
+            <tr>
+                <th>পাওনা</th>
+                @if (Model.TotalYearlyPaidTax > 0)
+                {
+                    <td>0.00</td>
+                }
+                else
+                {
+                    <td>@due</td>
+                }
+
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <th>কোন তথ্য পাওয়া যায়নি!</th>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+
+</script>
