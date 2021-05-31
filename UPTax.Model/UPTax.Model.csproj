@@ -133,6 +133,9 @@
     <Compile Include="ViewModels\VMMyProfile.cs" />
     <Compile Include="ViewModels\VMNotice.cs" />
     <Compile Include="ViewModels\VMPersonalShortReport.cs" />
+    <Compile Include="ViewModels\VMPersonalStatement.cs" />
+    <Compile Include="ViewModels\VMPersonalTaxCollectionInfo.cs" />
+    <Compile Include="ViewModels\VMPersonalTaxDetails.cs" />
     <Compile Include="ViewModels\VMRegister.cs" />
     <Compile Include="ViewModels\VMReportViewerCommon.cs" />
     <Compile Include="ViewModels\VMRPTTaxCollectionSingle.cs" />

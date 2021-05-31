@@ -27,6 +27,7 @@ namespace UPTax.Service.Services
         List<VMWordOrVillWiseTaxReport> GetRPTTaxInfoByWord(int villageId, int wardId, int finYearId, int unionId);
         List<VMWordOrVillWiseTaxReport> GetRPTTaxInfoByVillage(int villageId, int finYearId, int unionId);
         VMPersonalShortReport GetPersonalShortReport(int unionId, string holdingNo);
+        VMPersonalStatement GetPersonalStatementReport(int unionId, string holdinNo);
     }
     public class TaxInstallmentService : ITaxInstallmentService
     {
@@ -284,6 +285,55 @@ namespace UPTax.Service.Services
                 report.TotalYearlyPaidTax = installment != null ? installment.OutstandingAmount : 0;
             }
             return report;
+        }
+
+        public VMPersonalStatement GetPersonalStatementReport(int unionId, string holdingNo)
+        {
+            VMPersonalStatement statement = new VMPersonalStatement();
+            HouseOwner houseOwnerInfo = _houseOwnerRepository.Get(h => h.IsDeleted == false && h.HoldingNo.Equals(holdingNo) && h.WardInfo.UnionId == unionId);
+            if (houseOwnerInfo != null)
+            {
+                statement.HoldingNo = houseOwnerInfo.HoldingNo;
+                statement.FullName = houseOwnerInfo.OwnerNameInBangla;
+                statement.ParentName = houseOwnerInfo.FatherHusbandName;
+                statement.WordNo = houseOwnerInfo.WardInfo.WardNo;
+                statement.Village = houseOwnerInfo.VillageInfo.VillageName;
+                statement.MobileNo = houseOwnerInfo.MobileNo;
+            }
+
+            DateTime date = DateTime.Now;
+            var currentFinYear = _financialYearRepository.Get(u => u.StartDate.CompareTo(date) < 0 && u.EndDate.CompareTo(date) > 0);
+            int finYearId = currentFinYear != null ? currentFinYear.Id : 0;
+
+            TaxGenerateInfo taxInfo = _taxGenerateInfoRepository.Get(t => t.IsDeleted == false && t.FinancialYearId == finYearId && t.UnionId == unionId && t.HoldingNo.Equals(holdingNo));
+            if (taxInfo != null && houseOwnerInfo != null)
+            {
+                VMPersonalTaxDetails taxDetails = new VMPersonalTaxDetails
+                {
+                    FinYearName = taxInfo.FinancialYear.YearName,
+                    TotalBuildingHouse = houseOwnerInfo.TotalBuildingHouse,
+                    TotalRawHouse = houseOwnerInfo.TotalRawHouse,
+                    TotalSemiBuildingHouse = houseOwnerInfo.TotalSemiBuildingHouse,
+                    DateOfTaxCreation = houseOwnerInfo.CreatedDate,
+                    TotalTax = (decimal)taxInfo.TotalTax
+                };
+                statement.PersonalTaxDetails = taxDetails;
+            }
+
+            TaxInstallment installment = _taxInstallmentRepository.Get(t => t.IsDeleted == false && t.UnionId == unionId && t.HoldingNo.Equals(holdingNo));
+
+            if (installment != null)
+            {
+                VMPersonalTaxCollectionInfo collectionInfo = new VMPersonalTaxCollectionInfo
+                {
+                    CollectionDate = installment.TaxPaymentDate,
+                    CollectedTaxAmount = installment.OutstandingAmount,
+                    CollectedDueAmount = 0
+                };
+                statement.PersonalTaxCollectionInfo = collectionInfo;
+            }
+            return statement;
+
         }
     }
 }

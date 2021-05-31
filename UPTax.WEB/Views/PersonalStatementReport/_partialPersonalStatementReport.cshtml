@@ -1,0 +1,139 @@
+﻿@model UPTax.Model.ViewModels.VMPersonalStatement
+
+@{
+    Layout = null;
+    string dateFormat = UPTax.Helper.RapidSession.DateTimeFormat;
+}
+
+
+@if (!string.IsNullOrEmpty(Model.HoldingNo))
+{
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <table class="table table-bordered">
+                <tr>
+                    <th>হোল্ডিং নাম্বার</th>
+                    <td>@Html.DisplayFor(m => m.HoldingNo)</td>
+                </tr>
+                <tr>
+                    <th>করদাতার নাম</th>
+                    <td>@Html.DisplayFor(m => m.FullName)</td>
+                </tr>
+                <tr>
+                    <th>
+                        পিতা/স্বামীর নাম
+                    </th>
+                    <td>@Html.DisplayFor(m => m.ParentName)</td>
+                </tr>
+                <tr>
+                    <th>
+                        ওয়ার্ড নাম্বার
+                    </th>
+                    <td>@Html.DisplayFor(m => m.WordNo)</td>
+                </tr>
+                <tr>
+                    <th>
+                        গ্রাম
+                    </th>
+                    <td>@Html.DisplayFor(m => m.Village)</td>
+                </tr>
+                <tr>
+                    <th>
+                        মোবাইল নাম্বার
+                    </th>
+                    <td>@Html.DisplayFor(m => m.MobileNo)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tr>
+                    <th colspan="6" class="text-center">ধার্য করের পরিমাণ</th>
+                </tr>
+                <tr class="bg-dark text-white text-center">
+                    <th>করের বছর</th>
+                    <th>
+                        অবকাঠামো ধরণ পাকা
+                    </th>
+                    <th>
+                        অবকাঠামো ধরণ আধা-পাকা
+                    </th>
+                    <th>
+                        অবকাঠামো ধরণ কাচা
+                    </th>
+                    <th>কর ধার্যের তারিখ</th>
+                    <th>করের পরিমান টাকায়</th>
+                </tr>
+                @if (Model.PersonalTaxDetails != null)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => m.PersonalTaxDetails.FinYearName)</td>
+                        <td>@Html.DisplayFor(m => m.PersonalTaxDetails.TotalBuildingHouse)</td>
+                        <td>@Html.DisplayFor(m => m.PersonalTaxDetails.TotalSemiBuildingHouse)</td>
+                        <td>@Html.DisplayFor(m => m.PersonalTaxDetails.TotalRawHouse)</td>
+                        <td>@Model.PersonalTaxDetails.DateOfTaxCreation.Value.ToString(dateFormat)</td>
+                        <td>@Html.DisplayFor(m => m.PersonalTaxDetails.TotalTax)</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center">কোন তথ্য পাওয়া যায়নি!</td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tr>
+                    <th colspan="6" class="text-center">ধার্য করের পরিমাণ</th>
+                </tr>
+                <tr class="bg-dark text-white text-center">
+                    <th>তারিখ</th>
+                    <th>
+                        প্রাপ্ত কিস্তির টাকা
+                    </th>
+                    <th>
+                        প্রাপ্ত বকেয়ার টাকা
+                    </th>
+                </tr>
+                @if (Model.PersonalTaxCollectionInfo != null)
+                {
+                    <tr>
+                        <td>@Model.PersonalTaxCollectionInfo.CollectionDate.Value.ToString(dateFormat)</td>
+                        <td>@Html.DisplayFor(m => m.PersonalTaxCollectionInfo.CollectedTaxAmount)</td>
+                        <td>@Html.DisplayFor(m => m.PersonalTaxCollectionInfo.CollectedDueAmount)</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center">কোন তথ্য পাওয়া যায়নি!</td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+}
+else
+{
+
+    <p class="mt-4 text-center col-md-12">কোন তথ্য পাওয়া যায়নি</p>
+}
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+
+</script>
