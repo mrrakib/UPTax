@@ -125,6 +125,7 @@
     <Compile Include="ViewModels\VMAllTaxGenerator.cs" />
     <Compile Include="ViewModels\VMCommonParams.cs" />
     <Compile Include="ViewModels\VMDailyPostingReport.cs" />
+    <Compile Include="ViewModels\VMDashboard.cs" />
     <Compile Include="ViewModels\VMember.cs" />
     <Compile Include="ViewModels\VMImage.cs" />
     <Compile Include="ViewModels\VMLogin.cs" />

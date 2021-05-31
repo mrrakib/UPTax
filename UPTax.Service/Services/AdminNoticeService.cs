@@ -20,6 +20,7 @@ namespace UPTax.Service.Services
         bool IsExistingItem(int? id);
         bool Save();
         string GetAllNoticeByToday(int unionId);
+        VMDashboard GetDashboardInfo();
     }
 
     public class AdminNoticeService : IAdminNoticeService
@@ -63,7 +64,7 @@ namespace UPTax.Service.Services
         public string GetAllNoticeByToday(int unionId)
         {
             DateTime today = DateTime.Now;
-            var date = today.Date; 
+            var date = today.Date;
             string query = string.Format(@"SELECT an.Message AdminMessage FROM AdminNotice an WHERE an.UnionId = {0} AND an.IsDeleted = 0
 AND '{1}' BETWEEN an.FromDate AND an.ToDate", unionId, date);
             List<VMNotice> notices = new List<VMNotice>();
@@ -121,6 +122,12 @@ LEFT JOIN UnionParishad up ON an.UnionId = up.Id
             else
                 count = _adminNoticeRepository.GetCount(a => a.IsDeleted == false && a.Id != id);
             return count > 0 ? true : false;
+        }
+        public VMDashboard GetDashboardInfo()
+        {
+            var query = @"EXEC GetDashboardInfo";
+            var data = _adminNoticeRepository.SQLQuery<VMDashboard>(query);
+            return data;
         }
 
         public bool Save()
