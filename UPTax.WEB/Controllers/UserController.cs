@@ -418,7 +418,7 @@ namespace UPTax.Controllers
 
         #region MyProfile Info
         [HttpGet]
-        [RapidAuthorization]
+        [RapidAuthorization(All = true)]
         public ActionResult MyProfile()
         {
             if (RapidSession.RoleName.Equals("Super Admin"))
