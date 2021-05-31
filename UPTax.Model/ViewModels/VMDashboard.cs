@@ -7,5 +7,6 @@
         public double TotalDue { get; set; }
         public int TotalBoys { get; set; }
         public int TotalGirls { get; set; }
+        public int TotalMember { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿@model UPTax.Model.ViewModels.VMDashboard
+
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -84,7 +85,7 @@
                         </div>
                     </div>
                 </div>
-            </div>           
+            </div>
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-body">
@@ -94,6 +95,24 @@
                                 <h4>
                                     <i class="fa fa-female" aria-hidden="true"></i>
                                     @Model.TotalGirls
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="">
+                            <a href="#" class="btn btn-primary btn-sm">View more <i class="mdi mdi-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="header-title mb-4">মোট সদস্য সংখ্যা</h5>
+                        <div class="media">
+                            <div class="media-body">
+                                <h4>
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    @Model.TotalMember
                                 </h4>
                             </div>
                         </div>
