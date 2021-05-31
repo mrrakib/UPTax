@@ -8,6 +8,8 @@ namespace UPTax.Controllers
     public class DashboardController : Controller
     {
         #region Global
+        private readonly int _unionId = RapidSession.UnionId;
+        private readonly int _financialYearId = RapidSession.FinancialYearId;
         private readonly IAdminNoticeService _adminNoticeService;
         #endregion
 
@@ -24,7 +26,7 @@ namespace UPTax.Controllers
         {
             RapidSession.Notice = _adminNoticeService.GetAllNoticeByToday(RapidSession.UnionId);
 
-            var dashboardInfo = _adminNoticeService.GetDashboardInfo();
+            var dashboardInfo = _adminNoticeService.GetDashboardInfo(_unionId, _financialYearId);
             return View(dashboardInfo);
         }
 

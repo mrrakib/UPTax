@@ -12,6 +12,7 @@ namespace UPTax.Helper
         private const string con = "Con";
         private const string unionId = "UnionId";
         private const string notice = "Notice";
+        private const string financialYearId = "FinancialYearId";
 
         private const string dateTimeFormat = "DateTimeFormat";
         public static string RoleId
@@ -131,7 +132,18 @@ namespace UPTax.Helper
                 HttpContext.Current.Session[unionId] = value;
             }
         }
+        public static int FinancialYearId
+        {
+            get
+            {
+                return (int)(HttpContext.Current.Session[financialYearId] ?? 1);
+            }
 
+            set
+            {
+                HttpContext.Current.Session[financialYearId] = value;
+            }
+        }
         public static void Clear()
         {
             HttpContext.Current.Session.Clear();

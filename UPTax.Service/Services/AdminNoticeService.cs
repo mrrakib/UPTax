@@ -20,7 +20,7 @@ namespace UPTax.Service.Services
         bool IsExistingItem(int? id);
         bool Save();
         string GetAllNoticeByToday(int unionId);
-        VMDashboard GetDashboardInfo();
+        VMDashboard GetDashboardInfo(int unionId = 0, int financialYearId = 0);
     }
 
     public class AdminNoticeService : IAdminNoticeService
@@ -123,9 +123,9 @@ LEFT JOIN UnionParishad up ON an.UnionId = up.Id
                 count = _adminNoticeRepository.GetCount(a => a.IsDeleted == false && a.Id != id);
             return count > 0 ? true : false;
         }
-        public VMDashboard GetDashboardInfo()
+        public VMDashboard GetDashboardInfo(int unionId = 0, int financialYearId = 0)
         {
-            var query = @"EXEC GetDashboardInfo";
+            var query = $"EXEC GetDashboardInfo {unionId}, {financialYearId}";
             var data = _adminNoticeRepository.SQLQuery<VMDashboard>(query);
             return data;
         }
