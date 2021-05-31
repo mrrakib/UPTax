@@ -89,6 +89,54 @@
           <DataField>GrandAmountStr</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="CurrentAmountStr">
+          <DataField>CurrentAmountStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CurrentDueAmountStr">
+          <DataField>CurrentDueAmountStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PrevDueAmountStr">
+          <DataField>PrevDueAmountStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PenaltyDueAmountStr">
+          <DataField>PenaltyDueAmountStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PenaltyAmountStr">
+          <DataField>PenaltyAmountStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CurrentTotalAmountStr">
+          <DataField>CurrentTotalAmountStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PenaltyTotalAmountStr">
+          <DataField>PenaltyTotalAmountStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GrandTotalAmountStr">
+          <DataField>GrandTotalAmountStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HoldingTotalStr">
+          <DataField>HoldingTotalStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PrevTotalStr">
+          <DataField>PrevTotalStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TotalPenaltyStr">
+          <DataField>TotalPenaltyStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PrevAmountStr">
+          <DataField>PrevAmountStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>UPDataSet</rd:DataSetName>
@@ -1299,14 +1347,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CurrentDueAmount">
+                        <Textbox Name="CurrentDueAmountStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CurrentDueAmount.Value</Value>
+                                  <Value>=Fields!CurrentDueAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1319,7 +1367,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>CurrentDueAmount</rd:DefaultName>
+                          <rd:DefaultName>CurrentDueAmountStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1333,14 +1381,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CurrentAmount">
+                        <Textbox Name="CurrentAmountStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CurrentAmount.Value</Value>
+                                  <Value>=Fields!CurrentAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1353,7 +1401,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>CurrentAmount</rd:DefaultName>
+                          <rd:DefaultName>CurrentAmountStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1367,14 +1415,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CurrentTotalAmount">
+                        <Textbox Name="HoldingTotalStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!CurrentAmount.Value + Fields!CurrentDueAmount.Value)</Value>
+                                  <Value>=Fields!HoldingTotalStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1388,7 +1436,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>CurrentTotalAmount</rd:DefaultName>
+                          <rd:DefaultName>HoldingTotalStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1439,14 +1487,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PrevDueAmount">
+                        <Textbox Name="PrevDueAmountStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PrevDueAmount.Value</Value>
+                                  <Value>=Fields!PrevDueAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1459,7 +1507,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PrevDueAmount</rd:DefaultName>
+                          <rd:DefaultName>PrevDueAmountStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1473,14 +1521,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PrevAmount">
+                        <Textbox Name="PrevAmountStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PrevAmount.Value</Value>
+                                  <Value>=Fields!PrevAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1493,7 +1541,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PrevAmount</rd:DefaultName>
+                          <rd:DefaultName>PrevAmountStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1514,7 +1562,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!PrevAmount.Value + Fields!PrevDueAmount.Value)</Value>
+                                  <Value>=Fields!PrevTotalStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1579,14 +1627,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PenaltyDueAmount">
+                        <Textbox Name="PenaltyDueAmountStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PenaltyDueAmount.Value</Value>
+                                  <Value>=Fields!PenaltyDueAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1599,7 +1647,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PenaltyDueAmount</rd:DefaultName>
+                          <rd:DefaultName>PenaltyDueAmountStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1613,14 +1661,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PenaltyAmount">
+                        <Textbox Name="PenaltyAmountStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PenaltyAmount.Value</Value>
+                                  <Value>=Fields!PenaltyAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1633,7 +1681,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PenaltyAmount</rd:DefaultName>
+                          <rd:DefaultName>PenaltyAmountStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1647,14 +1695,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="PenaltyTotalAmount">
+                        <Textbox Name="TotalPenaltyStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!PenaltyAmount.Value + Fields!PenaltyDueAmount.Value)</Value>
+                                  <Value>=Fields!TotalPenaltyStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1668,7 +1716,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>PenaltyTotalAmount</rd:DefaultName>
+                          <rd:DefaultName>TotalPenaltyStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1724,14 +1772,14 @@
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="GrandTotalAmount">
+                        <Textbox Name="GrandTotalAmountStr">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!GrandTotalAmount.Value</Value>
+                                  <Value>=Fields!GrandTotalAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1745,7 +1793,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>GrandTotalAmount</rd:DefaultName>
+                          <rd:DefaultName>GrandTotalAmountStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1846,14 +1894,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="GrandTotalAmount1">
+                        <Textbox Name="GrandTotalAmountStr1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!GrandTotalAmount.Value</Value>
+                                  <Value>=Fields!GrandTotalAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1866,7 +1914,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>GrandTotalAmount1</rd:DefaultName>
+                          <rd:DefaultName>GrandTotalAmountStr1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -3407,7 +3455,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CurrentDueAmount.Value</Value>
+                                  <Value>=Fields!CurrentDueAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -3441,7 +3489,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CurrentAmount.Value</Value>
+                                  <Value>=Fields!CurrentAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -3475,7 +3523,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!CurrentAmount.Value + Fields!CurrentDueAmount.Value)</Value>
+                                  <Value>=Fields!HoldingTotalStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -3547,7 +3595,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PrevDueAmount.Value</Value>
+                                  <Value>=Fields!PrevDueAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -3581,7 +3629,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PrevAmount.Value</Value>
+                                  <Value>=Fields!PrevAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -3615,7 +3663,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!PrevAmount.Value + Fields!PrevDueAmount.Value)</Value>
+                                  <Value>=Fields!PrevTotalStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -3687,7 +3735,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PenaltyDueAmount.Value</Value>
+                                  <Value>=Fields!PenaltyDueAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -3721,7 +3769,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!PenaltyAmount.Value</Value>
+                                  <Value>=Fields!PenaltyAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -3755,7 +3803,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!PenaltyAmount.Value + Fields!PenaltyDueAmount.Value)</Value>
+                                  <Value>=Fields!TotalPenaltyStr.Value</Value>
                                   <Style>
                                     <FontFamily>kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -3832,7 +3880,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!GrandTotalAmount.Value</Value>
+                                  <Value>=Fields!GrandTotalAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -3954,7 +4002,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!GrandTotalAmount.Value</Value>
+                                  <Value>=Fields!GrandTotalAmountStr.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -3980,6 +4028,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
