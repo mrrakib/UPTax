@@ -1,11 +1,7 @@
-﻿using UPTax.Filter;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using UPTax.Service.Services;
+﻿using System.Web.Mvc;
+using UPTax.Filter;
 using UPTax.Helper;
+using UPTax.Service.Services;
 
 namespace UPTax.Controllers
 {
@@ -27,7 +23,9 @@ namespace UPTax.Controllers
         public ActionResult Index()
         {
             RapidSession.Notice = _adminNoticeService.GetAllNoticeByToday(RapidSession.UnionId);
-            return View();
+
+            var dashboardInfo = _adminNoticeService.GetDashboardInfo();
+            return View(dashboardInfo);
         }
 
         public ActionResult About()
