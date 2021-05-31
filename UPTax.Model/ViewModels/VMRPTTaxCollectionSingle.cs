@@ -17,12 +17,26 @@ namespace UPTax.Model.ViewModels
         public DateTime PaymentDate { get; set; }
         public string FinancialYearName { get; set; }
         public decimal CurrentAmount { get; set; }
+        public string CurrentAmountStr { get; set; }
         public decimal CurrentDueAmount { get; set; }
+        public string CurrentDueAmountStr { get; set; }
         public decimal PrevAmount { get; set; }
+        public string PrevAmountStr { get; set; }
         public decimal PrevDueAmount { get; set; }
+        public string PrevDueAmountStr { get; set; }
         public decimal PenaltyAmount { get; set; }
+        public string PenaltyAmountStr { get; set; }
         public decimal PenaltyDueAmount { get; set; }
+        public string PenaltyDueAmountStr { get; set; }
         public decimal GrandTotalAmount { get; set; }
+        public string GrandTotalAmountStr { get; set; }
         public string GrandAmountStr { get; set; }
+        public string LastPaymentDateStr { get; set; }
+        public decimal HoldingTotal { get; set; }
+        public string HoldingTotalStr { get; set; }
+        public string PrevTotalStr { get; set; }
+        public decimal PrevTotal { get; set; }
+        public decimal TotalPenalty { get; set; }
+        public string TotalPenaltyStr { get; set; }
     }
 }

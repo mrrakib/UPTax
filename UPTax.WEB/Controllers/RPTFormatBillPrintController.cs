@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -15,6 +16,7 @@ using UPTax.Model.ViewModels;
 using UPTax.Service.Services;
 using UPTax.Service.Services.UPDetails;
 using UPTax.Utility;
+using Humanizer;
 
 namespace UPTax.Controllers
 {
@@ -74,13 +76,33 @@ namespace UPTax.Controllers
             reportViewer.PageCountMode = new PageCountMode();
             reportViewer.LocalReport.ReportPath = Request.MapPath("~/Reports/RDLC/RPTFormatBillPrint.rdlc");
             //reportViewer.LocalReport.SetParameters(GetReportParameter(data));
-            commonParams.FinancialYearName = result != null ? result.FinancialYearName : "N/A";
-            commonParams.PaymentDate = result != null ? result.PaymentDate : (DateTime?)null;
+            
             string numberToWord = "";
             if (result != null)
             {
-                numberToWord = NumberToWordConverterNew.ConvertToWords(result.GrandTotalAmount, "BDT", "Taka");
+                int grandTotal = (int)result.GrandTotalAmount;
+                CultureInfo culture = new CultureInfo("bn-BD");
+                numberToWord = grandTotal.ToWords(culture);
+                numberToWord += " টাকা মাত্র।";
+                result.HoldingNo = HashingUtility.SwitchEngBan(result.HoldingNo);
+                result.MobileNo = HashingUtility.SwitchEngBan(result.MobileNo);
+                result.LastPaymentDateStr = HashingUtility.SwitchEngBan(commonParams.LastInstallmentDate.Value.ToString("dd/MM/yyyy"));
+                //numberToWord = NumberToWordConverterNew.ConvertToWords(result.GrandTotalAmount, "BDT", "Taka");
+                result.FinancialYearName = HashingUtility.SwitchEngBan(result.FinancialYearName);
+                result.CurrentAmountStr = HashingUtility.SwitchEngBan(result.CurrentAmount.ToString());
+                result.CurrentDueAmountStr = HashingUtility.SwitchEngBan(result.CurrentDueAmount.ToString());
+                result.PrevDueAmountStr = HashingUtility.SwitchEngBan(result.PrevDueAmount.ToString());
+                result.PrevAmountStr = HashingUtility.SwitchEngBan(result.PrevAmount.ToString());
+                result.PenaltyAmountStr = HashingUtility.SwitchEngBan(result.PenaltyAmount.ToString());
+                result.PenaltyDueAmountStr = HashingUtility.SwitchEngBan(result.PenaltyDueAmount.ToString());
+                result.HoldingTotalStr = HashingUtility.SwitchEngBan(result.HoldingTotal.ToString());
+                result.PrevTotalStr = HashingUtility.SwitchEngBan(result.PrevTotal.ToString());
+                result.TotalPenaltyStr = HashingUtility.SwitchEngBan(result.TotalPenalty.ToString());
+                result.GrandTotalAmountStr = HashingUtility.SwitchEngBan(result.GrandTotalAmount.ToString());
+
             }
+            commonParams.FinancialYearName = result != null ? result.FinancialYearName : "N/A";
+            commonParams.PaymentDateStr = result != null ? result.LastPaymentDateStr : "";
             result.GrandAmountStr = numberToWord;
             reportViewer.LocalReport.SetParameters(GetReportParameter(commonParams));
             ReportDataSource A = new ReportDataSource("DataSet1", resultSet); //get actual data here
@@ -140,7 +162,7 @@ namespace UPTax.Controllers
             List<ReportParameter> paraList = new List<ReportParameter>();
             paraList.Add(new ReportParameter("UnionName", union.Name));
             paraList.Add(new ReportParameter("UnionAddress", union.Description));
-            paraList.Add(new ReportParameter("FromDate", commonParams.LastInstallmentDate.Value.ToString("dd MMM, yyyy")));
+            paraList.Add(new ReportParameter("FromDate", commonParams.PaymentDateStr));
             paraList.Add(new ReportParameter("FinYear", commonParams.FinancialYearName));
 
             return paraList;
