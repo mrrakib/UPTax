@@ -46,7 +46,7 @@
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TaxAmountStr">
-          <DataField>TaxAmountStr</DataField>
+          <DataField>TaxAmount</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="DueAmount">
@@ -54,7 +54,7 @@
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="DueAmountStr">
-          <DataField>DueAmountStr</DataField>
+          <DataField>DueAmount</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TaxPaymentDate">
@@ -74,7 +74,7 @@
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TotalCollectionStr">
-          <DataField>TotalCollectionStr</DataField>
+          <DataField>TotalCollection</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -1112,7 +1112,6 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>TaxAmountStr</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1125,7 +1124,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>

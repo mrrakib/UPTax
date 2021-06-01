@@ -67,6 +67,17 @@ namespace UPTax.Controllers
                 return View();
             }
 
+            foreach (var item in result)
+            {
+                item.DueAmountStr = HashingUtility.SwitchEngBan(item.DueAmount.ToString());
+                item.TaxAmountStr = HashingUtility.SwitchEngBan(item.TaxAmount.ToString());
+                item.TaxPaymentDateStr = HashingUtility.SwitchEngBan(item.TaxPaymentDate.ToString("dd/MM/yyyy"));
+                item.TotalCollectionStr = HashingUtility.SwitchEngBan(item.TotalCollection.ToString());
+                item.MobileNo = HashingUtility.SwitchEngBan(item.MobileNo);
+                item.HoldingNo = HashingUtility.SwitchEngBan(item.HoldingNo);
+                item.YearName = HashingUtility.SwitchEngBan(item.YearName);
+            }
+
             List<VMCommonParams> parList = new List<VMCommonParams>();
             ReportViewer reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Local;

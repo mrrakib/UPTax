@@ -1109,6 +1109,14 @@ namespace UPTax.Reports {
             
             private global::System.Data.DataColumn columnVillageName;
             
+            private global::System.Data.DataColumn columnTaxAmountStr;
+            
+            private global::System.Data.DataColumn columnDueAmountStr;
+            
+            private global::System.Data.DataColumn columnTaxPaymentDateStr;
+            
+            private global::System.Data.DataColumn columnTotalCollectionStr;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TaxReceiptDataTable() {
@@ -1232,6 +1240,38 @@ namespace UPTax.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TaxAmountStrColumn {
+                get {
+                    return this.columnTaxAmountStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DueAmountStrColumn {
+                get {
+                    return this.columnDueAmountStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TaxPaymentDateStrColumn {
+                get {
+                    return this.columnTaxPaymentDateStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalCollectionStrColumn {
+                get {
+                    return this.columnTotalCollectionStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1267,7 +1307,7 @@ namespace UPTax.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TaxReceiptRow AddTaxReceiptRow(string HoldingNo, string OwnerNameInBangla, string FatherHusbandName, string MobileNo, string WardNo, string TaxAmount, string DueAmount, string TaxPaymentDate, string YearName, string TotalCollection, string VillageName) {
+            public TaxReceiptRow AddTaxReceiptRow(string HoldingNo, string OwnerNameInBangla, string FatherHusbandName, string MobileNo, string WardNo, string TaxAmount, string DueAmount, string TaxPaymentDate, string YearName, string TotalCollection, string VillageName, string TaxAmountStr, string DueAmountStr, string TaxPaymentDateStr, string TotalCollectionStr) {
                 TaxReceiptRow rowTaxReceiptRow = ((TaxReceiptRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         HoldingNo,
@@ -1280,7 +1320,11 @@ namespace UPTax.Reports {
                         TaxPaymentDate,
                         YearName,
                         TotalCollection,
-                        VillageName};
+                        VillageName,
+                        TaxAmountStr,
+                        DueAmountStr,
+                        TaxPaymentDateStr,
+                        TotalCollectionStr};
                 rowTaxReceiptRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTaxReceiptRow);
                 return rowTaxReceiptRow;
@@ -1314,6 +1358,10 @@ namespace UPTax.Reports {
                 this.columnYearName = base.Columns["YearName"];
                 this.columnTotalCollection = base.Columns["TotalCollection"];
                 this.columnVillageName = base.Columns["VillageName"];
+                this.columnTaxAmountStr = base.Columns["TaxAmountStr"];
+                this.columnDueAmountStr = base.Columns["DueAmountStr"];
+                this.columnTaxPaymentDateStr = base.Columns["TaxPaymentDateStr"];
+                this.columnTotalCollectionStr = base.Columns["TotalCollectionStr"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1341,6 +1389,14 @@ namespace UPTax.Reports {
                 base.Columns.Add(this.columnTotalCollection);
                 this.columnVillageName = new global::System.Data.DataColumn("VillageName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVillageName);
+                this.columnTaxAmountStr = new global::System.Data.DataColumn("TaxAmountStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTaxAmountStr);
+                this.columnDueAmountStr = new global::System.Data.DataColumn("DueAmountStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDueAmountStr);
+                this.columnTaxPaymentDateStr = new global::System.Data.DataColumn("TaxPaymentDateStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTaxPaymentDateStr);
+                this.columnTotalCollectionStr = new global::System.Data.DataColumn("TotalCollectionStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalCollectionStr);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3741,6 +3797,70 @@ namespace UPTax.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TaxAmountStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxReceipt.TaxAmountStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TaxAmountStr\' in table \'TaxReceipt\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxReceipt.TaxAmountStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DueAmountStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxReceipt.DueAmountStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DueAmountStr\' in table \'TaxReceipt\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxReceipt.DueAmountStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TaxPaymentDateStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxReceipt.TaxPaymentDateStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TaxPaymentDateStr\' in table \'TaxReceipt\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxReceipt.TaxPaymentDateStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalCollectionStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTaxReceipt.TotalCollectionStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalCollectionStr\' in table \'TaxReceipt\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTaxReceipt.TotalCollectionStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsHoldingNoNull() {
                 return this.IsNull(this.tableTaxReceipt.HoldingNoColumn);
             }
@@ -3869,6 +3989,54 @@ namespace UPTax.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetVillageNameNull() {
                 this[this.tableTaxReceipt.VillageNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTaxAmountStrNull() {
+                return this.IsNull(this.tableTaxReceipt.TaxAmountStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTaxAmountStrNull() {
+                this[this.tableTaxReceipt.TaxAmountStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDueAmountStrNull() {
+                return this.IsNull(this.tableTaxReceipt.DueAmountStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDueAmountStrNull() {
+                this[this.tableTaxReceipt.DueAmountStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTaxPaymentDateStrNull() {
+                return this.IsNull(this.tableTaxReceipt.TaxPaymentDateStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTaxPaymentDateStrNull() {
+                this[this.tableTaxReceipt.TaxPaymentDateStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalCollectionStrNull() {
+                return this.IsNull(this.tableTaxReceipt.TotalCollectionStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalCollectionStrNull() {
+                this[this.tableTaxReceipt.TotalCollectionStrColumn] = global::System.Convert.DBNull;
             }
         }
         
