@@ -1,0 +1,86 @@
+﻿@model UPTax.Model.ViewModels.VMCommonParams
+
+@{
+    ViewBag.Title = "কর আদায়";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">গ্রাম ভিত্তিক ধার্য কর</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item active">গ্রাম ভিত্তিক ধার্য কর দেখুন</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">গ্রাম ভিত্তিক ধার্য করের ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Index", "RPTTaxByVillage", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+
+                                <div class="col-md-6 mb-6">
+
+                                    <div class="col-md-12 mb-3">
+                                        <label for="ddlVillageInfoId">গ্রাম <span class="required"></span></label>
+                                        @Html.DropDownList("VillageInfoId", null, "--গ্রাম--", new { @class = "form-control validationCustom03", @id= "ddlVillageInfoId", @required = "required" })
+                                        <div class="invalid-feedback">
+                                            গ্রাম দেয়া বাধ্যতামূলক!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="validationCustom03">
+                                            অর্থবছর <span class="required"></span>
+                                        </label>
+
+                                        @Html.DropDownList("FinancialYearId", null, "--অর্থবছর--", new { @class = "form-control validationCustom03", @id = "ddlFinancialYearId", @required = "required" })
+                                        <div class="invalid-feedback">
+                                            অর্থবছর দেয়া বাধ্যতামূলক!
+                                        </div>
+                                    </div>
+
+                                    <button formtarget="_blank" class="btn btn-info" id="generateTax" type="submit">প্রিন্ট করুন</button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+@section Scripts {
+    <script src="~/Content/assets/js/pages/form-click-validation.init.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+        });
+
+    </script>
+
+
+}

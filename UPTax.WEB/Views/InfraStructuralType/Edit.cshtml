@@ -36,6 +36,7 @@
                             @Html.AntiForgeryToken()
                             @Html.HiddenFor(m => m.Id)
                             @Html.HiddenFor(m => m.CreatedBy)
+                            @Html.HiddenFor(m => m.StaticId)
                             <input type="text" name="CreateDate" value="@Model.CreatedDate.ToString("dd-mm-yyyyy")" hidden />
                             @Html.HiddenFor(m => m.IsDeleted)
                             <div class="row">

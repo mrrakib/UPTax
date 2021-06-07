@@ -1,15 +1,16 @@
 ﻿<!doctype html>
 <html lang="en">
-
+@using UPTax.Helper;
 <head>
     <meta charset="utf-8" />
-    <title>Dashboard | XMAX - Admin Dashboard</title>
+    <title>ড্যাশবোর্ড | UPTax - এডমিন ড্যাশবোর্ড</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="XMAX admin dashboard" name="description" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="~/Content/assets/images/favicon.ico">
     @Styles.Render("~/Content/adminCss")
     @Styles.Render("~/Content/dataTableCss")
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 </head>
 
@@ -17,6 +18,8 @@
 
     <!-- Begin page -->
     <div id="layout-wrapper">
+        
+
         @Html.Partial("_sideBar")
         @Html.Partial("_topBar")
 
@@ -52,7 +55,8 @@
     @Scripts.Render("~/bundles/adminjs2")
     @Scripts.Render("~/bundles/dataTablejs")
     @RenderSection("scripts", required: false)
-
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/assets/js/avro-v1.1.4.min.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -187,16 +191,40 @@
             $('textarea.bangla, input.bangla[type=text]').avro();
 
             //date format and auto close date after selection
-            $('.datepicker-here').datepicker({
+            @*$('.datepicker-here').datepicker({
                 language: 'en',
                 dateFormat: '@(UPTax.Helper.RapidSession.DateTimeFormat == null ? "dd-mm-yyyy" : UPTax.Helper.RapidSession.DateTimeFormat)',
-                
+
                 onSelect: function (fd, d, calendar) {
                     calendar.hide();
                 }
-            })
+            })*@
+
+            //jquery UI datepicker init
+            $(".datepickerUI").datepicker({
+                dateFormat: '@(UPTax.Helper.RapidSession.DateTimeFormat == null ? "dd-mm-yyyy" : UPTax.Helper.RapidSession.DateTimeFormat.Replace("yyyy", "yy").Replace("M", "m"))',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-90:+2"
+            });
 
         });
+
+        function DeleteItem() {
+            $(".deleteItem").click(function (e) {
+            var url = $(this).attr('deleteTag');
+
+            var appUrl = '@System.Configuration.ConfigurationManager.AppSettings["baseurl"]';
+
+            alertify.confirm("সতর্কীকরণ!", "আপনি কি এই আইটেমটি মুছে ফেলার বিষয়ে নিশ্চিত?",
+                function () {
+                    window.location.href = appUrl + url;
+                },
+                function () {
+                    alertify.error('বাতিল হয়েছে!');
+                }).set('labels', { ok: 'সঠিক', cancel: 'বাতিল' });
+            });
+        }
 
     </script>
 </body>

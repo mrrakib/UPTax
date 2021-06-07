@@ -258,7 +258,7 @@ namespace UPTax.Controllers
                                 user.IsActive = regViewModel.IsActive;
                                 user.FullName = regViewModel.Name;
                                 user.UnionId = regViewModel.UnionId;
-                                user.PasswordHash = manager.PasswordHasher.HashPassword(regViewModel.Password);
+                                //user.PasswordHash = manager.PasswordHasher.HashPassword(regViewModel.Password);
                             }
                         }
                         var rolesForUser = await manager.GetRolesAsync(user.Id);
@@ -352,7 +352,7 @@ namespace UPTax.Controllers
         {
             var roleStore = new RoleStore<IdentityRole>(db);
             var roleMngr = new RoleManager<IdentityRole>(roleStore);
-            var roles = roleMngr.Roles.ToList();
+            var roles = roleMngr.Roles.Where(r => !r.Name.Equals("Super Admin")).ToList();
             return roles;
         }
         private List<string> _GetRoleNameByUserId(string Id)
@@ -413,6 +413,20 @@ namespace UPTax.Controllers
             }
 
             return RedirectToAction("Index", new { page = TempData["page"] ?? 1, size = TempData["size"] ?? 10 });
+        }
+        #endregion
+
+        #region MyProfile Info
+        [HttpGet]
+        [RapidAuthorization(All = true)]
+        public ActionResult MyProfile()
+        {
+            if (RapidSession.RoleName.Equals("Super Admin"))
+            {
+                VMMyProfile profileAdmin = _userService.GetMyProfileDataAdmin(RapidSession.UserId, RapidSession.UnionId);
+            }
+            VMMyProfile profile = _userService.GetMyProfileData(RapidSession.UnionId);
+            return View(profile);
         }
         #endregion
 

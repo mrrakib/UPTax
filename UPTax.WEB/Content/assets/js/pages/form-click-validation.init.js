@@ -1,0 +1,1 @@
+!function(){"use strict";window.addEventListener("load",function(){var t=document.getElementsByClassName("required-click");Array.prototype.filter.call(t,function(e){e.addEventListener("click",function(t){!1===e.checkValidity()&&(t.preventDefault(),t.stopPropagation()),e.classList.add("was-validated")},!1)})},!1)}(),$(document).ready(function(){$(".custom-validation").parsley()});

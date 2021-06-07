@@ -34,6 +34,7 @@
                         @using (Html.BeginForm("Edit", "UnionParishad", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
+                            @Html.HiddenFor(m => m.ImageName)
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.Name)</label>
@@ -61,6 +62,34 @@
                                     @Html.TextAreaFor(m => m.Description, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "ইউনিয়নের বর্ণনা", @maxLength = "350", @cols = "3", @rows = "5" })
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom03">ইউনিয়নের ছবি</label>
+                                    @if (String.IsNullOrEmpty(Model.ImagePath))
+                                    {
+                                        <input type="file" name="file" id="imgInp" value="" class="form-control" required accept="image/x-png,image/gif,image/jpeg" />
+                                    }
+                                    else
+                                    {
+                                        <input type="file" name="file" id="imgInp" value="" class="form-control" accept="image/x-png,image/gif,image/jpeg" />
+                                    }
+
+                                    <div class="invalid-feedback">
+                                        Please select an image!
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    @if (!String.IsNullOrEmpty(Model.ImagePath))
+                                    {
+                                        <img style="max-width:100%; max-height: 250px" id="blah" src="@Url.Content(Model.ImagePath)" alt="your image" />
+                                    }
+                                    else
+                                    {
+                                        <img style="max-width:100%" id="blah" src="#" alt="your image" />
+                                    }
+
+                                </div>
+                            </div>
                             <button class="btn btn-primary" type="submit">হালনাগাদ করুন</button>
 
                         }
@@ -77,7 +106,21 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#imgInp").change(function () {
+                readURL(this);
+            });
 
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
         });
     </script>
 

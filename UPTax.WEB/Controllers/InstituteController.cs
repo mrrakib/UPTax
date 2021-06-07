@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
 using UPTax.Model.Models;
 using UPTax.Service.Services;
+using UPTax.Service.Services.UPDetails;
 
 namespace UPTax.Controllers
 {
@@ -13,11 +15,16 @@ namespace UPTax.Controllers
         private readonly string _userId = RapidSession.UserId;
         private readonly int _unionId = RapidSession.UnionId;
         private readonly IInstituteInfoService _instituteInfoService;
+        public readonly IWardInfoService _wardInfoService;
+        private readonly IVillageInfoService _villageInfoService;
 
-        public InstituteController(IInstituteInfoService instituteInfoService)
+        public InstituteController(IInstituteInfoService instituteInfoService, IWardInfoService wardInfoService, IVillageInfoService villageInfoService)
         {
             _instituteInfoService = instituteInfoService;
+            _wardInfoService = wardInfoService;
+            _villageInfoService = villageInfoService;
         }
+
         // GET: InstituteInfo
         [RapidAuthorization]
         public ActionResult Index(string name, int page = 1, int dataSize = 10)
@@ -26,14 +33,18 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var listData = _instituteInfoService.GetPagedList(degree: name, page, dataSize);
+            var listData = _instituteInfoService.GetPagedList(name, page, dataSize);
             return View(listData);
         }
 
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
+            var villages = _villageInfoService.GetByWardId(_unionId).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
+            ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name");
+
+            return View(new InstituteInfo());
         }
 
         [HttpPost]
@@ -43,15 +54,18 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _instituteInfoService.IsExistingItem(model.NameOfInstitute, null);
+                var isExistingItem = _instituteInfoService.IsExistingItem(model.HoldingNo, null);
                 model.CreatedBy = _userId;
                 if (!isExistingItem && _instituteInfoService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
+                    return View();
                 }
+                ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);
+                var villages = _villageInfoService.GetByWardId(model.WardInfoId ?? 0).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
+                ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
+
                 _message.custom(this, "এই নামে একটি কলেজ / অফিসের নাম আছে!");
-                return View(model);
             }
             return View(model);
         }
@@ -66,6 +80,11 @@ namespace UPTax.Controllers
             {
                 return PartialView("_Error");
             }
+            ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);
+
+            var villages = _villageInfoService.GetByWardId(model.WardInfoId ?? 0).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
+            ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
+
             return View(model);
         }
 
@@ -76,9 +95,14 @@ namespace UPTax.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isExistingItem = _instituteInfoService.IsExistingItem(model.NameOfInstitute, model.Id);
+                var isExistingItem = _instituteInfoService.IsExistingItem(model.HoldingNo, model.Id);
                 if (isExistingItem)
                 {
+                    ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);
+
+                    var villages = _villageInfoService.GetByWardId(model.WardInfoId ?? 0).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
+                    ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
+
                     _message.custom(this, "এই নামে একটি কলেজ / অফিসের নাম আছে!");
                     return View(model);
                 }

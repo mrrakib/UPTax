@@ -1,0 +1,77 @@
+﻿@model UPTax.Model.ViewModels.VMTaxInstallment
+
+@{
+    Layout = null;
+    string dateFormat = UPTax.Helper.RapidSession.DateTimeFormat;
+}
+
+
+<div class="col-md-12 mt-6">
+    <table class="table table-bordered">
+        @if (Model.vMTaxInstallmentDetails != null)
+        {
+        <tr>
+            <th>কর দাতার নাম</th>
+            <td>@Html.DisplayFor(m => m.vMTaxInstallmentDetails.HouseOwnerName)</td>
+            @Html.HiddenFor(m => m.vMTaxInstallmentDetails.HouseOwnerName)
+            @Html.HiddenFor(m => m.vMTaxInstallmentDetails.HouseOwnerId)
+            @Html.HiddenFor(m => m.Id)
+        </tr>
+            <tr>
+                <th>জমার তারিখ</th>
+                <td>
+                    @if (Model != null)
+                    {
+                        @Html.TextBoxFor(model => model.vMTaxInstallmentDetails.InstallmentDate, Model.vMTaxInstallmentDetails.InstallmentDate.ToString(dateFormat), new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false", @readonly = "readonly" })
+                    }
+                    else
+                    {
+
+                        @Html.TextBoxFor(model => model.vMTaxInstallmentDetails.InstallmentDate, "", new { @class = "datepickerUI form-control", @type = "text", @required = "required", @data_range = "false", @readonly = "readonly" })
+                    }
+                </td>
+
+            </tr>
+
+            <tr>
+                <th>কিস্তির পরিমাণ</th>
+                <td>@Html.TextBoxFor(m => m.vMTaxInstallmentDetails.InstallmentAmount, new { @id = "validationCustom03", @class = "form-control txtDueAmount", @value = Model.vMTaxInstallmentDetails.InstallmentAmount, @disabled = "disabled" })</td>
+            </tr>
+
+            <tr>
+                <th>বকেয়া</th>
+                <td>@Html.TextBoxFor(m => m.vMTaxInstallmentDetails.DueAmount, new { @id = "validationCustom03", @class = "form-control txtDueAmount", @value = Model.vMTaxInstallmentDetails.DueAmount, @disabled = "disabled" })</td>
+            </tr>
+            <tr>
+                <th>দণ্ড প্রাপ্ত বাবদ</th>
+                <td>@Html.TextBoxFor(m => m.vMTaxInstallmentDetails.PenaltyAmount, new { @id = "validationCustom03", @class = "form-control txtDueAmount", @value = Model.vMTaxInstallmentDetails.PenaltyAmount, @disabled = "disabled" })</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-primary" type="submit">ডিলিট করুন</button>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <th>কোন তথ্য পাওয়া যায়নি!</th>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    @*$(".datepickerUI").datepicker({
+                dateFormat: '@(UPTax.Helper.RapidSession.DateTimeFormat == null ? "dd-mm-yyyy" : UPTax.Helper.RapidSession.DateTimeFormat.Replace("yyyy", "yy").Replace("M", "m"))',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-90:+2"
+            });*@
+    });
+
+
+</script>

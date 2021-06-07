@@ -27,7 +27,10 @@ namespace UPTax.Model.Models.UnionDetails
         [DisplayName("ইমেইল")]
         public string Email { get; set; }
         [StringLength(350, ErrorMessage = "সর্বোচ্চ ৫০ শব্দ দিতে পারবেন")]
-        [DisplayName("বর্ণনা")]
+        [DisplayName("ঠিকানা")]
         public string Description { get; set; }
+        public string ImagePath { get; set; }
+        [MaxLength(150, ErrorMessage = "Maximum 150 character allowed.")]
+        public string ImageName { get; set; }
     }
 }

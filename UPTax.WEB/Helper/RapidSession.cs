@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 
 namespace UPTax.Helper
@@ -13,6 +11,8 @@ namespace UPTax.Helper
         private const string userFullName = "UserFullName";
         private const string con = "Con";
         private const string unionId = "UnionId";
+        private const string notice = "Notice";
+        private const string financialYearId = "FinancialYearId";
 
         private const string dateTimeFormat = "DateTimeFormat";
         public static string RoleId
@@ -37,6 +37,19 @@ namespace UPTax.Helper
             set
             {
                 HttpContext.Current.Session[userId] = value;
+            }
+        }
+
+        public static string Notice
+        {
+            get
+            {
+                return (string)(HttpContext.Current.Session[notice] ?? "");
+            }
+
+            set
+            {
+                HttpContext.Current.Session[notice] = value;
             }
         }
         public static string RoleName
@@ -83,7 +96,6 @@ namespace UPTax.Helper
                 }
 
             }
-
             set
             {
                 HttpContext.Current.Session[con] = value;
@@ -96,7 +108,6 @@ namespace UPTax.Helper
             {
                 return (string)HttpContext.Current.Session[dateTimeFormat];
             }
-
             set
             {
                 HttpContext.Current.Session[dateTimeFormat] = value;
@@ -116,18 +127,27 @@ namespace UPTax.Helper
                     return 0;
                 }
             }
-
             set
             {
                 HttpContext.Current.Session[unionId] = value;
             }
         }
+        public static int FinancialYearId
+        {
+            get
+            {
+                return (int)(HttpContext.Current.Session[financialYearId] ?? 1);
+            }
 
+            set
+            {
+                HttpContext.Current.Session[financialYearId] = value;
+            }
+        }
         public static void Clear()
         {
             HttpContext.Current.Session.Clear();
             //HttpContext.Current.Session.Abandon();
-
         }
     }
 }

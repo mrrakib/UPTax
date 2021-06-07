@@ -192,18 +192,82 @@
     <Compile Include="Migrations\202103171532034_HouseOwnersUpdateType.Designer.cs">
       <DependentUpon>202103171532034_HouseOwnersUpdateType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103190856430_FinancialYear_and_TaxGenerateInfo_tbl_added.cs" />
+    <Compile Include="Migrations\202103190856430_FinancialYear_and_TaxGenerateInfo_tbl_added.Designer.cs">
+      <DependentUpon>202103190856430_FinancialYear_and_TaxGenerateInfo_tbl_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103191144380_NullableFields.cs" />
+    <Compile Include="Migrations\202103191144380_NullableFields.Designer.cs">
+      <DependentUpon>202103191144380_NullableFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103201356184_NewFieldsAddedForTotalMembers.cs" />
+    <Compile Include="Migrations\202103201356184_NewFieldsAddedForTotalMembers.Designer.cs">
+      <DependentUpon>202103201356184_NewFieldsAddedForTotalMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103251516268_InstituteOffice.cs" />
+    <Compile Include="Migrations\202103251516268_InstituteOffice.Designer.cs">
+      <DependentUpon>202103251516268_InstituteOffice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103251601204_DateOfEstablishment.cs" />
+    <Compile Include="Migrations\202103251601204_DateOfEstablishment.Designer.cs">
+      <DependentUpon>202103251601204_DateOfEstablishment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103271352323_RelationshipsMember.cs" />
+    <Compile Include="Migrations\202103271352323_RelationshipsMember.Designer.cs">
+      <DependentUpon>202103271352323_RelationshipsMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104051000232_TaxInstallmentInfo.cs" />
+    <Compile Include="Migrations\202104051000232_TaxInstallmentInfo.Designer.cs">
+      <DependentUpon>202104051000232_TaxInstallmentInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104160410127_Alter_TaxInstallMent_add_isPaid.cs" />
+    <Compile Include="Migrations\202104160410127_Alter_TaxInstallMent_add_isPaid.Designer.cs">
+      <DependentUpon>202104160410127_Alter_TaxInstallMent_add_isPaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105221611042_MessageInfoMigration.cs" />
+    <Compile Include="Migrations\202105221611042_MessageInfoMigration.Designer.cs">
+      <DependentUpon>202105221611042_MessageInfoMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105230429091_RequiredMessage.cs" />
+    <Compile Include="Migrations\202105230429091_RequiredMessage.Designer.cs">
+      <DependentUpon>202105230429091_RequiredMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105260522048_ImageUp_Union.cs" />
+    <Compile Include="Migrations\202105260522048_ImageUp_Union.Designer.cs">
+      <DependentUpon>202105260522048_ImageUp_Union.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105260636544_test.cs" />
+    <Compile Include="Migrations\202105260636544_test.Designer.cs">
+      <DependentUpon>202105260636544_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105280600390_AdminNotice_tbl.cs" />
+    <Compile Include="Migrations\202105280600390_AdminNotice_tbl.Designer.cs">
+      <DependentUpon>202105280600390_AdminNotice_tbl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105290505250_alter_AdminNotice_Add_date.cs" />
+    <Compile Include="Migrations\202105290505250_alter_AdminNotice_Add_date.Designer.cs">
+      <DependentUpon>202105290505250_alter_AdminNotice_Add_date.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
+    <Compile Include="Repository\AdminNoticeRepository.cs" />
+    <Compile Include="Repository\MessageReplyRepository.cs" />
+    <Compile Include="Repository\MessageInfoRepository.cs" />
+    <Compile Include="Repository\RelationshipRepository.cs" />
+    <Compile Include="Repository\MemberRepository.cs" />
     <Compile Include="Repository\InfraStructuralTypeRepository.cs" />
     <Compile Include="Repository\HouseOwnerRepository.cs" />
     <Compile Include="Repository\InfrastructureInfoRepository.cs" />
+    <Compile Include="Repository\FinancialYearRepository.cs" />
     <Compile Include="Repository\InstituteInfoRepository.cs" />
     <Compile Include="Repository\Permissions\MenuPermissionRepository.cs" />
     <Compile Include="Repository\Permissions\MenuConfigRepository.cs" />
     <Compile Include="Repository\Permissions\MenuCategoryRepository.cs" />
     <Compile Include="Repository\GenderRepository.cs" />
+    <Compile Include="Repository\TaxGenerateInfoRepository.cs" />
     <Compile Include="Repository\ReligionRepository.cs" />
+    <Compile Include="Repository\TaxInstallmentRepository.cs" />
     <Compile Include="Repository\VillageInfoRepository.cs" />
     <Compile Include="Repository\ProfessionInfoRepository.cs" />
     <Compile Include="Repository\SocialBenefitRepository.cs" />
@@ -298,6 +362,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103171532034_HouseOwnersUpdateType.resx">
       <DependentUpon>202103171532034_HouseOwnersUpdateType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103190856430_FinancialYear_and_TaxGenerateInfo_tbl_added.resx">
+      <DependentUpon>202103190856430_FinancialYear_and_TaxGenerateInfo_tbl_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103191144380_NullableFields.resx">
+      <DependentUpon>202103191144380_NullableFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103201356184_NewFieldsAddedForTotalMembers.resx">
+      <DependentUpon>202103201356184_NewFieldsAddedForTotalMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103251516268_InstituteOffice.resx">
+      <DependentUpon>202103251516268_InstituteOffice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103251601204_DateOfEstablishment.resx">
+      <DependentUpon>202103251601204_DateOfEstablishment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103271352323_RelationshipsMember.resx">
+      <DependentUpon>202103271352323_RelationshipsMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104051000232_TaxInstallmentInfo.resx">
+      <DependentUpon>202104051000232_TaxInstallmentInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104160410127_Alter_TaxInstallMent_add_isPaid.resx">
+      <DependentUpon>202104160410127_Alter_TaxInstallMent_add_isPaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105221611042_MessageInfoMigration.resx">
+      <DependentUpon>202105221611042_MessageInfoMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105230429091_RequiredMessage.resx">
+      <DependentUpon>202105230429091_RequiredMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105260522048_ImageUp_Union.resx">
+      <DependentUpon>202105260522048_ImageUp_Union.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105260636544_test.resx">
+      <DependentUpon>202105260636544_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105280600390_AdminNotice_tbl.resx">
+      <DependentUpon>202105280600390_AdminNotice_tbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105290505250_alter_AdminNotice_Add_date.resx">
+      <DependentUpon>202105290505250_alter_AdminNotice_Add_date.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -27,7 +27,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var unionList = _wardInfoService.GetPagedList(wardNo: name?.Trim(), _unionId, page, dataSize);
+            var unionList = _wardInfoService.GetPagedList(name?.Trim(), _unionId, page, dataSize);
             return View(unionList);
         }
 
@@ -53,10 +53,11 @@ namespace UPTax.Controllers
                 if (!isExistingWard && _wardInfoService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
                 }
-                _message.custom(this, "এই নামে একটি ওয়ার্ড আছে!");
-                return View(model);
+                else
+                {
+                    _message.custom(this, "এই নামে একটি ওয়ার্ড আছে!");
+                }
             }
             return View(model);
         }

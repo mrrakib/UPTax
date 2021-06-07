@@ -34,6 +34,22 @@ div.dataTables_paginate ul.pagination {
     background-size: cover;
 }*/
 
-.required {
-    color: red;
+    .required::after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+
+span.logo-lg {
+    width: 100px;
+    height: 50px;
+}
+
+    span.logo-lg img {
+        width: 100px;
+        height: 50px;
+    }
+
+@page {
+    size: auto;
 }

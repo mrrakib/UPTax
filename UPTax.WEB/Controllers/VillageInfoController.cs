@@ -33,7 +33,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var listData = _VillageInfoService.GetPagedList(keyName: name, _unionId, page, dataSize);
+            var listData = _VillageInfoService.GetPagedList(name, _unionId, page, dataSize);
             return View(listData);
         }
 
@@ -63,7 +63,6 @@ namespace UPTax.Controllers
                 model.CreatedBy = _userId;
                 _VillageInfoService.Add(model);
                 _message.save(this);
-                return RedirectToAction("Index");
             }
             return View(model);
         }

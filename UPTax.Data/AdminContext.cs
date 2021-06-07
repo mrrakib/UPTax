@@ -36,7 +36,14 @@ namespace UPTax.Data
         public DbSet<Religion> Religions { get; set; }
         public DbSet<HouseOwner> HouseOwners { get; set; }
         public DbSet<InfraStructuralType> InfraStructuralTypes { get; set; }
-
+        public DbSet<FinancialYear> FinancialYears { get; set; }
+        public DbSet<TaxGenerateInfo> TaxGenerateInfos { get; set; }
+        public DbSet<Relationship> Relationships { get; set; }
+        public DbSet<Member> Members { get; set; }
+        public DbSet<TaxInstallment> TaxInstallments { get; set; }
+        public DbSet<MessageInfo> MessageInfo { get; set; }
+        public DbSet<MessageReply> MessageReply { get; set; }
+        public DbSet<AdminNotice> AdminNotices { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

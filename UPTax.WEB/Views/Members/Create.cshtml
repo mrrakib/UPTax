@@ -1,0 +1,163 @@
+﻿@model UPTax.Model.Models.Member
+
+@{
+    ViewBag.Title = "সংরক্ষণ";
+    var title = "খানার অন্যান্য সদস্যের তথ্য";
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    List<Gender> genders = ViewBag.Genders == null ? new List<Gender>() : ViewBag.Genders;
+    List<Religion> religions = ViewBag.Religions == null ? new List<Religion>() : ViewBag.Religions;
+    string dateFormat = UPTax.Helper.RapidSession.DateTimeFormat;
+}
+<style>
+    div.inline .form-control {
+        display: inline;
+    }
+</style>
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">@title</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">অপারেট করুন</a></li>
+                    <li class="breadcrumb-item active">@title যোগ করুন</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right ml-2">
+                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">তালিকা দেখুন</a>
+                        </div>
+                        <h4 class="header-title">@title সংরক্ষণ ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Create", "Members", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(model => model.HoldingNo, new { @class = "required" })
+                                    @Html.TextBoxFor(m => m.HoldingNo, new { @class = "form-control", @placeholder = "হোল্ডিং নং", @maxLength = "250", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        হোল্ডিং নং দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(model => model.MemberNameInBangla, new { @class = "required" })
+                                    @Html.TextBoxFor(m => m.MemberNameInBangla, new { @class = "form-control bangla", @placeholder = "নাম (বাংলা)", @maxLength = "250", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        সদস্যের নাম দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(model => model.ProfessionId)
+                                    @Html.DropDownList("ProfessionId", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        পেশা দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(model => model.RelationshipId, new { @class = "required" })
+                                    @Html.DropDownList("RelationshipId", null, String.Empty, new { @class = "selectize", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        খানা প্রধানের সাথে সম্পর্ক দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(model => model.EducationInfoId)
+                                    @Html.DropDownList("EducationInfoId", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        শিক্ষাগত যোগ্যতা দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(model => model.DateOfBirth, new { @class = "" })
+                                    @if (Model != null)
+                                    {
+                                        @Html.TextBoxFor(model => model.DateOfBirth, Model.DateOfBirth.ToString(dateFormat), new { @class = "datepickerUI form-control", @type = "text", @data_range = "false" })
+                                    }
+                                    else
+                                    {
+
+                                        @Html.TextBoxFor(model => model.DateOfBirth, "", new { @class = "datepickerUI form-control", @type = "text", @data_range = "false" })
+                                    }
+                                    <div class="invalid-feedback">
+                                        জন্ম তারিখ দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(model => model.BirthRegistrationNumber)
+                                    @Html.TextBoxFor(m => m.BirthRegistrationNumber, new { @class = "form-control bangla", @placeholder = "জন্ম নিবন্ধন নাম্বার" })
+                                    <div class="invalid-feedback">
+                                        জন্ম নিবন্ধন নাম্বার দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(model => model.NIDNumber)
+                                    @Html.TextBoxFor(m => m.NIDNumber, new { @class = "form-control", type = "number", @placeholder = "এনআইডি নাম্বার" })
+                                    <div class="invalid-feedback">
+                                        এনআইডি নাম্বার দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(model => model.GenderId, new { @class = "required" })<br />
+                                    @for (int i = 0; i < genders.Count; i++)
+                                    {
+                                        <div class="form-check form-check-inline">
+                                            @Html.RadioButtonFor(model => model.GenderId, genders[i].Id, new { @class = "form-check-input", @id = "inlineRadioGenderId" + i })
+                                            <label class="form-check-label" for="inlineRadioGenderId'@i'">@genders[i].Name</label>
+                                        </div>
+                                    }
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.SocialBenefitBeforeId)</label>
+                                    @Html.DropDownList("SocialBenefitBeforeId", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        সামাজিক সুরক্ষা সুবিধা দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.SocialBenefitEligibleId)</label>
+                                    @Html.DropDownList("SocialBenefitEligibleId", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        সামাজিক সুরক্ষা সুবিধা দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.SocialBenefitRunningId)</label>
+                                    @Html.DropDownList("SocialBenefitRunningId", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        সামাজিক সুরক্ষা সুবিধা দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">সংরক্ষণ করুন</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- container-fluid -->
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+}

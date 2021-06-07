@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30204.135
+VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPTax.WEB", "UPTax.WEB\UPTax.WEB.csproj", "{858285E2-7623-4173-83DD-CE1425B61832}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPTax.Model", "UPTax.Model\UPTax.Model.csproj", "{97549144-7914-46EA-ACDA-C0AB104D0040}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPTax.Service", "UPTax.Service\UPTax.Service.csproj", "{B956D07C-87C0-46FB-90A1-9E383837D64D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpTax.Utilities", "UpTax.Utilities\UpTax.Utilities.csproj", "{66BC36AC-34F1-4E32-8112-E7F1F3C27142}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B956D07C-87C0-46FB-90A1-9E383837D64D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B956D07C-87C0-46FB-90A1-9E383837D64D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B956D07C-87C0-46FB-90A1-9E383837D64D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66BC36AC-34F1-4E32-8112-E7F1F3C27142}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66BC36AC-34F1-4E32-8112-E7F1F3C27142}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66BC36AC-34F1-4E32-8112-E7F1F3C27142}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66BC36AC-34F1-4E32-8112-E7F1F3C27142}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

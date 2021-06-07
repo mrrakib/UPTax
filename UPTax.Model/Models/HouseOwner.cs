@@ -15,9 +15,10 @@ namespace UPTax.Model.Models
             TotalSemiBuildingHouse = 0;
             TotalRawHouse = 0;
         }
-        [DisplayName("নাম (ইংরেজিতে)")]
+
+        [DisplayName("খানা প্রধানের নাম (ইংরেজিতে)")]
         public string OwnerNameInEnglish { get; set; }
-        [DisplayName("খানা প্রধানের নাম")]
+        [DisplayName("খানা প্রধানের নাম (বাংলা)")]
         public string OwnerNameInBangla { get; set; }
         [DisplayName("বাৎসরিক গড় আয়")]
         public double YearlyIncome { get; set; }
@@ -94,8 +95,15 @@ namespace UPTax.Model.Models
         [DisplayName("পূর্বের বকেয়া")]
         public double? PreviousDueAmount { get; set; }
 
-        public int TotalBuildingHouse { get; set; }
-        public int TotalSemiBuildingHouse { get; set; }
-        public int TotalRawHouse { get; set; }
+        public int? TotalBuildingHouse { get; set; }
+        public int? TotalSemiBuildingHouse { get; set; }
+        public int? TotalRawHouse { get; set; }
+
+        [DisplayName("পরিবারের সদস্য সংখ্যা")]
+        public int? TotalMember { get; set; }
+        [DisplayName("পরিবারের সদস্য(ছেলে)")]
+        public int? TotalBoys { get; set; }
+        [DisplayName("পরিবারের সদস্য(মেয়ে)")]
+        public int? TotalGirls { get; set; }
     }
 }

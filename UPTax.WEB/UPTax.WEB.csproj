@@ -19,7 +19,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -58,10 +59,13 @@
       <HintPath>..\packages\BeginCollectionItem.1.2.1.0\lib\net35\BeginCollectionItem.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Humanizer, Version=2.10.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Humanizer.Core.2.10.1\lib\netstandard2.0\Humanizer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -91,6 +95,22 @@
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.2.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -99,6 +119,9 @@
     </Reference>
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="ReportViewerForMvc">
+      <HintPath>..\packages\ReportViewerForMvc.1.0.1\lib\net45\ReportViewerForMvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -176,22 +199,41 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DailyPostingReportController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EducationInfoController.cs" />
+    <Compile Include="Controllers\CreateHouseOwnerController.cs" />
+    <Compile Include="Controllers\GenerateAllTaxInfoController.cs" />
+    <Compile Include="Controllers\AdminNoticeController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\PersonalStatementReportController.cs" />
+    <Compile Include="Controllers\RPTTaxByVillageController.cs" />
+    <Compile Include="Controllers\RPTTaxByWardController.cs" />
+    <Compile Include="Controllers\RPTFormatBillPrintController.cs" />
+    <Compile Include="Controllers\RPTTaxReceiptPrintController.cs" />
+    <Compile Include="Controllers\RPTTaxCollectionSingleController.cs" />
+    <Compile Include="Controllers\PersonalShortReportController.cs" />
+    <Compile Include="Controllers\TaxInstallmentDeleteController.cs" />
+    <Compile Include="Controllers\TaxInstallmentEditController.cs" />
+    <Compile Include="Controllers\TaxInstallmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HouseOwnerController.cs" />
     <Compile Include="Controllers\InfrastructureController.cs" />
     <Compile Include="Controllers\InstituteController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\MenuConfigController.cs" />
     <Compile Include="Controllers\MenuCategoryController.cs" />
+    <Compile Include="Controllers\GenerateTaxInfoController.cs" />
     <Compile Include="Controllers\MenuPermissionController.cs" />
     <Compile Include="Controllers\ProfessionInfoController.cs" />
     <Compile Include="Controllers\SocialBenefitController.cs" />
     <Compile Include="Controllers\InfraStructuralTypeController.cs" />
+    <Compile Include="Controllers\TopSheetController.cs" />
     <Compile Include="Controllers\UnionParishadController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VillageInfoController.cs" />
+    <Compile Include="Controllers\VillageWiseDueController.cs" />
     <Compile Include="Controllers\WardInfoController.cs" />
     <Compile Include="Filter\RapidAuthorization.cs" />
     <Compile Include="Global.asax.cs">
@@ -201,8 +243,16 @@
     <Compile Include="Helper\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helper\HashingUtility.cs" />
+    <Compile Include="Reports\UPDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UPDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReportUtility.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utility\DateTimeBinder.cs" />
+    <Compile Include="Utility\NumberToWordConverterNew.cs" />
     <Compile Include="Utility\TrimModelBinder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +415,7 @@
     <Content Include="assets\js\theme.js" />
     <Content Include="assets\js\vendor\jquery-3.5.1.min.js" />
     <Content Include="assets\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="assets\UserImages\up_00fc4c63-9062-4c3c-a2d6-45780b3d4b99.png" />
     <Content Include="assets\webfonts\fa-brands-400.svg" />
     <Content Include="assets\webfonts\fa-regular-400.svg" />
     <Content Include="assets\webfonts\fa-solid-900.svg" />
@@ -693,7 +744,6 @@
     <Content Include="bower_components\chart.js\src\Chart.Line.js" />
     <Content Include="bower_components\chart.js\src\Chart.PolarArea.js" />
     <Content Include="bower_components\chart.js\src\Chart.Radar.js" />
-    <Content Include="bower_components\ckeditor\.npm\assets\ckeditor4.png" />
     <Content Include="bower_components\ckeditor\adapters\jquery.js" />
     <Content Include="bower_components\ckeditor\ckeditor.js" />
     <Content Include="bower_components\ckeditor\config.js" />
@@ -6632,6 +6682,7 @@
     <Content Include="Content\assets\fonts\fa-regular-400.svg" />
     <Content Include="Content\assets\fonts\fa-solid-900.svg" />
     <Content Include="Content\assets\fonts\themify.svg" />
+    <Content Include="Content\assets\images\bduptax_logo.png" />
     <Content Include="Content\assets\images\bg-pattern.png" />
     <Content Include="Content\assets\images\coming-soon.png" />
     <Content Include="Content\assets\images\error-img.png" />
@@ -6693,6 +6744,7 @@
     <Content Include="Content\assets\js\pages\form-advanced.init.js" />
     <Content Include="Content\assets\js\pages\form-editor.init.js" />
     <Content Include="Content\assets\js\pages\form-mask.init.js" />
+    <Content Include="Content\assets\js\pages\form-click-validation.init.js" />
     <Content Include="Content\assets\js\pages\form-validation.init.js" />
     <Content Include="Content\assets\js\pages\gallery.init.js" />
     <Content Include="Content\assets\js\pages\gmaps.init.js" />
@@ -8068,6 +8120,7 @@
     <Content Include="Content\assets\libs\%40iconscout\unicons\svg\monochrome\wrap-text.svg" />
     <Content Include="Content\assets\libs\air-datepicker\css\datepicker.min.css" />
     <Content Include="Content\assets\libs\air-datepicker\js\datepicker.min.js" />
+    <Content Include="Content\assets\libs\air-datepicker\js\i18n\datepicker.bn.js" />
     <Content Include="Content\assets\libs\air-datepicker\js\i18n\datepicker.cs.js" />
     <Content Include="Content\assets\libs\air-datepicker\js\i18n\datepicker.da.js" />
     <Content Include="Content\assets\libs\air-datepicker\js\i18n\datepicker.de.js" />
@@ -11391,20 +11444,6 @@
     <Content Include="Content\assets\libs\parsleyjs\parsley.min.js" />
     <Content Include="Content\assets\libs\pdfmake\build\pdfmake.min.js" />
     <Content Include="Content\assets\libs\pdfmake\build\vfs_fonts.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\dbcs-codec.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\dbcs-data.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\index.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\internal.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\sbcs-codec.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\sbcs-data-generated.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\sbcs-data.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\utf16.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\utf32.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\utf7.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\lib\bom-handling.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\lib\extend-node.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\lib\index.js" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\lib\streams.js" />
     <Content Include="Content\assets\libs\pdfmake\webpack-standardfonts.config.js" />
     <Content Include="Content\assets\libs\popper.js\esm\popper-utils.min.js" />
     <Content Include="Content\assets\libs\popper.js\esm\popper.min.js" />
@@ -11629,10 +11668,6 @@
     <Content Include="Content\assets\libs\tinymce\themes\silver\index.js" />
     <Content Include="Content\assets\libs\tinymce\themes\silver\theme.min.js" />
     <Content Include="Content\assets\libs\tinymce\tinymce.min.js" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
@@ -11703,7 +11738,6 @@
     <Content Include="dist\js\pages\dashboard.js" />
     <Content Include="dist\js\pages\dashboard2.js" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="plugins\bootstrap-slider\bootstrap-slider.js" />
@@ -11848,8 +11882,7 @@
     <Content Include="plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="bower_components\bootstrap-colorpicker\.bower.json" />
     <Content Include="bower_components\bootstrap-colorpicker\.editorconfig" />
     <Content Include="bower_components\bootstrap-colorpicker\.github\CODE_OF_CONDUCT.md" />
@@ -12058,7 +12091,6 @@
     <Content Include="bower_components\chart.js\README.md" />
     <Content Include="bower_components\ckeditor\.bower.json" />
     <Content Include="bower_components\ckeditor\.github\ISSUE_TEMPLATE" />
-    <Content Include="bower_components\ckeditor\.npm\README.md" />
     <Content Include="bower_components\ckeditor\bower.json" />
     <Content Include="bower_components\ckeditor\CHANGES.md" />
     <Content Include="bower_components\ckeditor\composer.json" />
@@ -12577,14 +12609,6 @@
     <Content Include="Content\assets\libs\gmaps\jsdoc.json" />
     <Content Include="Content\assets\libs\gmaps\umd.hbs" />
     <Content Include="Content\assets\libs\morris.js\bower.travis.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\big5-added.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\cp936.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\cp949.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\cp950.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\eucjp.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\gb18030-ranges.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\gbk-added.json" />
-    <Content Include="Content\assets\libs\pdfmake\node_modules\iconv-lite\encodings\tables\shiftjis.json" />
     <Content Include="Content\assets\libs\popper.js\umd\popper.js.flow" />
     <Content Include="Content\assets\libs\slick-slider\slick\config.rb" />
     <Content Include="Content\assets\libs\slick-slider\slick\fonts\slick.eot" />
@@ -12596,6 +12620,17 @@
     <Content Include="Content\assets\libs\summernote\summernote-0.8.12-dist.zip" />
     <Content Include="Content\assets\libs\tinymce\skins\ui\oxide-dark\fonts\tinymce-mobile.woff" />
     <Content Include="Content\assets\libs\tinymce\skins\ui\oxide\fonts\tinymce-mobile.woff" />
+    <Content Include="Reports\UPDataSet.xsc">
+      <DependentUpon>UPDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\UPDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UPDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\UPDataSet.xss">
+      <DependentUpon>UPDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -12609,6 +12644,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Content\style.css" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll" />
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll" />
+    <Content Include="SqlServerTypes\x86\msvcr120.dll" />
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll" />
     <Content Include="venobox\close.gif" />
     <Content Include="venobox\next.gif" />
     <Content Include="venobox\preload-circle.png" />
@@ -12620,15 +12660,6 @@
     <Content Include="venobox\venobox.css" />
     <Content Include="venobox\venobox.js" />
     <Content Include="venobox\venobox.min.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -12691,15 +12722,68 @@
     <Content Include="Views\Shared\_sideBar - Copy.cshtml" />
     <Content Include="Views\Account\UnAuthorized.cshtml" />
     <Content Include="Views\Account\SelectUnion.cshtml" />
-    <Content Include="Views\HouseOwner\Create.cshtml" />
     <Content Include="Views\HouseOwner\Edit.cshtml" />
     <Content Include="Views\HouseOwner\Index.cshtml" />
     <Content Include="Views\InfraStructuralType\Create.cshtml" />
     <Content Include="Views\InfraStructuralType\Edit.cshtml" />
     <Content Include="Views\InfraStructuralType\Index.cshtml" />
+    <Content Include="Views\GenerateTaxInfo\_partialTaxInfo.cshtml" />
+    <Content Include="Views\GenerateTaxInfo\Index.cshtml" />
+    <Content Include="Views\Members\Create.cshtml" />
+    <Content Include="Views\Members\Edit.cshtml" />
+    <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\TaxInstallment\_partialTaxInstallment.cshtml" />
+    <Content Include="Views\TaxInstallment\Index.cshtml" />
+    <Content Include="Views\RPTTaxCollectionSingle\Index.cshtml" />
+    <Content Include="Views\RPTTaxCollectionSingle\RPTTaxCollectionSingle.cshtml" />
+    <Content Include="Views\Shared\_ReportLayout.cshtml" />
+    <Content Include="Views\CreateHouseOwner\Index.cshtml" />
+    <Content Include="Views\TaxInstallmentEdit\_partialTaxInstallmentEdit.cshtml" />
+    <Content Include="Views\TaxInstallmentEdit\Index.cshtml" />
+    <Content Include="Views\TaxInstallmentDelete\_partialTaxInstallmentDelete.cshtml" />
+    <Content Include="Views\TaxInstallmentDelete\Index.cshtml" />
+    <Content Include="Views\TopSheet\Index.cshtml" />
+    <Content Include="Views\RPTTaxReceiptPrint\Index.cshtml" />
+    <Content Include="Views\RPTTaxReceiptPrint\RPTTaxReceipt.cshtml" />
+    <Content Include="Views\GenerateAllTaxInfo\Index.cshtml" />
+    <Content Include="Views\RPTTaxByWard\Index.cshtml" />
+    <Content Include="Views\RPTTaxByWard\RPTTaxReceipt.cshtml" />
+    <Content Include="Views\RPTTaxByVillage\Index.cshtml" />
+    <Content Include="Views\RPTTaxByVillage\RPTTaxReceipt.cshtml" />
+    <Content Include="Views\VillageWiseDue\Index.cshtml" />
+    <Content Include="Views\TopSheet\RPTTopsheet.cshtml" />
+    <Content Include="Views\RPTFormatBillPrint\Index.cshtml" />
+    <Content Include="Views\RPTFormatBillPrint\RPTFormatBillPrint.cshtml" />
+    <Content Include="Views\DailyPostingReport\Index.cshtml" />
+    <Content Include="Views\DailyPostingReport\RPTDailyPosting.cshtml" />
+    <Content Include="Views\Message\Inbox.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\Create.cshtml" />
+    <Content Include="Views\Message\Edit.cshtml" />
+    <Content Include="Views\Message\Reply.cshtml" />
+    <Content Include="Views\User\MyProfile.cshtml" />
+    <Content Include="Views\AdminNotice\Create.cshtml" />
+    <Content Include="Views\AdminNotice\Edit.cshtml" />
+    <Content Include="Views\AdminNotice\Inbox.cshtml" />
+    <Content Include="Views\AdminNotice\Index.cshtml" />
+    <Content Include="Views\AdminNotice\Reply.cshtml" />
+    <Content Include="Views\PersonalShortReport\_partialPersonalShortReport.cshtml" />
+    <Content Include="Views\PersonalShortReport\Index.cshtml" />
+    <Content Include="Views\PersonalStatementReport\_partialPersonalStatementReport.cshtml" />
+    <Content Include="Views\PersonalStatementReport\Index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bower_components\ckeditor\.npm\assets\" />
     <Folder Include="Content\assets\libs\alertifyjs\src\" />
     <Folder Include="Content\assets\libs\bootstrap-daterangepicker\example\" />
     <Folder Include="Content\assets\libs\bootstrap-maxlength\src\" />
@@ -12728,14 +12812,6 @@
     <Folder Include="Views\Shared\Admin\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
@@ -12753,12 +12829,35 @@
       <Project>{b956d07c-87c0-46fb-90a1-9e383837d64d}</Project>
       <Name>UPTax.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UpTax.Utilities\UpTax.Utilities.csproj">
+      <Project>{66bc36ac-34f1-4e32-8112-e7f1f3c27142}</Project>
+      <Name>UpTax.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="bower_components\moment\moment.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\RDLC\RPTFormatBillPrint.rdlc" />
+    <EmbeddedResource Include="Reports\RDLC\RPTTopSheet.rdlc" />
+    <EmbeddedResource Include="Reports\RDLC\RPTDailyPosting.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RDLC\TaxInfoByWard.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RDLC\TaxInfoByVillage.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RDLC\TaxReceipt.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RDLC\Report1.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

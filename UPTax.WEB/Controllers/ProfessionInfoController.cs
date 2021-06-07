@@ -27,7 +27,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var listData = _ProfessionInfoService.GetPagedList(degree: name, page, dataSize);
+            var listData = _ProfessionInfoService.GetPagedList(name, page, dataSize);
             return View(listData);
         }
 
@@ -50,10 +50,11 @@ namespace UPTax.Controllers
                 if (!isExistingItem && _ProfessionInfoService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
                 }
-                _message.custom(this, "এই নামে একটি পেশা আছে!");
-                return View(model);
+                else
+                {
+                    _message.custom(this, "এই নামে একটি পেশা আছে!");
+                }
             }
             return View(model);
         }

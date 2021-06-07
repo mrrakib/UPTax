@@ -1,0 +1,162 @@
+﻿@model UPTax.Model.ViewModels.VMDailyPostingReport
+@{
+    var title = "ডেইলি পোষ্টিং রিপোর্ট";
+    ViewBag.Title = title;
+    string dateFormat = UPTax.Helper.RapidSession.DateTimeFormat;
+    int sl = 1;
+}
+
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">@title</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        @using (Html.BeginForm("Index", "DailyPostingReport", FormMethod.Post, new { @id = "submitForm", @class = "form-horizontal", role = "form", @autocomplete = "off" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(a => a.ReportType)
+                            <div style="color:red; font-weight:bold">
+                                @Html.Raw(Html.ValidationSummary(false).ToHtmlString())
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <label for="validationCustom03">ওয়ার্ড<span style="color: red">*</span> </label>
+                                    @Html.DropDownList("WardId", null, "--ওয়ার্ড নির্বাচন করুন--", new { @class = "form-control", @id = "wardId", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        ওয়ার্ড দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <label for="validationCustom03">অর্থ বছর<span style="color: red">*</span> </label>
+                                    @Html.DropDownList("FinancialYearId", null, "--অর্থ বছর নির্বাচন করুন--", new { @class = "form-control", @id = "financialYearId", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        অর্থ বছর দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <label for="validationCustom03">শুরুর তারিখ<span style="color: red">*</span> </label>
+                                    @if (Model != null && Model.StartDate != null)
+                                    {
+                                        @Html.TextBoxFor(model => model.StartDate, Model.StartDate.ToString(dateFormat), new { @class = "datepickerUI form-control", @type = "text", @data_range = "false", @required = "required" })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(model => model.StartDate, "", new { @class = "datepickerUI form-control", @type = "text", @data_range = "false" })
+                                    }
+                                    <div class="invalid-feedback">
+                                        শুরুর তারিখ দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <label for="validationCustom03">শেষের তারিখ<span style="color: red">*</span> </label>
+                                    @if (Model != null && Model.EndDate != null)
+                                    {
+                                        @Html.TextBoxFor(model => model.EndDate, Model.EndDate.ToString(dateFormat), new { @class = "datepickerUI form-control", @type = "text", @data_range = "false", @required = "required" })
+                                    }
+                                    else
+                                    {
+                                        @Html.TextBoxFor(model => model.EndDate, "", new { @class = "datepickerUI form-control", @type = "text", @data_range = "false" })
+                                    }
+                                    <div class="invalid-feedback">
+                                        শেষের তারিখ দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="mt-4">
+                                        <button class="btn btn-success btn-block waves-effect waves-light" type="button" onclick="submitButton('')">খোঁজ করুন</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="mt-4">
+                                        <button class="btn btn-success btn-block waves-effect waves-light" onclick="submitButton('pdf')" type="button">প্রিন্ট করুন</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @if (Model != null && Model.DailyPostingReports.Count > 0)
+                {
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-sm table-bordered dt-responsive table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr style="background-color: lightgray">
+                                            <th>নং</th>
+                                            <th>@Html.DisplayNameFor(a => a.DailyPostingReports.First().HoldingNo)</th>
+                                            <th>@Html.DisplayNameFor(a => a.DailyPostingReports.First().HouseOwnerName)</th>
+                                            <th>@Html.DisplayNameFor(a => a.DailyPostingReports.First().MobileNo)</th>
+                                            <th>@Html.DisplayNameFor(a => a.DailyPostingReports.First().YearName)</th>
+                                            <th>@Html.DisplayNameFor(a => a.DailyPostingReports.First().TaxPaymentDate)</th>
+                                            <th>@Html.DisplayNameFor(a => a.DailyPostingReports.First().VillageName)</th>
+                                            <th>@Html.DisplayNameFor(a => a.DailyPostingReports.First().WardNo)</th>
+                                            <th>@Html.DisplayNameFor(a => a.DailyPostingReports.First().OutstandingAmount)</th>
+                                            <th>@Html.DisplayNameFor(a => a.DailyPostingReports.First().PreviousDueAmount)</th>
+                                            <th>@Html.DisplayNameFor(a => a.DailyPostingReports.First().TotalCollectAmount)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.DailyPostingReports)
+                                        {
+                                            <tr>
+                                                <td>@(sl++)</td>
+                                                <td class="">@item.HoldingNo</td>
+                                                <td class="">@item.HouseOwnerName</td>
+                                                <td class="">@item.MobileNo</td>
+                                                <td class="">@item.YearName</td>
+                                                <td class="">@item.TaxPaymentDate.ToString("dd MMM, yyyy")</td>
+                                                <td class="">@item.VillageName</td>
+                                                <td class="">@item.WardNo</td>
+                                                <td class="">@item.OutstandingAmount</td>
+                                                <td class="">@item.PreviousDueAmount</td>
+                                                <td class="">@item.TotalCollectAmount</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="float-right">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <strong>Data Not Found!</strong>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        function submitButton(pdf) {
+            debugger;
+
+            document.getElementById('ReportType').value = pdf;
+            if (pdf == 'pdf')
+                $('#submitForm').attr('target', '_blank');
+
+            document.getElementById('submitForm').submit();
+        }
+    </script>
+}

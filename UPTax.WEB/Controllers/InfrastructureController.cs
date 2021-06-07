@@ -35,7 +35,7 @@ namespace UPTax.Controllers
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
 
-            var listData = _infrastructureInfoService.GetPagedList(degree: name, page, dataSize);
+            var listData = _infrastructureInfoService.GetPagedList(name, page, dataSize);
             return View(listData);
         }
 
@@ -59,11 +59,12 @@ namespace UPTax.Controllers
                 if (!isExistingItem && _infrastructureInfoService.Add(model))
                 {
                     _message.save(this);
-                    return RedirectToAction("Index");
                 }
-                _message.custom(this, "এই নামে একটি ঘর আছে!");
+                else
+                {
+                    _message.custom(this, "এই নামে একটি ঘর আছে!");
+                }
                 ViewBag.TypeOfInfrastructure = new SelectList(_dropdownList, "IdStr", "Name", model.TypeOfInfrastructure);
-                return View(model);
             }
             return View(model);
         }

@@ -84,6 +84,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Autofac\UserService.cs" />
+    <Compile Include="Services\FinancialYearService.cs" />
+    <Compile Include="Services\AdminNoticeService.cs" />
+    <Compile Include="Services\MessageReplyService.cs" />
+    <Compile Include="Services\MessageInfoService.cs" />
+    <Compile Include="Services\MemberService.cs" />
+    <Compile Include="Services\RelationshipService.cs" />
+    <Compile Include="Services\TaxGenerateInfoService.cs" />
     <Compile Include="Services\ReligionService.cs" />
     <Compile Include="Services\GenderService.cs" />
     <Compile Include="Services\InfrastructureInfoService.cs" />
@@ -94,6 +101,7 @@
     <Compile Include="Services\Permissions\MenuCategoryService.cs" />
     <Compile Include="Services\ProfessionInfoService.cs" />
     <Compile Include="Services\InfraStructuralTypeService.cs" />
+    <Compile Include="Services\TaxInstallmentService.cs" />
     <Compile Include="Services\VillageInfoService.cs" />
     <Compile Include="Services\SocialBenefitService.cs" />
     <Compile Include="Services\EducationInfoService.cs" />
@@ -109,6 +117,10 @@
     <ProjectReference Include="..\UPTax.Model\UPTax.Model.csproj">
       <Project>{97549144-7914-46ea-acda-c0ab104d0040}</Project>
       <Name>UPTax.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpTax.Utilities\UpTax.Utilities.csproj">
+      <Project>{66BC36AC-34F1-4E32-8112-E7F1F3C27142}</Project>
+      <Name>UpTax.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,108 @@
+﻿@model UPTax.Model.Models.MessageInfo
+@{
+    ViewBag.Title = "সংরক্ষণ | মেসেজ বক্স";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var title = "মেসেজ বক্স";
+}
+<style>
+    div.inline .form-control {
+        display: inline;
+    }
+</style>
+<div class="page-title-box">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="page-title mb-1">@title</h4>
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">অপারেট @title</a></li>
+                    <li class="breadcrumb-item active">@title হালনাগাদ করুন</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="float-right ml-2">
+                            <a class="btn btn-sm btn-warning btn-flat margin" href="@Url.Action("Index")">তালিকা দেখুন</a>
+                        </div>
+                        <h4 class="header-title">@title হালনাগাদ ফরম</h4>
+                        <p class="card-title-desc"></p>
+                        @using (Html.BeginForm("Create", "Message", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate", @autocomplete = "off", @enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom03">@Html.Label("ইউনিয়ন") <span class="required"></span></label>
+                                    @Html.DropDownList("UnionId", null, "Select...", new { @class = "selectize validationCustom03" })
+                                    <div class="invalid-feedback">
+                                        ইউনিয়ন দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ToAdminUserId">@Html.Label("Admin/User Name")</label>
+                                    <select name="ToAdminUserId" id="ToAdminUserId" class="form-control validationCustom03">
+                                        <option value="">Select All Users...</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Admin/User Name দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    @Html.LabelFor(model => model.Message, new { @class = "required" })
+                                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control", @placeholder = "মেসেজ...", @maxLength = "2050", @required = "required" })
+                                    <div class="invalid-feedback">
+                                        মেসেজ দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">সংরক্ষণ করুন</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#UnionId").change(function () {
+                GetAdminUserDropdown();
+            });
+
+            function GetAdminUserDropdown() {
+                var unionId = $("#UnionId").val();
+                $("#ToAdminUserId").empty();
+                $('#ToAdminUserId').append(new Option('Select All Users...', ''));
+                debugger;
+                  $.ajax({
+                        url: '@Url.Action("GetAdminOrUser", "Message")',
+                        dataType: "json",
+                        type: "GET",
+                        cache: false,
+                      data: { unionId},
+                      success: function (data) {
+
+                            debugger;
+                            data.forEach(function (item) {
+                                $('#ToAdminUserId').append(new Option(item.Name, item.IdStr));
+                            });
+                        },
+                        error: function (xhr) {
+                            alert(xhr.responseText);
+                        }
+                 });
+            }
+        });
+    </script>
+}

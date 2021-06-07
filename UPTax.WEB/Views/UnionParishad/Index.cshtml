@@ -86,6 +86,7 @@
                                 <thead>
                                     <tr>
                                         <th>নং</th>
+                                        <th>ছবি</th>
                                         <th>নাম</th>
                                         <th>মোবাইল নাম্বার</th>
                                         <th>ইমেইল</th>
@@ -102,6 +103,9 @@
                                             rowNo++;
                                             <tr>
                                                 <td>@rowNo</td>
+                                                <td class="">
+                                                    <img class="thumbnail" width="50" height="50" src="@item.Data.ImagePath" alt="ছবি নাই" />
+                                                </td>
                                                 <td class="">@item.Data.Name</td>
                                                 <td class="">@item.Data.PhoneNo</td>
                                                 <td class="">@item.Data.Email</td>

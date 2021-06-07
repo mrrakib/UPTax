@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UPTax.Data.Infrastructure;
+using UPTax.Data.Repository.Autofac;
 using UPTax.Data.Repository.UPDetails;
 using UPTax.Model.Models.UnionDetails;
 using UPTax.Model.ViewModels;
@@ -22,14 +23,17 @@ namespace UPTax.Service.Services.UPDetails
         IPagedList GetPaged(string name, int pageNo, int pageSize);
         bool IsExistingItem(UnionParishad model);
         int CountUnion();
+        List<IdNameDropdown> GetAdminOrUserByUnionId(int unionId);
     }
     public class UnionParishadService : IUnionParishadService
     {
         private readonly IUnionParishadRepository _unionParishadRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public UnionParishadService(IUnionParishadRepository unionParishadRepository, IUnitOfWork unitOfWork)
+        public UnionParishadService(IUnionParishadRepository unionParishadRepository, IUserRepository userRepository, IUnitOfWork unitOfWork)
         {
             _unionParishadRepository = unionParishadRepository;
+            _userRepository = userRepository;
             _unitOfWork = unitOfWork;
         }
         public bool Add(UnionParishad model)
@@ -105,7 +109,6 @@ namespace UPTax.Service.Services.UPDetails
                 var errorMessage = ex.Message;
                 return new StaticPagedList<UnionParishad>(new List<UnionParishad> { }, pageNo, pageSize, 0);
             }
-
         }
 
         public List<IdNameDropdown> GetAllForDropdown()
@@ -131,6 +134,18 @@ namespace UPTax.Service.Services.UPDetails
         {
             var union = _unionParishadRepository.GetAll().ToList();
             return union != null ? union.Count : 0;
+        }
+
+        public List<IdNameDropdown> GetAdminOrUserByUnionId(int unionId)
+        {
+            string roleName = "Admin";
+            string query = string.Format(@"SELECT u.Id IdStr, u.FullName [Name] FROM Users u
+                                              INNER JOIN UserRoles ur ON u.Id =ur.UserId
+                                              INNER JOIN Roles r ON r.Id=ur.RoleId
+                                              WHERE u.UnionId={0} AND r.[Name]='{1}' ORDER BY u.FullName ASC", unionId, roleName);
+
+            var data = _unionParishadRepository.SQLQueryList<IdNameDropdown>(query);
+            return data.ToList();
         }
     }
 }

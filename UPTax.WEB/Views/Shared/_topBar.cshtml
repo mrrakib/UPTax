@@ -1,23 +1,24 @@
-﻿<header id="page-topbar">
+﻿@using UPTax.Helper;
+<header id="page-topbar">
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <a href="@Url.Action("Index","Dashboard")" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="~/Content/assets/images/logo-sm-dark.png" alt="" height="22">
+                        <img src="~/Content/assets/images/bduptax_logo.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="~/Content/assets/images/logo-main.png" alt="" height="20">
+                        <img src="~/Content/assets/images/bduptax_logo.png" alt="" height="20">
                     </span>
                 </a>
 
-                <a href="index.html" class="logo logo-light">
+                <a href="@Url.Action("Index", "Dashboard")" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="~/Content/assets/images/logo-sm-light.png" alt="" height="22">
+                        <img src="~/Content/assets/images/bduptax_logo.png" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="~/Content/assets/images/logo-light.png" alt="" height="20">
+                        <img src="~/Content/assets/images/bduptax_logo.png" alt="" height="20">
                     </span>
                 </a>
             </div>
@@ -27,6 +28,14 @@
             </button>
 
         </div>
+        @if (!string.IsNullOrEmpty(RapidSession.Notice))
+        {
+            <div style="width: 60%; color: red;">
+                    <marquee vspace="2%" width="100%" direction="left" height="100%">
+                        @RapidSession.Notice
+                    </marquee>
+            </div>
+        }
 
         <div class="d-flex">
 
@@ -38,9 +47,9 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-face-profile font-size-16 align-middle mr-1"></i> Profile</a>
+                    <a class="dropdown-item" href="@Url.Action("MyProfile", "User")"><i class="mdi mdi-face-profile font-size-16 align-middle mr-1"></i> আমার প্রোফাইল</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="@Url.Action("LogOff", "Account")"><i class="mdi mdi-logout font-size-16 align-middle mr-1"></i> Logout</a>
+                    <a class="dropdown-item" href="@Url.Action("LogOff", "Account")"><i class="mdi mdi-logout font-size-16 align-middle mr-1"></i> লগ আউট</a>
                 </div>
             </div>
 

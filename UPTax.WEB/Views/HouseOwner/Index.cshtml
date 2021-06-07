@@ -1,4 +1,4 @@
-﻿ @model PagedList.IPagedList<UPTax.Model.Models.HouseOwner>
+﻿@model PagedList.IPagedList<UPTax.Model.ViewModels.VHouseOwner>
 
 @using PagedList.Mvc;
 @{
@@ -48,9 +48,6 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="float-right ml-2">
-                            <a class="btn btn-sm btn-info btn-flat margin" href="@Url.Action("Create")">@title যোগ করুন</a>
-                        </div>
 
                         <h5 class="header-title mb-4">সমস্ত @title</h5>
 
@@ -71,6 +68,22 @@
                                             <td class="col-sm-1" style="width:2%">
                                                 @Html.TextBox("name", ViewBag.name as string, new { @class = "form-control col-md-12 col-xs-12", placeholder = "হোল্ডিং নং" })
                                             </td>
+                                            <td class="col-sm-1" style="width:2%">
+                                                @Html.DropDownList("ward", null, "---ওয়ার্ড---", new
+                                           {
+                                               @class = "default form-control",
+                                               style = "",
+                                               @id = "ddlWard"
+                                           })
+                                            </td>
+                                            <td class="col-sm-1" style="width:2%">
+                                                @Html.DropDownList("village", null, "---গ্রাম---", new
+                                           {
+                                               @class = "default form-control",
+                                               style = "",
+                                               @id = "ddlVillage"
+                                           })
+                                            </td>
                                             <td class="" style="width:2%;">
                                                 <center><button type="submit" class="btn btn-sm btn-info"><i class="fa fa-search" style="margin-right: 5px; color: #008BBB"></i>খুঁজুন</button></center>
                                             </td>
@@ -83,11 +96,21 @@
                         <div class="table-responsive">
                             <table id="datatable" class="table table-bordered dt-responsive nowrap table-hover" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
-                                    <tr>
+                                    <tr style="background-color:lightgray">
                                         <th>নং</th>
-                                        <th>
-                                            হোল্ডিং নং
-                                        </th>
+                                        <th>হোল্ডিং নং</th>
+                                        <th>খানা প্রধানের নাম</th>
+                                        <th>মোবাইল নাম্বার</th>
+                                        <th>পিতা/স্বামীর নাম</th>
+                                        <th>মাতার নাম</th>
+                                        <th>এনআইডি নাম্বার</th>
+                                        <th>বাৎসরিক ভাড়া</th>
+                                        <th>ঋনের বার্ষিক সুদ</th>
+                                        <th>অবকাঠামো ধরণ</th>
+                                        <th>পূর্বের বকেয়া</th>
+                                        <th>বসবাসের ধরণ</th>
+                                        <th>ওয়ার্ড নাম্বার</th>
+                                        <th>গ্রাম</th>
                                         <th>অপারেশন</th>
                                     </tr>
                                 </thead>
@@ -100,12 +123,25 @@
                                             <tr>
                                                 <td>@rowNo</td>
                                                 <td class="">@item.Data.HoldingNo</td>
+                                                <td class="">@item.Data.OwnerNameInBangla</td>
+                                                <td class="">@item.Data.MobileNo</td>
+                                                <td class="">@item.Data.FatherHusbandName</td>
+                                                <td class="">@item.Data.MotherName</td>
+                                                <td class="">@item.Data.BirthRegistrationNumber</td>
+                                                <td class="">@item.Data.YearlyRentAmount</td>
+                                                <td class="">@item.Data.YearlyInterestRate</td>
+                                                
+                                                <td class="">কাঁচা ঘর-@item.Data.TotalRawHouse, পাকা ঘর-@item.Data.TotalBuildingHouse, আধা-পাকা ঘর-@item.Data.TotalSemiBuildingHouse </td>
+                                                <td class="">@item.Data.PreviousDueAmount</td>
+
+                                                <td class="">@item.Data.LivingType</td>
+                                                <td class="">@item.Data.WardName</td>
+                                                <td class="">@item.Data.VillageName</td>
                                                 <td>
                                                     <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
                                                         <i class="mdi mdi-pencil"></i>
                                                     </a>
-                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="" deleteTag="@Url.Action("Delete","HouseOwner")/@item.Data.Id">
-
+                                                    <a class="btn btn-outline-secondary btn-sm deleteItem" toggle="tooltip" data-placement="top" title="Delete" onclick="DeleteItem();" deleteTag="@Url.Action("Delete","HouseOwner")/@item.Data.Id">
                                                         <i class="mdi mdi-trash-can"></i>
                                                     </a>
                                                 </td>
@@ -118,6 +154,9 @@
                                 @Html.PagedListPager(Model, page => Url.Action("Index",
                                     new
                                     {
+                                        name = ViewBag.name,
+                                        ward = ViewBag.wardId,
+                                        village = ViewBag.villageId,
                                         page,
                                         dataSize = ViewBag.dataSize
                                     }),
@@ -136,6 +175,7 @@
                                 )
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -149,8 +189,47 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
-        $(function () {
-           
+        $(document).ready(function () {
+
+            //var table = $('#datatable').DataTable({
+            //    scrollY: "300px",
+            //    scrollX: true,
+            //    scrollCollapse: true,
+            //    paging: false,
+            //    fixedColumns: {
+            //        leftColumns: 1,
+            //        rightColumns: 1
+            //    }
+            //});
+
+            $("#ddlWard").change(function () {
+                GetVillageDropdown();
+            });
+
         });
+
+        function GetVillageDropdown() {
+            var wardId = $("#ddlWard").val();
+                $("#ddlVillage").empty();
+            //$('#ddlVillage').append(new Option('Select...', ''));
+
+                  $.ajax({
+                        url: '@Url.Action("GetVillage", "VillageInfo")',
+                        dataType: "json",
+                        type: "GET",
+                        cache: false,
+                        data: { wardId},
+                      success: function (data) {
+
+                            debugger;
+                            data.forEach(function (item) {
+                                $('#ddlVillage').append(new Option(item.Name, item.Id));
+                            });
+                        },
+                        error: function (xhr) {
+                            alert(xhr.responseText);
+                        }
+                 });
+            }
     </script>
 }
