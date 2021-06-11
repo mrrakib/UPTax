@@ -1,17 +1,14 @@
 ﻿using Microsoft.Reporting.WebForms;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using UPTax.Helper;
-using UPTax.Model;
 using UPTax.Model.Models.UnionDetails;
 using UPTax.Model.ViewModels;
 using UPTax.Service.Services;
 using UPTax.Service.Services.UPDetails;
-using UPTax.WEB;
 
 namespace UPTax.Controllers
 {
@@ -52,7 +49,7 @@ namespace UPTax.Controllers
         public ActionResult Export(string financialYearId = "")
         {
             var modelPDF = _taxInstallmentService.GetTopSheetReport(financialYearId).ToList();
-            
+
             ReportViewer reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Local;
             reportViewer.SizeToReportContent = true;

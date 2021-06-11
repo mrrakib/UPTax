@@ -5,6 +5,11 @@ namespace UPTax.Model.ViewModels
 {
     public class SPTopSheetReport
     {
+        public int UnionId { get; set; }
+        public int WardId { get; set; }
+
+        [DisplayName("ইউনিয়ন পরিষদ")]
+        public string UnionName { get; set; }
         [DisplayName("ওয়ার্ড নাম্বার")]
         public string WardNo { get; set; }
         [DisplayName("গ্রামের সংখ্যা")]
