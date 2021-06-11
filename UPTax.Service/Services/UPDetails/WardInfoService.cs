@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UPTax.Data.Infrastructure;
+using UPTax.Data.Repository;
 using UPTax.Data.Repository.UPDetails;
+using UPTax.Model.Models;
 using UPTax.Model.Models.UnionDetails;
 using UPTax.Model.ViewModels;
 
@@ -21,15 +23,18 @@ namespace UPTax.Service.Services.UPDetails
         bool IsExistingWard(string wardNo, int unionId, int? wardId);
         List<IdNameDropdown> GetDropdownItemList(int unionId);
         List<SPWardVillageWiseDueReport> GetWardVillageWiseReport(int wardId, int villageId, string infrastructureType, int financialYearId);
+        List<VMTranInfo> GetTranInfo(int unionId);
     }
     public class WardInfoService : IWardInfoService
     {
         private readonly IWardInfoRepository _wardInfoRepository;
+        private readonly IHouseOwnerRepository _houseOwnerRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public WardInfoService(IWardInfoRepository wardInfoRepository, IUnitOfWork unitOfWork)
+        public WardInfoService(IWardInfoRepository wardInfoRepository, IUnitOfWork unitOfWork, IHouseOwnerRepository houseOwnerRepository)
         {
             _wardInfoRepository = wardInfoRepository;
             _unitOfWork = unitOfWork;
+            _houseOwnerRepository = houseOwnerRepository;
         }
         public bool Add(WardInfo model)
         {
@@ -127,6 +132,49 @@ namespace UPTax.Service.Services.UPDetails
             var query = $"EXEC WardVillageWiseDueReport {wardId}, {villageId}, '{infrastructureType}', {financialYearId}";
             var data = _wardInfoRepository.SQLQueryList<SPWardVillageWiseDueReport>(query).ToList();
             return data;
+        }
+
+        public List<VMTranInfo> GetTranInfo(int unionId)
+        {
+            List<VMTranInfo> tranInfos = new List<VMTranInfo>();
+            List<WardInfo> allWard = _wardInfoRepository.GetMany(w => w.IsDeleted == false && w.UnionId == unionId).ToList();
+            List<HouseOwner> houseOwners = _houseOwnerRepository.GetMany(h => h.IsDeleted == false && h.VillageInfo.UnionId == unionId).ToList();
+            if (allWard.Count > 0 && houseOwners.Count > 0)
+            {
+                foreach (var ward in allWard)
+                {
+                    
+                    var owners = houseOwners.Where(h => h.WardInfoId == ward.Id).ToList();
+                    int totalMaleCount = owners.Where(h => h.GenderId == 1).Count();
+                    int totalFeMaleCount = owners.Where(h => h.GenderId == 2).Count();
+                    int totalBenefitCount = owners.Where(h => h.SocialBenefitRunningId != null).Count();
+                    var richPeople = owners.Where(h => h.TotalBuildingHouse != null).ToList();
+                    var midPoorPeople = owners.Where(h => h.TotalSemiBuildingHouse != null && !richPeople.Any(r => r.Id == h.Id)).ToList();
+                    var poorPeople = owners.Where(h => h.TotalRawHouse != null && !richPeople.Any(r => r.Id == h.Id) && !midPoorPeople.Any(r => r.Id == h.Id)).ToList();
+
+
+                    int totalPoor = poorPeople.Count;
+                    int totalSemiPoor = midPoorPeople.Count;
+                    int totalRich = richPeople.Count;
+                    int totalPeople = owners.Count;
+
+                    VMTranInfo tranInfo = new VMTranInfo
+                    {
+                        WardNo = ward.WardNo,
+                        TotalHouseOwner = totalPeople,
+                        TotalSocialBenefitTakingCount = totalBenefitCount,
+                        TotalMale = totalMaleCount,
+                        TotalFemale = totalFeMaleCount,
+                        TotalPoor = totalPoor,
+                        TotalMidPoor = totalSemiPoor,
+                        TotalRich = totalRich,
+                        TotalPopulation = totalPeople
+                    };
+                    tranInfos.Add(tranInfo);
+                }
+            }
+            return tranInfos;
+
         }
     }
 }

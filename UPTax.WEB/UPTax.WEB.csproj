@@ -210,6 +210,7 @@
     <Compile Include="Controllers\RPTTaxByVillageController.cs" />
     <Compile Include="Controllers\RPTTaxByWardController.cs" />
     <Compile Include="Controllers\RPTFormatBillPrintController.cs" />
+    <Compile Include="Controllers\RPTTranController.cs" />
     <Compile Include="Controllers\RPTTaxReceiptPrintController.cs" />
     <Compile Include="Controllers\RPTTaxCollectionSingleController.cs" />
     <Compile Include="Controllers\PersonalShortReportController.cs" />
@@ -12774,6 +12775,8 @@
     <Content Include="Views\PersonalShortReport\Index.cshtml" />
     <Content Include="Views\PersonalStatementReport\_partialPersonalStatementReport.cshtml" />
     <Content Include="Views\PersonalStatementReport\Index.cshtml" />
+    <Content Include="Views\RPTTran\Index.cshtml" />
+    <Content Include="Views\RPTTran\RPTTran.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

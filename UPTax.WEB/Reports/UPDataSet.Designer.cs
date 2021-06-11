@@ -34,6 +34,8 @@ namespace UPTax.Reports {
         
         private DailyPostingDataTable tableDailyPosting;
         
+        private TranDataTable tableTran;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -76,6 +78,9 @@ namespace UPTax.Reports {
                 }
                 if ((ds.Tables["DailyPosting"] != null)) {
                     base.Tables.Add(new DailyPostingDataTable(ds.Tables["DailyPosting"]));
+                }
+                if ((ds.Tables["Tran"] != null)) {
+                    base.Tables.Add(new TranDataTable(ds.Tables["Tran"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -142,6 +147,16 @@ namespace UPTax.Reports {
         public DailyPostingDataTable DailyPosting {
             get {
                 return this.tableDailyPosting;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public TranDataTable Tran {
+            get {
+                return this.tableTran;
             }
         }
         
@@ -227,6 +242,9 @@ namespace UPTax.Reports {
                 if ((ds.Tables["DailyPosting"] != null)) {
                     base.Tables.Add(new DailyPostingDataTable(ds.Tables["DailyPosting"]));
                 }
+                if ((ds.Tables["Tran"] != null)) {
+                    base.Tables.Add(new TranDataTable(ds.Tables["Tran"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -290,6 +308,12 @@ namespace UPTax.Reports {
                     this.tableDailyPosting.InitVars();
                 }
             }
+            this.tableTran = ((TranDataTable)(base.Tables["Tran"]));
+            if ((initTable == true)) {
+                if ((this.tableTran != null)) {
+                    this.tableTran.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -310,6 +334,8 @@ namespace UPTax.Reports {
             base.Tables.Add(this.tableTopSheetTbl);
             this.tableDailyPosting = new DailyPostingDataTable();
             base.Tables.Add(this.tableDailyPosting);
+            this.tableTran = new TranDataTable();
+            base.Tables.Add(this.tableTran);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -339,6 +365,12 @@ namespace UPTax.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeDailyPosting() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeTran() {
             return false;
         }
         
@@ -411,6 +443,9 @@ namespace UPTax.Reports {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void DailyPostingRowChangeEventHandler(object sender, DailyPostingRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void TranRowChangeEventHandler(object sender, TranRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2733,6 +2768,509 @@ namespace UPTax.Reports {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "DailyPostingDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class TranDataTable : global::System.Data.TypedTableBase<TranRow> {
+            
+            private global::System.Data.DataColumn columnWardNo;
+            
+            private global::System.Data.DataColumn columnTotalHouseOwnerStr;
+            
+            private global::System.Data.DataColumn columnGrandTotalHouseOwnerStr;
+            
+            private global::System.Data.DataColumn columnTotalMaleStr;
+            
+            private global::System.Data.DataColumn columnGrandTotalMaleStr;
+            
+            private global::System.Data.DataColumn columnTotalFemaleStr;
+            
+            private global::System.Data.DataColumn columnGrandTotalFemaleStr;
+            
+            private global::System.Data.DataColumn columnTotalSocialBenefitTakingCountStr;
+            
+            private global::System.Data.DataColumn columnGrandTotalSocialBenefitTakingCountStr;
+            
+            private global::System.Data.DataColumn columnTotalPoorStr;
+            
+            private global::System.Data.DataColumn columnGrandTotalPoorStr;
+            
+            private global::System.Data.DataColumn columnTotalMidPoorStr;
+            
+            private global::System.Data.DataColumn columnGrandTotalMidPoorStr;
+            
+            private global::System.Data.DataColumn columnTotalRichStr;
+            
+            private global::System.Data.DataColumn columnGrandTotalRichStr;
+            
+            private global::System.Data.DataColumn columnTotalPopulationStr;
+            
+            private global::System.Data.DataColumn columnGrandTotalPopulationStr;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TranDataTable() {
+                this.TableName = "Tran";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal TranDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected TranDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn WardNoColumn {
+                get {
+                    return this.columnWardNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalHouseOwnerStrColumn {
+                get {
+                    return this.columnTotalHouseOwnerStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GrandTotalHouseOwnerStrColumn {
+                get {
+                    return this.columnGrandTotalHouseOwnerStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalMaleStrColumn {
+                get {
+                    return this.columnTotalMaleStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GrandTotalMaleStrColumn {
+                get {
+                    return this.columnGrandTotalMaleStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalFemaleStrColumn {
+                get {
+                    return this.columnTotalFemaleStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GrandTotalFemaleStrColumn {
+                get {
+                    return this.columnGrandTotalFemaleStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalSocialBenefitTakingCountStrColumn {
+                get {
+                    return this.columnTotalSocialBenefitTakingCountStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GrandTotalSocialBenefitTakingCountStrColumn {
+                get {
+                    return this.columnGrandTotalSocialBenefitTakingCountStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalPoorStrColumn {
+                get {
+                    return this.columnTotalPoorStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GrandTotalPoorStrColumn {
+                get {
+                    return this.columnGrandTotalPoorStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalMidPoorStrColumn {
+                get {
+                    return this.columnTotalMidPoorStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GrandTotalMidPoorStrColumn {
+                get {
+                    return this.columnGrandTotalMidPoorStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalRichStrColumn {
+                get {
+                    return this.columnTotalRichStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GrandTotalRichStrColumn {
+                get {
+                    return this.columnGrandTotalRichStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalPopulationStrColumn {
+                get {
+                    return this.columnTotalPopulationStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GrandTotalPopulationStrColumn {
+                get {
+                    return this.columnGrandTotalPopulationStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TranRow this[int index] {
+                get {
+                    return ((TranRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TranRowChangeEventHandler TranRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TranRowChangeEventHandler TranRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TranRowChangeEventHandler TranRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TranRowChangeEventHandler TranRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddTranRow(TranRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TranRow AddTranRow(
+                        string WardNo, 
+                        string TotalHouseOwnerStr, 
+                        string GrandTotalHouseOwnerStr, 
+                        string TotalMaleStr, 
+                        string GrandTotalMaleStr, 
+                        string TotalFemaleStr, 
+                        string GrandTotalFemaleStr, 
+                        string TotalSocialBenefitTakingCountStr, 
+                        string GrandTotalSocialBenefitTakingCountStr, 
+                        string TotalPoorStr, 
+                        string GrandTotalPoorStr, 
+                        string TotalMidPoorStr, 
+                        string GrandTotalMidPoorStr, 
+                        string TotalRichStr, 
+                        string GrandTotalRichStr, 
+                        string TotalPopulationStr, 
+                        string GrandTotalPopulationStr) {
+                TranRow rowTranRow = ((TranRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        WardNo,
+                        TotalHouseOwnerStr,
+                        GrandTotalHouseOwnerStr,
+                        TotalMaleStr,
+                        GrandTotalMaleStr,
+                        TotalFemaleStr,
+                        GrandTotalFemaleStr,
+                        TotalSocialBenefitTakingCountStr,
+                        GrandTotalSocialBenefitTakingCountStr,
+                        TotalPoorStr,
+                        GrandTotalPoorStr,
+                        TotalMidPoorStr,
+                        GrandTotalMidPoorStr,
+                        TotalRichStr,
+                        GrandTotalRichStr,
+                        TotalPopulationStr,
+                        GrandTotalPopulationStr};
+                rowTranRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTranRow);
+                return rowTranRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                TranDataTable cln = ((TranDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new TranDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnWardNo = base.Columns["WardNo"];
+                this.columnTotalHouseOwnerStr = base.Columns["TotalHouseOwnerStr"];
+                this.columnGrandTotalHouseOwnerStr = base.Columns["GrandTotalHouseOwnerStr"];
+                this.columnTotalMaleStr = base.Columns["TotalMaleStr"];
+                this.columnGrandTotalMaleStr = base.Columns["GrandTotalMaleStr"];
+                this.columnTotalFemaleStr = base.Columns["TotalFemaleStr"];
+                this.columnGrandTotalFemaleStr = base.Columns["GrandTotalFemaleStr"];
+                this.columnTotalSocialBenefitTakingCountStr = base.Columns["TotalSocialBenefitTakingCountStr"];
+                this.columnGrandTotalSocialBenefitTakingCountStr = base.Columns["GrandTotalSocialBenefitTakingCountStr"];
+                this.columnTotalPoorStr = base.Columns["TotalPoorStr"];
+                this.columnGrandTotalPoorStr = base.Columns["GrandTotalPoorStr"];
+                this.columnTotalMidPoorStr = base.Columns["TotalMidPoorStr"];
+                this.columnGrandTotalMidPoorStr = base.Columns["GrandTotalMidPoorStr"];
+                this.columnTotalRichStr = base.Columns["TotalRichStr"];
+                this.columnGrandTotalRichStr = base.Columns["GrandTotalRichStr"];
+                this.columnTotalPopulationStr = base.Columns["TotalPopulationStr"];
+                this.columnGrandTotalPopulationStr = base.Columns["GrandTotalPopulationStr"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnWardNo = new global::System.Data.DataColumn("WardNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWardNo);
+                this.columnTotalHouseOwnerStr = new global::System.Data.DataColumn("TotalHouseOwnerStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalHouseOwnerStr);
+                this.columnGrandTotalHouseOwnerStr = new global::System.Data.DataColumn("GrandTotalHouseOwnerStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGrandTotalHouseOwnerStr);
+                this.columnTotalMaleStr = new global::System.Data.DataColumn("TotalMaleStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalMaleStr);
+                this.columnGrandTotalMaleStr = new global::System.Data.DataColumn("GrandTotalMaleStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGrandTotalMaleStr);
+                this.columnTotalFemaleStr = new global::System.Data.DataColumn("TotalFemaleStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalFemaleStr);
+                this.columnGrandTotalFemaleStr = new global::System.Data.DataColumn("GrandTotalFemaleStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGrandTotalFemaleStr);
+                this.columnTotalSocialBenefitTakingCountStr = new global::System.Data.DataColumn("TotalSocialBenefitTakingCountStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalSocialBenefitTakingCountStr);
+                this.columnGrandTotalSocialBenefitTakingCountStr = new global::System.Data.DataColumn("GrandTotalSocialBenefitTakingCountStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGrandTotalSocialBenefitTakingCountStr);
+                this.columnTotalPoorStr = new global::System.Data.DataColumn("TotalPoorStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalPoorStr);
+                this.columnGrandTotalPoorStr = new global::System.Data.DataColumn("GrandTotalPoorStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGrandTotalPoorStr);
+                this.columnTotalMidPoorStr = new global::System.Data.DataColumn("TotalMidPoorStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalMidPoorStr);
+                this.columnGrandTotalMidPoorStr = new global::System.Data.DataColumn("GrandTotalMidPoorStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGrandTotalMidPoorStr);
+                this.columnTotalRichStr = new global::System.Data.DataColumn("TotalRichStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalRichStr);
+                this.columnGrandTotalRichStr = new global::System.Data.DataColumn("GrandTotalRichStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGrandTotalRichStr);
+                this.columnTotalPopulationStr = new global::System.Data.DataColumn("TotalPopulationStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalPopulationStr);
+                this.columnGrandTotalPopulationStr = new global::System.Data.DataColumn("GrandTotalPopulationStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGrandTotalPopulationStr);
+                this.columnWardNo.Caption = "HoldingNo";
+                this.columnTotalHouseOwnerStr.Caption = "OwnerNameInBangla";
+                this.columnGrandTotalHouseOwnerStr.Caption = "FatherHusbandName";
+                this.columnTotalMaleStr.Caption = "MobileNo";
+                this.columnGrandTotalMaleStr.Caption = "WardNo";
+                this.columnTotalFemaleStr.Caption = "TaxAmount";
+                this.columnGrandTotalFemaleStr.Caption = "DueAmount";
+                this.columnTotalSocialBenefitTakingCountStr.Caption = "TaxPaymentDate";
+                this.columnGrandTotalSocialBenefitTakingCountStr.Caption = "YearName";
+                this.columnTotalPoorStr.Caption = "TotalCollection";
+                this.columnGrandTotalPoorStr.Caption = "VillageName";
+                this.columnTotalMidPoorStr.Caption = "TaxAmountStr";
+                this.columnGrandTotalMidPoorStr.Caption = "DueAmountStr";
+                this.columnTotalRichStr.Caption = "TaxPaymentDateStr";
+                this.columnGrandTotalRichStr.Caption = "TotalCollectionStr";
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TranRow NewTranRow() {
+                return ((TranRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new TranRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(TranRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.TranRowChanged != null)) {
+                    this.TranRowChanged(this, new TranRowChangeEvent(((TranRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.TranRowChanging != null)) {
+                    this.TranRowChanging(this, new TranRowChangeEvent(((TranRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.TranRowDeleted != null)) {
+                    this.TranRowDeleted(this, new TranRowChangeEvent(((TranRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.TranRowDeleting != null)) {
+                    this.TranRowDeleting(this, new TranRowChangeEvent(((TranRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveTranRow(TranRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                UPDataSet ds = new UPDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "TranDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -5156,6 +5694,499 @@ namespace UPTax.Reports {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class TranRow : global::System.Data.DataRow {
+            
+            private TranDataTable tableTran;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal TranRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableTran = ((TranDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string WardNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.WardNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'WardNo\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.WardNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalHouseOwnerStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.TotalHouseOwnerStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalHouseOwnerStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.TotalHouseOwnerStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GrandTotalHouseOwnerStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.GrandTotalHouseOwnerStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GrandTotalHouseOwnerStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.GrandTotalHouseOwnerStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalMaleStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.TotalMaleStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalMaleStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.TotalMaleStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GrandTotalMaleStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.GrandTotalMaleStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GrandTotalMaleStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.GrandTotalMaleStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalFemaleStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.TotalFemaleStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalFemaleStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.TotalFemaleStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GrandTotalFemaleStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.GrandTotalFemaleStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GrandTotalFemaleStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.GrandTotalFemaleStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalSocialBenefitTakingCountStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.TotalSocialBenefitTakingCountStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalSocialBenefitTakingCountStr\' in table \'Tran\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.TotalSocialBenefitTakingCountStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GrandTotalSocialBenefitTakingCountStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.GrandTotalSocialBenefitTakingCountStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GrandTotalSocialBenefitTakingCountStr\' in table \'Tran\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.GrandTotalSocialBenefitTakingCountStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalPoorStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.TotalPoorStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalPoorStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.TotalPoorStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GrandTotalPoorStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.GrandTotalPoorStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GrandTotalPoorStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.GrandTotalPoorStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalMidPoorStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.TotalMidPoorStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalMidPoorStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.TotalMidPoorStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GrandTotalMidPoorStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.GrandTotalMidPoorStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GrandTotalMidPoorStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.GrandTotalMidPoorStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalRichStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.TotalRichStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalRichStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.TotalRichStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GrandTotalRichStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.GrandTotalRichStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GrandTotalRichStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.GrandTotalRichStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalPopulationStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.TotalPopulationStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalPopulationStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.TotalPopulationStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GrandTotalPopulationStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableTran.GrandTotalPopulationStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GrandTotalPopulationStr\' in table \'Tran\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTran.GrandTotalPopulationStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsWardNoNull() {
+                return this.IsNull(this.tableTran.WardNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetWardNoNull() {
+                this[this.tableTran.WardNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalHouseOwnerStrNull() {
+                return this.IsNull(this.tableTran.TotalHouseOwnerStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalHouseOwnerStrNull() {
+                this[this.tableTran.TotalHouseOwnerStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGrandTotalHouseOwnerStrNull() {
+                return this.IsNull(this.tableTran.GrandTotalHouseOwnerStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGrandTotalHouseOwnerStrNull() {
+                this[this.tableTran.GrandTotalHouseOwnerStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalMaleStrNull() {
+                return this.IsNull(this.tableTran.TotalMaleStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalMaleStrNull() {
+                this[this.tableTran.TotalMaleStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGrandTotalMaleStrNull() {
+                return this.IsNull(this.tableTran.GrandTotalMaleStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGrandTotalMaleStrNull() {
+                this[this.tableTran.GrandTotalMaleStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalFemaleStrNull() {
+                return this.IsNull(this.tableTran.TotalFemaleStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalFemaleStrNull() {
+                this[this.tableTran.TotalFemaleStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGrandTotalFemaleStrNull() {
+                return this.IsNull(this.tableTran.GrandTotalFemaleStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGrandTotalFemaleStrNull() {
+                this[this.tableTran.GrandTotalFemaleStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalSocialBenefitTakingCountStrNull() {
+                return this.IsNull(this.tableTran.TotalSocialBenefitTakingCountStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalSocialBenefitTakingCountStrNull() {
+                this[this.tableTran.TotalSocialBenefitTakingCountStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGrandTotalSocialBenefitTakingCountStrNull() {
+                return this.IsNull(this.tableTran.GrandTotalSocialBenefitTakingCountStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGrandTotalSocialBenefitTakingCountStrNull() {
+                this[this.tableTran.GrandTotalSocialBenefitTakingCountStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalPoorStrNull() {
+                return this.IsNull(this.tableTran.TotalPoorStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalPoorStrNull() {
+                this[this.tableTran.TotalPoorStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGrandTotalPoorStrNull() {
+                return this.IsNull(this.tableTran.GrandTotalPoorStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGrandTotalPoorStrNull() {
+                this[this.tableTran.GrandTotalPoorStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalMidPoorStrNull() {
+                return this.IsNull(this.tableTran.TotalMidPoorStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalMidPoorStrNull() {
+                this[this.tableTran.TotalMidPoorStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGrandTotalMidPoorStrNull() {
+                return this.IsNull(this.tableTran.GrandTotalMidPoorStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGrandTotalMidPoorStrNull() {
+                this[this.tableTran.GrandTotalMidPoorStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalRichStrNull() {
+                return this.IsNull(this.tableTran.TotalRichStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalRichStrNull() {
+                this[this.tableTran.TotalRichStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGrandTotalRichStrNull() {
+                return this.IsNull(this.tableTran.GrandTotalRichStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGrandTotalRichStrNull() {
+                this[this.tableTran.GrandTotalRichStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalPopulationStrNull() {
+                return this.IsNull(this.tableTran.TotalPopulationStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalPopulationStrNull() {
+                this[this.tableTran.TotalPopulationStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGrandTotalPopulationStrNull() {
+                return this.IsNull(this.tableTran.GrandTotalPopulationStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGrandTotalPopulationStrNull() {
+                this[this.tableTran.GrandTotalPopulationStrColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -5311,6 +6342,40 @@ namespace UPTax.Reports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DailyPostingRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class TranRowChangeEvent : global::System.EventArgs {
+            
+            private TranRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TranRowChangeEvent(TranRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TranRow Row {
                 get {
                     return this.eventRow;
                 }
