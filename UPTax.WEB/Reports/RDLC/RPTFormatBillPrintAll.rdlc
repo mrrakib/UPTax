@@ -268,42 +268,6 @@
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
                             </Textbox>
-                            <Textbox Name="Textbox4">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>অর্থবছরঃ</Value>
-                                      <Style>
-                                        <FontFamily>Kalpurush</FontFamily>
-                                        <FontSize>11pt</FontSize>
-                                        <Color>HotPink</Color>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Right</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>Textbox3</rd:DefaultName>
-                              <Top>1.60209in</Top>
-                              <Left>1.74106in</Left>
-                              <Height>0.1875in</Height>
-                              <Width>1.03542in</Width>
-                              <ZIndex>3</ZIndex>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
-                              </Style>
-                            </Textbox>
                             <Textbox Name="FinYear">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
@@ -326,7 +290,7 @@
                               <Left>2.99175in</Left>
                               <Height>0.1875in</Height>
                               <Width>1.35417in</Width>
-                              <ZIndex>4</ZIndex>
+                              <ZIndex>3</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -361,7 +325,7 @@
                               <Left>2.34673in</Left>
                               <Height>0.1875in</Height>
                               <Width>1.27083in</Width>
-                              <ZIndex>5</ZIndex>
+                              <ZIndex>4</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -387,14 +351,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox9">
+                                          <Textbox Name="Textbox1">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>ওয়ার্ড</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>nikosh</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -407,7 +371,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox9</rd:DefaultName>
+                                            <rd:DefaultName>Textbox1</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -419,14 +383,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox28">
+                                          <Textbox Name="Textbox30">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -437,7 +401,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox30</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -482,14 +446,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox14">
+                                          <Textbox Name="Textbox2">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>হোল্ডিং নং</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -502,7 +466,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox14</rd:DefaultName>
+                                            <rd:DefaultName>Textbox2</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -514,14 +478,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox36">
+                                          <Textbox Name="Textbox29">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -532,7 +496,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox29</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -577,14 +541,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox26">
+                                          <Textbox Name="Textbox9">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>করদাতার নাম</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -597,7 +561,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox26</rd:DefaultName>
+                                            <rd:DefaultName>Textbox9</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -609,14 +573,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox29">
+                                          <Textbox Name="Textbox26">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -627,7 +591,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox26</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -672,14 +636,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox24">
+                                          <Textbox Name="Textbox11">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>পিতা/স্বামীর নাম</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -692,7 +656,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox24</rd:DefaultName>
+                                            <rd:DefaultName>Textbox11</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -704,14 +668,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox37">
+                                          <Textbox Name="Textbox24">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -722,7 +686,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox24</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -767,14 +731,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox43">
+                                          <Textbox Name="Textbox12">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>মোবাইল নং</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -787,7 +751,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox43</rd:DefaultName>
+                                            <rd:DefaultName>Textbox12</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -799,14 +763,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox30">
+                                          <Textbox Name="Textbox22">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -817,7 +781,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox22</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -862,14 +826,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox22">
+                                          <Textbox Name="Textbox13">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>বিলের ঠিকানা</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -882,7 +846,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox22</rd:DefaultName>
+                                            <rd:DefaultName>Textbox13</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -894,14 +858,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox35">
+                                          <Textbox Name="Textbox20">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -912,7 +876,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox20</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -957,14 +921,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox20">
+                                          <Textbox Name="Textbox14">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>জমাদানের শেষ তারিখ</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -977,7 +941,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox20</rd:DefaultName>
+                                            <rd:DefaultName>Textbox14</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -989,14 +953,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox31">
+                                          <Textbox Name="Textbox18">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -1007,7 +971,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox18</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -1051,14 +1015,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox18">
+                                          <Textbox Name="Textbox16">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>বকেয়া বছর</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -1071,7 +1035,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox18</rd:DefaultName>
+                                            <rd:DefaultName>Textbox16</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -1083,14 +1047,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox32">
+                                          <Textbox Name="Textbox17">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -1101,7 +1065,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox17</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -1166,7 +1130,7 @@
                               <Left>0.22022in</Left>
                               <Height>2.66737in</Height>
                               <Width>6.11042in</Width>
-                              <ZIndex>6</ZIndex>
+                              <ZIndex>5</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1195,14 +1159,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox54">
+                                          <Textbox Name="Textbox105">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>করের বিবরণ</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -1215,7 +1179,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox54</rd:DefaultName>
+                                            <rd:DefaultName>Textbox105</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1228,14 +1192,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox56">
+                                          <Textbox Name="Textbox106">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>বকেয়া</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -1248,7 +1212,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox56</rd:DefaultName>
+                                            <rd:DefaultName>Textbox106</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1261,14 +1225,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox58">
+                                          <Textbox Name="Textbox107">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>চলতি</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -1282,7 +1246,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox58</rd:DefaultName>
+                                            <rd:DefaultName>Textbox107</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1295,14 +1259,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox76">
+                                          <Textbox Name="Textbox108">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>মোট</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -1316,7 +1280,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox76</rd:DefaultName>
+                                            <rd:DefaultName>Textbox108</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1334,14 +1298,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox68">
+                                          <Textbox Name="Textbox102">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>হোল্ডিং কর</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -1353,7 +1317,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox68</rd:DefaultName>
+                                            <rd:DefaultName>Textbox102</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1474,14 +1438,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox65">
+                                          <Textbox Name="Textbox103">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>পূর্বের কর</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -1493,7 +1457,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox65</rd:DefaultName>
+                                            <rd:DefaultName>Textbox103</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1614,14 +1578,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox62">
+                                          <Textbox Name="Textbox104">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>দণ্ড</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -1633,7 +1597,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox62</rd:DefaultName>
+                                            <rd:DefaultName>Textbox104</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1754,14 +1718,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox59">
+                                          <Textbox Name="Textbox96">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>সর্বমোট</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -1774,7 +1738,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox59</rd:DefaultName>
+                                            <rd:DefaultName>Textbox96</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1850,7 +1814,7 @@
                               <Left>0.20981in</Left>
                               <Height>1.98345in</Height>
                               <Width>6.13127in</Width>
-                              <ZIndex>7</ZIndex>
+                              <ZIndex>6</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1876,14 +1840,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox82">
+                                          <Textbox Name="Textbox90">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>প্রাপ্ত টাকা</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -1896,7 +1860,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox82</rd:DefaultName>
+                                            <rd:DefaultName>Textbox90</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -1950,7 +1914,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox93">
+                                          <Textbox Name="Textbox88">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1968,37 +1932,8 @@
                                                   <TextAlign>Center</TextAlign>
                                                 </Style>
                                               </Paragraph>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value />
-                                                    <Style>
-                                                      <FontFamily>Kalpurush</FontFamily>
-                                                      <FontSize>12pt</FontSize>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>চেয়ারম্যান এর স্বাক্ষর</Value>
-                                                    <Style>
-                                                      <FontFamily>Kalpurush</FontFamily>
-                                                      <FontSize>12pt</FontSize>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox93</rd:DefaultName>
-                                            <ZIndex>9</ZIndex>
+                                            <rd:DefaultName>Textbox88</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>Silver</Color>
@@ -2019,14 +1954,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox87">
+                                          <Textbox Name="Textbox93">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>কথায়</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -2039,7 +1974,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox87</rd:DefaultName>
+                                            <rd:DefaultName>Textbox93</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -2137,14 +2072,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox90">
+                                          <Textbox Name="Textbox85">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>আদায়কারীর স্বাক্ষর</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -2157,7 +2092,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox90</rd:DefaultName>
+                                            <rd:DefaultName>Textbox85</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -2210,7 +2145,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox94">
+                                          <Textbox Name="Textbox86">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -2228,23 +2163,8 @@
                                                   <TextAlign>Center</TextAlign>
                                                 </Style>
                                               </Paragraph>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>ব্যাংক সীল / ইউপি কার্যালয়ের সীলমোহর</Value>
-                                                    <Style>
-                                                      <FontFamily>Kalpurush</FontFamily>
-                                                      <FontSize>12pt</FontSize>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox94</rd:DefaultName>
-                                            <ZIndex>10</ZIndex>
+                                            <rd:DefaultName>Textbox86</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>Silver</Color>
@@ -2284,7 +2204,7 @@
                               <Left>0.20564in</Left>
                               <Height>2.2304in</Height>
                               <Width>6.12501in</Width>
-                              <ZIndex>8</ZIndex>
+                              <ZIndex>7</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -2296,7 +2216,7 @@
                               <Left>6.67855in</Left>
                               <Height>9.09375in</Height>
                               <Width>0in</Width>
-                              <ZIndex>9</ZIndex>
+                              <ZIndex>8</ZIndex>
                               <Style>
                                 <Border>
                                   <Color>Maroon</Color>
@@ -2329,7 +2249,7 @@
                               <Left>8.68709in</Left>
                               <Height>0.1875in</Height>
                               <Width>2.52083in</Width>
-                              <ZIndex>10</ZIndex>
+                              <ZIndex>9</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -2360,7 +2280,7 @@
                               <Left>8.20583in</Left>
                               <Height>0.1875in</Height>
                               <Width>3.30208in</Width>
-                              <ZIndex>11</ZIndex>
+                              <ZIndex>10</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -2392,43 +2312,7 @@
                               <Left>9.14067in</Left>
                               <Height>0.22917in</Height>
                               <Width>1.46875in</Width>
-                              <ZIndex>12</ZIndex>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
-                              </Style>
-                            </Textbox>
-                            <Textbox Name="Textbox7">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>অর্থবছরঃ</Value>
-                                      <Style>
-                                        <FontFamily>Kalpurush</FontFamily>
-                                        <FontSize>11pt</FontSize>
-                                        <Color>HotPink</Color>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Right</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>Textbox3</rd:DefaultName>
-                              <Top>1.61798in</Top>
-                              <Left>8.63917in</Left>
-                              <Height>0.1875in</Height>
-                              <Width>1.03542in</Width>
-                              <ZIndex>13</ZIndex>
+                              <ZIndex>11</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -2463,7 +2347,7 @@
                               <Left>9.24484in</Left>
                               <Height>0.1875in</Height>
                               <Width>1.27083in</Width>
-                              <ZIndex>14</ZIndex>
+                              <ZIndex>12</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -2489,14 +2373,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox10">
+                                          <Textbox Name="Textbox31">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>ওয়ার্ড</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -2509,7 +2393,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox9</rd:DefaultName>
+                                            <rd:DefaultName>Textbox31</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2521,14 +2405,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox33">
+                                          <Textbox Name="Textbox49">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -2539,7 +2423,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox49</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2584,14 +2468,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox15">
+                                          <Textbox Name="Textbox32">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>হোল্ডিং নং</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -2604,7 +2488,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox14</rd:DefaultName>
+                                            <rd:DefaultName>Textbox32</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2616,14 +2500,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox38">
+                                          <Textbox Name="Textbox50">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -2634,7 +2518,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox50</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2679,14 +2563,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox27">
+                                          <Textbox Name="Textbox35">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>করদাতার নাম</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -2699,7 +2583,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox26</rd:DefaultName>
+                                            <rd:DefaultName>Textbox35</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2711,14 +2595,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox34">
+                                          <Textbox Name="Textbox51">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -2729,7 +2613,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox51</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2774,14 +2658,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox25">
+                                          <Textbox Name="Textbox36">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>পিতা/স্বামীর নাম</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -2794,7 +2678,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox24</rd:DefaultName>
+                                            <rd:DefaultName>Textbox36</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2806,14 +2690,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox39">
+                                          <Textbox Name="Textbox52">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -2824,7 +2708,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox52</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2869,14 +2753,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox44">
+                                          <Textbox Name="Textbox37">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>মোবাইল নং</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -2889,7 +2773,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox43</rd:DefaultName>
+                                            <rd:DefaultName>Textbox37</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2901,14 +2785,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox40">
+                                          <Textbox Name="Textbox53">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -2919,7 +2803,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox53</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2964,14 +2848,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox23">
+                                          <Textbox Name="Textbox43">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>বিলের ঠিকানা</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -2984,7 +2868,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox22</rd:DefaultName>
+                                            <rd:DefaultName>Textbox43</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -2996,14 +2880,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox41">
+                                          <Textbox Name="Textbox64">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -3014,7 +2898,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox64</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -3059,14 +2943,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox21">
+                                          <Textbox Name="Textbox44">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>জমাদানের শেষ তারিখ</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -3079,7 +2963,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox20</rd:DefaultName>
+                                            <rd:DefaultName>Textbox44</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -3091,14 +2975,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox42">
+                                          <Textbox Name="Textbox67">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -3109,7 +2993,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox67</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -3153,14 +3037,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox45">
+                                          <Textbox Name="Textbox48">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>বকেয়া বছর</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -3173,7 +3057,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox18</rd:DefaultName>
+                                            <rd:DefaultName>Textbox48</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -3185,14 +3069,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox46">
+                                          <Textbox Name="Textbox71">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>:</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -3203,7 +3087,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox28</rd:DefaultName>
+                                            <rd:DefaultName>Textbox71</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -3268,7 +3152,7 @@
                               <Left>6.9725in</Left>
                               <Height>2.65145in</Height>
                               <Width>6.44374in</Width>
-                              <ZIndex>15</ZIndex>
+                              <ZIndex>13</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -3297,14 +3181,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox55">
+                                          <Textbox Name="Textbox75">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>করের বিবরণ</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -3317,7 +3201,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox54</rd:DefaultName>
+                                            <rd:DefaultName>Textbox75</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -3330,14 +3214,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox57">
+                                          <Textbox Name="Textbox78">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>বকেয়া</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -3350,7 +3234,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox56</rd:DefaultName>
+                                            <rd:DefaultName>Textbox78</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -3363,14 +3247,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox60">
+                                          <Textbox Name="Textbox79">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>চলতি</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Nikosh</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -3384,7 +3268,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox58</rd:DefaultName>
+                                            <rd:DefaultName>Textbox79</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -3397,14 +3281,14 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox77">
+                                          <Textbox Name="Textbox80">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>মোট</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -3418,7 +3302,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox76</rd:DefaultName>
+                                            <rd:DefaultName>Textbox80</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -3436,14 +3320,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox69">
+                                          <Textbox Name="Textbox72">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>হোল্ডিং কর</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -3455,7 +3339,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox68</rd:DefaultName>
+                                            <rd:DefaultName>Textbox72</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -3576,14 +3460,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox66">
+                                          <Textbox Name="Textbox73">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>পূর্বের কর</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -3595,7 +3479,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox65</rd:DefaultName>
+                                            <rd:DefaultName>Textbox73</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -3716,14 +3600,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox63">
+                                          <Textbox Name="Textbox74">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>দণ্ড</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -3735,7 +3619,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox62</rd:DefaultName>
+                                            <rd:DefaultName>Textbox74</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -3856,14 +3740,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox61">
+                                          <Textbox Name="Textbox94">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>সর্বমোট</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -3876,7 +3760,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox59</rd:DefaultName>
+                                            <rd:DefaultName>Textbox94</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -3952,7 +3836,7 @@
                               <Left>6.95792in</Left>
                               <Height>1.9629in</Height>
                               <Width>6.45415in</Width>
-                              <ZIndex>16</ZIndex>
+                              <ZIndex>14</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -3978,14 +3862,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox83">
+                                          <Textbox Name="Textbox81">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>প্রাপ্ত টাকা</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -3998,7 +3882,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox82</rd:DefaultName>
+                                            <rd:DefaultName>Textbox81</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -4052,7 +3936,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox95">
+                                          <Textbox Name="Textbox99">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -4070,37 +3954,8 @@
                                                   <TextAlign>Center</TextAlign>
                                                 </Style>
                                               </Paragraph>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value />
-                                                    <Style>
-                                                      <FontFamily>Kalpurush</FontFamily>
-                                                      <FontSize>12pt</FontSize>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>চেয়ারম্যান এর স্বাক্ষর</Value>
-                                                    <Style>
-                                                      <FontFamily>Kalpurush</FontFamily>
-                                                      <FontSize>12pt</FontSize>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox93</rd:DefaultName>
-                                            <ZIndex>9</ZIndex>
+                                            <rd:DefaultName>Textbox99</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>Silver</Color>
@@ -4121,14 +3976,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox88">
+                                          <Textbox Name="Textbox83">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>কথায়</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -4141,7 +3996,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox87</rd:DefaultName>
+                                            <rd:DefaultName>Textbox83</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -4239,14 +4094,14 @@
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox96">
+                                          <Textbox Name="Textbox84">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>আদায়কারীর স্বাক্ষর</Value>
+                                                    <Value />
                                                     <Style>
                                                       <FontFamily>Kalpurush</FontFamily>
                                                       <FontSize>12pt</FontSize>
@@ -4259,7 +4114,7 @@
                                                 </Style>
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox90</rd:DefaultName>
+                                            <rd:DefaultName>Textbox84</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>LightGrey</Color>
@@ -4312,7 +4167,7 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox98">
+                                          <Textbox Name="Textbox100">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -4330,23 +4185,8 @@
                                                   <TextAlign>Center</TextAlign>
                                                 </Style>
                                               </Paragraph>
-                                              <Paragraph>
-                                                <TextRuns>
-                                                  <TextRun>
-                                                    <Value>ব্যাংক সীল / ইউপি কার্যালয়ের সীলমোহর</Value>
-                                                    <Style>
-                                                      <FontFamily>Kalpurush</FontFamily>
-                                                      <FontSize>12pt</FontSize>
-                                                    </Style>
-                                                  </TextRun>
-                                                </TextRuns>
-                                                <Style>
-                                                  <TextAlign>Center</TextAlign>
-                                                </Style>
-                                              </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox94</rd:DefaultName>
-                                            <ZIndex>10</ZIndex>
+                                            <rd:DefaultName>Textbox100</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Color>Silver</Color>
@@ -4386,7 +4226,7 @@
                               <Left>6.95792in</Left>
                               <Height>2.2304in</Height>
                               <Width>6.45831in</Width>
-                              <ZIndex>17</ZIndex>
+                              <ZIndex>15</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -4415,7 +4255,7 @@
                               <Left>9.85374in</Left>
                               <Height>0.1875in</Height>
                               <Width>1.35417in</Width>
-                              <ZIndex>18</ZIndex>
+                              <ZIndex>16</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>

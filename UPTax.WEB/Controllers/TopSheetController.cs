@@ -40,6 +40,7 @@ namespace UPTax.Controllers
         public ActionResult Index(string financialYear = "")
         {
             var data = _taxInstallmentService.GetTopSheetReport(financialYear);
+            ViewBag.FinYear = Convert.ToInt32(financialYear);
 
             ViewBag.FinancialYear = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name", financialYear);
             return View(data);
