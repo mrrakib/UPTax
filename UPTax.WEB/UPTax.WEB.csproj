@@ -207,6 +207,7 @@
     <Compile Include="Controllers\AdminNoticeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PersonalStatementReportController.cs" />
+    <Compile Include="Controllers\RPTMultiFormatBillPrintController.cs" />
     <Compile Include="Controllers\RPTTaxByVillageController.cs" />
     <Compile Include="Controllers\RPTTaxByWardController.cs" />
     <Compile Include="Controllers\RPTFormatBillPrintController.cs" />
@@ -12777,6 +12778,8 @@
     <Content Include="Views\PersonalStatementReport\Index.cshtml" />
     <Content Include="Views\RPTTran\Index.cshtml" />
     <Content Include="Views\RPTTran\RPTTran.cshtml" />
+    <Content Include="Views\RPTMultiFormatBillPrint\Index.cshtml" />
+    <Content Include="Views\RPTMultiFormatBillPrint\RPTMultiFormatBillPrint.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -12844,6 +12847,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\RDLC\RPTFormatBillPrintAll.rdlc" />
     <EmbeddedResource Include="Reports\RDLC\RPTFormatBillPrint.rdlc" />
     <EmbeddedResource Include="Reports\RDLC\RPTTopSheet.rdlc" />
     <EmbeddedResource Include="Reports\RDLC\RPTDailyPosting.rdlc">

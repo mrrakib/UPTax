@@ -28,6 +28,7 @@ namespace UPTax.Service.Services
         List<VMWordOrVillWiseTaxReport> GetRPTTaxInfoByVillage(int villageId, int finYearId, int unionId);
         VMPersonalShortReport GetPersonalShortReport(int unionId, string holdingNo);
         VMPersonalStatement GetPersonalStatementReport(int unionId, string holdinNo);
+        List<VMRPTTaxCollectionSingle> GetMRPTTaxCollectionAll(int wardId, int villageId, int finYearId, int unionId);
     }
     public class TaxInstallmentService : ITaxInstallmentService
     {
@@ -221,6 +222,19 @@ namespace UPTax.Service.Services
                 new SqlParameter("finYearId", SqlDbType.Int) { Value = finYearId },
                 new SqlParameter("unionId", SqlDbType.Int) { Value = unionId }
                 ).FirstOrDefault();
+
+            return result;
+        }
+
+        public List<VMRPTTaxCollectionSingle> GetMRPTTaxCollectionAll(int wardId, int villageId, int finYearId, int unionId)
+        {
+            var result = _taxInstallmentRepository.ExecStoreProcedure<VMRPTTaxCollectionSingle>("GetAllTaxDetails @finYearId, @unionId, @wardId, @villageId",
+
+                new SqlParameter("finYearId", SqlDbType.Int) { Value = finYearId },
+                new SqlParameter("unionId", SqlDbType.Int) { Value = unionId },
+                new SqlParameter("wardId", SqlDbType.Int) { Value = wardId },
+                new SqlParameter("villageId", SqlDbType.Int) { Value = villageId }
+                ).ToList();
 
             return result;
         }

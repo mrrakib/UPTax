@@ -512,6 +512,8 @@ namespace UPTax.Reports {
             
             private global::System.Data.DataColumn columnPrevAmountStr;
             
+            private global::System.Data.DataColumn columnLastPaymentDateStr;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SingleHoldingTaxDataTable() {
@@ -779,6 +781,14 @@ namespace UPTax.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LastPaymentDateStrColumn {
+                get {
+                    return this.columnLastPaymentDateStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -843,7 +853,8 @@ namespace UPTax.Reports {
                         string HoldingTotalStr, 
                         string PrevTotalStr, 
                         string TotalPenaltyStr, 
-                        string PrevAmountStr) {
+                        string PrevAmountStr, 
+                        string LastPaymentDateStr) {
                 SingleHoldingTaxRow rowSingleHoldingTaxRow = ((SingleHoldingTaxRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         HoldingNo,
@@ -874,7 +885,8 @@ namespace UPTax.Reports {
                         HoldingTotalStr,
                         PrevTotalStr,
                         TotalPenaltyStr,
-                        PrevAmountStr};
+                        PrevAmountStr,
+                        LastPaymentDateStr};
                 rowSingleHoldingTaxRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSingleHoldingTaxRow);
                 return rowSingleHoldingTaxRow;
@@ -926,6 +938,7 @@ namespace UPTax.Reports {
                 this.columnPrevTotalStr = base.Columns["PrevTotalStr"];
                 this.columnTotalPenaltyStr = base.Columns["TotalPenaltyStr"];
                 this.columnPrevAmountStr = base.Columns["PrevAmountStr"];
+                this.columnLastPaymentDateStr = base.Columns["LastPaymentDateStr"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -989,6 +1002,8 @@ namespace UPTax.Reports {
                 base.Columns.Add(this.columnTotalPenaltyStr);
                 this.columnPrevAmountStr = new global::System.Data.DataColumn("PrevAmountStr", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrevAmountStr);
+                this.columnLastPaymentDateStr = new global::System.Data.DataColumn("LastPaymentDateStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLastPaymentDateStr);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3796,6 +3811,22 @@ namespace UPTax.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string LastPaymentDateStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableSingleHoldingTax.LastPaymentDateStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LastPaymentDateStr\' in table \'SingleHoldingTax\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSingleHoldingTax.LastPaymentDateStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsHoldingNoNull() {
                 return this.IsNull(this.tableSingleHoldingTax.HoldingNoColumn);
             }
@@ -4140,6 +4171,18 @@ namespace UPTax.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPrevAmountStrNull() {
                 this[this.tableSingleHoldingTax.PrevAmountStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLastPaymentDateStrNull() {
+                return this.IsNull(this.tableSingleHoldingTax.LastPaymentDateStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLastPaymentDateStrNull() {
+                this[this.tableSingleHoldingTax.LastPaymentDateStrColumn] = global::System.Convert.DBNull;
             }
         }
         
