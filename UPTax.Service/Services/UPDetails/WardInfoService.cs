@@ -1,6 +1,7 @@
 ﻿using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository;
@@ -98,10 +99,17 @@ namespace UPTax.Service.Services.UPDetails
                 string query = string.Format(@"SELECT * FROM WardInfo {0} ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
 
                 string countQuery = string.Format(@"SELECT COUNT(*) FROM WardInfo WHERE UnionId={0} AND WardNo LIKE N'%{1}%'", unionId, wardNo);
-
+                //var culture = new CultureInfo("bn-BD");
                 int rowCount = _wardInfoRepository.SQLQuery<int>(countQuery);
-                List<WardInfo> unionParishads = _wardInfoRepository.SQLQueryList<WardInfo>(query).Where(a => a.IsDeleted == false).ToList();
-                return new StaticPagedList<WardInfo>(unionParishads, pageNo, pageSize, rowCount);
+                var unionParishads = _wardInfoRepository.SQLQueryList<WardInfo>(query).Where(a => a.IsDeleted == false).ToList();
+                foreach (var item in unionParishads)
+                {
+                    item.WardNoEng = Convert.ToInt32(E2B.SwitchEngBan(item.WardNo));
+                }
+
+                //var result = unionParishads.OrderBy(s => s.WardNo, StringComparer.Create(culture, false));
+                var result = unionParishads.OrderBy(s => s.WardNoEng);
+                return new StaticPagedList<WardInfo>(result, pageNo, pageSize, rowCount);
             }
             catch (Exception ex)
             {

@@ -92,6 +92,7 @@
     <Compile Include="DefaultFormsAuthentication.cs" />
     <Compile Include="AdminContext.cs" />
     <Compile Include="IdentityManager.cs" />
+    <Compile Include="Infrastructure\E2B.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\Page.cs" />
     <Compile Include="Infrastructure\Repository.cs" />

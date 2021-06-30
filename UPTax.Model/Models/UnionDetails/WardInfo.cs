@@ -13,6 +13,8 @@ namespace UPTax.Model.Models.UnionDetails
         [DisplayName("ওয়ার্ড নং")]
         public string WardNo { get; set; }
         public int UnionId { get; set; }
+        [NotMapped]
+        public int WardNoEng { get; set; }
         [ForeignKey("UnionId")]
         public virtual UnionParishad UnionParishad { get; set; }
 
