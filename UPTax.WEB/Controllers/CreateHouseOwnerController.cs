@@ -101,6 +101,8 @@ namespace UPTax.Controllers
             ViewBag.Sanitary = new SelectList(_houseOwnerService.GetSanitaryDropdownItemList(), "IdStr", "Name", model.Sanitary);
             ViewBag.LivingType = new SelectList(_houseOwnerService.GetLivingTypeDropdownItemList(), "IdStr", "Name", model.LivingType);
 
+            ViewBag.VillageId = model.VillageInfoId;
+
             return View(model);
         }
     }

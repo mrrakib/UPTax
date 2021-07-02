@@ -47,6 +47,10 @@
                             @Html.AntiForgeryToken()
 
                             <div class="row">
+                                <input id="ViewBagVillageId"
+                                       name="ViewBagVillageId"
+                                       type="hidden"
+                                       value="@ViewBag.VillageId" />
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.WardInfoId) <span class="required"></span></label>
                                     @Html.DropDownList("WardInfoId", null, String.Empty, new { @class = "selectize validationCustom03" })
@@ -284,6 +288,8 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+
+
             $("#TotalBoys").change(function () {
                 setTotalmembers();
             });
@@ -338,10 +344,9 @@
 
             function GetVillageDropdown() {
                 var wardId = $("#WardInfoId").val();
+                var villageId = parseInt($("#ViewBagVillageId").val());
                 $("#VillageInfoId").empty();
                 //$('#VillageInfoId').append(new Option('Select...', ''));
-                debugger;
-
                   $.ajax({
                         url: '@Url.Action("GetVillage", "VillageInfo")',
                         dataType: "json",
@@ -350,10 +355,12 @@
                         data: { wardId},
                       success: function (data) {
 
-                          debugger;
-                          var count = 0;
                           data.forEach(function (item) {
-                              $('#VillageInfoId').append(new Option(item.Name, item.Id));
+                              if (villageId == item.Id) {
+                                  $('#VillageInfoId').append(new Option(item.Name, item.Id, true, true));
+                              } else {
+                                  $('#VillageInfoId').append(new Option(item.Name, item.Id));
+                              }
                           });
                         },
                         error: function (xhr) {
@@ -361,6 +368,8 @@
                         }
                  });
             }
+
+            GetVillageDropdown();
         });
     </script>
 }
