@@ -342,3 +342,6 @@ healthchecksdb
 /UPTax.WEB/Web.Debug.config
 /UPTax.WEB/Web.Release.config
 /UPTax.WEB/assets/UserImages
+/UPTax.WEB/Web.config
+/UPTax.WEB/Web.Debug.config
+/UPTax.WEB/Web.Release.config
