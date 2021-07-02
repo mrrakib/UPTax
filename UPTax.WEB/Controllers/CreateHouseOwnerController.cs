@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
 using UPTax.Model.Models;
@@ -68,9 +66,7 @@ namespace UPTax.Controllers
             return View();
         }
 
-        // GET: HouseOwner/Create
-        
-
+        // GET: HouseOwner/Create      
         [HttpPost]
         [RapidAuthorization]
         [ValidateAntiForgeryToken]

@@ -242,15 +242,17 @@
                                     @Html.TextBoxFor(m => m.TotalRawHouse, new { @class = "form-control col-md-3 mb-1", type = "number", @placeholder = "কাঁচা ঘর" })
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="YearlyRentAmount">@Html.DisplayNameFor(model => model.YearlyRentAmount) <span class="required">*</span></label>
-                                    @Html.TextBoxFor(m => m.YearlyRentAmount, new { @id = "YearlyRentAmount", @class = "form-control validationCustom03", type = "number", @placeholder = "বাৎসরিক ভাড়া", @required = "required" })
+                                    @Html.LabelFor(model => model.YearlyRentAmount)
+                                    @Html.HiddenFor(a => a.YearlyRentAmount)
+                                    @Html.TextBox("YearlyRentAmountDisplay", Model.YearlyRentAmount, new { @class = "form-control", @placeholder = "বাৎসরিক ভাড়া", disabled = "disabled", @readonly = "readonly" })
                                     <div class="invalid-feedback">
                                         বাৎসরিক ভাড়া দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="YearlyInterestRate">@Html.DisplayNameFor(model => model.YearlyInterestRate) <span class="required"></span></label>
-                                    @Html.TextBoxFor(m => m.YearlyInterestRate, new { @id = "YearlyInterestRate", @class = "form-control validationCustom03", type = "number", min = "0", value = "0", step = ".01", @placeholder = "ঋনের বার্ষিক সুদ", @required = "required" })
+                                    @Html.LabelFor(model => model.YearlyInterestRate)
+                                    @Html.HiddenFor(a => a.YearlyInterestRate)
+                                    @Html.TextBox("YearlyInterestDisplay", Model.YearlyInterestRate, new { @class = "form-control", @placeholder = "ঋনের বার্ষিক সুদ", disabled = "disabled", @readonly = "readonly" })
                                     <div class="invalid-feedback">
                                         ঋনের বার্ষিক সুদ দেয়া বাধ্যতামূলক!
                                     </div>
@@ -324,8 +326,11 @@
                         cache: false,
                         data: { building, semiBuilding, rawHouse},
                         success: function (data) {
-                             $("#YearlyRentAmount").val(data.rent);
-                             $("#YearlyInterestRate").val(data.rate);
+                            $("#YearlyRentAmount").val(data.rent);
+                            $("#YearlyRentAmountDisplay").val(data.rent);
+
+                            $("#YearlyInterestRate").val(data.rate);
+                            $("#YearlyInterestDisplay").val(data.rate);
                         },
                         error: function (xhr) {
                             alert(xhr.responseText);
