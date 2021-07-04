@@ -81,7 +81,13 @@ namespace UPTax.Service.Services
 
                 int rowCount = _VillageInfoRepository.SQLQuery<int>(countQuery);
                 List<VVillageInfo> villages = _VillageInfoRepository.SQLQueryList<VVillageInfo>(query).OrderBy(a => a.WardNo).ToList();
-                return new StaticPagedList<VVillageInfo>(villages, pageNo, pageSize, rowCount);
+
+                foreach (var item in villages)
+                {
+                    item.WardNoOrderBy = Convert.ToInt32(E2B.SwitchEngBan(item.WardNo));
+                }
+
+                return new StaticPagedList<VVillageInfo>(villages.OrderBy(a => a.WardNoOrderBy), pageNo, pageSize, rowCount);
             }
             catch (Exception ex)
             {
