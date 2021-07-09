@@ -47,6 +47,10 @@
                             @Html.AntiForgeryToken()
 
                             <div class="row">
+                                <input id="ViewBagVillageId"
+                                       name="ViewBagVillageId"
+                                       type="hidden"
+                                       value="@ViewBag.VillageId" />
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.WardInfoId) <span class="required"></span></label>
                                     @Html.DropDownList("WardInfoId", null, String.Empty, new { @class = "selectize validationCustom03" })
@@ -162,7 +166,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.BirthRegistrationNumber)</label>
-                                    @Html.TextBoxFor(m => m.BirthRegistrationNumber, new { @id = "validationCustom03", @class = "form-control bangla", @placeholder = "জন্ম নিবন্ধন নাম্বার" })
+                                    @Html.TextBoxFor(m => m.BirthRegistrationNumber, new { @id = "validationCustom03", @class = "form-control", @placeholder = "জন্ম নিবন্ধন নাম্বার" })
                                     <div class="invalid-feedback">
                                         জন্ম নিবন্ধন নাম্বার দেয়া বাধ্যতামূলক!
                                     </div>
@@ -239,15 +243,17 @@
                                     @Html.TextBoxFor(m => m.TotalRawHouse, new { @class = "form-control col-md-3 mb-1", type = "number", @placeholder = "কাঁচা ঘর" })
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="YearlyRentAmount">@Html.DisplayNameFor(model => model.YearlyRentAmount) <span class="required"></span></label>
-                                    @Html.TextBoxFor(m => m.YearlyRentAmount, new { @id = "YearlyRentAmount", @class = "form-control validationCustom03", type = "number", @placeholder = "বাৎসরিক ভাড়া", @required = "required" })
+                                    @Html.LabelFor(model => model.YearlyRentAmount)
+                                    @Html.HiddenFor(a => a.YearlyRentAmount)
+                                    @Html.TextBox("YearlyRentAmountDisplay", "", new { @class = "form-control", @placeholder = "বাৎসরিক ভাড়া", disabled = "disabled", @readonly = "readonly" })
                                     <div class="invalid-feedback">
                                         বাৎসরিক ভাড়া দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="YearlyInterestRate">@Html.DisplayNameFor(model => model.YearlyInterestRate) <span class="required"></span></label>
-                                    @Html.TextBoxFor(m => m.YearlyInterestRate, new { @id = "YearlyInterestRate", @class = "form-control validationCustom03", type = "number", min = "0", value = "0", step = ".01", @placeholder = "ঋনের বার্ষিক সুদ", @required = "required" })
+                                    @Html.LabelFor(model => model.YearlyInterestRate)
+                                    @Html.HiddenFor(a => a.YearlyInterestRate)
+                                    @Html.TextBox("YearlyInterestDisplay", "", new { @class = "form-control", @placeholder = "ঋনের বার্ষিক সুদ", disabled = "disabled", @readonly = "readonly" })
                                     <div class="invalid-feedback">
                                         ঋনের বার্ষিক সুদ দেয়া বাধ্যতামূলক!
                                     </div>
@@ -282,6 +288,8 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+
+
             $("#TotalBoys").change(function () {
                 setTotalmembers();
             });
@@ -322,8 +330,11 @@
                         cache: false,
                         data: { building, semiBuilding, rawHouse},
                         success: function (data) {
-                             $("#YearlyRentAmount").val(data.rent);
-                             $("#YearlyInterestRate").val(data.rate);
+                            $("#YearlyRentAmount").val(data.rent);
+                            $("#YearlyRentAmountDisplay").val(data.rent);
+
+                            $("#YearlyInterestRate").val(data.rate);
+                            $("#YearlyInterestDisplay").val(data.rate);
                         },
                         error: function (xhr) {
                             alert(xhr.responseText);
@@ -333,10 +344,9 @@
 
             function GetVillageDropdown() {
                 var wardId = $("#WardInfoId").val();
+                var villageId = parseInt($("#ViewBagVillageId").val());
                 $("#VillageInfoId").empty();
                 //$('#VillageInfoId').append(new Option('Select...', ''));
-                debugger;
-
                   $.ajax({
                         url: '@Url.Action("GetVillage", "VillageInfo")',
                         dataType: "json",
@@ -345,10 +355,12 @@
                         data: { wardId},
                       success: function (data) {
 
-                          debugger;
-                          var count = 0;
                           data.forEach(function (item) {
-                              $('#VillageInfoId').append(new Option(item.Name, item.Id));
+                              if (villageId == item.Id) {
+                                  $('#VillageInfoId').append(new Option(item.Name, item.Id, true, true));
+                              } else {
+                                  $('#VillageInfoId').append(new Option(item.Name, item.Id));
+                              }
                           });
                         },
                         error: function (xhr) {
@@ -356,6 +368,8 @@
                         }
                  });
             }
+
+            GetVillageDropdown();
         });
     </script>
 }

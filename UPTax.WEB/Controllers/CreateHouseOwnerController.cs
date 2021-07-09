@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
 using UPTax.Model.Models;
@@ -68,9 +66,7 @@ namespace UPTax.Controllers
             return View();
         }
 
-        // GET: HouseOwner/Create
-        
-
+        // GET: HouseOwner/Create      
         [HttpPost]
         [RapidAuthorization]
         [ValidateAntiForgeryToken]
@@ -104,6 +100,8 @@ namespace UPTax.Controllers
             ViewBag.IsTubeWell = new SelectList(_houseOwnerService.GetTubeWellDropdownItemList(), "IdStr", "Name", model.IsTubeWell);
             ViewBag.Sanitary = new SelectList(_houseOwnerService.GetSanitaryDropdownItemList(), "IdStr", "Name", model.Sanitary);
             ViewBag.LivingType = new SelectList(_houseOwnerService.GetLivingTypeDropdownItemList(), "IdStr", "Name", model.LivingType);
+
+            ViewBag.VillageId = model.VillageInfoId;
 
             return View(model);
         }

@@ -80,8 +80,14 @@ namespace UPTax.Service.Services
                 string countQuery = string.Format(@"SELECT COUNT(Id) FROM VillageInfo WHERE UnionId = {0} AND VillageName LIKE N'%{1}%'", unionId, keyName?.Trim());
 
                 int rowCount = _VillageInfoRepository.SQLQuery<int>(countQuery);
-                List<VVillageInfo> villages = _VillageInfoRepository.SQLQueryList<VVillageInfo>(query).ToList();
-                return new StaticPagedList<VVillageInfo>(villages, pageNo, pageSize, rowCount);
+                List<VVillageInfo> villages = _VillageInfoRepository.SQLQueryList<VVillageInfo>(query).OrderBy(a => a.WardNo).ToList();
+
+                foreach (var item in villages)
+                {
+                    item.WardNoOrderBy = Convert.ToInt32(E2B.SwitchEngBan(item.WardNo));
+                }
+
+                return new StaticPagedList<VVillageInfo>(villages.OrderBy(a => a.WardNoOrderBy), pageNo, pageSize, rowCount);
             }
             catch (Exception ex)
             {

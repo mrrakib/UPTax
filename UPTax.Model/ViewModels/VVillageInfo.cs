@@ -6,5 +6,6 @@
         public string VillageName { get; set; }
         public string UnionName { get; set; }
         public string WardNo { get; set; }
+        public int WardNoOrderBy { get; set; }
     }
 }
