@@ -1,7 +1,11 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.IO;
+using System.Web;
+using System.Web.Mvc;
 using UPTax.Filter;
 using UPTax.Helper;
 using UPTax.Model.Models;
+using UPTax.Model.ViewModels;
 using UPTax.Service.Services;
 using UPTax.Service.Services.UPDetails;
 
@@ -21,6 +25,8 @@ namespace UPTax.Controllers
         private readonly IInfrastructureInfoService _infrastructureInfoService;
         private readonly IGenderService _genderService;
         private readonly IReligionService _religionService;
+        private readonly string subPath = "/assets/UserImages";
+        private readonly string uploadFileName = "ho_";
 
         public CreateHouseOwnerController(IHouseOwnerService houseOwnerService,
             IWardInfoService wardInfoService,
@@ -76,6 +82,9 @@ namespace UPTax.Controllers
             {
                 var isExistingItem = _houseOwnerService.IsExistingItem(model.HoldingNo);
                 model.CreatedBy = _userId;
+                var imageUpDetails = UploadImage(Request);
+                model.ImagePath = imageUpDetails.ImagePath;
+                model.ImageName = imageUpDetails.ImageName;
                 if (!isExistingItem && _houseOwnerService.Add(model))
                 {
                     _message.save(this);
@@ -105,5 +114,35 @@ namespace UPTax.Controllers
 
             return View(model);
         }
+
+        #region Image Upload
+        private VMImage UploadImage(HttpRequestBase httpRequest)
+        {
+            string filePath = "";
+            string fileName = "";
+            if (httpRequest.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                if (file != null && file.ContentLength > 0)
+                {
+                    string fileExtension = Path.GetExtension(Request.Files["file"].FileName);
+                    if (fileExtension == ".png" || fileExtension == ".jpg" || fileExtension == ".jpeg")
+                    {
+                        var fileExt = Path.GetExtension(file.FileName);
+                        fileName = uploadFileName + Guid.NewGuid().ToString() + fileExt;
+
+                        bool exists = Directory.Exists(Server.MapPath(subPath));
+                        if (!exists)
+                            Directory.CreateDirectory(Server.MapPath(subPath));
+
+                        var path = Path.Combine(Server.MapPath(subPath), fileName);
+                        file.SaveAs(path);
+                        filePath = subPath + "/" + fileName;
+                    }
+                }
+            }
+            return new VMImage { ImageName = fileName, ImagePath = filePath };
+        }
+        #endregion
     }
 }

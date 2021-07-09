@@ -105,5 +105,8 @@ namespace UPTax.Model.Models
         public int? TotalBoys { get; set; }
         [DisplayName("পরিবারের সদস্য(মেয়ে)")]
         public int? TotalGirls { get; set; }
+        public string ImagePath { get; set; }
+        [MaxLength(150, ErrorMessage = "Maximum 150 character allowed.")]
+        public string ImageName { get; set; }
     }
 }
