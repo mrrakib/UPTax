@@ -15,6 +15,7 @@ namespace UPTax.Helper
         private const string financialYearId = "FinancialYearId";
 
         private const string dateTimeFormat = "DateTimeFormat";
+        private const string unionImage = "UnionImage";
         public static string RoleId
         {
             get
@@ -111,6 +112,18 @@ namespace UPTax.Helper
             set
             {
                 HttpContext.Current.Session[dateTimeFormat] = value;
+            }
+        }
+
+        public static string UnionImage
+        {
+            get
+            {
+                return (string)HttpContext.Current.Session[unionImage];
+            }
+            set
+            {
+                HttpContext.Current.Session[unionImage] = value;
             }
         }
 

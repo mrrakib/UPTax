@@ -102,7 +102,10 @@ namespace UPTax.Controllers
                 }
                 else
                 {
+                    
                     RapidSession.UnionId = user.UnionId ?? 0;
+                    var up = db.UnionParishads.Where(u => u.Id == RapidSession.UnionId).FirstOrDefault();
+                    RapidSession.UnionImage = up != null ? up.ImagePath : "";
                 }
                 return RedirectToAction("Index", "Dashboard");
                 //return RedirectToRoute("Home", new { controller = "Home", action = "Index" });
@@ -263,6 +266,8 @@ namespace UPTax.Controllers
             if (UnionId > 0)
             {
                 RapidSession.UnionId = UnionId;
+                var up = db.UnionParishads.Where(u => u.Id == RapidSession.UnionId).FirstOrDefault();
+                RapidSession.UnionImage = up != null ? up.ImagePath : "";
                 return RedirectToAction("Index", "Dashboard");
             }
 

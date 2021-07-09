@@ -98,6 +98,7 @@
                                 <thead>
                                     <tr style="background-color:lightgray">
                                         <th>নং</th>
+                                        <th>ছবি</th>
                                         <th>হোল্ডিং নং</th>
                                         <th>খানা প্রধানের নাম</th>
                                         <th>মোবাইল নাম্বার</th>
@@ -122,6 +123,9 @@
                                             rowNo++;
                                             <tr>
                                                 <td>@rowNo</td>
+                                                <td class="">
+                                                    <img class="thumbnail" width="50" height="50" src="@item.Data.ImagePath" alt="ছবি" />
+                                                </td>
                                                 <td class="">@item.Data.HoldingNo</td>
                                                 <td class="">@item.Data.OwnerNameInBangla</td>
                                                 <td class="">@item.Data.MobileNo</td>
@@ -130,7 +134,7 @@
                                                 <td class="">@item.Data.BirthRegistrationNumber</td>
                                                 <td class="">@item.Data.YearlyRentAmount</td>
                                                 <td class="">@item.Data.YearlyInterestRate</td>
-                                                
+
                                                 <td class="">কাঁচা ঘর-@item.Data.TotalRawHouse, পাকা ঘর-@item.Data.TotalBuildingHouse, আধা-পাকা ঘর-@item.Data.TotalSemiBuildingHouse </td>
                                                 <td class="">@item.Data.PreviousDueAmount</td>
 

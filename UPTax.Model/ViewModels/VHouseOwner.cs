@@ -71,6 +71,7 @@ namespace UPTax.Model.ViewModels
         public string SocialBenefitEligibleName { get; set; }
         public string SocialBenefitBeforeName { get; set; }
         public DateTime CreatedDate { get; set; }
+        public string ImagePath { get; set; }
 
     }
 }
