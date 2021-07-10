@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<UPTax.Model.Models.InstituteInfo>
+﻿@model PagedList.IPagedList<UPTax.Model.ViewModels.VMInstituteInfo>
 
 @using PagedList.Mvc;
 @{
@@ -94,8 +94,8 @@
                                         <th>@Html.DisplayNameFor(a => a.First().Sanitary)</th>
                                         <th>অবকাঠামো ধরণ</th>
                                         <th>@Html.DisplayNameFor(a => a.First().PreviousDueAmount)</th>
-                                        <th>@Html.DisplayNameFor(a => a.First().WardInfoId)</th>
-                                        <th>@Html.DisplayNameFor(a => a.First().VillageInfoId)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().WardNo)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().VillageName)</th>
 
                                         <th>অপারেশন</th>
                                     </tr>
@@ -127,8 +127,8 @@
                                                 <td class="">@item.Data.Sanitary</td>
                                                 <td class="">কাঁচা ঘর-@item.Data.TotalRawHouse, পাকা ঘর-@item.Data.TotalBuildingHouse, আধা-পাকা ঘর-@item.Data.TotalSemiBuildingHouse </td>
                                                 <td class="">@item.Data.PreviousDueAmount</td>
-                                                <td class="">@item.Data.WardInfoId</td>
-                                                <td class="">@item.Data.VillageInfoId</td>
+                                                <td class="">@item.Data.WardNo</td>
+                                                <td class="">@item.Data.VillageName</td>
                                                 <td>
                                                     <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Edit", new { id = item.Data.Id })" toggle="tooltip" data-placement="top" title="হালনাগাদ">
                                                         <i class="mdi mdi-pencil"></i>

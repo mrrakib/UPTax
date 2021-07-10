@@ -56,14 +56,16 @@ namespace UPTax.Controllers
             {
                 var isExistingItem = _instituteInfoService.IsExistingItem(model.HoldingNo, null);
                 model.CreatedBy = _userId;
+
+                ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);
+                var villages = _villageInfoService.GetByWardId(model.WardInfoId ?? 0).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
+                ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
+
                 if (!isExistingItem && _instituteInfoService.Add(model))
                 {
                     _message.save(this);
                     return View();
                 }
-                ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);
-                var villages = _villageInfoService.GetByWardId(model.WardInfoId ?? 0).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
-                ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
 
                 _message.custom(this, "এই নামে একটি কলেজ / অফিসের নাম আছে!");
             }

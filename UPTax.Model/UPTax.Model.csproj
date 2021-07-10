@@ -128,6 +128,7 @@
     <Compile Include="ViewModels\VMDashboard.cs" />
     <Compile Include="ViewModels\VMember.cs" />
     <Compile Include="ViewModels\VMImage.cs" />
+    <Compile Include="ViewModels\VMInstituteInfo.cs" />
     <Compile Include="ViewModels\VMLogin.cs" />
     <Compile Include="ViewModels\VMMenuPermission.cs" />
     <Compile Include="ViewModels\VMMessageInfo.cs" />
