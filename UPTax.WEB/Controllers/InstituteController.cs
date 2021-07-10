@@ -88,6 +88,7 @@ namespace UPTax.Controllers
 
             var villages = _villageInfoService.GetByWardId(model.WardInfoId ?? 0).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
             ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
+            ViewBag.LivingType = new SelectList(_instituteInfoService.GetLivingTypeDropdownItemList(), "IdStr", "Name", model.LivingType);
 
             return View(model);
         }
@@ -103,9 +104,9 @@ namespace UPTax.Controllers
                 if (isExistingItem)
                 {
                     ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);
-
                     var villages = _villageInfoService.GetByWardId(model.WardInfoId ?? 0).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
                     ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
+                    ViewBag.LivingType = new SelectList(_instituteInfoService.GetLivingTypeDropdownItemList(), "IdStr", "Name", model.LivingType);
 
                     _message.custom(this, "এই নামে একটি কলেজ / অফিসের নাম আছে!");
                     return View(model);

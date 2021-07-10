@@ -45,6 +45,12 @@ namespace UPTax.Model.ViewModels
         [DisplayName("পূর্বের বকেয়া")]
         public double? PreviousDueAmount { get; set; }
 
+        [DisplayName("বসবাসের ধরণ")]
+        public string LivingType { get; set; }
+        [DisplayName("বাৎসরিক ভাড়া")]
+        public double? YearlyRentAmount { get; set; }
 
+        [DisplayName("ঋনের বার্ষিক সুদ")]
+        public double? YearlyInterestRate { get; set; }
     }
 }

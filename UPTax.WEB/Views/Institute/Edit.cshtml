@@ -140,7 +140,17 @@
                                         <label class="form-check-label" for="inlineRadioSanitaryNo">নাই</label>
                                     </div>
                                 </div>
-
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(a => a.InstituteType, new { @class = "" })
+                                    @Html.TextBoxFor(m => m.InstituteType, new { @class = "form-control", @placeholder = "প্রতিষ্ঠানের ধরণ", @maxLength = "250" })
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.LivingType)</label><br />
+                                    @Html.DropDownList("LivingType", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        বসবাসের ধরণ দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
                                 <div class="col-md-4 mb-3 inline">
                                     <label for="validationCustom03" class="col-md-12">অবকাঠামো ধরণ<span class="required"></span></label>
                                     @Html.TextBoxFor(m => m.TotalBuildingHouse, new { @class = "form-control col-md-4 mb-1", type = "number", @placeholder = "পাকা ঘর" })
@@ -148,9 +158,22 @@
                                     @Html.TextBoxFor(m => m.TotalRawHouse, new { @class = "form-control col-md-3 mb-1", type = "number", @placeholder = "কাঁচা ঘর" })
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    @Html.LabelFor(a => a.InstituteType, new { @class = "" })
-                                    @Html.TextBoxFor(m => m.InstituteType, new { @class = "form-control", @placeholder = "প্রতিষ্ঠানের ধরণ", @maxLength = "250" })
+                                    @Html.LabelFor(model => model.YearlyRentAmount)
+                                    @Html.HiddenFor(a => a.YearlyRentAmount)
+                                    @Html.TextBox("YearlyRentAmountDisplay", Model.YearlyRentAmount, new { @class = "form-control", @placeholder = "বাৎসরিক ভাড়া", disabled = "disabled", @readonly = "readonly" })
+                                    <div class="invalid-feedback">
+                                        বাৎসরিক ভাড়া দেয়া বাধ্যতামূলক!
+                                    </div>
                                 </div>
+                                <div class="col-md-4 mb-3">
+                                    @Html.LabelFor(model => model.YearlyInterestRate)
+                                    @Html.HiddenFor(a => a.YearlyInterestRate)
+                                    @Html.TextBox("YearlyInterestDisplay", Model.YearlyInterestRate, new { @class = "form-control", @placeholder = "ঋনের বার্ষিক সুদ", disabled = "disabled", @readonly = "readonly" })
+                                    <div class="invalid-feedback">
+                                        ঋনের বার্ষিক সুদ দেয়া বাধ্যতামূলক!
+                                    </div>
+                                </div>
+
                                 <div class="col-md-4 mb-3">
                                     <label for="validationCustom03">@Html.DisplayNameFor(model => model.PreviousDueAmount)</label>
                                     @Html.TextBoxFor(m => m.PreviousDueAmount, new { @id = "validationCustom03", @class = "form-control", type = "number", @placeholder = "পূর্বের বকেয়া" })
@@ -195,6 +218,40 @@
                             data.forEach(function (item) {
                                 $('#VillageInfoId').append(new Option(item.Name, item.Id));
                             });
+                        },
+                        error: function (xhr) {
+                            alert(xhr.responseText);
+                        }
+                 });
+            }
+
+
+            $("#TotalBuildingHouse").blur(function () {
+                GetRentInterestRate();
+            });
+            $("#TotalSemiBuildingHouse").blur(function () {
+                GetRentInterestRate();
+            });
+            $("#TotalRawHouse").blur(function () {
+                GetRentInterestRate();
+            });
+            function GetRentInterestRate() {
+                var building = $("#TotalBuildingHouse").val();
+                var semiBuilding = $("#TotalSemiBuildingHouse").val();
+                var rawHouse = $("#TotalRawHouse").val();
+
+                  $.ajax({
+                        url: '@Url.Action("Rent_Interest", "InfraStructuralType")',
+                        dataType: "json",
+                        type: "GET",
+                        cache: false,
+                        data: { building, semiBuilding, rawHouse},
+                        success: function (data) {
+                            $("#YearlyRentAmount").val(data.rent);
+                            $("#YearlyRentAmountDisplay").val(data.rent);
+
+                            $("#YearlyInterestRate").val(data.rate);
+                            $("#YearlyInterestDisplay").val(data.rate);
                         },
                         error: function (xhr) {
                             alert(xhr.responseText);

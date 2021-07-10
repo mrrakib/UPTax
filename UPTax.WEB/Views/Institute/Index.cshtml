@@ -92,7 +92,11 @@
                                         <th>@Html.DisplayNameFor(a => a.First().DateOfEstablishment)</th>
                                         <th>@Html.DisplayNameFor(a => a.First().IsTubeWell)</th>
                                         <th>@Html.DisplayNameFor(a => a.First().Sanitary)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().InstituteType)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().LivingType)</th>
                                         <th>অবকাঠামো ধরণ</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().YearlyRentAmount)</th>
+                                        <th>@Html.DisplayNameFor(a => a.First().YearlyInterestRate)</th>
                                         <th>@Html.DisplayNameFor(a => a.First().PreviousDueAmount)</th>
                                         <th>@Html.DisplayNameFor(a => a.First().WardNo)</th>
                                         <th>@Html.DisplayNameFor(a => a.First().VillageName)</th>
@@ -125,7 +129,11 @@
                                                     }
                                                 </td>
                                                 <td class="">@item.Data.Sanitary</td>
+                                                <td class="">@item.Data.InstituteType</td>
+                                                <td class="">@item.Data.LivingType</td>
                                                 <td class="">কাঁচা ঘর-@item.Data.TotalRawHouse, পাকা ঘর-@item.Data.TotalBuildingHouse, আধা-পাকা ঘর-@item.Data.TotalSemiBuildingHouse </td>
+                                                <td class="">@item.Data.YearlyRentAmount</td>
+                                                <td class="">@item.Data.YearlyInterestRate</td>
                                                 <td class="">@item.Data.PreviousDueAmount</td>
                                                 <td class="">@item.Data.WardNo</td>
                                                 <td class="">@item.Data.VillageName</td>
