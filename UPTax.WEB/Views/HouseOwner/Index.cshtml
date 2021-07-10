@@ -73,7 +73,8 @@
                                            {
                                                @class = "default form-control",
                                                style = "",
-                                               @id = "ddlWard"
+                                               @id = "ddlWard",
+                                               @onchange = "GetVillageDropdown()"
                                            })
                                             </td>
                                             <td class="col-sm-1" style="width:2%">
@@ -194,28 +195,13 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
         $(document).ready(function () {
-
-            //var table = $('#datatable').DataTable({
-            //    scrollY: "300px",
-            //    scrollX: true,
-            //    scrollCollapse: true,
-            //    paging: false,
-            //    fixedColumns: {
-            //        leftColumns: 1,
-            //        rightColumns: 1
-            //    }
+            //$("#ddlWard").change(function () {
+            //    GetVillageDropdown();
             //});
-
-            $("#ddlWard").change(function () {
-                GetVillageDropdown();
-            });
-
         });
-
         function GetVillageDropdown() {
             var wardId = $("#ddlWard").val();
                 $("#ddlVillage").empty();
-            //$('#ddlVillage').append(new Option('Select...', ''));
 
                   $.ajax({
                         url: '@Url.Action("GetVillage", "VillageInfo")',

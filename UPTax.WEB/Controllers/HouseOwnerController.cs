@@ -59,8 +59,8 @@ namespace UPTax.Controllers
             ViewBag.dataSize = dataSize;
             ViewBag.page = page;
             ViewBag.name = name?.Trim();
-            
-            
+
+
             ViewBag.wardId = ward;
             ViewBag.villageId = village;
 
@@ -75,11 +75,11 @@ namespace UPTax.Controllers
 
             if (village == 0)
             {
-                ViewBag.village = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name");
+                ViewBag.village = new SelectList(_villageInfoService.GetDropdownItemListByWard(ward), "Id", "Name");
             }
             else
             {
-                ViewBag.village = new SelectList(_villageInfoService.GetDropdownItemList(_unionId), "Id", "Name", village);
+                ViewBag.village = new SelectList(_villageInfoService.GetDropdownItemListByWard(ward), "Id", "Name", village);
             }
 
             var listData = _houseOwnerService.GetPagedList(name, ward, village, page, dataSize);
@@ -117,7 +117,7 @@ namespace UPTax.Controllers
             {
                 var isExistingItem = _houseOwnerService.IsExistingItem(model.HoldingNo);
                 model.CreatedBy = _userId;
-                
+
                 if (!isExistingItem && _houseOwnerService.Add(model))
                 {
                     _message.save(this);
