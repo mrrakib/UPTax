@@ -45,8 +45,6 @@ namespace UPTax.Model.Models
         public string Sanitary { get; set; }
         [DisplayName("প্রতিষ্ঠানের ধরণ")]
         public string InstituteType { get; set; }
-        [DisplayName("বসবাসের ধরণ")]
-        public string LivingType { get; set; }
         public int? TotalBuildingHouse { get; set; }
         public int? TotalSemiBuildingHouse { get; set; }
         public int? TotalRawHouse { get; set; }

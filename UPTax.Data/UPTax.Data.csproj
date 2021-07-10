@@ -261,6 +261,10 @@
     <Compile Include="Migrations\202107100557509_LivingTypeMigrations.Designer.cs">
       <DependentUpon>202107100557509_LivingTypeMigrations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107100739099_LivingTypeRemoveInCollege.cs" />
+    <Compile Include="Migrations\202107100739099_LivingTypeRemoveInCollege.Designer.cs">
+      <DependentUpon>202107100739099_LivingTypeRemoveInCollege.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
@@ -426,6 +430,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107100557509_LivingTypeMigrations.resx">
       <DependentUpon>202107100557509_LivingTypeMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107100739099_LivingTypeRemoveInCollege.resx">
+      <DependentUpon>202107100739099_LivingTypeRemoveInCollege.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

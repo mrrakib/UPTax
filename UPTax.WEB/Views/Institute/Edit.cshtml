@@ -141,14 +141,17 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    @Html.LabelFor(a => a.InstituteType, new { @class = "" })
-                                    @Html.TextBoxFor(m => m.InstituteType, new { @class = "form-control", @placeholder = "প্রতিষ্ঠানের ধরণ", @maxLength = "250" })
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.InstituteType)</label><br />
+                                    @Html.DropDownList("InstituteType", null, String.Empty, new { @class = "selectize" })
+                                    <div class="invalid-feedback">
+                                        প্রতিষ্ঠানের ধরণ দেয়া বাধ্যতামূলক!
+                                    </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.LivingType)</label><br />
-                                    @Html.DropDownList("LivingType", null, String.Empty, new { @class = "selectize" })
+                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.PreviousDueAmount)</label>
+                                    @Html.TextBoxFor(m => m.PreviousDueAmount, new { @id = "validationCustom03", @class = "form-control", type = "number", @placeholder = "পূর্বের বকেয়া" })
                                     <div class="invalid-feedback">
-                                        বসবাসের ধরণ দেয়া বাধ্যতামূলক!
+                                        পূর্বের বকেয়া দেয়া বাধ্যতামূলক!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3 inline">
@@ -174,13 +177,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4 mb-3">
-                                    <label for="validationCustom03">@Html.DisplayNameFor(model => model.PreviousDueAmount)</label>
-                                    @Html.TextBoxFor(m => m.PreviousDueAmount, new { @id = "validationCustom03", @class = "form-control", type = "number", @placeholder = "পূর্বের বকেয়া" })
-                                    <div class="invalid-feedback">
-                                        পূর্বের বকেয়া দেয়া বাধ্যতামূলক!
-                                    </div>
-                                </div>
+
                             </div>
                             <button class="btn btn-primary" type="submit">হালনাগাদ করুন</button>
                         }
@@ -224,7 +221,6 @@
                         }
                  });
             }
-
 
             $("#TotalBuildingHouse").blur(function () {
                 GetRentInterestRate();

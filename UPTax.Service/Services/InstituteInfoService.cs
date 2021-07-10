@@ -18,7 +18,7 @@ namespace UPTax.Service.Services
         IEnumerable<InstituteInfo> GetAll();
         InstituteInfo GetDetails(int id);
         bool IsExistingItem(string keyName, int? id);
-        List<IdNameDropdown> GetLivingTypeDropdownItemList();
+        List<IdNameDropdown> GetInstituteTypeDropdownItemList();
         bool Save();
     }
     public class InstituteInfoService : IInstituteInfoService
@@ -70,7 +70,7 @@ namespace UPTax.Service.Services
                     searchPrm += string.Format(@" WHERE i.HoldingNo LIKE N'%{0}%'", keyName.Trim());
                 }
                 string query = string.Format(@"SELECT i.Id, i.HoldingNo, i.InstituteType, i.IsTubeWell, i.MobileNo, i.NameOfInstituteBangla, i.NameOfInstituteEnglish, i.PreviousDueAmount,
-                                                i.Sanitary, i.TotalBuildingHouse, i.TotalRawHouse, i.TotalSemiBuildingHouse, i.YearlyIncome,i.DateOfEstablishment, i.InstituteType,i.LivingType, i.YearlyRentAmount, i.YearlyInterestRate,
+                                                i.Sanitary, i.TotalBuildingHouse, i.TotalRawHouse, i.TotalSemiBuildingHouse, i.YearlyIncome,i.DateOfEstablishment, i.InstituteType, i.YearlyRentAmount, i.YearlyInterestRate,
                                                 w.WardNo, v.VillageName FROM InstituteInfo i
                                                 JOIN WardInfo w ON i.WardInfoId=w.Id
                                                 JOIN VillageInfo v ON i.VillageInfoId=v.Id {0} AND i.IsDeleted=0 ORDER BY Id OFFSET (({1} - 1) * {2}) ROWS FETCH NEXT {2} ROWS ONLY", searchPrm, pageNo, pageSize);
@@ -98,7 +98,7 @@ namespace UPTax.Service.Services
             return count > 0 ? true : false;
         }
 
-        public List<IdNameDropdown> GetLivingTypeDropdownItemList()
+        public List<IdNameDropdown> GetInstituteTypeDropdownItemList()
         {
             return new List<IdNameDropdown>() {
                 new IdNameDropdown() { IdStr = "নিজে বসবাস", Name = "নিজে বসবাস" },
