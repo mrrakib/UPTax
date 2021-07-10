@@ -21,7 +21,8 @@ namespace UPTax.Service.Services
         }
         public List<Gender> GetAll()
         {
-            return _genderRepository.GetMany(a => a.IsDeleted == false).ToList();
+            var model = _genderRepository.GetMany(a => a.IsDeleted == false).ToList();
+            return model == null ? new List<Gender>() : model;
         }
         public List<IdNameDropdown> GetDropdownItemList()
         {

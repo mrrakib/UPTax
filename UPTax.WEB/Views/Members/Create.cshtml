@@ -6,8 +6,8 @@
 
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
-    List<Gender> genders = ViewBag.Genders == null ? new List<Gender>() : ViewBag.Genders;
-    List<Religion> religions = ViewBag.Religions == null ? new List<Religion>() : ViewBag.Religions;
+    List<UPTax.Model.Models.Gender> genders = ViewBag.Genders;
+    List<UPTax.Model.Models.Religion> religions = ViewBag.Religions;
     string dateFormat = UPTax.Helper.RapidSession.DateTimeFormat;
 }
 <style>

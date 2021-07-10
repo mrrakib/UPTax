@@ -21,7 +21,8 @@ namespace UPTax.Service.Services
         }
         public List<Religion> GetAll()
         {
-            return _religionRepository.GetMany(a => a.IsDeleted == false).ToList();
+            var model = _religionRepository.GetMany(a => a.IsDeleted == false).ToList();
+            return model == null ? new List<Religion>() : model;
         }
         public List<IdNameDropdown> GetDropdownItemList()
         {
