@@ -43,17 +43,20 @@ namespace UPTax.Model.Models
 
         [DisplayName("স্যানিটারি আছে কিনা")]
         public string Sanitary { get; set; }
-
+        [DisplayName("প্রতিষ্ঠানের ধরণ")]
+        public string InstituteType { get; set; }
+        [DisplayName("বসবাসের ধরণ")]
+        public string LivingType { get; set; }
         public int? TotalBuildingHouse { get; set; }
         public int? TotalSemiBuildingHouse { get; set; }
         public int? TotalRawHouse { get; set; }
+        [DisplayName("বাৎসরিক ভাড়া")]
+        public double? YearlyRentAmount { get; set; }
 
-        [DisplayName("প্রতিষ্ঠানের ধরণ")]
-        public string InstituteType { get; set; }
+        [DisplayName("ঋনের বার্ষিক সুদ")]
+        public double? YearlyInterestRate { get; set; }
 
         [DisplayName("পূর্বের বকেয়া")]
         public double? PreviousDueAmount { get; set; }
-
-
     }
 }

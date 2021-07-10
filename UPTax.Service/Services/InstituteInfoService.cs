@@ -18,6 +18,7 @@ namespace UPTax.Service.Services
         IEnumerable<InstituteInfo> GetAll();
         InstituteInfo GetDetails(int id);
         bool IsExistingItem(string keyName, int? id);
+        List<IdNameDropdown> GetLivingTypeDropdownItemList();
         bool Save();
     }
     public class InstituteInfoService : IInstituteInfoService
@@ -97,6 +98,15 @@ JOIN VillageInfo v ON i.VillageInfoId=v.Id {0} AND i.IsDeleted=0 ORDER BY Id OFF
             return count > 0 ? true : false;
         }
 
+        public List<IdNameDropdown> GetLivingTypeDropdownItemList()
+        {
+            return new List<IdNameDropdown>() {
+                new IdNameDropdown() { IdStr = "নিজে বসবাস", Name = "নিজে বসবাস" },
+                new IdNameDropdown() { IdStr = "ভাড়া দেওয়া", Name = "ভাড়া দেওয়া" },
+                new IdNameDropdown() { IdStr = "উভয়", Name = "উভয়" }
+            };
+        }
+
         public bool Save()
         {
             try
@@ -110,8 +120,5 @@ JOIN VillageInfo v ON i.VillageInfoId=v.Id {0} AND i.IsDeleted=0 ORDER BY Id OFF
                 return false;
             }
         }
-
-
-
     }
 }

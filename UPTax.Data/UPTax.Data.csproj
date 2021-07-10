@@ -253,6 +253,14 @@
     <Compile Include="Migrations\202107091035095_HouseOwnerImageUpload.Designer.cs">
       <DependentUpon>202107091035095_HouseOwnerImageUpload.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107100546474_CollegeMigrations.cs" />
+    <Compile Include="Migrations\202107100546474_CollegeMigrations.Designer.cs">
+      <DependentUpon>202107100546474_CollegeMigrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107100557509_LivingTypeMigrations.cs" />
+    <Compile Include="Migrations\202107100557509_LivingTypeMigrations.Designer.cs">
+      <DependentUpon>202107100557509_LivingTypeMigrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
@@ -412,6 +420,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107091035095_HouseOwnerImageUpload.resx">
       <DependentUpon>202107091035095_HouseOwnerImageUpload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107100546474_CollegeMigrations.resx">
+      <DependentUpon>202107100546474_CollegeMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107100557509_LivingTypeMigrations.resx">
+      <DependentUpon>202107100557509_LivingTypeMigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

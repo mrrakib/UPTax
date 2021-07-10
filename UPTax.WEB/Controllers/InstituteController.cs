@@ -43,6 +43,7 @@ namespace UPTax.Controllers
             ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name");
             var villages = _villageInfoService.GetByWardId(_unionId).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
             ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name");
+            ViewBag.LivingType = new SelectList(_instituteInfoService.GetLivingTypeDropdownItemList(), "IdStr", "Name");
 
             return View(new InstituteInfo());
         }
@@ -60,6 +61,7 @@ namespace UPTax.Controllers
                 ViewBag.WardInfoId = new SelectList(_wardInfoService.GetDropdownItemList(_unionId), "Id", "Name", model.WardInfoId);
                 var villages = _villageInfoService.GetByWardId(model.WardInfoId ?? 0).Select(a => new { Id = a.Id, Name = a.VillageName }).ToList();
                 ViewBag.VillageInfoId = new SelectList(villages, "Id", "Name", model.VillageInfoId);
+                ViewBag.LivingType = new SelectList(_instituteInfoService.GetLivingTypeDropdownItemList(), "IdStr", "Name", model.LivingType);
 
                 if (!isExistingItem && _instituteInfoService.Add(model))
                 {
