@@ -35,7 +35,7 @@
                                 <div class="col-md-6 mb-6">
                                     <div class="col-md-12 mb-3">
                                         <label for="validationCustom03">
-                                            @Html.DisplayNameFor(model => model.HoldingNo) <span class="required">*</span>
+                                            @Html.DisplayNameFor(model => model.HoldingNo) <span class="required"></span>
                                         </label>
                                         @Html.TextBoxFor(m => m.HoldingNo, new { @id = "validationCustom03", @class = "form-control txtHolding", @placeholder = "হোল্ডিং নং", @maxLength = "250", @required = "required" })
                                         <div class="invalid-feedback">
@@ -45,7 +45,7 @@
 
                                     <div class="col-md-12 mb-3">
                                         <label for="validationCustom03">
-                                            @Html.DisplayNameFor(model => model.FinancialYearId)
+                                            @Html.DisplayNameFor(model => model.FinancialYearId) <span class="required"></span>
                                         </label>
 
                                         @Html.DropDownList("FinancialYearId", null, String.Empty, new { @class = "selectize ddlErrorMsg validationCustom03", @id = "ddlFinancialYearId", @required = "required" })
@@ -55,25 +55,19 @@
                                     </div>
 
                                     <div class="col-md-12 mb-3">
-                                        <label for="">@Html.DisplayNameFor(model => model.YearlyTaxRate) <span class="required">*</span></label>
+                                        <label for="">@Html.DisplayNameFor(model => model.YearlyTaxRate)</label>
                                         @Html.TextBoxFor(m => m.YearlyTaxRate, new { @id = "txtYearlyTaxRate", @class = "form-control", @placeholder = "মুনাফার হার", @min = "0.5", @step = "0.1", @type = "number", @disabled = "disabled", @style = "opacity: 0.5" })
                                     </div>
                                     <button class="btn btn-info" id="generateTax" type="button">জেনারেট করুন</button>
-
                                 </div>
-
-
                                 <div id="partialTax" class="col-md-6">
                                     <!-- partial tax view load here -->
                                 </div>
 
                             </div>
-
-
                             <div class="row">
 
                             </div>
-
                         }
                     </div>
                 </div>
@@ -88,15 +82,16 @@
     <script src="~/Content/assets/js/pages/form-click-validation.init.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-
             $(".txtHolding").blur(function () {
 
                 if ($(".txtHolding").val().length < 0 || $(".txtHolding").val().length == 0) {
                     alert("হোল্ডিং নাম্বার বাধ্যতামূলক!");
                     return false;
                 }
-
-                $.ajax({
+                GetTaxRateInfo();
+            });
+            function GetTaxRateInfo() {
+                 $.ajax({
                     type: 'GET',
                     url: '@Url.Action("GetTaxRate")',
                     dataType: 'json',
@@ -110,12 +105,17 @@
                         $('html, body').animate({ scrollTop: 0 }, 'fast');
                     }
                 });
+            }
 
+            $('body').keyup(function (event) {
+                if (event.which === 13) {
+                    event.preventDefault();
+                    $('#generateTax').click();
+                }
             });
 
-
             $("#generateTax").click(function () {
-
+                debugger;
                 if ($(".txtHolding").val().length < 0 || $(".txtHolding").val().length == 0) {
                     alert("হোল্ডিং নাম্বার বাধ্যতামূলক!");
                     return false;
@@ -125,8 +125,6 @@
                     alert("অর্থবছর বাধ্যতামূলক!");
                     return false;
                 }
-
-
 
                 $.ajax({
                     type: 'Post',
@@ -143,7 +141,7 @@
                             $('#partialTax').html(result);
                         }
                         //$('#partialTax').empty();
-                        
+
                     },
                     error: function (ex) {
                         $('html, body').animate({ scrollTop: 0 }, 'fast');

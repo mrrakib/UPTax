@@ -83,7 +83,12 @@
     <script src="~/Content/assets/js/pages/form-click-validation.init.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-
+            $('body').keyup(function (event) {
+                if (event.which === 13) {
+                    event.preventDefault();
+                    $('#generateTaxInstallMent').click();
+                }
+            });
             $("#ddlFinancialYearId").change(function () {
 
                 if ($(".txtHolding").val().length < 0 || $(".txtHolding").val().length == 0) {
