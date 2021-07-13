@@ -106,7 +106,8 @@
                                         <th>পিতা/স্বামীর নাম</th>
                                         <th>মাতার নাম</th>
                                         <th>এনআইডি নাম্বার</th>
-                                        <th>বাৎসরিক ভাড়া</th>
+                                        <th>মোট ঘরের সংখ্যা</th>
+                                        @*<th>বাৎসরিক ভাড়া</th>*@
                                         <th>ঋনের বার্ষিক সুদ</th>
                                         <th>অবকাঠামো ধরণ</th>
                                         <th>পূর্বের বকেয়া</th>
@@ -132,8 +133,9 @@
                                                 <td class="">@item.Data.MobileNo</td>
                                                 <td class="">@item.Data.FatherHusbandName</td>
                                                 <td class="">@item.Data.MotherName</td>
-                                                <td class="">@item.Data.BirthRegistrationNumber</td>
-                                                <td class="">@item.Data.YearlyRentAmount</td>
+                                                <td class="">@item.Data.NIDNumber</td>
+                                                <td class="">@(item.Data.TotalBuildingHouse??0+item.Data.TotalRawHouse??0+item.Data.TotalSemiBuildingHouse??0)</td>
+                                                @*<td class="">@item.Data.YearlyRentAmount</td>*@
                                                 <td class="">@item.Data.YearlyInterestRate</td>
 
                                                 <td class="">কাঁচা ঘর-@item.Data.TotalRawHouse, পাকা ঘর-@item.Data.TotalBuildingHouse, আধা-পাকা ঘর-@item.Data.TotalSemiBuildingHouse </td>

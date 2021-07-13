@@ -86,6 +86,13 @@
             $("#ddlWardInfoId").change(function () {
                 GetVillageDropdown();
             });
+
+            $('body').keyup(function (event) {
+                if (event.which === 13) {
+                    event.preventDefault();
+                    $('#generateTax').submit();
+                }
+            });
         });
 
         function GetVillageDropdown() {
