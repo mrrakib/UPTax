@@ -138,7 +138,7 @@ namespace UPTax.Service.Services
                         HouseOwnerId = houseOwner.Id,
                         HouseOwnerName = houseOwner.OwnerNameInBangla,
                         InstallmentAmount = (decimal)taxInfo.TotalTax,
-                        DueAmount = ((decimal)taxInfo.TotalTax - OutstandingTaxAmount),
+                        DueAmount = 0,
                         InstallmentDate = DateTime.Now,
                         PenaltyAmount = PenaltyAmount
                     };

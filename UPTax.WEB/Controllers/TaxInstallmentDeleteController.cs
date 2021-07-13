@@ -75,6 +75,13 @@ namespace UPTax.Controllers
         {
             VMTaxInstallment tax = _taxInstallmentService.GeteSingleTaxInstallment(holdingNo, finYearId);
 
+            if (tax.Id == 0)
+            {
+                string error = "exist";
+                _message.custom(this, "দুঃখিত! এই হোল্ডিং নাম্বারের জন্য এই বছরে কর জমা হয়নি!");
+                return Json(error, JsonRequestBehavior.AllowGet);
+            }
+
             return PartialView("~/Views/TaxInstallmentDelete/_partialTaxInstallmentDelete.cshtml", tax);
         }
 

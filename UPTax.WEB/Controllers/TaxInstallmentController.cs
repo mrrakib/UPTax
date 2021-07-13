@@ -53,7 +53,7 @@ namespace UPTax.Controllers
                 {
                     decimal actualDue = vm.vMTaxInstallmentDetails.InstallmentAmount - vm.vMTaxInstallmentDetails.DueAmount;
                     HouseOwner owner = _houseOwnerService.GetDetails(vm.vMTaxInstallmentDetails.HouseOwnerId);
-                    bool isPaid = actualDue > 0 ? false : true;
+                    //bool isPaid = actualDue > 0 ? false : true;
                     TaxInstallment model = new TaxInstallment
                     {
                         FinancialYearId = vm.FinancialYearId,
@@ -64,7 +64,7 @@ namespace UPTax.Controllers
                         TaxAmount = vm.vMTaxInstallmentDetails.InstallmentAmount,
                         OutstandingAmount = (actualDue == vm.vMTaxInstallmentDetails.InstallmentAmount) ? vm.vMTaxInstallmentDetails.InstallmentAmount : (vm.vMTaxInstallmentDetails.InstallmentAmount - actualDue),
                         PenaltyAmount = vm.vMTaxInstallmentDetails.PenaltyAmount,
-                        IsPaid = isPaid,
+                        IsPaid = true,
                         IsDeleted = false,
                         CreatedBy = RapidSession.UserId,
                         CreatedDate = DateTime.Now
@@ -73,7 +73,7 @@ namespace UPTax.Controllers
                     {
                         if (_taxInstallmentService.Delete(vm.Id))
                         {
-                            model.IsPaid = vm.vMTaxInstallmentDetails.DueAmount > 0 ? false : true;
+                            model.IsPaid = true;
                         }
                     }
                     if (_taxInstallmentService.Add(model))
