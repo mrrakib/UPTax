@@ -65,6 +65,30 @@ namespace UPTax.Controllers
 
                             if (_taxGenerateInfoService.Update(modelUp))
                             {
+
+                                TaxInstallment modelUpI = _taxInstallmentService.GetDetails(vm.Id);
+                                if (modelUp != null)
+                                {
+                                    //decimal actualDue = modelUp.TaxAmount - vm.vMTaxInstallmentDetails.InstallmentAmount;
+                                    HouseOwner owner = _houseOwnerService.GetDetails(vm.vMTaxInstallmentDetails.HouseOwnerId);
+                                    //bool isPaid = false;
+                                    modelUpI.TaxAmount = vm.vMTaxInstallmentDetails.InstallmentAmount;
+                                    modelUpI.OutstandingAmount = vm.vMTaxInstallmentDetails.InstallmentAmount;
+                                    modelUpI.UpdatedBy = RapidSession.UserId;
+                                    modelUpI.UpdatedDate = DateTime.Now;
+                                    modelUpI.TaxAmount = vm.vMTaxInstallmentDetails.InstallmentAmount;
+
+                                    if (_taxInstallmentService.Update(modelUpI))
+                                    {
+                                        _message.update(this);
+                                        return RedirectToAction("Index");
+                                    }
+                                    else
+                                    {
+                                        _message.custom(this, "সেভ করতে সমস্যা হয়েছে!");
+                                    }
+                                }
+
                                 _message.update(this);
                                 return RedirectToAction("Index");
                             }
@@ -73,6 +97,8 @@ namespace UPTax.Controllers
                                 _message.custom(this, "সেভ করতে সমস্যা হয়েছে!");
                             }
                         }
+
+                        
                     }
                     else
                     {
@@ -81,10 +107,9 @@ namespace UPTax.Controllers
                         {
                             //decimal actualDue = modelUp.TaxAmount - vm.vMTaxInstallmentDetails.InstallmentAmount;
                             HouseOwner owner = _houseOwnerService.GetDetails(vm.vMTaxInstallmentDetails.HouseOwnerId);
-                            bool isPaid = false;
+                            //bool isPaid = false;
                             modelUp.TaxAmount = vm.vMTaxInstallmentDetails.InstallmentAmount;
                             modelUp.OutstandingAmount = vm.vMTaxInstallmentDetails.InstallmentAmount;
-                            modelUp.IsPaid = isPaid;
                             modelUp.UpdatedBy = RapidSession.UserId;
                             modelUp.UpdatedDate = DateTime.Now;
                             modelUp.TaxAmount = vm.vMTaxInstallmentDetails.InstallmentAmount;
