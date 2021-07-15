@@ -32,6 +32,7 @@ namespace UPTax.Model.ViewModels
         public string GrandTotalAmountStr { get; set; }
         public string GrandAmountStr { get; set; }
         public string LastPaymentDateStr { get; set; }
+        public string PrintDateStr { get; set; }
         public decimal HoldingTotal { get; set; }
         public string HoldingTotalStr { get; set; }
         public string PrevTotalStr { get; set; }

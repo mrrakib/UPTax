@@ -1,0 +1,9 @@
+﻿@using ReportViewerForMvc;
+@{
+    ViewBag.Title = "ফরমেট বিল প্রিন্ট";
+    Layout = "~/Views/Shared/_ReportLayout.cshtml";
+}
+
+<div align="center" style="min-height: 1000px; margin-top:2%; margin-left: auto; margin-right: auto;">
+    @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer)
+</div>

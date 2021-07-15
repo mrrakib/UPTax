@@ -141,6 +141,10 @@
           <DataField>LastPaymentDateStr</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="PrintDateStr">
+          <DataField>PrintDateStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>UPDataSet</rd:DataSetName>
@@ -171,103 +175,6 @@
                       <CellContents>
                         <Rectangle Name="Rectangle1">
                           <ReportItems>
-                            <Textbox Name="UnionName">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Parameters!UnionName.Value</Value>
-                                      <Style>
-                                        <FontFamily>Kalpurush</FontFamily>
-                                        <FontSize>12pt</FontSize>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Center</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>UnionName</rd:DefaultName>
-                              <Top>0.31177in</Top>
-                              <Left>1.78898in</Left>
-                              <Height>0.1875in</Height>
-                              <Width>2.52083in</Width>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                              </Style>
-                            </Textbox>
-                            <Textbox Name="UnionAddress">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Parameters!UnionAddress.Value</Value>
-                                      <Style>
-                                        <FontFamily>kalpurush</FontFamily>
-                                        <FontSize>11pt</FontSize>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Center</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>UnionAddress</rd:DefaultName>
-                              <Top>0.58872in</Top>
-                              <Left>1.30772in</Left>
-                              <Height>0.1875in</Height>
-                              <Width>3.30208in</Width>
-                              <ZIndex>1</ZIndex>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                              </Style>
-                            </Textbox>
-                            <Textbox Name="Textbox3">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>ইউপি করের বিল</Value>
-                                      <Style>
-                                        <FontFamily>Kalpurush</FontFamily>
-                                        <FontSize>11pt</FontSize>
-                                        <Color>HotPink</Color>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Center</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>Textbox3</rd:DefaultName>
-                              <Top>0.94231in</Top>
-                              <Left>2.24256in</Left>
-                              <Height>0.22917in</Height>
-                              <Width>1.46875in</Width>
-                              <ZIndex>2</ZIndex>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
-                              </Style>
-                            </Textbox>
                             <Textbox Name="FinYear">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
@@ -290,7 +197,6 @@
                               <Left>2.99175in</Left>
                               <Height>0.1875in</Height>
                               <Width>1.35417in</Width>
-                              <ZIndex>3</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -325,7 +231,7 @@
                               <Left>2.34673in</Left>
                               <Height>0.1875in</Height>
                               <Width>1.27083in</Width>
-                              <ZIndex>4</ZIndex>
+                              <ZIndex>1</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -336,18 +242,18 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>2.08484in</Width>
+                                    <Width>2.08832in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>0.85394in</Width>
+                                    <Width>0.85742in</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>3.17164in</Width>
+                                    <Width>3.17512in</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
                                   <TablixRow>
-                                    <Height>0.33163in</Height>
+                                    <Height>0.30292in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -442,7 +348,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.33163in</Height>
+                                    <Height>0.30292in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -537,7 +443,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.33163in</Height>
+                                    <Height>0.30292in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -632,7 +538,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.33163in</Height>
+                                    <Height>0.30292in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -727,7 +633,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.34596in</Height>
+                                    <Height>0.31725in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -822,7 +728,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.33163in</Height>
+                                    <Height>0.30292in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -917,7 +823,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.33163in</Height>
+                                    <Height>0.30292in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -989,7 +895,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!LastPaymentDateStr.Value</Value>
+                                                    <Value>=Fields!PrintDateStr.Value</Value>
                                                     <Style>
                                                       <FontFamily>kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -1011,7 +917,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.33163in</Height>
+                                    <Height>0.30292in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -1076,7 +982,101 @@
                                       </TablixCell>
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox19">
+                                          <Textbox Name="LastPaymentDateStr">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!LastPaymentDateStr.Value</Value>
+                                                    <Style>
+                                                      <FontSize>11pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>LastPaymentDateStr</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <VerticalAlign>Middle</VerticalAlign>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                    </TablixCells>
+                                  </TablixRow>
+                                  <TablixRow>
+                                    <Height>0.32964in</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox4">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontFamily>Kalpurush</FontFamily>
+                                                      <FontSize>11pt</FontSize>
+                                                      <Color>#047895</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox4</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <VerticalAlign>Middle</VerticalAlign>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox7">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontSize>11pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Center</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox7</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox10">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
@@ -1092,7 +1092,7 @@
                                                 <Style />
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox19</rd:DefaultName>
+                                            <rd:DefaultName>Textbox10</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -1123,14 +1123,15 @@
                                   <TablixMember />
                                   <TablixMember />
                                   <TablixMember />
+                                  <TablixMember />
                                 </TablixMembers>
                               </TablixRowHierarchy>
                               <DataSetName>DataSet1</DataSetName>
-                              <Top>2.10824in</Top>
+                              <Top>2.00824in</Top>
                               <Left>0.22022in</Left>
-                              <Height>2.66737in</Height>
-                              <Width>6.11042in</Width>
-                              <ZIndex>5</ZIndex>
+                              <Height>2.76733in</Height>
+                              <Width>6.12086in</Width>
+                              <ZIndex>2</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1182,8 +1183,7 @@
                                             <rd:DefaultName>Textbox105</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
@@ -1215,8 +1215,7 @@
                                             <rd:DefaultName>Textbox106</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
@@ -1249,8 +1248,7 @@
                                             <rd:DefaultName>Textbox107</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
@@ -1283,8 +1281,7 @@
                                             <rd:DefaultName>Textbox108</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
@@ -1320,8 +1317,7 @@
                                             <rd:DefaultName>Textbox102</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                             </Style>
@@ -1353,8 +1349,7 @@
                                             <rd:DefaultName>CurrentDueAmountStr</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -1387,8 +1382,7 @@
                                             <rd:DefaultName>CurrentAmountStr</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -1422,8 +1416,7 @@
                                             <rd:DefaultName>HoldingTotalStr</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -1460,8 +1453,7 @@
                                             <rd:DefaultName>Textbox103</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                             </Style>
@@ -1493,8 +1485,7 @@
                                             <rd:DefaultName>PrevDueAmountStr</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -1527,8 +1518,7 @@
                                             <rd:DefaultName>PrevAmountStr</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -1562,8 +1552,7 @@
                                             <rd:DefaultName>CurrentTotalAmount</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -1600,8 +1589,7 @@
                                             <rd:DefaultName>Textbox104</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                             </Style>
@@ -1633,8 +1621,7 @@
                                             <rd:DefaultName>PenaltyDueAmountStr</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -1667,8 +1654,7 @@
                                             <rd:DefaultName>PenaltyAmountStr</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -1702,8 +1688,7 @@
                                             <rd:DefaultName>TotalPenaltyStr</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -1741,8 +1726,7 @@
                                             <rd:DefaultName>Textbox96</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -1779,8 +1763,7 @@
                                             <rd:DefaultName>GrandTotalAmountStr</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -1814,7 +1797,7 @@
                               <Left>0.20981in</Left>
                               <Height>1.98345in</Height>
                               <Width>6.13127in</Width>
-                              <ZIndex>6</ZIndex>
+                              <ZIndex>3</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -1863,8 +1846,7 @@
                                             <rd:DefaultName>Textbox90</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -1900,8 +1882,7 @@
                                             <rd:DefaultName>GrandTotalAmountStr1</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -1936,8 +1917,7 @@
                                             <rd:DefaultName>Textbox88</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>Silver</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -1977,8 +1957,7 @@
                                             <rd:DefaultName>Textbox93</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -2014,8 +1993,7 @@
                                             <rd:DefaultName>GrandAmountStr</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -2050,12 +2028,8 @@
                                             <rd:DefaultName>Textbox89</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
-                                              </Border>
-                                              <BottomBorder>
                                                 <Style>None</Style>
-                                              </BottomBorder>
+                                              </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -2095,8 +2069,7 @@
                                             <rd:DefaultName>Textbox85</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -2131,8 +2104,7 @@
                                             <rd:DefaultName>Textbox91</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -2167,12 +2139,8 @@
                                             <rd:DefaultName>Textbox86</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>Silver</Color>
-                                                <Style>Solid</Style>
-                                              </Border>
-                                              <TopBorder>
                                                 <Style>None</Style>
-                                              </TopBorder>
+                                              </Border>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
                                               <PaddingTop>2pt</PaddingTop>
@@ -2204,125 +2172,13 @@
                               <Left>0.20564in</Left>
                               <Height>2.2304in</Height>
                               <Width>6.12501in</Width>
-                              <ZIndex>7</ZIndex>
+                              <ZIndex>4</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
                               </Style>
                             </Tablix>
-                            <Line Name="Line1">
-                              <Top>0.07292in</Top>
-                              <Left>6.67855in</Left>
-                              <Height>9.09375in</Height>
-                              <Width>0in</Width>
-                              <ZIndex>8</ZIndex>
-                              <Style>
-                                <Border>
-                                  <Color>Maroon</Color>
-                                  <Style>Dotted</Style>
-                                  <Width>2pt</Width>
-                                </Border>
-                              </Style>
-                            </Line>
-                            <Textbox Name="UnionName2">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Parameters!UnionName.Value</Value>
-                                      <Style>
-                                        <FontFamily>Kalpurush</FontFamily>
-                                        <FontSize>12pt</FontSize>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Center</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>UnionName</rd:DefaultName>
-                              <Top>0.32766in</Top>
-                              <Left>8.68709in</Left>
-                              <Height>0.1875in</Height>
-                              <Width>2.52083in</Width>
-                              <ZIndex>9</ZIndex>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                              </Style>
-                            </Textbox>
-                            <Textbox Name="UnionAddress2">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>=Parameters!UnionAddress.Value</Value>
-                                      <Style>
-                                        <FontFamily>kalpurush</FontFamily>
-                                        <FontSize>11pt</FontSize>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Center</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>UnionAddress</rd:DefaultName>
-                              <Top>0.60461in</Top>
-                              <Left>8.20583in</Left>
-                              <Height>0.1875in</Height>
-                              <Width>3.30208in</Width>
-                              <ZIndex>10</ZIndex>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                              </Style>
-                            </Textbox>
-                            <Textbox Name="Textbox6">
-                              <CanGrow>true</CanGrow>
-                              <KeepTogether>true</KeepTogether>
-                              <Paragraphs>
-                                <Paragraph>
-                                  <TextRuns>
-                                    <TextRun>
-                                      <Value>ইউপি করের বিল</Value>
-                                      <Style>
-                                        <FontFamily>Kalpurush</FontFamily>
-                                        <FontSize>11pt</FontSize>
-                                        <Color>HotPink</Color>
-                                      </Style>
-                                    </TextRun>
-                                  </TextRuns>
-                                  <Style>
-                                    <TextAlign>Center</TextAlign>
-                                  </Style>
-                                </Paragraph>
-                              </Paragraphs>
-                              <rd:DefaultName>Textbox3</rd:DefaultName>
-                              <Top>0.9582in</Top>
-                              <Left>9.14067in</Left>
-                              <Height>0.22917in</Height>
-                              <Width>1.46875in</Width>
-                              <ZIndex>11</ZIndex>
-                              <Style>
-                                <Border>
-                                  <Style>None</Style>
-                                </Border>
-                                <PaddingLeft>2pt</PaddingLeft>
-                                <PaddingRight>2pt</PaddingRight>
-                                <PaddingTop>2pt</PaddingTop>
-                                <PaddingBottom>2pt</PaddingBottom>
-                              </Style>
-                            </Textbox>
                             <Textbox Name="Textbox8">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
@@ -2347,7 +2203,7 @@
                               <Left>9.24484in</Left>
                               <Height>0.1875in</Height>
                               <Width>1.27083in</Width>
-                              <ZIndex>12</ZIndex>
+                              <ZIndex>5</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -2369,7 +2225,7 @@
                                 </TablixColumns>
                                 <TablixRows>
                                   <TablixRow>
-                                    <Height>0.32964in</Height>
+                                    <Height>0.3025in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -2464,7 +2320,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.32964in</Height>
+                                    <Height>0.3025in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -2559,7 +2415,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.32964in</Height>
+                                    <Height>0.3025in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -2654,7 +2510,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.32964in</Height>
+                                    <Height>0.3025in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -2749,7 +2605,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.34397in</Height>
+                                    <Height>0.31683in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -2844,7 +2700,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.32964in</Height>
+                                    <Height>0.3025in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -2939,7 +2795,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.32964in</Height>
+                                    <Height>0.3025in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -3011,7 +2867,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!LastPaymentDateStr.Value</Value>
+                                                    <Value>=Fields!PrintDateStr.Value</Value>
                                                     <Style>
                                                       <FontFamily>kalpurush</FontFamily>
                                                       <FontSize>11pt</FontSize>
@@ -3033,7 +2889,7 @@
                                     </TablixCells>
                                   </TablixRow>
                                   <TablixRow>
-                                    <Height>0.32964in</Height>
+                                    <Height>0.3025in</Height>
                                     <TablixCells>
                                       <TablixCell>
                                         <CellContents>
@@ -3105,7 +2961,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Fields!LastPaymentDateStr.Value</Value>
                                                     <Style>
                                                       <FontSize>11pt</FontSize>
                                                     </Style>
@@ -3115,6 +2971,100 @@
                                               </Paragraph>
                                             </Paragraphs>
                                             <rd:DefaultName>Textbox19</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <VerticalAlign>Middle</VerticalAlign>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                    </TablixCells>
+                                  </TablixRow>
+                                  <TablixRow>
+                                    <Height>0.32964in</Height>
+                                    <TablixCells>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox15">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontFamily>Kalpurush</FontFamily>
+                                                      <FontSize>11pt</FontSize>
+                                                      <Color>#047895</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Left</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox15</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <VerticalAlign>Middle</VerticalAlign>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox21">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontSize>11pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style>
+                                                  <TextAlign>Center</TextAlign>
+                                                </Style>
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox21</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixCell>
+                                      <TablixCell>
+                                        <CellContents>
+                                          <Textbox Name="Textbox23">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontSize>11pt</FontSize>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox23</rd:DefaultName>
                                             <Style>
                                               <Border>
                                                 <Style>None</Style>
@@ -3145,14 +3095,15 @@
                                   <TablixMember />
                                   <TablixMember />
                                   <TablixMember />
+                                  <TablixMember />
                                 </TablixMembers>
                               </TablixRowHierarchy>
                               <DataSetName>DataSet1</DataSetName>
-                              <Top>2.12413in</Top>
+                              <Top>2.01163in</Top>
                               <Left>6.9725in</Left>
-                              <Height>2.65145in</Height>
+                              <Height>2.76397in</Height>
                               <Width>6.44374in</Width>
-                              <ZIndex>13</ZIndex>
+                              <ZIndex>6</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -3204,8 +3155,7 @@
                                             <rd:DefaultName>Textbox75</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
@@ -3237,8 +3187,7 @@
                                             <rd:DefaultName>Textbox78</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
@@ -3271,8 +3220,7 @@
                                             <rd:DefaultName>Textbox79</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
@@ -3305,8 +3253,7 @@
                                             <rd:DefaultName>Textbox80</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                             </Style>
@@ -3342,8 +3289,7 @@
                                             <rd:DefaultName>Textbox72</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                             </Style>
@@ -3375,8 +3321,7 @@
                                             <rd:DefaultName>CurrentDueAmount</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3409,8 +3354,7 @@
                                             <rd:DefaultName>CurrentAmount</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3444,8 +3388,7 @@
                                             <rd:DefaultName>CurrentTotalAmount</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3482,8 +3425,7 @@
                                             <rd:DefaultName>Textbox73</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                             </Style>
@@ -3515,8 +3457,7 @@
                                             <rd:DefaultName>PrevDueAmount</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3549,8 +3490,7 @@
                                             <rd:DefaultName>PrevAmount</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3584,8 +3524,7 @@
                                             <rd:DefaultName>CurrentTotalAmount</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3622,8 +3561,7 @@
                                             <rd:DefaultName>Textbox74</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                             </Style>
@@ -3655,8 +3593,7 @@
                                             <rd:DefaultName>PenaltyDueAmount</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3689,8 +3626,7 @@
                                             <rd:DefaultName>PenaltyAmount</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3724,8 +3660,7 @@
                                             <rd:DefaultName>PenaltyTotalAmount</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3763,8 +3698,7 @@
                                             <rd:DefaultName>Textbox94</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3801,8 +3735,7 @@
                                             <rd:DefaultName>GrandTotalAmount</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Bottom</VerticalAlign>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3836,7 +3769,7 @@
                               <Left>6.95792in</Left>
                               <Height>1.9629in</Height>
                               <Width>6.45415in</Width>
-                              <ZIndex>14</ZIndex>
+                              <ZIndex>7</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -3885,8 +3818,7 @@
                                             <rd:DefaultName>Textbox81</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -3922,8 +3854,7 @@
                                             <rd:DefaultName>GrandTotalAmount1</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -3958,8 +3889,7 @@
                                             <rd:DefaultName>Textbox99</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>Silver</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -3999,8 +3929,7 @@
                                             <rd:DefaultName>Textbox83</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -4036,8 +3965,7 @@
                                             <rd:DefaultName>GrandAmountStr</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -4072,12 +4000,8 @@
                                             <rd:DefaultName>Textbox89</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
-                                              </Border>
-                                              <BottomBorder>
                                                 <Style>None</Style>
-                                              </BottomBorder>
+                                              </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
@@ -4117,8 +4041,7 @@
                                             <rd:DefaultName>Textbox84</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -4153,8 +4076,7 @@
                                             <rd:DefaultName>Textbox91</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>LightGrey</Color>
-                                                <Style>Solid</Style>
+                                                <Style>None</Style>
                                               </Border>
                                               <VerticalAlign>Middle</VerticalAlign>
                                               <PaddingLeft>2pt</PaddingLeft>
@@ -4189,12 +4111,8 @@
                                             <rd:DefaultName>Textbox100</rd:DefaultName>
                                             <Style>
                                               <Border>
-                                                <Color>Silver</Color>
-                                                <Style>Solid</Style>
-                                              </Border>
-                                              <TopBorder>
                                                 <Style>None</Style>
-                                              </TopBorder>
+                                              </Border>
                                               <PaddingLeft>2pt</PaddingLeft>
                                               <PaddingRight>2pt</PaddingRight>
                                               <PaddingTop>2pt</PaddingTop>
@@ -4226,7 +4144,7 @@
                               <Left>6.95792in</Left>
                               <Height>2.2304in</Height>
                               <Width>6.45831in</Width>
-                              <ZIndex>15</ZIndex>
+                              <ZIndex>8</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -4255,7 +4173,7 @@
                               <Left>9.85374in</Left>
                               <Height>0.1875in</Height>
                               <Width>1.35417in</Width>
-                              <ZIndex>16</ZIndex>
+                              <ZIndex>9</ZIndex>
                               <Style>
                                 <Border>
                                   <Style>None</Style>
@@ -4296,11 +4214,14 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <DataSetName>DataSet1</DataSetName>
             <Height>9.23958in</Height>
             <Width>13.62189in</Width>
             <Style>
               <Border>
+                <Color>White</Color>
                 <Style>None</Style>
+                <Width>0.5pt</Width>
               </Border>
             </Style>
           </Tablix>

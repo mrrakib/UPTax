@@ -98,6 +98,7 @@ namespace UPTax.Controllers
                     result.HoldingNo = HashingUtility.SwitchEngBan(result.HoldingNo);
                     result.MobileNo = HashingUtility.SwitchEngBan(result.MobileNo);
                     result.LastPaymentDateStr = HashingUtility.SwitchEngBan(commonParams.LastInstallmentDate.Value.ToString("dd/MM/yyyy"));
+                    result.PrintDateStr = HashingUtility.SwitchEngBan(commonParams.PrintDate.Value.ToString("dd/MM/yyyy"));
                     //numberToWord = NumberToWordConverterNew.ConvertToWords(result.GrandTotalAmount, "BDT", "Taka");
                     result.FinancialYearName = HashingUtility.SwitchEngBan(result.FinancialYearName);
                     result.CurrentAmountStr = HashingUtility.SwitchEngBan(result.CurrentAmount.ToString());
