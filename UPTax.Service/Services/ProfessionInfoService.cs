@@ -1,6 +1,8 @@
 ﻿using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using UPTax.Data.Infrastructure;
 using UPTax.Data.Repository;
@@ -20,6 +22,7 @@ namespace UPTax.Service.Services
         bool IsExistingItem(string keyName, int? id);
         bool Save();
         List<IdNameDropdown> GetDropdownItemList();
+        List<VMRPTProfession> GetRPTProfessionList(int professionId, int unionId);
     }
     public class ProfessionInfoService : IProfessionInfoService
     {
@@ -115,6 +118,17 @@ namespace UPTax.Service.Services
                 Id = u.Id,
                 Name = u.ProfessionTitle
             }).ToList();
+        }
+
+        public List<VMRPTProfession> GetRPTProfessionList(int professionId, int unionId)
+        {
+            var result = _professionInfoRepository.ExecStoreProcedure<VMRPTProfession>("GetHouseOwnerListByProfession @professionId, @unionId",
+
+                new SqlParameter("professionId", SqlDbType.NVarChar) { Value = professionId },
+                new SqlParameter("unionId", SqlDbType.Int) { Value = unionId }
+                ).ToList();
+
+            return result;
         }
 
     }

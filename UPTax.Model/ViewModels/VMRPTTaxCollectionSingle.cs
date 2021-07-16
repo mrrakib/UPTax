@@ -17,6 +17,7 @@ namespace UPTax.Model.ViewModels
         public DateTime PaymentDate { get; set; }
         public string FinancialYearName { get; set; }
         public decimal CurrentAmount { get; set; }
+        public double Amount { get; set; }
         public string CurrentAmountStr { get; set; }
         public decimal CurrentDueAmount { get; set; }
         public string CurrentDueAmountStr { get; set; }

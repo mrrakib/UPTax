@@ -20,5 +20,6 @@ namespace UPTax.Model.ViewModels
         public int WardInfoId { get; set; }
         public DateTime? PrintDate { get; set; }
         public DateTime? LastInstallmentDate { get; set; }
+        public int ProfessionId { get; set; }
     }
 }

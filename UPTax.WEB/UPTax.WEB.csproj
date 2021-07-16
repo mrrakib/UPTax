@@ -207,6 +207,8 @@
     <Compile Include="Controllers\AdminNoticeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PersonalStatementReportController.cs" />
+    <Compile Include="Controllers\RPTProfessionController.cs" />
+    <Compile Include="Controllers\RPTTaxDueNoticeController.cs" />
     <Compile Include="Controllers\RPTWithoutFormatBillPrintController.cs" />
     <Compile Include="Controllers\RPTMultiFormatBillPrintController.cs" />
     <Compile Include="Controllers\RPTTaxByVillageController.cs" />
@@ -12783,6 +12785,10 @@
     <Content Include="Views\RPTMultiFormatBillPrint\RPTMultiFormatBillPrint.cshtml" />
     <Content Include="Views\RPTWithoutFormatBillPrint\Index.cshtml" />
     <Content Include="Views\RPTWithoutFormatBillPrint\RPTFormatBillPrint.cshtml" />
+    <Content Include="Views\RPTTaxDueNotice\Index.cshtml" />
+    <Content Include="Views\RPTTaxDueNotice\RPTTaxDueNotice.cshtml" />
+    <Content Include="Views\RPTProfession\Index.cshtml" />
+    <Content Include="Views\RPTProfession\RPTProfessionReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -12850,6 +12856,10 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\RDLC\RPTTaxDueNotice.rdlc" />
+    <EmbeddedResource Include="Reports\RDLC\RPTProfession.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RDLC\RPTWithoutFormatBillPrint.rdlc" />
     <EmbeddedResource Include="Reports\RDLC\RPTFormatBillPrintAll.rdlc" />
     <EmbeddedResource Include="Reports\RDLC\RPTFormatBillPrint.rdlc" />

@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Models\Account\ApplicationUser.cs" />
+    <Compile Include="Models\TaxDueWarning .cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\HouseOwner.cs" />
     <Compile Include="Models\InfraStructuralType.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="ViewModels\VMPersonalTaxDetails.cs" />
     <Compile Include="ViewModels\VMRegister.cs" />
     <Compile Include="ViewModels\VMReportViewerCommon.cs" />
+    <Compile Include="ViewModels\VMRPTProfession.cs" />
     <Compile Include="ViewModels\VMRPTTaxCollectionSingle.cs" />
     <Compile Include="ViewModels\VMRPTTaxReceipt.cs" />
     <Compile Include="ViewModels\VMTaxInstallmentDetails.cs" />

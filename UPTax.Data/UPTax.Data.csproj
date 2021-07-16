@@ -267,6 +267,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\TaxDueWarningRepository.cs" />
     <Compile Include="Repository\Autofac\UserRepository.cs" />
     <Compile Include="Repository\AdminNoticeRepository.cs" />
     <Compile Include="Repository\MessageReplyRepository.cs" />
