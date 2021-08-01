@@ -56,7 +56,7 @@ namespace UPTax.Controllers
         [HttpPost]
         public ActionResult Index(VMCommonParams commonParams)
         {
-            ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name", commonParams.FinancialYearId);
+            ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name", commonParams.ProfessionId);
 
             List<VMRPTProfession> resultList = _professionInfoService.GetRPTProfessionList(commonParams.ProfessionId, _unionId);
             if (resultList.Count == 0)
