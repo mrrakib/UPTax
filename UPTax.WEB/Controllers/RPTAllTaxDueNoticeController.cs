@@ -20,23 +20,23 @@ using Humanizer;
 
 namespace UPTax.Controllers
 {
-    public class RPTProfessionController : Controller
+    public class RPTAllTaxDueNoticeController : Controller
     {
         #region Global Variables
         private readonly IUnionParishadService _unionParishadService;
         private readonly IFinancialYearService _financialYearService;
-        private readonly IProfessionInfoService _professionInfoService;
+        private readonly ITaxInstallmentService _taxInstallmentService;
         private readonly Message _message = new Message();
 
         private readonly int _unionId = RapidSession.UnionId;
         #endregion
 
         #region Constructor
-        public RPTProfessionController(IUnionParishadService unionParishadService, IFinancialYearService financialYearService, IProfessionInfoService professionInfoService)
+        public RPTAllTaxDueNoticeController(IUnionParishadService unionParishadService, IFinancialYearService financialYearService, ITaxInstallmentService taxInstallmentService)
         {
             _unionParishadService = unionParishadService;
             _financialYearService = financialYearService;
-            _professionInfoService = professionInfoService;
+            _taxInstallmentService = taxInstallmentService;
         }
         #endregion
         // GET: RPTTaxCollectionList
@@ -48,7 +48,7 @@ namespace UPTax.Controllers
                 LastInstallmentDate = DateTime.Now,
                 PrintDate = DateTime.Now
             };
-            ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name");
+            ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name");
             return View(model);
         }
 
@@ -56,14 +56,16 @@ namespace UPTax.Controllers
         [HttpPost]
         public ActionResult Index(VMCommonParams commonParams)
         {
-            ViewBag.ProfessionId = new SelectList(_professionInfoService.GetDropdownItemList(), "Id", "Name", commonParams.ProfessionId);
+            ViewBag.FinancialYearId = new SelectList(_financialYearService.GetAllForDropdown(), "Id", "Name", commonParams.FinancialYearId);
 
-            List<VMRPTProfession> resultList = _professionInfoService.GetRPTProfessionList(commonParams.ProfessionId, _unionId);
-            if (resultList.Count == 0)
+            List<VMRPTTaxCollectionSingle> resultSet = new List<VMRPTTaxCollectionSingle>();
+            List<VMRPTTaxCollectionSingle> allList = _taxInstallmentService.GetAllRPTTaxDueNotice(commonParams, _unionId);
+            if (allList.Count == 0)
             {
                 _message.custom(this, "দুঃখিত! কোন তথ্য পাওয়া যায়নি।");
                 return View();
             }
+            resultSet.AddRange(allList);
 
             List<VMCommonParams> parList = new List<VMCommonParams>();
             ReportViewer reportViewer = new ReportViewer();
@@ -72,25 +74,27 @@ namespace UPTax.Controllers
             reportViewer.Width = Unit.Percentage(100);
             reportViewer.Height = Unit.Percentage(100);
             reportViewer.PageCountMode = new PageCountMode();
-            reportViewer.LocalReport.ReportPath = Request.MapPath("~/Reports/RDLC/RPTProfession.rdlc");
+            reportViewer.LocalReport.ReportPath = Request.MapPath("~/Reports/RDLC/RPTTaxDueNotice.rdlc");
             //reportViewer.LocalReport.SetParameters(GetReportParameter(data));
             
-            if (resultList.Count > 0)
+            if (resultSet.Count > 0)
             {
-                foreach (var result in resultList)
+                foreach (var result in resultSet)
                 {
                     result.HoldingNo = HashingUtility.SwitchEngBan(result.HoldingNo);
-                    result.MobileNo = HashingUtility.SwitchEngBan(result.MobileNo);
-                    result.TotalBuildingHouseStr = HashingUtility.SwitchEngBan(result.TotalBuildingHouse.ToString());
-                    result.TotalRawHouseStr = HashingUtility.SwitchEngBan(result.TotalRawHouse.ToString());
-                    result.TotalSemiBuildingHouseStr = HashingUtility.SwitchEngBan(result.TotalSemiBuildingHouse.ToString());
+                    result.PrintDateStr = HashingUtility.SwitchEngBan(commonParams.PrintDate.Value.ToString("dd/MM/yyyy"));
+                    //numberToWord = NumberToWordConverterNew.ConvertToWords(result.GrandTotalAmount, "BDT", "Taka");
+                    result.FinancialYearName = HashingUtility.SwitchEngBan(result.FinancialYearName);
+                    result.CurrentAmountStr = HashingUtility.SwitchEngBan(result.Amount.ToString());
                 }
-                
+                commonParams.FinancialYearName = resultSet.FirstOrDefault() != null ? resultSet.FirstOrDefault().FinancialYearName : "N/A";
+                commonParams.PaymentDateStr = resultSet.FirstOrDefault() != null ? resultSet.FirstOrDefault().PrintDateStr : "";
 
             }
             
-            reportViewer.LocalReport.SetParameters(GetReportParameter(commonParams));
-            ReportDataSource A = new ReportDataSource("DataSet1", resultList); //get actual data here
+            
+            reportViewer.LocalReport.SetParameters(GetReportParameter(commonParams, resultSet));
+            ReportDataSource A = new ReportDataSource("DataSet1", resultSet); //get actual data here
 
             reportViewer.LocalReport.DataSources.Add(A);
             reportViewer.LocalReport.Refresh();
@@ -105,19 +109,27 @@ namespace UPTax.Controllers
 
 
             ViewBag.ReportViewer = reportViewer;
-            return View("~/Views/RPTProfession/RPTProfessionReport.cshtml");
+            return View("~/Views/RPTTaxDueNotice/RPTTaxDueNotice.cshtml");
 
         }
 
         #region GetReportParameter
 
-        public List<ReportParameter> GetReportParameter(VMCommonParams commonParams)
+        public List<ReportParameter> GetReportParameter(VMCommonParams commonParams, VMRPTTaxCollectionSingle result)
         {
             UnionParishad union = _unionParishadService.GetDetails(_unionId);
             
             List<ReportParameter> paraList = new List<ReportParameter>();
             paraList.Add(new ReportParameter("UnionName", union.Name));
             paraList.Add(new ReportParameter("UnionAddress", union.Description));
+            paraList.Add(new ReportParameter("PrintDate", commonParams.PaymentDateStr));
+            paraList.Add(new ReportParameter("FinYear", commonParams.FinancialYearName));
+            paraList.Add(new ReportParameter("Parent", result.ParentName));
+            paraList.Add(new ReportParameter("Owner", result.OwnerName));
+            paraList.Add(new ReportParameter("Holding", result.HoldingNo));
+            paraList.Add(new ReportParameter("Ward", result.WardNo));
+            paraList.Add(new ReportParameter("Village", result.BillAddress));
+            paraList.Add(new ReportParameter("Amount", result.CurrentAmountStr));
 
             return paraList;
         }

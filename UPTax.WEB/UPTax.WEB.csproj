@@ -208,6 +208,7 @@
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PersonalStatementReportController.cs" />
     <Compile Include="Controllers\RPTProfessionController.cs" />
+    <Compile Include="Controllers\RPTAllTaxDueNoticeController.cs" />
     <Compile Include="Controllers\RPTTaxDueNoticeController.cs" />
     <Compile Include="Controllers\RPTWithoutFormatBillPrintController.cs" />
     <Compile Include="Controllers\RPTMultiFormatBillPrintController.cs" />

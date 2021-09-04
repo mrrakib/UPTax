@@ -3393,6 +3393,12 @@ namespace UPTax.Reports {
             
             private global::System.Data.DataColumn columnVillageName;
             
+            private global::System.Data.DataColumn columnTotalRawHouseStr;
+            
+            private global::System.Data.DataColumn columnTotalSemiBuildingHouseStr;
+            
+            private global::System.Data.DataColumn columnTotalBuildingHouseStr;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ProfessionDataTable() {
@@ -3468,6 +3474,30 @@ namespace UPTax.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TotalRawHouseStrColumn {
+                get {
+                    return this.columnTotalRawHouseStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TotalSemiBuildingHouseStrColumn {
+                get {
+                    return this.columnTotalSemiBuildingHouseStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn TotalBuildingHouseStrColumn {
+                get {
+                    return this.columnTotalBuildingHouseStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3503,14 +3533,17 @@ namespace UPTax.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ProfessionRow AddProfessionRow(string HoldingNo, string OwnerName, string MobileNo, string WardNo, string VillageName) {
+            public ProfessionRow AddProfessionRow(string HoldingNo, string OwnerName, string MobileNo, string WardNo, string VillageName, string TotalRawHouseStr, string TotalSemiBuildingHouseStr, string TotalBuildingHouseStr) {
                 ProfessionRow rowProfessionRow = ((ProfessionRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         HoldingNo,
                         OwnerName,
                         MobileNo,
                         WardNo,
-                        VillageName};
+                        VillageName,
+                        TotalRawHouseStr,
+                        TotalSemiBuildingHouseStr,
+                        TotalBuildingHouseStr};
                 rowProfessionRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProfessionRow);
                 return rowProfessionRow;
@@ -3538,6 +3571,9 @@ namespace UPTax.Reports {
                 this.columnMobileNo = base.Columns["MobileNo"];
                 this.columnWardNo = base.Columns["WardNo"];
                 this.columnVillageName = base.Columns["VillageName"];
+                this.columnTotalRawHouseStr = base.Columns["TotalRawHouseStr"];
+                this.columnTotalSemiBuildingHouseStr = base.Columns["TotalSemiBuildingHouseStr"];
+                this.columnTotalBuildingHouseStr = base.Columns["TotalBuildingHouseStr"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3553,6 +3589,12 @@ namespace UPTax.Reports {
                 base.Columns.Add(this.columnWardNo);
                 this.columnVillageName = new global::System.Data.DataColumn("VillageName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVillageName);
+                this.columnTotalRawHouseStr = new global::System.Data.DataColumn("TotalRawHouseStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalRawHouseStr);
+                this.columnTotalSemiBuildingHouseStr = new global::System.Data.DataColumn("TotalSemiBuildingHouseStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalSemiBuildingHouseStr);
+                this.columnTotalBuildingHouseStr = new global::System.Data.DataColumn("TotalBuildingHouseStr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalBuildingHouseStr);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6706,6 +6748,55 @@ namespace UPTax.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TotalRawHouseStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableProfession.TotalRawHouseStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalRawHouseStr\' in table \'Profession\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProfession.TotalRawHouseStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TotalSemiBuildingHouseStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableProfession.TotalSemiBuildingHouseStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalSemiBuildingHouseStr\' in table \'Profession\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableProfession.TotalSemiBuildingHouseStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string TotalBuildingHouseStr {
+                get {
+                    try {
+                        return ((string)(this[this.tableProfession.TotalBuildingHouseStrColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalBuildingHouseStr\' in table \'Profession\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProfession.TotalBuildingHouseStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsHoldingNoNull() {
                 return this.IsNull(this.tableProfession.HoldingNoColumn);
             }
@@ -6762,6 +6853,42 @@ namespace UPTax.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetVillageNameNull() {
                 this[this.tableProfession.VillageNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTotalRawHouseStrNull() {
+                return this.IsNull(this.tableProfession.TotalRawHouseStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTotalRawHouseStrNull() {
+                this[this.tableProfession.TotalRawHouseStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTotalSemiBuildingHouseStrNull() {
+                return this.IsNull(this.tableProfession.TotalSemiBuildingHouseStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTotalSemiBuildingHouseStrNull() {
+                this[this.tableProfession.TotalSemiBuildingHouseStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTotalBuildingHouseStrNull() {
+                return this.IsNull(this.tableProfession.TotalBuildingHouseStrColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTotalBuildingHouseStrNull() {
+                this[this.tableProfession.TotalBuildingHouseStrColumn] = global::System.Convert.DBNull;
             }
         }
         

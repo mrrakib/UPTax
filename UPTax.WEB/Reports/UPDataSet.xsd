@@ -157,6 +157,9 @@
               <xs:element name="MobileNo" msprop:Generator_ColumnVarNameInTable="columnMobileNo" msprop:Generator_ColumnPropNameInRow="MobileNo" msprop:Generator_ColumnPropNameInTable="MobileNoColumn" msprop:Generator_UserColumnName="MobileNo" type="xs:string" minOccurs="0" />
               <xs:element name="WardNo" msprop:Generator_ColumnVarNameInTable="columnWardNo" msprop:Generator_ColumnPropNameInRow="WardNo" msprop:Generator_ColumnPropNameInTable="WardNoColumn" msprop:Generator_UserColumnName="WardNo" type="xs:string" minOccurs="0" />
               <xs:element name="VillageName" msprop:Generator_ColumnVarNameInTable="columnVillageName" msprop:Generator_ColumnPropNameInRow="VillageName" msprop:Generator_ColumnPropNameInTable="VillageNameColumn" msprop:Generator_UserColumnName="VillageName" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalRawHouseStr" msprop:Generator_ColumnVarNameInTable="columnTotalRawHouseStr" msprop:Generator_ColumnPropNameInRow="TotalRawHouseStr" msprop:Generator_ColumnPropNameInTable="TotalRawHouseStrColumn" msprop:Generator_UserColumnName="TotalRawHouseStr" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalSemiBuildingHouseStr" msprop:Generator_ColumnVarNameInTable="columnTotalSemiBuildingHouseStr" msprop:Generator_ColumnPropNameInRow="TotalSemiBuildingHouseStr" msprop:Generator_ColumnPropNameInTable="TotalSemiBuildingHouseStrColumn" msprop:Generator_UserColumnName="TotalSemiBuildingHouseStr" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalBuildingHouseStr" msprop:Generator_ColumnVarNameInTable="columnTotalBuildingHouseStr" msprop:Generator_ColumnPropNameInRow="TotalBuildingHouseStr" msprop:Generator_ColumnPropNameInTable="TotalBuildingHouseStrColumn" msprop:Generator_UserColumnName="TotalBuildingHouseStr" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
